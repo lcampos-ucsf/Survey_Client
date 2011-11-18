@@ -3,14 +3,19 @@ SampleApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   ENV['full_host'] = "https://localhost:3000"
+  #ENV['sfdc_login'] = "https://ucsf.my.salesforce.com"
   ENV['sfdc_login'] = "https://login.salesforce.com"
+  #ENV['sfdc_login'] = "https://jricosp2test-developer-edition.my.salesforce.com"
 
   #You setup these in Setup > Development > Remote Access
   #Set your callback url to https://localhost:3000/auth/forcedotcom/callback    
-  ENV['sfdc_consumer_key'] = "3MVG9QDx8IX8nP5Ty6QthdXmQZN30GCq215akOxv3C1yKCktnBnJPhCD868k3wvV0yHD6lxZPNI1Tm8Bspjzg"
-  ENV['sfdc_consumer_secret'] = "6920539322002446909"
+  #ENV['sfdc_consumer_key'] = "3MVG9QDx8IX8nP5Ty6QthdXmQZN30GCq215akOxv3C1yKCktnBnJPhCD868k3wvV0yHD6lxZPNI1Tm8Bspjzg"
+  #ENV['sfdc_consumer_secret'] = "6920539322002446909"
 
-  ENV['sfdc_api_version'] = '22.0'
+  ENV['sfdc_consumer_key'] = "3MVG9QDx8IX8nP5QL6nLuLAMcTCSWgq4tUAdKxjxtxVx8srPQ2sGc9BxogVht4XM1wblfmbu0eG5gynnXOmhe"
+  ENV['sfdc_consumer_secret'] = "2958068219577184555"
+
+  ENV['sfdc_api_version'] = '23.0'
 
   ENV['DATABASEDOTCOM_CLIENT_ID'] =   ENV['sfdc_consumer_key']
   ENV['DATABASEDOTCOM_CLIENT_SECRET'] = ENV['sfdc_consumer_secret']

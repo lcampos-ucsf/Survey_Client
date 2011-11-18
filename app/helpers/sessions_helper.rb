@@ -48,7 +48,8 @@ module SessionsHelper
   end
 
   def authenticateSF
-    redirect_to '/auth/forcedotcom'
+    #redirect_to '/auth/forcedotcom'
+    redirect_to '/auth/salesforce'
   end
 
   def deny_access

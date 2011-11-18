@@ -4,12 +4,13 @@ gem 'rails', '3.1.0'
 gem 'sqlite3'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.pre2'
-gem 'omniauth',  '>=0.2.6'
+#gem 'omniauth-salesforce'
+gem 'omniauth-salesforce', :git => 'git://github.com/lcampos/omniauth-salesforce.git'
 gem 'httparty'
 gem 'savon'
 gem 'databasedotcom'
 gem 'cells', "~>3.5"
-gem 'rack', "1.3.3"
+gem 'rack', "1.3.5"
 
 group :development do
   	gem 'rspec-rails'

@@ -14,6 +14,7 @@ SampleApp::Application.routes.draw do
   match '/signout',  :to => 'sessions#destroy'
   
   match '/auth/:provider/callback', :to => 'sessions#create'
+  #match '/auth/:provider/callback' => 'sessions#createOmniauthSF'
   match '/auth/failure', :to => 'sessions#fail'
   
   root :to => 'pages#home'

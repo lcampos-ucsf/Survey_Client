@@ -18,6 +18,11 @@ class SessionsController < ApplicationController
     clear_return_to
   end
 
+  def createOmniauthSF
+  
+
+  end
+
   def create
 
     #obtain name of the service
