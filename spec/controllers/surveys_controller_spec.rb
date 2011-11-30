@@ -2,16 +2,23 @@ require 'spec_helper'
 
 describe SurveysController do
 
-  describe "GET 'builder'" do
+  describe "GET 'index'" do
     it "should be successful" do
-      get 'builder'
+      get 'index'
       response.should be_success
     end
   end
 
-  describe "GET 'preview'" do
+  describe "GET 'new'" do
     it "should be successful" do
-      get 'preview'
+      get 'new'
+      response.should be_success
+    end
+  end
+
+  describe "GET 'create'" do
+    it "should be successful" do
+      get 'create'
       response.should be_success
     end
   end

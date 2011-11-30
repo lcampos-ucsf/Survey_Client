@@ -1,6 +1,18 @@
-SampleApp::Application.routes.draw do
+SampleApp::Application.routes.draw do 
+
+  #resources :surveys
+
+  get "surveys/index"
+
+  get "surveys/new"
+
+  get "surveys/create"
 
   get "sessions/new"
+
+  match "surveys/index", :to => "surveys#index"
+
+  match "surveys/:id/show", :to => "surveys#show"
 
   resources :users
   resources :sessions, :only => [:new,:create,:destroy]

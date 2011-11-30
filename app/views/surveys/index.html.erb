@@ -1,0 +1,12 @@
+<h1>Surveys#index</h1>
+
+<%= paginate @surveys %>
+
+<% @surveys.each_with_index do |s, i| %>
+
+		<div style="border: 1px solid green;" >
+			<%= i %>
+			Id <%= s.Id %>
+		</div>
+
+	<% end %>

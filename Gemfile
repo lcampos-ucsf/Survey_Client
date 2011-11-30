@@ -3,14 +3,27 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 gem 'sqlite3'
 gem 'gravatar_image_tag', '1.0.0.pre2'
-gem 'will_paginate', '3.0.pre2'
-#gem 'omniauth-salesforce'
-gem 'omniauth-salesforce', :git => 'git://github.com/lcampos/omniauth-salesforce.git'
+#gem 'will_paginate', '3.0.pre2'
+
 gem 'httparty'
 gem 'savon'
-gem 'databasedotcom'
-gem 'cells', "~>3.5"
+#gem 'cells', "~>3.5"
+gem 'cells', "~>3.6.7"
 gem 'rack', "1.3.5"
+
+#api connection with salesforce
+gem 'databasedotcom-rails'
+
+#adding widget gem apotomo
+gem 'apotomo', '1.2.1'
+gem 'jquery-rails', '>= 1.0.12'
+
+#authentication strategy with salesforce
+#gem 'omniauth-salesforce'
+gem 'omniauth-salesforce', :git => 'git://github.com/lcampos/omniauth-salesforce.git'
+
+#add pagination to surveys
+gem 'kaminari'
 
 group :development do
   	gem 'rspec-rails'

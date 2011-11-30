@@ -1,0 +1,28 @@
+<%= widget_div do %>
+
+	
+	<ul>
+		<li> Id: <%= @line_item.Id %> </li>
+		<li> Name : <%= @line_item.Name %> </li>
+		<li> Sort Order : <%= @line_item.Sort_Order__c %> </li>
+		<li> Question Description : <%= @line_item.Question_Description__c %> </li>
+		<li> Question Type : <%= @line_item.Question_Type__c %> </li>
+		<li> Display Format : <%= @line_item.Display_Format__c %> </li>
+		<li> Line Item Type : <%= @line_item.Line_Item_Type__c %> </li>
+	</ul>
+	
+	<% if @line_item.Line_Item_Type__c == 'Question' %>
+
+
+		<% if @line_item.Question_Type__c == 'Text' %>
+			<label> <%= @line_item.Question_Description__c %> : </label>
+			<input type="text" id="question_answer" />
+
+		<% elsif @line_item.Question_Type__c == 'SelectOneQuestion' %>
+			<label> <%= @line_item.Question_Description__c %> : </label>
+			<input type="checkbox" id="chkbox_answer" />
+		<% end %>
+
+	<% end %>
+
+<% end %>

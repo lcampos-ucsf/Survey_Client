@@ -1,0 +1,30 @@
+
+<!-- %= paginate @lines, :params => {:controller => 'survey', :action => 'display'}, :remote => true % -->
+
+
+
+<%= widget_div do %>
+
+<%= paginate @lines %>
+
+	<% @lines.each_with_index do |line, i| %>
+
+		<div style="border: 1px solid blue; margin: 15px 0px;" >
+
+			<table>
+				<tr>
+					<td> <%= i %> </td>
+					<td> <%= line.Name%> </td>
+					<td> <%= line.Description__c%> </td>
+					<td> <%= line.Sort_Order__c %> </td>
+				</tr>
+			</table>
+		
+			<%= render_widget "line_'#{i}'" %>
+		</div>
+
+	<% end %>
+	
+
+	
+<% end %>
