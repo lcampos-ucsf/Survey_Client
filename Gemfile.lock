@@ -1,11 +1,3 @@
-GIT
-  remote: git://github.com/lcampos/omniauth-salesforce.git
-  revision: 12ff7f5aba0db1511adcbd602598310bb806f0a4
-  specs:
-    omniauth-salesforce (1.0.0)
-      omniauth (~> 1.0)
-      omniauth-oauth2 (~> 1.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
