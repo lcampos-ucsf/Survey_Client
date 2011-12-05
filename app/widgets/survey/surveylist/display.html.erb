@@ -1,0 +1,24 @@
+<%= widget_div do %>
+
+<table>
+	<thead>
+		<tr>
+			<td>Action</td>
+			<td>Name</td>
+			<td>Status</td>
+		</tr>
+	</thead>
+	<% @surveys.each do |survey| %>
+
+		<tbody>
+			<tr>
+				<td><a href="<%= survey.Id%>/show">Start</a></td>
+				<td><%= survey.Name %> </td>
+				<td><%= survey.Status__c %></td>
+			</tr>
+		</tbody>
+
+	<% end %>
+</table>
+
+<% end %>

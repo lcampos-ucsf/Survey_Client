@@ -1,7 +1,7 @@
-<%= widget_div do %>
+<%= widget_div :class => :question_wrap do  %>
 
 	
-	<ul>
+	<!-- ul>
 		<li> Id: <%= @line_item.Id %> </li>
 		<li> Name : <%= @line_item.Name %> </li>
 		<li> Sort Order : <%= @line_item.Sort_Order__c %> </li>
@@ -9,20 +9,38 @@
 		<li> Question Type : <%= @line_item.Question_Type__c %> </li>
 		<li> Display Format : <%= @line_item.Display_Format__c %> </li>
 		<li> Line Item Type : <%= @line_item.Line_Item_Type__c %> </li>
-	</ul>
+		<li> Answer Sequence : <%= @line_item.Answer_Sequence__c%> </li>
+	</ul -->
 	
 	<% if @line_item.Line_Item_Type__c == 'Question' %>
 
-
 		<% if @line_item.Question_Type__c == 'Text' %>
-			<label> <%= @line_item.Question_Description__c %> : </label>
-			<input type="text" id="question_answer" />
+			<label class="q_text" > <%= @line_item.Question_Description__c %> : </label>
+			<input type="text" name="q#_<%= @line_item.Id%>_text" />
 
 		<% elsif @line_item.Question_Type__c == 'SelectOneQuestion' %>
-			<label> <%= @line_item.Question_Description__c %> : </label>
-			<input type="checkbox" id="chkbox_answer" />
+			<label class="q_text" > <%= @line_item.Question_Description__c %> : </label>
+			<ul class="a_list">
+			<% @answerlabels.each do |al| %>
+				<li> 
+					<input type="radio" name="q#_<%= @line_item.Id%>" value="<%= al.Name%>" />
+					<span> <%= al.Answer_Text__c %> </span>
+				</li>
+			<% end %>
+			</ul>
+		<% elsif @line_item.Question_Type__c == 'SelectMultipleQuestions' %>
+			<label class="q_text" > <%= @line_item.Question_Description__c %> : </label>
+			<ul class="a_list">
+			<% @answerlabels.each do |al| %>
+				<li> 
+					<input type="checkbox" name="q#_<%= @line_item.Id%>_<%= al.Name%>" />
+					<span> <%= al.Answer_Text__c %> </span>
+				</li>
+			<% end %>
+			</ul>
 		<% end %>
 
 	<% end %>
 
 <% end %>
+

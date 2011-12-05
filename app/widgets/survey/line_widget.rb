@@ -12,6 +12,7 @@ include Databasedotcom::Rails::Controller
 	        puts "#{child_id}"
 	        self << widget("survey/line_item", child_id, :li_data => t)
 		end 
+		self << widget("survey/surveycontrol", :surveycontrol)
 
 	end
 
@@ -20,5 +21,6 @@ include Databasedotcom::Rails::Controller
   def display
     render
   end
+
 
 end

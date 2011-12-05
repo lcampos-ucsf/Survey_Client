@@ -1,12 +1,8 @@
 <%= widget_div do %>
-	<h2>Questions</h2>
+
 	<% @line_items.each_with_index do |li, i| %>
-
-		<div style="border: 1px solid green;" >
-			<%= i %>
-			<%= render_widget "line_item_'#{i}'" %>
-		</div>
-
+		<%= render_widget "line_item_'#{i}'" %>
 	<% end %>
 
+	<%= render_widget :surveycontrol %>	
 <% end %>

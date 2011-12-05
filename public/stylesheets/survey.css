@@ -1,0 +1,45 @@
+.line_head_h3{
+	color: #666666;
+}
+
+.line-wrap {
+	margin: 15px 0px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
+.question_wrap, .scontrol_wrap {
+	padding: 15px; 
+	display:block; 
+	color:#1E1E1E;
+}
+
+.question_wrap label.q_text{
+	width: 100%;
+	text-align:left;
+	line-height: 150%;
+	color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+}
+
+.question_wrap input[type=text]{
+	color: #666666;
+    font-size: 14px;
+    width: 400px;
+}
+
+.question_wrap input {
+	padding: 5px;
+}
+
+.question_wrap input:focus {
+      background: #E2F6F9;   
+}
+
+.a_list{
+	list-style:none;
+}
