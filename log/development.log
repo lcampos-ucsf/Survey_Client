@@ -33667,3 +33667,609 @@ ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
   
 
 Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show" for 127.0.0.1 at 2011-12-05 09:10:15 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (1.4ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.6ms)
+Rendered app/widgets/survey/line/display.html.erb (2323.4ms)
+Rendered app/widgets/survey/survey/display.html.erb (2338.5ms)
+Rendered surveys/show.html.erb within layouts/application (5964.9ms)
+Rendered layouts/_stylesheets.html.erb (1.3ms)
+  [1m[36mUser Load (14.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (175.8ms)
+Rendered layouts/_footer.html.erb (24.2ms)
+Completed 200 OK in 9568ms (Views: 6338.7ms | ActiveRecord: 15.1ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-05 09:10:26 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/index" for 127.0.0.1 at 2011-12-05 09:10:30 -0800
+  Processing by SurveysController#index as HTML
+Rendered app/widgets/survey/surveylist/display.html.erb (0.7ms)
+Rendered surveys/index.html.erb within layouts/application (799.3ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (44.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 851ms (Views: 849.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-05 09:10:31 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show" for 127.0.0.1 at 2011-12-05 09:10:38 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line/display.html.erb (835.4ms)
+Rendered app/widgets/survey/survey/display.html.erb (851.4ms)
+Rendered surveys/show.html.erb within layouts/application (1690.4ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (47.0ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 2093ms (Views: 1744.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-05 09:10:40 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show?page=2" for 127.0.0.1 at 2011-12-05 09:10:56 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"page"=>"2", "id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line/display.html.erb (1667.5ms)
+Rendered app/widgets/survey/survey/display.html.erb (1684.0ms)
+Rendered surveys/show.html.erb within layouts/application (5219.4ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (45.9ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 5622ms (Views: 5273.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-05 09:11:01 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show?page=1" for 127.0.0.1 at 2011-12-05 09:11:14 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"page"=>"1", "id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line/display.html.erb (859.2ms)
+Rendered app/widgets/survey/survey/display.html.erb (877.1ms)
+Rendered surveys/show.html.erb within layouts/application (1953.7ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (43.0ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 2436ms (Views: 2004.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-05 09:11:17 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/index" for 64.54.242.54 at 2011-12-05 09:32:45 -0800
+  Processing by SurveysController#index as HTML
+Rendered app/widgets/survey/surveylist/display.html.erb (0.3ms)
+Rendered surveys/index.html.erb within layouts/application (1220.7ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (44.4ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 1272ms (Views: 1271.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:32:47 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUf1IAE/show" for 64.54.242.54 at 2011-12-05 09:32:59 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a05U0000000bUf1IAE"}
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line/display.html.erb (22.7ms)
+Rendered app/widgets/survey/survey/display.html.erb (49.1ms)
+Rendered surveys/show.html.erb within layouts/application (929.4ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (39.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 1411ms (Views: 976.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:33:01 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/surveys/index" for 64.54.242.54 at 2011-12-05 09:33:04 -0800
+  Processing by SurveysController#index as HTML
+Rendered app/widgets/survey/surveylist/display.html.erb (0.3ms)
+Rendered surveys/index.html.erb within layouts/application (888.0ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (43.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 938ms (Views: 937.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:33:05 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bpSTIAY/show" for 64.54.242.54 at 2011-12-05 09:33:07 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a05U0000000bpSTIAY"}
+Rendered app/widgets/survey/survey/display.html.erb (63.0ms)
+Rendered surveys/show.html.erb within layouts/application (505.8ms)
+Completed 500 Internal Server Error in 944ms
+
+ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
+    4: <%= widget_div do %>
+    5: 
+    6: 	<!-- %= form_tag url_for_event(:submit), :remote => true do %-->
+    7: 	<%= form_for(@lines, :url => {:controller => "surveys",:action => "update_multiple"}) do %>
+    8: 
+    9: 		<input type="hidden" name="id" value="<%= params[:id] %>" />
+    10: 		<input type="hidden" name="page" value="<%= params[:page] %>" />
+  app/widgets/survey/survey/display.html.erb:7:in `block in _app_widgets_survey_survey_display_html_erb___3328171549801505486_70104145548800'
+  app/widgets/survey/survey/display.html.erb:4:in `_app_widgets_survey_survey_display_html_erb___3328171549801505486_70104145548800'
+  app/widgets/survey/survey_widget.rb:25:in `display'
+  app/views/surveys/show.html.erb:4:in `_app_views_surveys_show_html_erb__1323808167415078718_70104167129640'
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.2ms)
+
+
+Started GET "/surveys/index" for 64.54.242.54 at 2011-12-05 09:33:09 -0800
+  Processing by SurveysController#index as HTML
+Rendered app/widgets/survey/surveylist/display.html.erb (0.3ms)
+Rendered surveys/index.html.erb within layouts/application (884.4ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (45.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 937ms (Views: 936.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:33:11 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show" for 64.54.242.54 at 2011-12-05 09:33:12 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line/display.html.erb (1072.6ms)
+Rendered app/widgets/survey/survey/display.html.erb (1111.8ms)
+Rendered surveys/show.html.erb within layouts/application (1996.9ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (43.3ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 2481ms (Views: 2046.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:33:15 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started PUT "/surveys/update_multiple" for 64.54.242.54 at 2011-12-05 09:33:31 -0800
+  Processing by SurveysController#update_multiple as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kL/oPVzwMZMt6CYOxKG9n+h15ZIsZVk5/hxKUKvQJP8=", "id"=>"a05U0000000bUemIAE", "page"=>"", "q#_a0BU00000008CEsMAM_text"=>"", "q#_a0BU00000008CF2MAM_text"=>"", "q#_a0BU00000008CF7MAM_text"=>"", "q#_a0BU00000008CFRMA2"=>"AL-00001", "q#_a0BU00000008CF3MAM"=>"AL-00004", "commit"=>"Next"}
+Redirected to https://64.54.246.152:3000/surveys/a05U0000000bUemIAE/show?page=
+Completed 302 Found in 4655ms
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show?page=" for 64.54.242.54 at 2011-12-05 09:33:36 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"page"=>"", "id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.5ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.5ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line/display.html.erb (1083.2ms)
+Rendered app/widgets/survey/survey/display.html.erb (1118.2ms)
+Rendered surveys/show.html.erb within layouts/application (1885.7ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (17.1ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 2328ms (Views: 1910.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:33:39 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show" for 64.54.242.54 at 2011-12-05 09:33:43 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line/display.html.erb (978.9ms)
+Rendered app/widgets/survey/survey/display.html.erb (1014.9ms)
+Rendered surveys/show.html.erb within layouts/application (1885.9ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (42.0ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 2297ms (Views: 1935.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:33:46 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/" for 64.54.242.54 at 2011-12-05 09:33:58 -0800
+  Processing by PagesController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered pages/home.html.erb within layouts/application (38.8ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered layouts/_header.html.erb (1.1ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 47ms (Views: 45.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:33:59 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/signin" for 64.54.242.54 at 2011-12-05 09:34:02 -0800
+  Processing by SessionsController#authenticateSF as HTML
+Redirected to https://64.54.246.152:3000/auth/salesforce
+Completed 302 Found in 0ms
+
+
+Started GET "/auth/salesforce" for 64.54.242.54 at 2011-12-05 09:34:02 -0800
+
+
+Started GET "/" for 64.54.242.54 at 2011-12-05 09:34:03 -0800
+  Processing by PagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered pages/home.html.erb within layouts/application (25.9ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Rendered layouts/_header.html.erb (1.3ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 34ms (Views: 32.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:34:03 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/signin" for 64.54.242.54 at 2011-12-05 09:34:04 -0800
+  Processing by SessionsController#authenticateSF as HTML
+Redirected to https://64.54.246.152:3000/auth/salesforce
+Completed 302 Found in 0ms
+
+
+Started GET "/auth/salesforce" for 64.54.242.54 at 2011-12-05 09:34:04 -0800
+
+
+Started GET "/" for 64.54.242.54 at 2011-12-05 09:34:05 -0800
+  Processing by PagesController#home as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered pages/home.html.erb within layouts/application (16.2ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered layouts/_header.html.erb (1.3ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 24ms (Views: 23.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:34:05 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/index" for 64.54.242.54 at 2011-12-05 09:36:35 -0800
+  Processing by SurveysController#index as HTML
+Rendered app/widgets/survey/surveylist/display.html.erb (0.3ms)
+Rendered surveys/index.html.erb within layouts/application (1266.5ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered layouts/_header.html.erb (20.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 1317ms (Views: 1316.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:36:37 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (24.2ms)
+
+
+Started GET "/surveys/a05U0000000bpSTIAY/show" for 64.54.242.54 at 2011-12-05 09:36:50 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a05U0000000bpSTIAY"}
+Rendered app/widgets/survey/survey/display.html.erb (0.8ms)
+Rendered surveys/show.html.erb within layouts/application (696.7ms)
+Completed 500 Internal Server Error in 1121ms
+
+ActionView::Template::Error (undefined method `model_name' for NilClass:Class):
+    4: <%= widget_div do %>
+    5: 
+    6: 	<!-- %= form_tag url_for_event(:submit), :remote => true do %-->
+    7: 	<%= form_for(@lines, :url => {:controller => "surveys",:action => "update_multiple"}) do %>
+    8: 
+    9: 		<input type="hidden" name="id" value="<%= params[:id] %>" />
+    10: 		<input type="hidden" name="page" value="<%= params[:page] %>" />
+  app/widgets/survey/survey/display.html.erb:7:in `block in _app_widgets_survey_survey_display_html_erb___3328171549801505486_70104145548800'
+  app/widgets/survey/survey/display.html.erb:4:in `_app_widgets_survey_survey_display_html_erb___3328171549801505486_70104145548800'
+  app/widgets/survey/survey_widget.rb:25:in `display'
+  app/views/surveys/show.html.erb:4:in `_app_views_surveys_show_html_erb__1323808167415078718_70104167129640'
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (3.7ms)
+
+
+Started GET "/surveys/index" for 64.54.242.54 at 2011-12-05 09:36:55 -0800
+  Processing by SurveysController#index as HTML
+Rendered app/widgets/survey/surveylist/display.html.erb (0.3ms)
+Rendered surveys/index.html.erb within layouts/application (957.2ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered layouts/_header.html.erb (17.3ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 981ms (Views: 980.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:36:56 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show" for 64.54.242.54 at 2011-12-05 09:37:05 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line/display.html.erb (1474.9ms)
+Rendered app/widgets/survey/survey/display.html.erb (1528.2ms)
+Rendered surveys/show.html.erb within layouts/application (2485.1ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered layouts/_header.html.erb (17.2ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 2962ms (Views: 2509.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:37:08 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/surveys/index" for 64.54.242.54 at 2011-12-05 09:37:10 -0800
+  Processing by SurveysController#index as HTML
+Rendered app/widgets/survey/surveylist/display.html.erb (0.3ms)
+Rendered surveys/index.html.erb within layouts/application (928.5ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered layouts/_header.html.erb (21.2ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 956ms (Views: 955.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:37:11 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show?page=1" for 127.0.0.1 at 2011-12-05 09:38:55 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"page"=>"1", "id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line/display.html.erb (1201.8ms)
+Rendered app/widgets/survey/survey/display.html.erb (1260.8ms)
+Rendered surveys/show.html.erb within layouts/application (2203.8ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered layouts/_header.html.erb (18.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 3041ms (Views: 2229.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-05 09:38:58 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show?page=1" for 127.0.0.1 at 2011-12-05 09:39:04 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"page"=>"1", "id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line/display.html.erb (1233.1ms)
+Rendered app/widgets/survey/survey/display.html.erb (1294.4ms)
+Rendered surveys/show.html.erb within layouts/application (2206.0ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered layouts/_header.html.erb (18.2ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 2651ms (Views: 2231.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-05 09:39:07 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show" for 64.54.242.54 at 2011-12-05 09:39:40 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line/display.html.erb (1238.9ms)
+Rendered app/widgets/survey/survey/display.html.erb (1300.7ms)
+Rendered surveys/show.html.erb within layouts/application (2261.8ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered layouts/_header.html.erb (41.0ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 2778ms (Views: 2310.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 64.54.242.54 at 2011-12-05 09:39:43 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
