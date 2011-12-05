@@ -26,7 +26,10 @@ gem 'omniauth-salesforce'
 gem 'kaminari'
 
 #heroku dependency
-gem 'pg'
+group :production do
+  #gem 'therubyracer-heroku', '0.8.1.pre3' # you will need this too
+  gem 'pg'
+end
 
 group :development do
   	gem 'rspec-rails'
