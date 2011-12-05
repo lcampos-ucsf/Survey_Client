@@ -25,6 +25,9 @@ gem 'omniauth-salesforce'
 #add pagination to surveys
 gem 'kaminari'
 
+#heroku dependency
+gem 'pg'
+
 group :development do
   	gem 'rspec-rails'
   	gem 'annotate', '2.4.0'
