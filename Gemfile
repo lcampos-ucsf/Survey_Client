@@ -19,8 +19,8 @@ gem 'apotomo', '1.2.1'
 gem 'jquery-rails', '>= 1.0.12'
 
 #authentication strategy with salesforce
-#gem 'omniauth-salesforce'
-gem 'omniauth-salesforce', :git => 'git://github.com/lcampos/omniauth-salesforce.git'
+gem 'omniauth-salesforce'
+#gem 'omniauth-salesforce', :git => 'git://github.com/lcampos/omniauth-salesforce.git'
 
 #add pagination to surveys
 gem 'kaminari'
