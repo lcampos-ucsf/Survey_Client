@@ -14,26 +14,33 @@
 	
 	<% if @line_item.Line_Item_Type__c == 'Question' %>
 
-		<% if @line_item.Question_Type__c == 'Text' %>
-			<label class="q_text" > <%= @line_item.Question_Description__c %> : </label>
-			<input type="text" name="q#_<%= @line_item.Id%>_text" />
+		<label class="q_text" > <%= @line_item.Question_Description__c %> : </label>
+		<input type="hidden" name="<%= @line_item.Id%>" value="<%= @line_item.Question_Description__c %>"/>
 
+		<!-- Text Question -->
+		<% if @line_item.Question_Type__c == 'Text' %>
+			<input type="text" name="q#_<%= @line_item.Id%>_text_<%= @responserecordId %>" value="<%= @rrTextLongResponse %>" />
+
+		<!-- SelectOneQuestion Question -->
 		<% elsif @line_item.Question_Type__c == 'SelectOneQuestion' %>
-			<label class="q_text" > <%= @line_item.Question_Description__c %> : </label>
 			<ul class="a_list">
 			<% @answerlabels.each do |al| %>
 				<li> 
-					<input type="radio" name="q#_<%= @line_item.Id%>" value="<%= al.Name%>" />
+					<input type="radio" name="q#_<%= @line_item.Id%>_radio_<%= @responserecordId %>" value="<%= al.Name%>" />
+					<input type="hidden" name="<%= al.Name%>" value="<%= al.Answer_Text__c %>"/>
 					<span> <%= al.Answer_Text__c %> </span>
 				</li>
 			<% end %>
 			</ul>
+
+		<!-- SelectMultipleQuestions Question -->
 		<% elsif @line_item.Question_Type__c == 'SelectMultipleQuestions' %>
-			<label class="q_text" > <%= @line_item.Question_Description__c %> : </label>
+			
 			<ul class="a_list">
 			<% @answerlabels.each do |al| %>
 				<li> 
 					<input type="checkbox" name="q#_<%= @line_item.Id%>_<%= al.Name%>" />
+					<input type="hidden" name="<%= al.Name%>" value="<%= al.Answer_Text__c %>"/>
 					<span> <%= al.Answer_Text__c %> </span>
 				</li>
 			<% end %>

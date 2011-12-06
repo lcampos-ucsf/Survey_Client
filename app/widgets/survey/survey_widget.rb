@@ -16,7 +16,7 @@ responds_to_event :submit, :with => :update_multiple
 			child_id = "line_'#{i}'"
 	       	next if self[child_id]  # we already added it.
 	        puts "#{child_id}"
-	        self << widget("survey/line", child_id, :line_data => t)
+	        self << widget("survey/line", child_id, :line_data => t, :surveyid => params[:id])
 		end 
 		
 	end

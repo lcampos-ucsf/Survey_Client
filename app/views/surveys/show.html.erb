@@ -1,5 +1,19 @@
 <h1> <%= @survey.Name %> </h1>
+<script type="text/javascript">
+	var j$ = jQuery.noConflict();
 
+	//j$(document).ready(function() {});
+
+	function formsubmit(){
+		alert('form submit NOOOOGGGHHH!!!!, submit btn form = ');
+		j$.post("/surveys/update_multiple",j$("form").serialize());
+		//j$('#my_submit_button').click();
+		//j$('#nextbtn').click();
+
+	}
+	
+
+</script>
 
 <%= render_widget :survey %>
 
