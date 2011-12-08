@@ -7,8 +7,8 @@ SampleApp::Application.configure do
 
   #You setup these in Setup > Development > Remote Access
   #Set your callback url to https://yourtemplateapp.heroku.com/auth/forcedotcom/callback  
-  ENV['sfdc_consumer_key'] = "YOUR CONSUMER KEY GOES HERE"
-  ENV['sfdc_consumer_secret'] = "YOUR CONSUMER SECRET GOES HERE"  
+  ENV['sfdc_consumer_key'] = "3MVG9QDx8IX8nP5QL6nLuLAMcTCSWgq4tUAdKxjxtxVx8srPQ2sGc9BxogVht4XM1wblfmbu0eG5gynnXOmhe"
+  ENV['sfdc_consumer_secret'] = "2958068219577184555" 
 
   ENV['sfdc_api_version'] = '22.0'
 
