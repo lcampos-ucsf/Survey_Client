@@ -26,8 +26,10 @@ gem 'omniauth-salesforce'
 gem 'kaminari'
 
 #heroku dependency
-gem 'pg', '0.11.0'
-gem 'libpq-dev'
+group :production do
+	gem 'therubyracer-heroku', '0.8.1.pre3'
+	gem 'pg'
+end
 
 
 group :development do
