@@ -25,6 +25,7 @@ gem 'omniauth-salesforce', :git => 'git://github.com/lcampos/omniauth-salesforce
 #add pagination to surveys
 gem 'kaminari'
 
+
 group :development do
   	gem 'rspec-rails'
   	gem 'annotate', '2.4.0'
