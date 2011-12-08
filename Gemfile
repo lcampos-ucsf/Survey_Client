@@ -31,7 +31,6 @@ group :production do
 	gem 'pg'
 end
 
-
 group :development do
   	gem 'rspec-rails'
   	gem 'annotate', '2.4.0'
