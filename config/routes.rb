@@ -13,10 +13,15 @@ SampleApp::Application.routes.draw do
   match "surveys/index", :to => "surveys#index"
 
   match "surveys/:id/show", :to => "surveys#show"
+  
+  match "surveys/:id/review", :to => "surveys#review"
 
   #match 'surveys/:id/show' => 'surveys#update_multiple', :as => 'surveys', :via => :post
 
    match "surveys/update_multiple", :to => "surveys#update_multiple"
+
+   match "surveys/:id/submitsurvey", :to => "surveys#submitsurvey"
+
 
   resources :users
   resources :sessions, :only => [:new,:create,:destroy]

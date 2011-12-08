@@ -5,11 +5,23 @@
 	//j$(document).ready(function() {});
 
 	function formsubmit(){
-		alert('form submit NOOOOGGGHHH!!!!, submit btn form = ');
 		j$.post("/surveys/update_multiple",j$("form").serialize());
 		//j$('#my_submit_button').click();
 		//j$('#nextbtn').click();
+	}
 
+	function keepvallist(element, sId){
+
+		var txt = j$('#'+sId).val();
+		var nlabel = element.id;
+
+		if(txt.indexOf(nlabel) == -1){
+			txt+= nlabel + ' ;';
+			j$('#'+sId).val(txt);
+		}else{
+			txt = txt.replace(nlabel,'');
+			j$('#'+sId).val(txt);
+		}
 	}
 	
 

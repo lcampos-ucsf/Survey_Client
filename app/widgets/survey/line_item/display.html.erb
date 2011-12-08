@@ -1,17 +1,6 @@
 <%= widget_div :class => :question_wrap do  %>
 
 	
-	<!-- ul>
-		<li> Id: <%= @line_item.Id %> </li>
-		<li> Name : <%= @line_item.Name %> </li>
-		<li> Sort Order : <%= @line_item.Sort_Order__c %> </li>
-		<li> Question Description : <%= @line_item.Question_Description__c %> </li>
-		<li> Question Type : <%= @line_item.Question_Type__c %> </li>
-		<li> Display Format : <%= @line_item.Display_Format__c %> </li>
-		<li> Line Item Type : <%= @line_item.Line_Item_Type__c %> </li>
-		<li> Answer Sequence : <%= @line_item.Answer_Sequence__c%> </li>
-	</ul -->
-	
 	<% if @line_item.Line_Item_Type__c == 'Question' %>
 
 		<label class="q_text" > <%= @line_item.Question_Description__c %> : </label>
@@ -19,19 +8,45 @@
 
 		<!-- Text Question -->
 		<% if @line_item.Question_Type__c == 'Text' %>
-			<input type="text" name="q#_<%= @line_item.Id%>_text_<%= @responserecordId %>" value="<%= @rrTextLongResponse %>" />
+			<input type="text" name="q#_<%= @line_item.Id%>_text_<%= @respId %>" value="<%= @respVal %>" />
 
 		<!-- SelectOneQuestion Question -->
 		<% elsif @line_item.Question_Type__c == 'SelectOneQuestion' %>
-			<ul class="a_list">
-			<% @answerlabels.each do |al| %>
-				<li> 
-					<input type="radio" name="q#_<%= @line_item.Id%>_radio_<%= @responserecordId %>" value="<%= al.Name%>" />
-					<input type="hidden" name="<%= al.Name%>" value="<%= al.Answer_Text__c %>"/>
-					<span> <%= al.Answer_Text__c %> </span>
-				</li>
-			<% end %>
-			</ul>
+				
+			<% if @line_item.Display_Format__c == 'List' %>
+
+				<ul class="a_list">
+				<% @answerlabels.each do |al| %>
+					<li> 
+						<% if @respVal == al.Name %>
+							<input type="radio" name="q#_<%= @line_item.Id%>_radio_<%= @respId %>" value="<%= al.Name%>" checked />
+						<% else %>
+							<input type="radio" name="q#_<%= @line_item.Id%>_radio_<%= @respId %>" value="<%= al.Name%>" />
+						<% end %>
+						<input type="hidden" name="<%= al.Name%>" value="<%= al.Answer_Text__c %>"/>
+						<span> <%= al.Answer_Text__c %> </span>
+					</li>
+				<% end %>
+				</ul>
+
+			<% elsif @line_item.Display_Format__c == 'Drop Down' %>
+				<select class="sel_element" name="q#_<%= @line_item.Id%>_onedd_<%= @respId %>" size="1" >
+					<option value="" ></option>
+					<% @answerlabels.each do |al| %>
+						<% if @respVal == al.Name %>
+							<option value="<%= al.Name%>" selected="selected" ><%= al.Answer_Text__c %></option>
+						<% else %> 
+							<option value="<%= al.Name%>" ><%= al.Answer_Text__c %></option>
+						<% end %> 
+					<% end %>
+
+				</select>
+					<% @answerlabels.each do |al| %>
+						<input type="hidden" name="<%= al.Name%>" value="<%= al.Answer_Text__c %>"/>
+					<% end %>
+				
+
+			<% end %> 
 
 		<!-- SelectMultipleQuestions Question -->
 		<% elsif @line_item.Question_Type__c == 'SelectMultipleQuestions' %>
@@ -39,12 +54,17 @@
 			<ul class="a_list">
 			<% @answerlabels.each do |al| %>
 				<li> 
-					<input type="checkbox" name="q#_<%= @line_item.Id%>_<%= al.Name%>" />
+					<% if @resphash.has_key?(al.Name) %>
+						<input type="checkbox" name="q#_<%= @line_item.Id%>_multi_<%= @respId %>[]" value="<%= al.Name%>" checked id="<%= al.Answer_Text__c %>" />
+					<% else %>
+						<input type="checkbox" name="q#_<%= @line_item.Id%>_multi_<%= @respId %>[]" value="<%= al.Name%>" id="<%= al.Answer_Text__c %>" />
+					<% end %> 
 					<input type="hidden" name="<%= al.Name%>" value="<%= al.Answer_Text__c %>"/>
 					<span> <%= al.Answer_Text__c %> </span>
 				</li>
 			<% end %>
 			</ul>
+				<input type="hidden" value="<%= @respLabels %>" name="label_<%= @line_item.Id%>" id="label_<%= @line_item.Id%>" />
 		<% end %>
 
 	<% end %>
