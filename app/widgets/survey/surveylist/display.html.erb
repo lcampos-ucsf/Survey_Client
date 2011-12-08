@@ -8,13 +8,13 @@
 			<td>Status</td>
 		</tr>
 	</thead>
-	<% @surveys.each do |survey| %>
+	<% @invites.each do |invite| %>
 
 		<tbody>
 			<tr>
-				<td><a href="<%= survey.Id%>/show">Start</a></td>
-				<td><%= survey.Name %> </td>
-				<td><%= survey.Status__c %></td>
+				<td><a href="<%= invite.Survey__c%>/show"  > Start </a></td>
+				<td><%= invite.Survey_Name__c %> </td>
+				<td><%= invite.Status__c %></td>
 			</tr>
 		</tbody>
 

@@ -1,5 +1,31 @@
 <h1> <%= @survey.Name %> </h1>
+<script type="text/javascript">
+	var j$ = jQuery.noConflict();
 
+	//j$(document).ready(function() {});
+
+	function formsubmit(){
+		j$.post("/surveys/update_multiple",j$("form").serialize());
+		//j$('#my_submit_button').click();
+		//j$('#nextbtn').click();
+	}
+
+	function keepvallist(element, sId){
+
+		var txt = j$('#'+sId).val();
+		var nlabel = element.id;
+
+		if(txt.indexOf(nlabel) == -1){
+			txt+= nlabel + ' ;';
+			j$('#'+sId).val(txt);
+		}else{
+			txt = txt.replace(nlabel,'');
+			j$('#'+sId).val(txt);
+		}
+	}
+	
+
+</script>
 
 <%= render_widget :survey %>
 

@@ -1,0 +1,29 @@
+this is the survey review page
+
+<%= current_invitation %>
+
+<table>
+	<tr>
+		<td>Question</td>
+		<td>Response</td>
+	</tr>
+	<% @responses.each do |r| %>
+
+		<tr>
+			
+			<td><%= r.Original_Question_Text__c %></td>
+			<% if r.Response_Type__c == 'Text' %>
+				<td><%= r.Text_Long_Response__c %> </td>
+			<% else %>
+				<td><%= r.Label_Long_Response__c %> </td>
+			<% end %>
+		</tr>
+		
+
+	<% end %>
+</table>
+
+<div>
+	<input type="button" value="Submit"/>
+	<a href="submitsurvey">Survey Submit</a>
+</div>

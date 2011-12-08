@@ -40,6 +40,8 @@
       background: #E2F6F9;   
 }
 
-.a_list{
+ul.a_list{
 	list-style:none;
+	margin-left: 5px !important;
+
 }
