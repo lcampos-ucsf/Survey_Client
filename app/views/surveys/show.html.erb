@@ -4,8 +4,11 @@
 
 	//j$(document).ready(function() {});
 
-	function formsubmit(){
+	function formsubmit(url){
+		//alert('url = '+ url)
+
 		j$.post("/surveys/update_multiple",j$("form").serialize());
+		window.location = url;
 		//j$('#my_submit_button').click();
 		//j$('#nextbtn').click();
 	}
