@@ -3,7 +3,6 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 gem 'sqlite3'
 gem 'gravatar_image_tag', '1.0.0.pre2'
-#gem 'will_paginate', '3.0.pre2'
 
 gem 'httparty'
 gem 'savon'
@@ -27,7 +26,6 @@ gem 'kaminari'
 
 #heroku dependency
 group :production do
-	#gem 'therubyracer-heroku', '0.8.1.pre3'
 	gem 'pg'
 end
 
