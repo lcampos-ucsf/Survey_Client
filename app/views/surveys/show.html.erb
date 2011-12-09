@@ -7,11 +7,26 @@
 	function formsubmit(url){
 		//alert('url = '+ url)
 
-			j$.post("/surveys/update_multiple", j$("form").serialize(), function(val){
+		/*
+		j$.post("/surveys/update_multiple", j$("form").serialize(), function(val){
 
 				alert(val);
 				window.location = url;
-			});
+		});
+*/
+		j$.ajax({
+			url: "/surveys/update_multiple",
+			type: "POST",
+			data: j$("form").serialize(),
+			async: false,
+			success: function(){
+				//alert('ajax post successfull');
+				
+			}
+
+		});
+
+		window.location = url;
 
 		
 		//j$('#my_submit_button').click();
