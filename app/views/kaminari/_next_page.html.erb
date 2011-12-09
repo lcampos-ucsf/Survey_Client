@@ -13,6 +13,7 @@
   	<a href="review">test review</a>
   <% else %>
   	<%= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, :rel => 'next', :remote => remote, :id => 'nextbtn',:onclick => 'formsubmit()' %>
+    <a href="" onclick="formsubmit();" >Next w/o pagination</a>
   <% end %>
 
 </span>
