@@ -15,6 +15,8 @@ SampleApp::Application.configure do
   ENV['DATABASEDOTCOM_CLIENT_ID'] = ENV['sfdc_consumer_key']
   ENV['DATABASEDOTCOM_CLIENT_SECRET'] = ENV['sfdc_consumer_secret'] 
 
+  ENV['sf_user'] = '005A0000001e1G6'
+
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true
