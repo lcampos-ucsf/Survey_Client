@@ -54241,3 +54241,53 @@ Rendered layouts/_stylesheets.html.erb (0.6ms)
 Rendered layouts/_header.html.erb (0.7ms)
 Rendered layouts/_footer.html.erb (0.4ms)
 Completed 200 OK in 3618ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/surveys/a0gZ00000004IjrIAE/show" for 127.0.0.1 at 2011-12-09 15:43:56 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a0gZ00000004IjrIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (1.8ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.5ms)
+Rendered app/widgets/survey/line/display.html.erb (5592.5ms)
+Rendered app/widgets/survey/survey/display.html.erb (5615.0ms)
+Rendered surveys/show.html.erb within layouts/application (9071.9ms)
+Rendered layouts/_stylesheets.html.erb (0.8ms)
+Rendered layouts/_header.html.erb (1.2ms)
+Rendered layouts/_footer.html.erb (3.6ms)
+Completed 200 OK in 14304ms (Views: 9143.0ms | ActiveRecord: 0.0ms)
+
+
+Started PUT "/surveys/update_multiple" for 127.0.0.1 at 2011-12-09 15:44:17 -0800
+  Processing by SurveysController#update_multiple as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jXHSDI/vSt8XEyNX+sZ9jX/ddkvqyFArXheyvzEmzw4=", "id"=>"a0gZ00000004IjrIAE", "page"=>"", "a0XZ00000008VicMAE"=>"Unit", "q#_a0XZ00000008VicMAE_text_a0cZ00000004IGpIAM"=>"Test Unit", "a0XZ00000008VihMAE"=>"Admin date", "q#_a0XZ00000008VihMAE_text_a0cZ00000004IGuIAM"=>"12/09/2011", "a0XZ00000008Vi9MAE"=>"Patient Age", "q#_a0XZ00000008Vi9MAE_text_a0cZ00000004IGzIAM"=>"23", "a0XZ00000008VimMAE"=>"Gender", "AL-00033"=>"Male", "q#_a0XZ00000008VimMAE_radio_a0cZ00000004IH4IAM"=>"AL-00034", "AL-00034"=>"Female", "a0XZ00000008VirMAE"=>"Patient Admitting Service", "q#_a0XZ00000008VirMAE_onedd_a0cZ00000004IH9IAM"=>"AL-00001", "AL-00000"=>"Medical", "AL-00001"=>"Surgical"}
+Completed 500 Internal Server Error in 2777ms
+
+ActionView::MissingTemplate (Missing template surveys/update_multiple, application/update_multiple with {:handlers=>[:erb, :builder], :formats=>[:html, :text, :js, :css, :ics, :csv, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json], :locale=>[:en, :en]}. Searched in:
+  * "/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views"
+  * "/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/kaminari-0.12.4/app/views"
+):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.4ms)
+
+
+Started GET "/surveys/a0gZ00000004IjrIAE/show?page=2" for 127.0.0.1 at 2011-12-09 15:44:20 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"page"=>"2", "id"=>"a0gZ00000004IjrIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.1ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.5ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.1ms)
+Rendered app/widgets/survey/line/display.html.erb (3200.5ms)
+Rendered app/widgets/survey/survey/display.html.erb (3223.0ms)
+Rendered surveys/show.html.erb within layouts/application (3938.9ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+Rendered layouts/_header.html.erb (2.2ms)
+Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 4366ms (Views: 3948.9ms | ActiveRecord: 0.0ms)
