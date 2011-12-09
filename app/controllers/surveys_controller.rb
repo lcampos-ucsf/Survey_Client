@@ -52,7 +52,9 @@ class SurveysController < ApplicationController
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
     @current_invitation ||= Invitation__c.query("Survey__c = '#{params[:id]}' and User__c = '#{ENV['sf_user']}'  limit 1")
-    #@current_invitation ||= @a.Id
+    
+    #session[:current_invitation]
+
   end
 
 end

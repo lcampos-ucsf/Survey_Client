@@ -54165,3 +54165,79 @@ Rendered layouts/_stylesheets.html.erb (0.5ms)
 Rendered layouts/_header.html.erb (0.6ms)
 Rendered layouts/_footer.html.erb (0.4ms)
 Completed 200 OK in 4807ms (Views: 4383.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/surveys/a0gZ00000004IjrIAE/show?page=2" for 127.0.0.1 at 2011-12-09 15:17:57 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"page"=>"2", "id"=>"a0gZ00000004IjrIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (1.8ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.1ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.6ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.5ms)
+Rendered app/widgets/survey/line/display.html.erb (4548.1ms)
+Rendered app/widgets/survey/survey/display.html.erb (4572.0ms)
+Rendered surveys/show.html.erb within layouts/application (7610.7ms)
+Rendered layouts/_stylesheets.html.erb (0.8ms)
+Rendered layouts/_header.html.erb (1.3ms)
+Rendered layouts/_footer.html.erb (3.4ms)
+Completed 200 OK in 10584ms (Views: 7683.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/surveys/a0gZ00000004IjrIAE/show?page=4" for 127.0.0.1 at 2011-12-09 15:18:13 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"page"=>"4", "id"=>"a0gZ00000004IjrIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.1ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.5ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.1ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.1ms)
+Rendered app/widgets/survey/line/display.html.erb (1656.9ms)
+Rendered app/widgets/survey/survey/display.html.erb (1673.9ms)
+Rendered surveys/show.html.erb within layouts/application (2403.7ms)
+Rendered layouts/_stylesheets.html.erb (0.7ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 2834ms (Views: 2411.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/surveys/a0gZ00000004IjrIAE/show?page=4" for 127.0.0.1 at 2011-12-09 15:18:54 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"page"=>"4", "id"=>"a0gZ00000004IjrIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.1ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.6ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.1ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line/display.html.erb (1656.5ms)
+Rendered app/widgets/survey/survey/display.html.erb (1704.5ms)
+Rendered surveys/show.html.erb within layouts/application (2493.0ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 2967ms (Views: 2500.4ms | ActiveRecord: 0.0ms)
+
+
+Started PUT "/surveys/update_multiple" for 127.0.0.1 at 2011-12-09 15:19:11 -0800
+  Processing by SurveysController#update_multiple as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jXHSDI/vSt8XEyNX+sZ9jX/ddkvqyFArXheyvzEmzw4=", "id"=>"a0gZ00000004IjrIAE", "page"=>"4", "a0XZ00000008VisMAE"=>"4. Were there any pressure ulcers observed TODAY?", "a0XZ00000008VjfMAE"=>"Please choose reason", "AL-00028"=>"Refused", "q#_a0XZ00000008VjfMAE_multi_"=>["AL-00029", "AL-00030", "AL-00031"], "AL-00029"=>"Off Floor", "AL-00030"=>"Unstable", "AL-00031"=>"Sleeping", "AL-00032"=>"Palliative Care", "label_a0XZ00000008VjfMAE"=>""}
+Completed 500 Internal Server Error in 678ms
+
+ActionView::MissingTemplate (Missing template surveys/update_multiple, application/update_multiple with {:handlers=>[:erb, :builder], :formats=>[:html, :text, :js, :css, :ics, :csv, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json], :locale=>[:en, :en]}. Searched in:
+  * "/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views"
+  * "/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/kaminari-0.12.4/app/views"
+):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.4ms)
+
+
+Started GET "/surveys/a0gZ00000004IjrIAE/review" for 127.0.0.1 at 2011-12-09 15:19:11 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a0gZ00000004IjrIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.9ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 3618ms (Views: 8.0ms | ActiveRecord: 0.0ms)
