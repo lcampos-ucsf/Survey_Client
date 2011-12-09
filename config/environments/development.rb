@@ -20,6 +20,8 @@ SampleApp::Application.configure do
   ENV['DATABASEDOTCOM_CLIENT_ID'] =   ENV['sfdc_consumer_key']
   ENV['DATABASEDOTCOM_CLIENT_SECRET'] = ENV['sfdc_consumer_secret']
 
+  ENV['sf_user'] = '005A0000001e1G6'
+
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the webserver when you make code changes.

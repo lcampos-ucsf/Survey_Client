@@ -87,12 +87,12 @@ include Databasedotcom::Rails::Controller
 		@hash_response.each_pair do |k,v|
 			v.each do |obj|
 				if obj.type == 'text'
-					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Line_Item__c => obj.qid, :OwnerId => '005U0000000ErAJ', :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value )
+					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value )
 				elsif obj.type == 'radio' || obj.type == 'onedd'
-					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Line_Item__c => obj.qid, :OwnerId => '005U0000000ErAJ', :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value, :Label_Long_Response__c => obj.label)
+					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value, :Label_Long_Response__c => obj.label)
 				
 				elsif obj.type == 'multi'
-					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Line_Item__c => obj.qid, :OwnerId => '005U0000000ErAJ', :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value, :Label_Long_Response__c => obj.label)
+					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value, :Label_Long_Response__c => obj.label)
 			
 				end
 
