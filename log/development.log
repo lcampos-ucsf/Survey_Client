@@ -53632,3 +53632,23 @@ ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
   
 
 Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/index" for 127.0.0.1 at 2011-12-09 14:38:35 -0800
+  Processing by SurveysController#index as HTML
+Rendered app/widgets/survey/surveylist/display.html.erb (0.8ms)
+Rendered surveys/index.html.erb within layouts/application (3942.6ms)
+Rendered layouts/_stylesheets.html.erb (0.9ms)
+Rendered layouts/_header.html.erb (1.4ms)
+Rendered layouts/_footer.html.erb (3.6ms)
+Completed 200 OK in 4033ms (Views: 4032.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/surveys/index" for 127.0.0.1 at 2011-12-09 14:38:45 -0800
+  Processing by SurveysController#index as HTML
+Rendered app/widgets/survey/surveylist/display.html.erb (0.2ms)
+Rendered surveys/index.html.erb within layouts/application (812.7ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (1.1ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 822ms (Views: 821.5ms | ActiveRecord: 0.0ms)
