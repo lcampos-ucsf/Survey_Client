@@ -51615,3 +51615,33 @@ ActiveRecord::ConnectionNotEstablished (ActiveRecord::ConnectionNotEstablished):
 Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
 Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
 Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.9ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show" for 127.0.0.1 at 2011-12-09 11:09:43 -0800
+
+ActiveRecord::ConnectionNotEstablished (ActiveRecord::ConnectionNotEstablished):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.7ms)
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-12-09 11:19:47 -0800
+  Processing by PagesController#home as HTML
+  [1m[36mUser Load (11.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered pages/home.html.erb within layouts/application (194.2ms)
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Rendered layouts/_header.html.erb (2.4ms)
+Rendered layouts/_footer.html.erb (5.5ms)
+Completed 200 OK in 270ms (Views: 258.0ms | ActiveRecord: 12.1ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 11:19:48 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
