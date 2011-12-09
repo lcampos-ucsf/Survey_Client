@@ -34,9 +34,13 @@ class SurveysController < ApplicationController
     @ids = @ids.to_s.gsub('[','(')
     @ids = @ids.gsub(']',')')
     puts "@ids = '#{@ids.to_s.gsub('[','(')}'"
-=end
+
     @ids = "(\'a0DU0000000dRih\', \'a0DU0000000dRic\')"
     @responses = Response__c.query("Survey__c = '#{params[:id]}' and Id in #{@ids} order by Line_Sort_Order__c, Line_Item_Sort_Order__c ")
+ 
+=end
+
+    @responses = Response__c.query("Survey__c = '#{params[:id]}' order by Line_Sort_Order__c, Line_Item_Sort_Order__c ")
   end
 
   private 

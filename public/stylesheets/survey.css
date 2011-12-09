@@ -37,7 +37,7 @@
 }
 
 .question_wrap input:focus {
-      background: #E2F6F9;   
+    background: #E2F6F9;   
 }
 
 ul.a_list{
@@ -45,3 +45,46 @@ ul.a_list{
 	margin-left: 5px !important;
 
 }
+.pagination a {
+	cursor:pointer;
+}
+
+#survey_review span, #survey_review ul{
+	color: #808080;
+    line-height: 18px;
+}
+
+#survey_review li {
+	list-style: none;
+}
+
+#survey_review ul {
+	margin-left:0px;
+}
+
+#survey_review h4 {
+	font-size:110%;
+}
+
+.rev_q_wrap {
+	padding: 10px; 
+	display:block; 
+	color:#1E1E1E;
+}
+
+.submit_block{
+	display:block;
+	padding: 20px 0px;
+}
+
+.a_text {
+	padding: 7px 10px;
+	border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    width:400px;
+    display:block;
+}
+
+
+
+

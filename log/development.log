@@ -52037,3 +52037,1390 @@ ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
   
 
 Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show?page=3" for 127.0.0.1 at 2011-12-09 11:54:28 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"page"=>"3", "id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (2.5ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.1ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.1ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.6ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.4ms)
+Rendered app/widgets/survey/line/display.html.erb (4871.7ms)
+Rendered app/widgets/survey/survey/display.html.erb (4900.8ms)
+Rendered surveys/show.html.erb within layouts/application (8259.0ms)
+Rendered layouts/_stylesheets.html.erb (1.5ms)
+Rendered layouts/_header.html.erb (2.2ms)
+Rendered layouts/_footer.html.erb (4.8ms)
+Completed 200 OK in 10982ms (Views: 8342.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 11:54:40 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 11:54:40 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show?page=3" for 127.0.0.1 at 2011-12-09 11:56:29 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"page"=>"3", "id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.1ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.1ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line/display.html.erb (3339.6ms)
+Rendered app/widgets/survey/survey/display.html.erb (3353.4ms)
+Rendered surveys/show.html.erb within layouts/application (4180.5ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.5ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 4990ms (Views: 4187.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 11:56:34 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 11:56:34 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 11:56:46 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.9ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 528ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 11:56:46 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 11:56:46 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 12:03:39 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+ERROR: compiling _app_views_surveys_review_html_erb___2383475142394490278_70241337843380 RAISED /Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:19: syntax error, unexpected ')', expecting keyword_then or ';' or '\n'
+... == 'SelectMultipleQuestions' );@output_buffer.safe_concat('
+...                               ^
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:26: syntax error, unexpected keyword_else, expecting ')'
+');				 else 
+   				     ^
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:28: syntax error, unexpected keyword_end, expecting ')'
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:33: syntax error, unexpected keyword_end, expecting ')'
+');	 end 
+   	    ^
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:39: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:41: syntax error, unexpected keyword_end, expecting ')'
+Function body:           def _app_views_surveys_review_html_erb___2383475142394490278_70241337843380(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "surveys/review";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_concat('this is the survey review page
+
+<!-- %= current_invitation % -->
+
+<table>
+	<tr>
+		<td>Question</td>
+		<td>Response</td>
+	</tr>
+');	 @responses.each do |r| 
+@output_buffer.safe_concat('
+		<tr>
+			
+			<td>');@output_buffer.append= ( r.Original_Question_Text__c );@output_buffer.safe_concat('</td>
+');			 if r.Response_Type__c == 'Text' 
+@output_buffer.safe_concat('				<td>');@output_buffer.append= ( r.Text_Long_Response__c );@output_buffer.safe_concat(' </td>
+');			 else 
+@output_buffer.safe_concat('				
+				');@output_buffer.append= ( if r.Response_Type__c == 'SelectMultipleQuestions' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('				
+				');@output_buffer.append=  r.Label_Long_Response__c.split(';').each do |rr| @output_buffer.safe_concat('
+');@output_buffer.safe_concat('					<td>');@output_buffer.append= ( rr );@output_buffer.safe_concat(' </td>
+');				 end 
+@output_buffer.safe_concat('
+
+');				 else 
+@output_buffer.safe_concat('					<td>');@output_buffer.append= ( r.Label_Long_Response__c );@output_buffer.safe_concat(' </td>
+');				 end
+			 end 
+@output_buffer.safe_concat('		</tr>
+		
+
+');	 end 
+@output_buffer.safe_concat('</table>
+
+<div>
+	<a href="submitsurvey"> Submit Survey</a>
+</div>');@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/template.rb:282:in `module_eval'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/template.rb:282:in `compile'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/template.rb:190:in `compile!'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/template.rb:143:in `block in render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/notifications.rb:55:in `instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/template.rb:142:in `render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:40:in `block (2 levels) in render_template'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/abstract_renderer.rb:33:in `block in instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/notifications.rb:53:in `block in instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/notifications.rb:53:in `instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/abstract_renderer.rb:33:in `instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:39:in `block in render_template'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:47:in `render_with_layout'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:38:in `render_template'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:12:in `block in render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/abstract_renderer.rb:22:in `wrap_formats'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:9:in `render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/renderer.rb:17:in `render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/rendering.rb:120:in `_render_template'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/streaming.rb:250:in `_render_template'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/rendering.rb:114:in `render_to_body'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/renderers.rb:30:in `render_to_body'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/compatibility.rb:43:in `render_to_body'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/rendering.rb:99:in `render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/rendering.rb:16:in `render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/benchmark.rb:310:in `realtime'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activerecord-3.1.0/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/base.rb:167:in `process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:416:in `_run__825105663808169899__process_action__642749171804419658__callbacks'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:386:in `_run_process_action_callbacks'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/notifications.rb:53:in `block in instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/notifications.rb:53:in `instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/params_wrapper.rb:201:in `process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activerecord-3.1.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/base.rb:121:in `process'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/rendering.rb:45:in `process'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal.rb:193:in `dispatch'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal.rb:236:in `block in action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/routing/route_set.rb:65:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/routing/route_set.rb:65:in `dispatch'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/routing/route_set.rb:29:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-mount-0.8.3/lib/rack/mount/route_set.rb:152:in `block in call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:96:in `block in recognize'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:110:in `optimized_each'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:95:in `recognize'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-mount-0.8.3/lib/rack/mount/route_set.rb:141:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/routing/route_set.rb:531:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/etag.rb:23:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/conditionalget.rb:25:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/flash.rb:243:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/session/abstract/id.rb:195:in `context'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/session/abstract/id.rb:190:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/cookies.rb:326:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activerecord-3.1.0/lib/active_record/query_cache.rb:62:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activerecord-3.1.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/reloader.rb:68:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/sendfile.rb:101:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/railties-3.1.0/lib/rails/rack/logger.rb:13:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/methodoverride.rb:24:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/runtime.rb:17:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/lock.rb:15:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/static.rb:53:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/railties-3.1.0/lib/rails/engine.rb:455:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/railties-3.1.0/lib/rails/rack/content_length.rb:16:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/railties-3.1.0/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/handler/webrick.rb:59:in `service'
+/Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+Rendered surveys/review.html.erb within layouts/application (31.7ms)
+Completed 500 Internal Server Error in 596ms
+
+ActionView::Template::Error (/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:19: syntax error, unexpected ')', expecting keyword_then or ';' or '\n'
+... == 'SelectMultipleQuestions' );@output_buffer.safe_concat('
+...                               ^
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:26: syntax error, unexpected keyword_else, expecting ')'
+');				 else 
+   				     ^
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:28: syntax error, unexpected keyword_end, expecting ')'
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:33: syntax error, unexpected keyword_end, expecting ')'
+');	 end 
+   	    ^
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:39: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:41: syntax error, unexpected keyword_end, expecting ')'):
+    16: 				<td><%= r.Text_Long_Response__c %> </td>
+    17: 			<% else %>
+    18: 				
+    19: 				<%= if r.Response_Type__c == 'SelectMultipleQuestions' %>
+    20: 				
+    21: 				<%= r.Label_Long_Response__c.split(';').each do |rr| %>
+    22: 					<td><%= rr %> </td>
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.0ms)
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.3ms)
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.5ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 12:04:02 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+ERROR: compiling _app_views_surveys_review_html_erb___2383475142394490278_70241342554420 RAISED /Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:19: syntax error, unexpected ')', expecting keyword_then or ';' or '\n'
+... == 'SelectMultipleQuestions' );@output_buffer.safe_concat('
+...                               ^
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:26: syntax error, unexpected keyword_else, expecting ')'
+');				 else 
+   				     ^
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:28: syntax error, unexpected keyword_end, expecting ')'
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:33: syntax error, unexpected keyword_end, expecting ')'
+');	 end 
+   	    ^
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:39: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:41: syntax error, unexpected keyword_end, expecting ')'
+Function body:           def _app_views_surveys_review_html_erb___2383475142394490278_70241342554420(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "surveys/review";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_concat('this is the survey review page
+
+<!-- %= current_invitation % -->
+
+<table>
+	<tr>
+		<td>Question</td>
+		<td>Response</td>
+	</tr>
+');	 @responses.each do |r| 
+@output_buffer.safe_concat('
+		<tr>
+			
+			<td>');@output_buffer.append= ( r.Original_Question_Text__c );@output_buffer.safe_concat('</td>
+');			 if r.Response_Type__c == 'Text' 
+@output_buffer.safe_concat('				<td>');@output_buffer.append= ( r.Text_Long_Response__c );@output_buffer.safe_concat(' </td>
+');			 else 
+@output_buffer.safe_concat('				
+				');@output_buffer.append= ( if r.Response_Type__c == 'SelectMultipleQuestions' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('				
+				');@output_buffer.append=  r.Label_Long_Response__c.split(';') do |rr| @output_buffer.safe_concat('
+');@output_buffer.safe_concat('					<td>');@output_buffer.append= ( rr );@output_buffer.safe_concat(' </td>
+');				 end 
+@output_buffer.safe_concat('
+
+');				 else 
+@output_buffer.safe_concat('					<td>');@output_buffer.append= ( r.Label_Long_Response__c );@output_buffer.safe_concat(' </td>
+');				 end
+			 end 
+@output_buffer.safe_concat('		</tr>
+		
+
+');	 end 
+@output_buffer.safe_concat('</table>
+
+<div>
+	<a href="submitsurvey"> Submit Survey</a>
+</div>');@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/template.rb:282:in `module_eval'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/template.rb:282:in `compile'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/template.rb:190:in `compile!'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/template.rb:143:in `block in render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/notifications.rb:55:in `instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/template.rb:142:in `render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:40:in `block (2 levels) in render_template'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/abstract_renderer.rb:33:in `block in instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/notifications.rb:53:in `block in instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/notifications.rb:53:in `instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/abstract_renderer.rb:33:in `instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:39:in `block in render_template'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:47:in `render_with_layout'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:38:in `render_template'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:12:in `block in render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/abstract_renderer.rb:22:in `wrap_formats'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/template_renderer.rb:9:in `render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_view/renderer/renderer.rb:17:in `render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/rendering.rb:120:in `_render_template'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/streaming.rb:250:in `_render_template'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/rendering.rb:114:in `render_to_body'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/renderers.rb:30:in `render_to_body'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/compatibility.rb:43:in `render_to_body'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/rendering.rb:99:in `render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/rendering.rb:16:in `render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/benchmark.rb:310:in `realtime'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activerecord-3.1.0/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/base.rb:167:in `process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:416:in `_run__825105663808169899__process_action__642749171804419658__callbacks'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:386:in `_run_process_action_callbacks'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/rescue.rb:17:in `process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/notifications.rb:53:in `block in instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/notifications.rb:53:in `instrument'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/params_wrapper.rb:201:in `process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activerecord-3.1.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/base.rb:121:in `process'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/abstract_controller/rendering.rb:45:in `process'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal.rb:193:in `dispatch'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_controller/metal.rb:236:in `block in action'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/routing/route_set.rb:65:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/routing/route_set.rb:65:in `dispatch'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/routing/route_set.rb:29:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-mount-0.8.3/lib/rack/mount/route_set.rb:152:in `block in call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:96:in `block in recognize'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:110:in `optimized_each'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:95:in `recognize'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-mount-0.8.3/lib/rack/mount/route_set.rb:141:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/routing/route_set.rb:531:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/etag.rb:23:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/conditionalget.rb:25:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/flash.rb:243:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/session/abstract/id.rb:195:in `context'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/session/abstract/id.rb:190:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/cookies.rb:326:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activerecord-3.1.0/lib/active_record/query_cache.rb:62:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activerecord-3.1.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/reloader.rb:68:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/sendfile.rb:101:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/railties-3.1.0/lib/rails/rack/logger.rb:13:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/methodoverride.rb:24:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/runtime.rb:17:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/activesupport-3.1.0/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/lock.rb:15:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/static.rb:53:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/railties-3.1.0/lib/rails/engine.rb:455:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/railties-3.1.0/lib/rails/rack/content_length.rb:16:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/railties-3.1.0/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/rack-1.3.5/lib/rack/handler/webrick.rb:59:in `service'
+/Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+/Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+/Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+Rendered surveys/review.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 466ms
+
+ActionView::Template::Error (/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:19: syntax error, unexpected ')', expecting keyword_then or ';' or '\n'
+... == 'SelectMultipleQuestions' );@output_buffer.safe_concat('
+...                               ^
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:26: syntax error, unexpected keyword_else, expecting ')'
+');				 else 
+   				     ^
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:28: syntax error, unexpected keyword_end, expecting ')'
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:33: syntax error, unexpected keyword_end, expecting ')'
+');	 end 
+   	    ^
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:39: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/luiscampos/rails_projects/RailsForce_AppTemplate/app/views/surveys/review.html.erb:41: syntax error, unexpected keyword_end, expecting ')'):
+    16: 				<td><%= r.Text_Long_Response__c %> </td>
+    17: 			<% else %>
+    18: 				
+    19: 				<%= if r.Response_Type__c == 'SelectMultipleQuestions' %>
+    20: 				
+    21: 				<%= r.Label_Long_Response__c.split(';') do |rr| %>
+    22: 					<td><%= rr %> </td>
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (3.3ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 12:04:51 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.9ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 486ms (Views: 7.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 12:04:51 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 12:05:04 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (1.0ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 866ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 12:05:05 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 12:06:19 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.9ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 889ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 12:06:20 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 12:06:20 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/submitsurvey" for 127.0.0.1 at 2011-12-09 12:09:44 -0800
+  Processing by SurveysController#submitsurvey as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Redirected to https://localhost:3000/surveys/index
+Completed 302 Found in 2078ms
+
+
+Started GET "/surveys/index" for 127.0.0.1 at 2011-12-09 12:09:46 -0800
+  Processing by SurveysController#index as HTML
+Rendered app/widgets/survey/surveylist/display.html.erb (1.1ms)
+Rendered surveys/index.html.erb within layouts/application (843.4ms)
+Rendered layouts/_stylesheets.html.erb (0.9ms)
+Rendered layouts/_header.html.erb (0.9ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 886ms (Views: 885.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 12:09:47 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show" for 127.0.0.1 at 2011-12-09 12:11:00 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.5ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.4ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line/display.html.erb (2875.4ms)
+Rendered app/widgets/survey/survey/display.html.erb (2912.4ms)
+Rendered surveys/show.html.erb within layouts/application (4529.2ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 4994ms (Views: 4536.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 12:11:05 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 12:11:05 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:06:56 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.9ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 637ms (Views: 8.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:06:57 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:06:58 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:06:59 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.4ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 520ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:07:00 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:07:00 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:07:34 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (1.0ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 494ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:07:35 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:07:35 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:09:06 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (1.0ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 871ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:09:07 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:09:07 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:09:23 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (1.7ms)
+Rendered layouts/_stylesheets.html.erb (1.0ms)
+Rendered layouts/_header.html.erb (0.8ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 483ms (Views: 11.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:09:23 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:09:24 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:09:30 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.9ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 501ms (Views: 7.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:09:31 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:09:31 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:09:47 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.9ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 506ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:09:47 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:09:47 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:13:53 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.9ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 775ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:13:54 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:14:08 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.9ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 427ms (Views: 7.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:14:08 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:14:09 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:19:55 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (1.0ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 929ms (Views: 8.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:19:56 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:19:56 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:20:12 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.4ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.8ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 539ms (Views: 7.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:20:12 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:20:13 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:20:38 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.3ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 552ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:20:38 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:20:39 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:21:25 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.4ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 908ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:21:26 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:21:26 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:22:38 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.4ms)
+Rendered layouts/_stylesheets.html.erb (0.7ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 495ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:22:38 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:22:38 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:23:50 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.4ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 544ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:23:51 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:23:51 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:24:50 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.4ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 480ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:24:50 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:24:50 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:25:27 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.4ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 479ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:25:28 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:25:35 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.4ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 497ms (Views: 8.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:25:35 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:25:41 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.4ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 478ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:25:41 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:25:41 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:27:41 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.9ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 461ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:27:41 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:27:42 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:28:25 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (1.6ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 492ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:28:26 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:28:26 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:29:50 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.9ms)
+Rendered layouts/_stylesheets.html.erb (0.9ms)
+Rendered layouts/_header.html.erb (1.3ms)
+Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 506ms (Views: 11.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:29:50 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:29:50 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:31:35 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (1.1ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 1078ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:31:36 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:31:52 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.4ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 462ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:31:53 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:32:52 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (1.0ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 918ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:32:53 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:32:53 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:33:58 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.4ms)
+Rendered layouts/_stylesheets.html.erb (0.9ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 816ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:33:59 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:33:59 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:34:12 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.4ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 453ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:34:12 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:35:48 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.9ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 810ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:35:49 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:35:49 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:36:29 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.9ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 493ms (Views: 8.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:36:29 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:36:30 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:37:05 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.4ms)
+Rendered layouts/_stylesheets.html.erb (0.6ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 486ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:37:06 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:37:06 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/review" for 127.0.0.1 at 2011-12-09 13:37:18 -0800
+  Processing by SurveysController#review as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered surveys/review.html.erb within layouts/application (0.4ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 446ms (Views: 36.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:37:19 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/surveys/index" for 127.0.0.1 at 2011-12-09 13:38:14 -0800
+  Processing by SurveysController#index as HTML
+Rendered app/widgets/survey/surveylist/display.html.erb (0.2ms)
+Rendered surveys/index.html.erb within layouts/application (1231.4ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (1.0ms)
+Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 1243ms (Views: 1242.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:38:16 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:38:16 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/surveys/a05U0000000bUemIAE/show" for 127.0.0.1 at 2011-12-09 13:38:17 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a05U0000000bUemIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.1ms)
+Rendered app/widgets/survey/line/display.html.erb (3324.5ms)
+Rendered app/widgets/survey/survey/display.html.erb (3459.6ms)
+Rendered surveys/show.html.erb within layouts/application (4396.3ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 4755ms (Views: 4404.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/javascripts/rails.js" for 127.0.0.1 at 2011-12-09 13:38:22 -0800
+
+ActionController::RoutingError (No route matches [GET] "/javascripts/rails.js"):
+  
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)

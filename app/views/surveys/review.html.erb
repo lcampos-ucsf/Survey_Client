@@ -1,28 +1,31 @@
-this is the survey review page
+<h1> Review Survey </h1>
 
-<!-- %= current_invitation % -->
+<div id="survey_review">
 
-<table>
-	<tr>
-		<td>Question</td>
-		<td>Response</td>
-	</tr>
 	<% @responses.each do |r| %>
-
-		<tr>
+		<div class="rev_q_wrap" >
 			
-			<td><%= r.Original_Question_Text__c %></td>
+			<h4><%= r.Original_Question_Text__c %></h4>
+
 			<% if r.Response_Type__c == 'Text' %>
-				<td><%= r.Text_Long_Response__c %> </td>
+				<span class="a_text"><%= r.Text_Long_Response__c %> </span>
+
+			<% elsif r.Response_Type__c == 'SelectMultipleQuestions' %>
+					<ul>
+					<% r.Label_Long_Response__c.split(';').each do |rr| %>
+						<li> <input type="checkbox" checked disabled /> <%= rr %> </li>
+					<% end %>
+					</ul>
 			<% else %>
-				<td><%= r.Label_Long_Response__c %> </td>
+				<span> <input type="radio" checked disabled /> <%= r.Label_Long_Response__c %> </span>
 			<% end %>
-		</tr>
-		
 
+
+		</div>
 	<% end %>
-</table>
 
-<div>
-	<a href="submitsurvey">Survey Submit</a>
+	<div class="submit_block" >
+		<a href="submitsurvey" class="btn primary large" > Submit ›</a>
+	</div>
+
 </div>
