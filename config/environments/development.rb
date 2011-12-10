@@ -12,8 +12,8 @@ SampleApp::Application.configure do
   #ENV['sfdc_consumer_key'] = "3MVG9QDx8IX8nP5Ty6QthdXmQZN30GCq215akOxv3C1yKCktnBnJPhCD868k3wvV0yHD6lxZPNI1Tm8Bspjzg"
   #ENV['sfdc_consumer_secret'] = "6920539322002446909"
 
-  ENV['sfdc_consumer_key'] = "3MVG9QDx8IX8nP5QL6nLuLAMcTCSWgq4tUAdKxjxtxVx8srPQ2sGc9BxogVht4XM1wblfmbu0eG5gynnXOmhe"
-  ENV['sfdc_consumer_secret'] = "2958068219577184555"
+  ENV['sfdc_consumer_key'] = "3MVG9GiqKapCZBwHxOJHdUt59hg74sCk_cEtqnjN5_Oz8VwuyGp7qS8hznIUW7_S8ovR7zPh6vrjWNVNJ.oog"
+  ENV['sfdc_consumer_secret'] = "2416048170923412785"
 
   ENV['sfdc_api_version'] = '23.0'
 
