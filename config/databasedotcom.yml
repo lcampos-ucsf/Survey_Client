@@ -1,14 +1,14 @@
 host: test.salesforce.com
 debugging: true
 #NPIQA
-#client_id: 3MVG9GiqKapCZBwHxOJHdUt59hg74sCk_cEtqnjN5_Oz8VwuyGp7qS8hznIUW7_S8ovR7zPh6vrjWNVNJ.oog
-#client_secret: 2416048170923412785
-#username: orgadmin@ucsf.concierge.edu.npiqa
-#password: Concierge3275k9FJ6jATU66EA8bL7jmWhTTe
+client_id: 3MVG9GiqKapCZBwHxOJHdUt59hg74sCk_cEtqnjN5_Oz8VwuyGp7qS8hznIUW7_S8ovR7zPh6vrjWNVNJ.oog
+client_secret: 2416048170923412785
+username: orgadmin@ucsf.concierge.edu.npiqa
+password: Concierge3275k9FJ6jATU66EA8bL7jmWhTTe
 
 
 #NPIDEV
-client_id: 3MVG9GiqKapCZBwGKWN18VcBTA5d82sFCh7vEQx5F1GRPo5guUOp1SJrDNereyBomRnYHv5oE7a1VJuu8fBdC
-client_secret: 1042066715413818107
-username: orgadmin@ucsf.concierge.edu.npidev
-password: Concierge32757yR67urQJCWHdg4HdsGHI07Zy
+#client_id: 3MVG9GiqKapCZBwGKWN18VcBTA5d82sFCh7vEQx5F1GRPo5guUOp1SJrDNereyBomRnYHv5oE7a1VJuu8fBdC
+#client_secret: 1042066715413818107
+#username: orgadmin@ucsf.concierge.edu.npidev
+#password: Concierge32757yR67urQJCWHdg4HdsGHI07Zy
