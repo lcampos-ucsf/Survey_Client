@@ -7,15 +7,26 @@ SampleApp::Application.configure do
 
   #You setup these in Setup > Development > Remote Access
   #Set your callback url to https://yourtemplateapp.heroku.com/auth/forcedotcom/callback  
+
+=begin
+  #NPIQA
   ENV['sfdc_consumer_key'] = "3MVG9GiqKapCZBwHxOJHdUt59hg74sCk_cEtqnjN5_Oz8VwuyGp7qS8hznIUW7_S8ovR7zPh6vrjWNVNJ.oog"
   ENV['sfdc_consumer_secret'] = "2416048170923412785" 
+=end
+
+  #NPIDEV
+  ENV['sfdc_consumer_key'] = "3MVG9GiqKapCZBwGKWN18VcBTA5d82sFCh7vEQx5F1GRPo5guUOp1SJrDNereyBomRnYHv5oE7a1VJuu8fBdC"
+  ENV['sfdc_consumer_secret'] = "1042066715413818107"
+
+
+  ENV['sf_user'] = "005A0000001e1G6"
 
   ENV['sfdc_api_version'] = '22.0'
 
   ENV['DATABASEDOTCOM_CLIENT_ID'] = ENV['sfdc_consumer_key']
   ENV['DATABASEDOTCOM_CLIENT_SECRET'] = ENV['sfdc_consumer_secret'] 
 
-  ENV['sf_user'] = '005A0000001e1G6'
+  
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests

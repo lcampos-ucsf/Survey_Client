@@ -5,16 +5,20 @@
 		<tr>
 			<td>Action</td>
 			<td>Name</td>
-			<td>Status</td>
+			<td>Description</td>
+			<td>Start Date</td>
+			<td>End Date</td>
 		</tr>
 	</thead>
 	<% @invites.each do |invite| %>
 
 		<tbody>
 			<tr>
-				<td><a href="<%= invite.Survey__c%>/show"  > Start </a></td>
+				<td><a href="<%= invite.Survey__c%>/show" class="btn primary medium" > Start </a></td>
 				<td><%= invite.Survey_Name__c %> </td>
-				<td><%= invite.Status__c %></td>
+				<td></td>
+				<td><%= invite.Start_Date__c.strftime('%m/%d/%Y') %></td>
+				<td><%= invite.End_Date__c.strftime('%m/%d/%Y') %></td>
 			</tr>
 		</tbody>
 
