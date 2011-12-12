@@ -1,9 +1,6 @@
 
-
-
 <%= widget_div do %>
 
-	<!-- %= form_tag url_for_event(:submit), :remote => true do %-->
 	<%= form_for(@lines, :url => {:controller => "surveys",:action => "update_multiple"}) do %>
 
 		<input type="hidden" name="id" value="<%= params[:id] %>" />

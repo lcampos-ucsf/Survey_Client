@@ -54610,3 +54610,94 @@ Rendered layouts/_stylesheets.html.erb (0.6ms)
 Rendered layouts/_header.html.erb (0.6ms)
 Rendered layouts/_footer.html.erb (0.5ms)
 Completed 200 OK in 4849ms (Views: 4432.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/surveys/index" for 127.0.0.1 at 2011-12-12 08:22:01 -0800
+  Processing by SurveysController#index as HTML
+Rendered app/widgets/survey/surveylist/display.html.erb (1.1ms)
+Rendered surveys/index.html.erb within layouts/application (6236.8ms)
+Rendered layouts/_stylesheets.html.erb (1.1ms)
+Rendered layouts/_header.html.erb (1.5ms)
+Rendered layouts/_footer.html.erb (25.3ms)
+Completed 200 OK in 6382ms (Views: 6381.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-12-12 08:22:15 -0800
+  Processing by PagesController#home as HTML
+Rendered pages/home.html.erb within layouts/application (0.6ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 24ms (Views: 23.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/surveys/index" for 127.0.0.1 at 2011-12-12 08:22:17 -0800
+  Processing by SurveysController#index as HTML
+Rendered app/widgets/survey/surveylist/display.html.erb (0.4ms)
+Rendered surveys/index.html.erb within layouts/application (1069.3ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 1076ms (Views: 1075.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/surveys/index" for 127.0.0.1 at 2011-12-12 08:22:59 -0800
+  Processing by SurveysController#index as HTML
+Rendered app/widgets/survey/surveylist/display.html.erb (0.5ms)
+Rendered surveys/index.html.erb within layouts/application (1120.3ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 1127ms (Views: 1126.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/surveys/a0gZ00000008SjdIAE/show" for 127.0.0.1 at 2011-12-12 09:11:54 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a0gZ00000008SjdIAE"}
+Completed 500 Internal Server Error in 539ms
+
+OpenSSL::SSL::SSLError (SSL_read:: internal error):
+  app/controllers/surveys_controller.rb:24:in `show'
+
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /Users/luiscampos/.rvm/gems/ruby-1.9.2-p290@rails3/gems/actionpack-3.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.3ms)
+
+
+Started GET "/surveys/a0gZ00000008SjdIAE/show" for 127.0.0.1 at 2011-12-12 09:11:58 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a0gZ00000008SjdIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (2.0ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.5ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.6ms)
+Rendered app/widgets/survey/line/display.html.erb (3085.9ms)
+Rendered app/widgets/survey/survey/display.html.erb (3126.1ms)
+Rendered surveys/show.html.erb within layouts/application (5506.1ms)
+Rendered layouts/_stylesheets.html.erb (0.7ms)
+Rendered layouts/_header.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 7997ms (Views: 5577.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/surveys/a0gZ00000008SjdIAE/show" for 127.0.0.1 at 2011-12-12 09:26:50 -0800
+  Processing by SurveysController#show as HTML
+  Parameters: {"id"=>"a0gZ00000008SjdIAE"}
+Rendered app/widgets/survey/line_item/display.html.erb (0.3ms)
+Rendered app/widgets/survey/line_item/display.html.erb (0.5ms)
+Rendered app/widgets/survey/surveycontrol/display.html.erb (0.2ms)
+Rendered app/widgets/survey/line/display.html.erb (1783.4ms)
+Rendered app/widgets/survey/survey/display.html.erb (1808.8ms)
+Rendered surveys/show.html.erb within layouts/application (2712.7ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (1.0ms)
+Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 3266ms (Views: 2719.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-12-12 09:27:02 -0800
+  Processing by PagesController#home as HTML
+Rendered pages/home.html.erb within layouts/application (0.1ms)
+Rendered layouts/_stylesheets.html.erb (0.5ms)
+Rendered layouts/_header.html.erb (0.4ms)
+Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.0ms)

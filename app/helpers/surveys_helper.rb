@@ -76,7 +76,6 @@ include Databasedotcom::Rails::Controller
 						@robj = Response.new(@survey_id, @array[1], params[@qid], value, @array[2], @array[3], params[value])
 					end
 
-					puts "response object = '#{@robj.sid}', '#{@robj.qid}' "
 					@hash_response[@array[1]] ? @hash_response[@array[1]] << @robj : @hash_response[@array[1]] = [@robj]
 				end
 			end
@@ -102,9 +101,7 @@ include Databasedotcom::Rails::Controller
 		end
 		#this line saves every record submitted
 		if a.each(&:save)
-		#if a.save
 			puts "********************************* update_multiple helper method, records got saved"
-			#redirect_to("/surveys/#{params[:id]}/show?page=#{params[:page]}")
 		end
 		@hash_response.clear
 	end
@@ -118,24 +115,5 @@ include Databasedotcom::Rails::Controller
 		#@invite = Invitation__c.query("Survey__c = '' and User__c = '005U0000000ErAJ'  " )
 
 	end
-=begin
-	def surveyinvite=(inviteid)
-		@surveyinvite = inviteid
-	end
-
-	def surveyinvite
-		@surveyinvite = Invitation__c.query("Survey__c = '#{params[:id]}' and User__c = '005U0000000ErAJ' ").Id
-	end
-
-	def surveyinvite(id)
-		puts "********************************* surveyinvite id = '#{id}' "
-		@a = Invitation__c.query("Survey__c = '#{id}' and User__c = '005U0000000ErAJ' ")
-		self.surveyinvite = @a
-	end
-
-	def surveyinvite
-		@surveyinvite
-	end
-=end
 
 end

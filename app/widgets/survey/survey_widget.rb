@@ -8,7 +8,6 @@ responds_to_event :submit, :with => :update_multiple
 
 
 	has_widgets do
-		#@lines = Line__c.query( "Survey__c = '#{params[:id]}' order by Sort_Order__c asc").page(1).per(1)
 		@lines_query = Line__c.query( "Survey__c = '#{params[:id]}' order by Sort_Order__c asc")
 		@lines = Kaminari.paginate_array(@lines_query).page(params[:page]).per(1) # Paginates the array
 
