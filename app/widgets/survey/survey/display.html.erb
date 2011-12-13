@@ -4,6 +4,7 @@
 	<%= form_for(@lines, :url => {:controller => "surveys",:action => "update_multiple"}) do %>
 
 		<input type="hidden" name="id" value="<%= params[:id] %>" />
+		<input type="hidden" name="sid" value="<%= params[:sid] %>" />
 		<input type="hidden" name="page" value="<%= params[:page] %>" />
 
 		<% @lines.each_with_index do |line, i| %>

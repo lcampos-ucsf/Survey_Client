@@ -4,7 +4,7 @@ include Databasedotcom::Rails::Controller
 	class Response
 		attr_reader :sid, :qid, :value, :type, :update_val
 
-		def initialize(sid, qid, qtxt, value, type, rid, label)
+		def initialize(sid, inviteId, qid, qtxt, value, type, rid, label)
 			@resp_sid = sid
 			@resp_qid = qid
 			@resp_value = value
@@ -12,6 +12,7 @@ include Databasedotcom::Rails::Controller
 			@resp_id = rid
 			@resp_label = label
 			@resp_q = qtxt
+			@resp_iid = inviteId
 
 		end
 
@@ -51,12 +52,17 @@ include Databasedotcom::Rails::Controller
 			@resp_label
 		end
 
+		def inviteid
+			@resp_iid
+		end
+
 	end
 
 	def update_multiple
-		puts "************************************ update_multiple helper method on survey helper page no. =  '#{params[:page]}' , id = '#{params[:id]}', radio value = '#{params[@fid]}' all params = '#{params.inspect}' "
+		puts "************************************ update_multiple helper method on survey helper page no. =  '#{params[:page]}' , id = '#{params[:id]}', survey id = '#{params[:sid]}' radio value = '#{params[@fid]}' all params = '#{params.inspect}' "
 		@hash_response = {}
-		@survey_id = params[:id]
+		@invite_id = params[:id]
+		@survey_id = params[:sid]
 
 		params.each do |key, value|
 			@var = key.index('q#') 	
@@ -71,9 +77,9 @@ include Databasedotcom::Rails::Controller
 							@v += params[id] + ';'
 						end
 
-						@robj = Response.new(@survey_id, @array[1], params[@qid], value, @array[2], @array[3], @v)
+						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], @v)
 					else
-						@robj = Response.new(@survey_id, @array[1], params[@qid], value, @array[2], @array[3], params[value])
+						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], params[value])
 					end
 
 					@hash_response[@array[1]] ? @hash_response[@array[1]] << @robj : @hash_response[@array[1]] = [@robj]
@@ -86,16 +92,14 @@ include Databasedotcom::Rails::Controller
 		@hash_response.each_pair do |k,v|
 			v.each do |obj|
 				if obj.type == 'text'
-					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value )
+					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Invitation__c => obj.inviteid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value )
 				elsif obj.type == 'radio' || obj.type == 'onedd'
-					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value, :Label_Long_Response__c => obj.label)
+					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Invitation__c => obj.inviteid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value, :Label_Long_Response__c => obj.label)
 				
 				elsif obj.type == 'multi'
-					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value, :Label_Long_Response__c => obj.label)
+					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Invitation__c => obj.inviteid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value, :Label_Long_Response__c => obj.label)
 			
 				end
-
-
 			end
 
 		end
@@ -107,7 +111,7 @@ include Databasedotcom::Rails::Controller
 	end
 
 	def submitsurvey
-		puts "********************************* submitsurvey helper method, survey got saved, survey id = '#{params[:id]}' , invitation id = '#{current_invitation}' "
+		puts "********************************* submitsurvey helper method, survey got saved, survey id = '#{params[:sid]}' , invitation id = '#{params[:id]}' "
 
 
 		redirect_to("/surveys/index")

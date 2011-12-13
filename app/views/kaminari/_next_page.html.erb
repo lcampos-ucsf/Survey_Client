@@ -10,7 +10,7 @@
   <!-- %= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, :rel => 'next', :remote => remote % -->
 
   <% if current_page.last? %>
-  	<a onclick="formsubmit('review');" class="btn primary medium" >Review ›</a>
+  	<a onclick="formsubmit('review?sid=<%= params[:sid] %>');" class="btn primary medium" >Review ›</a>
   <% else %>
   	<!-- %= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, :rel => 'next', :remote => remote, :id => 'nextbtn',    :onclick => 'formsubmit('+url+')' % -->
 

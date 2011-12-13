@@ -21,7 +21,8 @@ class SurveysController < ApplicationController
   end
 
   def show
-    @survey = Survey__c.find(params[:id])
+    #@invite = Invitation__c.find(params[:id])
+    @survey = Survey__c.find(params[:sid])
 
   end
 
@@ -40,18 +41,18 @@ class SurveysController < ApplicationController
  
 =end
 
-    @responses = Response__c.query("Survey__c = '#{params[:id]}' order by Line_Sort_Order__c, Line_Item_Sort_Order__c ")
+    @responses = Response__c.query("Survey__c = '#{params[:sid]}' order by Line_Sort_Order__c, Line_Item_Sort_Order__c ")
   end
 
   private 
 
   def current_invitation
-    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% current_invitation, id = '#{params[:id]}' "
+    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% current_invitation, invitation id = '#{params[:id]}' "
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
-    @current_invitation ||= Invitation__c.query("Survey__c = '#{params[:id]}' and User__c = '#{ENV['sf_user']}'  limit 1")
+    @current_invitation ||= Invitation__c.query("Survey__c = '#{params[:sid]}' and User__c = '#{ENV['sf_user']}'  limit 1")
     
     #session[:current_invitation]
 

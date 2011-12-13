@@ -14,7 +14,7 @@
 
 		<tbody>
 			<tr>
-				<td><a href="<%= invite.Survey__c%>/show" class="btn primary medium" > Start </a></td>
+				<td><a href="<%= invite.Id%>/show?page=1&sid=<%= invite.Survey__c%>" class="btn primary medium" > Start </a></td>
 				<td><%= invite.Survey_Name__c %> </td>
 				<td></td>
 				<td><%= invite.Start_Date__c.strftime('%m/%d/%Y') %></td>
