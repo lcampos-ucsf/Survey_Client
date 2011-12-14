@@ -3,7 +3,8 @@ class SurveysController < ApplicationController
 	include Databasedotcom::Rails::Controller
 
   include SurveysHelper
-  helper_method :current_invitation
+
+  helper_method :current_survey, :conditionalbranch
 
   has_widgets do |root|
     root << widget("survey/survey", :survey)
@@ -21,8 +22,15 @@ class SurveysController < ApplicationController
   end
 
   def show
-    #@invite = Invitation__c.find(params[:id])
-    @survey = Survey__c.find(params[:sid])
+    #@survey = Survey__c.find(params[:sid])
+    
+    @survey = current_survey
+
+    puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ show, current_survey = '#{@survey}' "
+    puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ show"
+    puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ show"
+    puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ show"
+    puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ show"
 
   end
 
@@ -41,21 +49,9 @@ class SurveysController < ApplicationController
  
 =end
 
-    @responses = Response__c.query("Survey__c = '#{params[:sid]}' order by Line_Sort_Order__c, Line_Item_Sort_Order__c ")
+    @responses = Response__c.query("Survey__c = '#{params[:sid]}' and Invitation__c = '#{params[:id]}' order by Line_Sort_Order__c, Line_Item_Sort_Order__c ")
   end
+  
 
-  private 
-
-  def current_invitation
-    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% current_invitation, invitation id = '#{params[:id]}' "
-    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
-    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
-    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
-    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% "
-    @current_invitation ||= Invitation__c.query("Survey__c = '#{params[:sid]}' and User__c = '#{ENV['sf_user']}'  limit 1")
-    
-    #session[:current_invitation]
-
-  end
 
 end

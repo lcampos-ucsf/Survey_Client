@@ -113,11 +113,31 @@ include Databasedotcom::Rails::Controller
 	def submitsurvey
 		puts "********************************* submitsurvey helper method, survey got saved, survey id = '#{params[:sid]}' , invitation id = '#{params[:id]}' "
 
+		a = Invitation__c.find(params[:id])
+		a.Status__c = 'Completed'
+		a.save
 
 		redirect_to("/surveys/index")
-
-		#@invite = Invitation__c.query("Survey__c = '' and User__c = '005U0000000ErAJ'  " )
-
 	end
 
+	def current_survey
+	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
+	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
+	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
+	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey = "
+	    
+	    @@current_survey ||=  Invitation__c.query("Id = '#{params[:id]}' and User__c = '#{ENV['sf_user']}' ")
+	    return @@current_survey
+
+	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
+	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
+	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
+	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
+	    #@@exchange_rage ||= (execute your SQL query and get the result here)
+
+	  end
+
+	  def conditionalbranch
+	  	redirect_to("/surveys/a0WZ00000004LVUMA2/show?page=3&sid=a0gZ00000004IjrIAE")
+	  end
 end

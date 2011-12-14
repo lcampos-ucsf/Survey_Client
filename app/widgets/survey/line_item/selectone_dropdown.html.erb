@@ -1,0 +1,22 @@
+<%= widget_div :class => :question_wrap do  %>
+
+	<label class="q_text" > <%= @line_item.Question_Description__c %> : </label>
+	<input type="hidden" name="<%= @line_item.Id%>" value="<%= @line_item.Question_Description__c %>"/>
+
+
+	<select class="sel_element" name="q#_<%= @line_item.Id%>_onedd_<%= @respId %>" size="1" >
+		<option value="" ></option>
+		<% @answerlabels.each do |al| %>
+			<% if @respVal == al.Resource_Name__c %>
+				<option value="<%= al.Resource_Name__c%>" selected="selected" ><%= al.Answer_Text__c %></option>
+			<% else %> 
+				<option value="<%= al.Resource_Name__c%>" ><%= al.Answer_Text__c %></option>
+			<% end %> 
+		<% end %>
+
+	</select>
+		<% @answerlabels.each do |al| %>
+			<input type="hidden" name="<%= al.Resource_Name__c%>" value="<%= al.Answer_Text__c %>"/>
+		<% end %>
+
+<% end %>

@@ -17,12 +17,12 @@
 				<ul class="a_list">
 				<% @answerlabels.each do |al| %>
 					<li> 
-						<% if @respVal == al.Name %>
-							<input type="radio" name="q#_<%= @line_item.Id%>_radio_<%= @respId %>" value="<%= al.Name%>" checked />
+						<% if @respVal == al.Resource_Name__c %>
+							<input type="radio" name="q#_<%= @line_item.Id%>_radio_<%= @respId %>" value="<%= al.Resource_Name__c%>" checked />
 						<% else %>
-							<input type="radio" name="q#_<%= @line_item.Id%>_radio_<%= @respId %>" value="<%= al.Name%>" />
+							<input type="radio" name="q#_<%= @line_item.Id%>_radio_<%= @respId %>" value="<%= al.Resource_Name__c%>" />
 						<% end %>
-						<input type="hidden" name="<%= al.Name%>" value="<%= al.Answer_Text__c %>"/>
+						<input type="hidden" name="<%= al.Resource_Name__c%>" value="<%= al.Answer_Text__c %>"/>
 						<span> <%= al.Answer_Text__c %> </span>
 					</li>
 				<% end %>
@@ -32,16 +32,16 @@
 				<select class="sel_element" name="q#_<%= @line_item.Id%>_onedd_<%= @respId %>" size="1" >
 					<option value="" ></option>
 					<% @answerlabels.each do |al| %>
-						<% if @respVal == al.Name %>
-							<option value="<%= al.Name%>" selected="selected" ><%= al.Answer_Text__c %></option>
+						<% if @respVal == al.Resource_Name__c %>
+							<option value="<%= al.Resource_Name__c%>" selected="selected" ><%= al.Answer_Text__c %></option>
 						<% else %> 
-							<option value="<%= al.Name%>" ><%= al.Answer_Text__c %></option>
+							<option value="<%= al.Resource_Name__c%>" ><%= al.Answer_Text__c %></option>
 						<% end %> 
 					<% end %>
 
 				</select>
 					<% @answerlabels.each do |al| %>
-						<input type="hidden" name="<%= al.Name%>" value="<%= al.Answer_Text__c %>"/>
+						<input type="hidden" name="<%= al.Resource_Name__c%>" value="<%= al.Answer_Text__c %>"/>
 					<% end %>
 				
 
@@ -53,12 +53,12 @@
 			<ul class="a_list">
 			<% @answerlabels.each do |al| %>
 				<li> 
-					<% if @resphash.has_key?(al.Name) %>
-						<input type="checkbox" name="q#_<%= @line_item.Id%>_multi_<%= @respId %>[]" value="<%= al.Name%>" checked id="<%= al.Answer_Text__c %>" />
+					<% if @resphash.has_key?(al.Resource_Name__c) %>
+						<input type="checkbox" name="q#_<%= @line_item.Id%>_multi_<%= @respId %>[]" value="<%= al.Resource_Name__c%>" checked id="<%= al.Answer_Text__c %>" />
 					<% else %>
-						<input type="checkbox" name="q#_<%= @line_item.Id%>_multi_<%= @respId %>[]" value="<%= al.Name%>" id="<%= al.Answer_Text__c %>" />
+						<input type="checkbox" name="q#_<%= @line_item.Id%>_multi_<%= @respId %>[]" value="<%= al.Resource_Name__c%>" id="<%= al.Answer_Text__c %>" />
 					<% end %> 
-					<input type="hidden" name="<%= al.Name%>" value="<%= al.Answer_Text__c %>"/>
+					<input type="hidden" name="<%= al.Resource_Name__c%>" value="<%= al.Answer_Text__c %>"/>
 					<span> <%= al.Answer_Text__c %> </span>
 				</li>
 			<% end %>

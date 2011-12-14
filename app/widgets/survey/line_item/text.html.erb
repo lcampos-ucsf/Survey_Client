@@ -1,0 +1,7 @@
+<%= widget_div :class => :question_wrap do  %>
+	<!-- Text Question -->
+	<label class="q_text" > <%= @line_item.Question_Description__c %> : </label>
+	<input type="hidden" name="<%= @line_item.Id%>" value="<%= @line_item.Question_Description__c %>"/>
+
+	<input type="text" name="q#_<%= @line_item.Id%>_text_<%= @respId %>" value="<%= @respVal %>" />
+<% end %>

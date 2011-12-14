@@ -5,6 +5,7 @@ include Databasedotcom::Rails::Controller
 	has_widgets do
 		@line = options[:line_data]
 		@surveyid = options[:surveyid]
+		@inviteid = options[:inviteid]
 		@line_items = Line_Item__c.query( "Line__c = '#{@line.Id}' order by Sort_Order__c asc")
 
 		@li_list = ''
@@ -28,7 +29,7 @@ include Databasedotcom::Rails::Controller
 		@li_as_list = "("+@li_as_list+")"
 
 		#queries that get responses and answer labels for every line item
-		@response = Response__c.query("Survey__c = '#{@surveyid}' and Line_Item__c in #{@li_list} order by Line_Item_Sort_Order__c asc ")
+		@response = Response__c.query("Survey__c = '#{@surveyid}' and Invitation__c = '#{@inviteid}' and Line_Item__c in #{@li_list} order by Line_Item_Sort_Order__c asc ")
 		@answerlabels = Answer_Label__c.query("Answer_Sequence__c in #{@li_as_list} order by Sort_Order__c asc")
 
 		@h_response = {}
@@ -48,7 +49,6 @@ include Databasedotcom::Rails::Controller
 		end 
 
 	end
-
 
 
   def display
