@@ -18,7 +18,7 @@ include Databasedotcom::Rails::Controller
                 @respVal = @responserecord[0].Text_Long_Response__c
                 @respId = @responserecord[0].Id
             end
-            replace :state => :text
+            #replace :state => :text
 
         ## SelectOneQuestion Question
         elsif @line_item.Question_Type__c == 'SelectOneQuestion'
@@ -26,13 +26,13 @@ include Databasedotcom::Rails::Controller
                 @respVal = @responserecord[0].Text_Long_Response__c
                 @respId = @responserecord[0].Id
             end
-
+=begin
             if @line_item.Display_Format__c == 'List'
                 replace :state => :selectone_list
             elsif @line_item.Display_Format__c == 'Drop Down'
                 replace :state => :selectone_dropdown
             end
-
+=end
         ## SelectMultipleQuestions Question
         elsif @line_item.Question_Type__c == 'SelectMultipleQuestions'
             @array = []
@@ -46,7 +46,7 @@ include Databasedotcom::Rails::Controller
             if !@array.empty?
                 @array.each { |k,v| @resphash[k]=v }
             end
-            replace :state => :selectmultiple
+           # replace :state => :selectmultiple
         end
 
     elsif @line_item.Line_Item_Type__c == 'Content'
