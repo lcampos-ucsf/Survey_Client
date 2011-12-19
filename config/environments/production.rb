@@ -8,16 +8,16 @@ SampleApp::Application.configure do
   #You setup these in Setup > Development > Remote Access
   #Set your callback url to https://yourtemplateapp.heroku.com/auth/forcedotcom/callback  
 
-=begin
+
   #NPIQA
   ENV['sfdc_consumer_key'] = "3MVG9GiqKapCZBwHxOJHdUt59hg74sCk_cEtqnjN5_Oz8VwuyGp7qS8hznIUW7_S8ovR7zPh6vrjWNVNJ.oog"
   ENV['sfdc_consumer_secret'] = "2416048170923412785" 
-=end
 
+=begin
   #NPIDEV
   ENV['sfdc_consumer_key'] = "3MVG9GiqKapCZBwGKWN18VcBTA5d82sFCh7vEQx5F1GRPo5guUOp1SJrDNereyBomRnYHv5oE7a1VJuu8fBdC"
   ENV['sfdc_consumer_secret'] = "1042066715413818107"
-
+=end
 
   ENV['sf_user'] = "005A0000001e1G6"
 
