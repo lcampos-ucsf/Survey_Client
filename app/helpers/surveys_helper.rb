@@ -59,10 +59,12 @@ include Databasedotcom::Rails::Controller
 	end
 
 	def update_multiple
-		puts "************************************ update_multiple helper method on survey helper page no. =  '#{params[:page]}' , id = '#{params[:id]}', survey id = '#{params[:sid]}' radio value = '#{params[@fid]}' all params = '#{params.inspect}' "
 		@hash_response = {}
 		@invite_id = params[:id]
-		@survey_id = params[:sid]
+		@survey_id = current_survey[0].Survey__c
+
+		puts "************************************ update_multiple helper method on survey helper page no. =  '#{params[:page]}' , id = '#{@invite_id }', survey id = '#{@survey_id}', all params = '#{params.inspect}' "
+		
 
 		params.each do |key, value|
 			@var = key.index('q#') 	
@@ -111,13 +113,13 @@ include Databasedotcom::Rails::Controller
 	end
 
 	def submitsurvey
-		puts "********************************* submitsurvey helper method, survey got saved, survey id = '#{params[:sid]}' , invitation id = '#{params[:id]}' "
+		puts "********************************* submitsurvey helper method, survey got saved , invitation id = '#{params[:id]}' "
 
 		a = Invitation__c.find(params[:id])
 		a.Status__c = 'Completed'
 		a.save
 
-		redirect_to("/surveys/index")
+		redirect_to "/invite/index", :notice => "Your survey was submitted successfully."
 	end
 
 	def current_survey
@@ -137,7 +139,4 @@ include Databasedotcom::Rails::Controller
 
 	  end
 
-	  def conditionalbranch
-	  	redirect_to("/surveys/a0WZ00000004LVUMA2/show?page=3&sid=a0gZ00000004IjrIAE")
-	  end
 end

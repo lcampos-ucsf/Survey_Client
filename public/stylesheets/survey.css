@@ -85,6 +85,25 @@ ul.a_list{
     display:block;
 }
 
+#progressbar {
+	width: 400px; 
+	height:25px; 
+	text-align:center; 
+	border: 1px solid #CCCCCC; 
+	border-radius: 3px 3px 3px 3px;
+	margin: 10px auto;
+}
 
+#progress {
+	background-color:#93BF35; 
+	height:100%;
+	
+}
+
+#progress .text {
+	width: 400px; 
+	display:inline-block; 
+	line-height:25px; 
+}
 
 

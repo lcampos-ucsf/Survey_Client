@@ -1,8 +1,10 @@
 SampleApp::Application.routes.draw do 
 
+  get "invite/index"
+
   #resources :surveys
 
-  get "surveys/index"
+  #get "surveys/index"
 
   get "surveys/new"
 
@@ -10,7 +12,7 @@ SampleApp::Application.routes.draw do
 
   get "sessions/new"
 
-  match "surveys/index", :to => "surveys#index"
+  #match "surveys/index", :to => "surveys#index"
 
   match "surveys/:id/show", :to => "surveys#show"
   

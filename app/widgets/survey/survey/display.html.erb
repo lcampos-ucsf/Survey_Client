@@ -1,10 +1,24 @@
+<h1> <%= @survey[0].Survey_Name__c %> </h1>
 
 <%= widget_div do %>
+	<script type="text/javascript">
+		var j$ = jQuery.noConflict();
+		j$(document).ready(function() {
+			var progress = '<%= @progressbar %>'
+			j$('#progress').css('width',progress+'%');
+		});
+	</script>
 
+ 	<div id="progressbar" >
+	   <div id="progress" >
+	   		<span class="text" ><%= @progressbar.to_i %> %</span>
+	   </div>
+	</div>
+	
 	<%= form_for(@lines, :url => {:controller => "surveys",:action => "update_multiple"}) do %>
 
 		<input type="hidden" name="id" value="<%= params[:id] %>" />
-		<input type="hidden" name="sid" value="<%= params[:sid] %>" />
+		<input type="hidden" name="sid" value="<%= @survey[0].Survey__c %>" />
 		<input type="hidden" name="page" value="<%= params[:page] %>" />
 
 		<% @lines.each_with_index do |line, i| %>

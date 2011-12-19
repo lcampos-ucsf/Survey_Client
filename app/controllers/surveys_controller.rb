@@ -4,14 +4,12 @@ class SurveysController < ApplicationController
 
   include SurveysHelper
 
-  helper_method :current_survey, :conditionalbranch
-
+  helper_method :current_survey
   has_widgets do |root|
-    root << widget("survey/survey", :survey)
-    root << widget("survey/surveylist", :surveylist)
+    #root << widget(:invites)
+    root << widget("survey/survey", :survey, :survey => current_survey)
   end
-
-
+  
   def index
   end
 
@@ -22,34 +20,11 @@ class SurveysController < ApplicationController
   end
 
   def show
-    #@survey = Survey__c.find(params[:sid])
-    
-    @survey = current_survey
-
-    puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ show, current_survey = '#{@survey}' "
-    puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ show"
-    puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ show"
-    puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ show"
-    puts " $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ show"
-
   end
 
   def review
-=begin
-    @ids = [] 
-    @ids[0] = 'a0DU0000000dRih'
-    @ids[1] = 'a0DU0000000dRic'
-
-    @ids = @ids.to_s.gsub('[','(')
-    @ids = @ids.gsub(']',')')
-    puts "@ids = '#{@ids.to_s.gsub('[','(')}'"
-
-    @ids = "(\'a0DU0000000dRih\', \'a0DU0000000dRic\')"
-    @responses = Response__c.query("Survey__c = '#{params[:id]}' and Id in #{@ids} order by Line_Sort_Order__c, Line_Item_Sort_Order__c ")
- 
-=end
-
-    @responses = Response__c.query("Survey__c = '#{params[:sid]}' and Invitation__c = '#{params[:id]}' order by Line_Sort_Order__c, Line_Item_Sort_Order__c ")
+    @surveyid = current_survey[0].Survey__c
+    @responses = Response__c.query("Survey__c = '#{@surveyid}' and Invitation__c = '#{params[:id]}' order by Line_Sort_Order__c, Line_Item_Sort_Order__c ")
   end
   
 

@@ -1,18 +1,18 @@
-<h1> <%= @survey[0].Survey_Name__c %> </h1>
-
 <script type="text/javascript">
 	var j$ = jQuery.noConflict();
 
-	//j$(document).ready(function() {});
+	/*j$(document).ready(function() {
+		
+	});*/
 
-	function formsubmit(url){
+	function formsubmit(url, dir){
 		/*
 		j$.post("/surveys/update_multiple", j$("form").serialize(), function(val){
 
 				alert(val);
 				window.location = url;
 		});
-*/
+*/	
 		j$.ajax({
 			url: "/surveys/update_multiple",
 			type: "POST",
@@ -25,6 +25,12 @@
 
 		});
 
+		if(url.match("review") == null){
+			if(url.match(/dir=[0-9]+/) != null)
+				url = url.replace(/dir=[0-9]+/,'dir='+dir)
+			else
+				url = url+'&dir='+dir
+		}
 		window.location = url;
 	}
 
@@ -41,7 +47,7 @@
 			j$('#'+sId).val(txt);
 		}
 	}
-	
+
 
 </script>
 

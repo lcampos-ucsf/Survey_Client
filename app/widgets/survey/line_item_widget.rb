@@ -11,6 +11,11 @@ include Databasedotcom::Rails::Controller
     @respVal = ''
     @resphash = {}
 
+    puts "$$$$$$$$$$$$$$$$$$$$ lineitem, @line_item = '#{@line_item}' "
+    puts "$$$$$$$$$$$$$$$$$$$$ lineitem, @responserecord = '#{@responserecord}' "
+    puts "$$$$$$$$$$$$$$$$$$$$ lineitem, @surveyid = '#{@surveyid}' "
+    puts "$$$$$$$$$$$$$$$$$$$$ lineitem, @answerlabels = '#{@answerlabels}' "
+
     if @line_item.Line_Item_Type__c == 'Question'
         ## Text Question
         if @line_item.Question_Type__c == 'Text'
