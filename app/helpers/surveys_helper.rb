@@ -62,6 +62,7 @@ include Databasedotcom::Rails::Controller
 		@hash_response = {}
 		@invite_id = params[:id]
 		@survey_id = current_survey[0].Survey__c
+		@current_page = params[:page] ? params[:page] : 1
 
 		puts "************************************ update_multiple helper method on survey helper page no. =  '#{params[:page]}' , id = '#{@invite_id }', survey id = '#{@survey_id}', all params = '#{params.inspect}' "
 		
@@ -105,11 +106,18 @@ include Databasedotcom::Rails::Controller
 			end
 
 		end
+
+		#this updates invitation
+		invite_update = Invitation__c.find(@invite_id)
+		invite_update.Progress_Save__c = @current_page
+		a << invite_update
+
 		#this line saves every record submitted
 		if a.each(&:save)
 			puts "********************************* update_multiple helper method, records got saved"
 		end
 		@hash_response.clear
+
 	end
 
 	def submitsurvey

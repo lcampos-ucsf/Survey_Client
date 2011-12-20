@@ -1,9 +1,20 @@
 <script type="text/javascript">
 	var j$ = jQuery.noConflict();
+	var autosaveOn = false;
+	j$(document).ready(function() {
 
-	/*j$(document).ready(function() {
+		setInterval(function() { ajaxautosave(); }, 1000*10); // 1000ms * 60s = 1m
+		j$('form input, form textarea').each(function (i) {
+		  j$(this).live('click',  function(){
+			  if(!autosaveOn){
+			  	autosaveOn = true;
+			  }
+			});
+		});
 		
-	});*/
+	});
+
+	//j$(window).bind( 'beforeunload', function () { return confirm("onbeforeunload"); } );
 
 	function formsubmit(url, dir){
 		/*
@@ -34,6 +45,31 @@
 		window.location = url;
 	}
 
+	function ajaxautosave(){
+
+		if (autosaveOn) {
+			 j$.ajax({
+				url: "/surveys/update_multiple",
+				type: "POST",
+				data: j$("form").serialize(),
+				async: false,
+				success: function(){
+					//alert('ajax post successfull');
+					
+				}
+
+			});
+			var timestamp = new Date();
+			var hrs = timestamp.getHours();
+			var mins = timestamp.getMinutes();
+			var ap = hrs < 12 ? "AM" : "PM";
+			hrs = hrs > 12 ? hrs - 12 : hrs;
+
+			j$('#autosaved').text('Draft saved at '+ hrs + ':' + mins + ' '+ap );
+			autosaveOn = false;
+		}
+	}
+	/* this script is not in use*/
 	function keepvallist(element, sId){
 
 		var txt = j$('#'+sId).val();
@@ -47,8 +83,8 @@
 			j$('#'+sId).val(txt);
 		}
 	}
-
-
+	/* end of script not in use */
+	
 </script>
 
 <%= render_widget :survey %>

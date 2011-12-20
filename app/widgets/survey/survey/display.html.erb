@@ -14,6 +14,8 @@
 	   		<span class="text" ><%= @progressbar.to_i %> %</span>
 	   </div>
 	</div>
+
+	<div id="autosaved" > </div>
 	
 	<%= form_for(@lines, :url => {:controller => "surveys",:action => "update_multiple"}) do %>
 
