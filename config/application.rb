@@ -40,5 +40,7 @@ module SampleApp
     
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    #only https-ssl
+    config.force_ssl = true
   end
 end

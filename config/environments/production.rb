@@ -18,13 +18,25 @@ SampleApp::Application.configure do
   ENV['sfdc_consumer_key'] = "3MVG9GiqKapCZBwGKWN18VcBTA5d82sFCh7vEQx5F1GRPo5guUOp1SJrDNereyBomRnYHv5oE7a1VJuu8fBdC"
   ENV['sfdc_consumer_secret'] = "1042066715413818107"
 =end
+  ENV['SALESFORCE_KEY'] = ""
+  ENV['SALESFORCE_SECRET'] = ""
+  ENV['SALESFORCE_SANDBOX_KEY'] = "3MVG9GiqKapCZBwGKWN18VcBTA1KmaZj2YV7ufz52FM8PLm6XWITmy2BseIvf3ROwvzZzKVVYFzAy.glsMTAj"
+  ENV['SALESFORCE_SANDBOX_SECRET'] = "2582046431606031750"
+  ENV['SALESFORCE_PRERELEASE_KEY'] = ""
+  ENV['SALESFORCE_PRERELEASE_SECRET'] = ""
+  ENV['DATABASE_DOT_COM_KEY'] = ""
+  ENV['DATABASE_DOT_COM_SECRET'] = ""
 
+  ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwGKWN18VcBTA0zJQA8mXhFhfxzf99_c9nB3f5ITBipAIYuBUb9Xox_UkcAsIVJuWTcjVOVQ"
+  ENV['SALESFORCE_CUSTOM_SECRET'] = "7879557555915093217"
+
+  ENV['DEFAULT_CUSTOM_URL'] = "https://ucsf--myaccessdv.cs9.my.salesforce.com/"
+  
   ENV['sf_user'] = "005A0000001e1G6"
-
-  ENV['sfdc_api_version'] = '22.0'
-
-  ENV['DATABASEDOTCOM_CLIENT_ID'] = ENV['sfdc_consumer_key']
-  ENV['DATABASEDOTCOM_CLIENT_SECRET'] = ENV['sfdc_consumer_secret'] 
+  ENV['sfdc_api_version'] = '23.0'
+  
+  #ENV['DATABASEDOTCOM_CLIENT_ID'] = ENV['sfdc_consumer_key']
+  #ENV['DATABASEDOTCOM_CLIENT_SECRET'] = ENV['sfdc_consumer_secret'] 
 
   
 
