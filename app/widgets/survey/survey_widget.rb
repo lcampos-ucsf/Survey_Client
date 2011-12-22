@@ -1,5 +1,5 @@
 class Survey::SurveyWidget < Apotomo::Widget
-include Databasedotcom::Rails::Controller
+
 include SurveysHelper
 
 helper_method :update_multiple
@@ -16,18 +16,31 @@ responds_to_event :submit, :with => :update_multiple
 		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
 		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
 		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
+
+		#materialization
+		line = session[:client].materialize("Line__c") 
+
 		@pageno = params[:page].to_i
-		@lines_query = Line__c.query( "Survey__c = '#{@survey[0].Survey__c}' order by Sort_Order__c asc")
+		@lines_query = line.query( "Survey__c = '#{@survey[0].Survey__c}' order by Sort_Order__c asc")
+		
+		@liq_array = []
+		 
+		for liq in @lines_query do
+			@liq_array << liq
+		end
+
 		@showsections = []
-		while @showsections.empty? #&& @pageno < 10
-			@lines = Kaminari.paginate_array(@lines_query).page(@pageno).per(1) # Paginates the array
+		@it_stop = 0
+		while @showsections.empty? && @it_stop < 100
+			@lines = Kaminari.paginate_array(@liq_array).page(@pageno).per(1) # Paginates the array
 
 			@currentpg = @lines.current_page.to_f - 1
 			@totalpg = @lines.num_pages.to_f
+			@it_stop = @it_stop + 1
 
 			
 			@progressbar = (@currentpg  / @totalpg) * 100
-			puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ @currentpg = '#{@currentpg}', @totalpg = '#{@totalpg}', @progressbar = '#{@progressbar}' "
+			puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ @currentpg = '#{@currentpg}', @totalpg = '#{@totalpg}', @progressbar = '#{@progressbar}', @it_stop = '#{@it_stop}' "
 
 
 			@lines.each do |l|
@@ -56,7 +69,7 @@ responds_to_event :submit, :with => :update_multiple
 					params[:page] = @pageno
 				end
 			end
-		end
+		end #end while
 
 		@showsections.each_with_index do |t, i|
 			child_id = "line_'#{i}'"
@@ -69,6 +82,8 @@ responds_to_event :submit, :with => :update_multiple
 	def displaylogic(conditional)
 		#display logic should go here
 		puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! displaylogic, conditional = '#{conditional}'  "
+		#materialization
+		response = session[:client].materialize("Response__c")
 
 		#conditional.each do |l|
 			if conditional.Display_Logic__c != nil
@@ -94,7 +109,7 @@ responds_to_event :submit, :with => :update_multiple
 
 				@qstring = "("+@qstring+")"
 
-				@rdata = Response__c.query("Line_Item_Resource__c in #{@qstring}")
+				@rdata = response.query("Line_Item_Resource__c in #{@qstring}")
 
 				@h_rq = {}
 				if !@rdata.empty?

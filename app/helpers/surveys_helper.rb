@@ -1,5 +1,4 @@
 module SurveysHelper
-include Databasedotcom::Rails::Controller
 
 	class Response
 		attr_reader :sid, :qid, :value, :type, :update_val
@@ -66,6 +65,9 @@ include Databasedotcom::Rails::Controller
 
 		puts "************************************ update_multiple helper method on survey helper page no. =  '#{params[:page]}' , id = '#{@invite_id }', survey id = '#{@survey_id}', all params = '#{params.inspect}' "
 		
+		#materialization
+		response = session[:client].materialize("Response__c")
+		invite = session[:client].materialize("Invitation__c") 
 
 		params.each do |key, value|
 			@var = key.index('q#') 	
@@ -95,12 +97,12 @@ include Databasedotcom::Rails::Controller
 		@hash_response.each_pair do |k,v|
 			v.each do |obj|
 				if obj.type == 'text'
-					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Invitation__c => obj.inviteid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value )
+					a << response.new(:Id => obj.rid, :Survey__c => obj.sid, :Invitation__c => obj.inviteid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value )
 				elsif obj.type == 'radio' || obj.type == 'onedd'
-					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Invitation__c => obj.inviteid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value, :Label_Long_Response__c => obj.label)
+					a << response.new(:Id => obj.rid, :Survey__c => obj.sid, :Invitation__c => obj.inviteid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value, :Label_Long_Response__c => obj.label)
 				
 				elsif obj.type == 'multi'
-					a << Response__c.new(:Id => obj.rid, :Survey__c => obj.sid, :Invitation__c => obj.inviteid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value, :Label_Long_Response__c => obj.label)
+					a << response.new(:Id => obj.rid, :Survey__c => obj.sid, :Invitation__c => obj.inviteid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value, :Label_Long_Response__c => obj.label)
 			
 				end
 			end
@@ -108,7 +110,7 @@ include Databasedotcom::Rails::Controller
 		end
 
 		#this updates invitation
-		invite_update = Invitation__c.find(@invite_id)
+		invite_update = invite.find(@invite_id)
 		invite_update.Progress_Save__c = @current_page
 		a << invite_update
 
@@ -123,7 +125,9 @@ include Databasedotcom::Rails::Controller
 	def submitsurvey
 		puts "********************************* submitsurvey helper method, survey got saved , invitation id = '#{params[:id]}' "
 
-		a = Invitation__c.find(params[:id])
+		#materialization
+		invite = session[:client].materialize("Invitation__c") 
+		a = invite.find(params[:id])
 		a.Status__c = 'Completed'
 		a.save
 
@@ -135,8 +139,10 @@ include Databasedotcom::Rails::Controller
 	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
 	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
 	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey = "
-	    
-	    @@current_survey ||=  Invitation__c.query("Id = '#{params[:id]}' and User__c = '#{ENV['sf_user']}' ")
+	    #materialization
+		invite = session[:client].materialize("Invitation__c") 
+		
+	    @@current_survey ||=  invite.query("Id = '#{params[:id]}' and User__c = '#{ENV['sf_user']}' ")
 	    return @@current_survey
 
 	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"

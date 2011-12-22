@@ -1,5 +1,6 @@
 class InviteController < ApplicationController
-	include Databasedotcom::Rails::Controller
+	
+	before_filter :authenticate
 
 	has_widgets do |root|
 		root << widget(:invites)

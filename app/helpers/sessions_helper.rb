@@ -1,33 +1,12 @@
 module SessionsHelper
   
-  def sign_in(user)
-      cookies.signed[:remember_token] = {
-        :value => [user.id, user.salt]
-      }
-      #cookies.permanent.signed[:remember_token] = [user.id, user.salt]
-      self.current_user = user
-  end
-  
-  def current_user=(user)
-      @current_user = user
-  end
-
-  def current_user
-      @current_user ||= user_from_remember_token
-  end
-
   def signed_in?
-      !current_user.nil?
+      !session[:auth_hash].nil?
   end
 
   def sign_out
-      cookies.delete(:remember_token)
-      
-      self.current_user = nil
-  end
-
-  def current_user?(user)
-    user == current_user
+      session[:auth_hash] = nil
+      session[:expires_at] = nil
   end
 
   def redirect_back_or(default)
@@ -36,42 +15,81 @@ module SessionsHelper
   end
 
   def authenticate
-    deny_access unless signed_in?
-  end
+    #deny_access unless signed_in?
+    puts "authenticate, '#{signed_in?}' "
+    puts "authenticate, '#{signed_in?}' "
+    puts "authenticate, '#{signed_in?}' "
+    puts "authenticate, '#{signed_in?}' "
 
-  def serviceauth
-    if(current_user.nil?)
-      return nil
-    else 
-      return current_user.services.find(:first, :conditions => { :id => session[:service_id] })
+    if signed_in?
+      puts "from now = '#{Time.now}'"
+      expire_time = 30.minutes.from_now
+      puts "from now = '#{expire_time}'"
+      if session[:expires_at].blank?
+        session[:expires_at] = expire_time
+        puts "if session[:expires_at].blank? = '#{session[:expires_at]}' "
+      else
+        @time_left = (session[:expires_at].utc - Time.now.utc).to_i
+        puts "else, timeleft = '#{@time_left}' " 
+        unless @time_left > 0
+          reset_session
+          redirect_to root_path, :notice => "Your session has expired. Please login."
+        end
+      end
+    else
+      puts 'else, deny_access'
+      deny_access
     end
   end
 
   def authenticateSF
-    #redirect_to '/auth/forcedotcom'
-    redirect_to '/auth/salesforce'
+
+    #set default values
+    auth_params = nil
+    provider = 'salesforcesandbox'
+
+    auth_params = {
+      :display => 'touch',
+      :immediate => 'false',
+      :scope => 'full'
+      #:customurl => ENV['DEFAULT_CUSTOM_URL']
+    }    
+
+    #look for defined options
+    if !params[:options].blank?
+      provider = sanitize_provider(params[:options]['provider'])
+      auth_params = {
+        :display => params[:options]['display'],
+        :immediate => params[:options]['immediate'],
+        :scope => params[:options].to_a.flatten.keep_if{|v| v.start_with? "scope|"}.collect!{|v| v.sub(/scope\|/,"")}.join(" "),
+        :customurl => params[:options]['provider']=='customurl' ? params[:options]['curl'] : nil
+      }
+    end
+
+    auth_params = URI.escape(auth_params.collect{|k,v| "#{k}=#{v}"}.join('&'))
+    redirect_to "/auth/#{provider}?#{auth_params}"
   end
 
   def deny_access
     store_location
-    redirect_to signup_path, :notice => "Please sign in to access this page."
+    redirect_to signin_path, :notice => "Please sign in to access this page."
   end
                       
   private
-
-      def user_from_remember_token
-        #User.authenticate_with_salt(*remember_token)
-      end
-
-      def remember_token
-        cookies.signed[:remember_token] || [nil, nil]
-      end
-
+  
       def store_location
         session[:return_to] = request.fullpath
       end
 
       def clear_return_to
         session[:return_to] = nil
-      end     
+      end
+
+      def sanitize_provider(provider = nil)
+        provider.strip! unless provider == nil
+        provider.downcase! unless provider == nil
+        provider = "salesforce" unless %w(salesforcesandbox salesforceprerelease databasedotcom customurl).include? provider
+        provider
+      end
+
 end

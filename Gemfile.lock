@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/jonathansnd/omniauth-salesforce.git
+  revision: 32ba8244f89ff8c7a8709c34a00ac34b3a8b09d4
+  specs:
+    omniauth-salesforce (1.0.3)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -47,8 +55,6 @@ GEM
     databasedotcom (1.1.2)
       json
       multipart-post (~> 1.1)
-    databasedotcom-rails (1.0.0)
-      databasedotcom
     diff-lcs (1.1.3)
     erubis (2.7.0)
     factory_girl (1.3.3)
@@ -97,9 +103,6 @@ GEM
     omniauth-oauth2 (1.0.0)
       oauth2 (~> 0.5.0)
       omniauth (~> 1.0)
-    omniauth-salesforce (1.0.3)
-      omniauth (~> 1.0)
-      omniauth-oauth2 (~> 1.0)
     onfire (0.2.0)
     pg (0.12.0)
       rake-compiler (~> 0.7)
@@ -178,14 +181,15 @@ DEPENDENCIES
   annotate (= 2.4.0)
   apotomo (= 1.2.1)
   cells (~> 3.6.7)
-  databasedotcom-rails
+  databasedotcom
   factory_girl_rails (= 1.0)
   faker (= 0.3.1)
   gravatar_image_tag (= 1.0.0.pre2)
   httparty
   jquery-rails (>= 1.0.12)
   kaminari
-  omniauth-salesforce
+  omniauth
+  omniauth-salesforce!
   pg
   rack (= 1.3.5)
   rails (= 3.1.0)

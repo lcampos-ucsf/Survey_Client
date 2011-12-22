@@ -1,20 +1,26 @@
 <script type="text/javascript">
 	var j$ = jQuery.noConflict();
 	var autosaveOn = false;
+	var idleTime = new Date();
+	var refreshIntervalId;
 	j$(document).ready(function() {
 
-		setInterval(function() { ajaxautosave(); }, 1000*10); // 1000ms * 60s = 1m
+		setInterval(function() { ajaxautosave(); }, 1000*30); // 1000ms * 60s = 1m
+		refreshIntervalId = setInterval(function() { timeoutrefresh(); }, 1000*60 ); //every minute
 		j$('form input, form textarea').each(function (i) {
 		  j$(this).live('click',  function(){
 			  if(!autosaveOn){
 			  	autosaveOn = true;
 			  }
+			  authenticatejs();
 			});
 		});
-		
-	});
 
-	//j$(window).bind( 'beforeunload', function () { return confirm("onbeforeunload"); } );
+		//catch user mouse activity
+		j$('#appContainer').mousemove(function(e){ 
+				authenticatejs();
+		});
+	});
 
 	function formsubmit(url, dir){
 		/*
@@ -64,6 +70,7 @@
 			var mins = timestamp.getMinutes();
 			var ap = hrs < 12 ? "AM" : "PM";
 			hrs = hrs > 12 ? hrs - 12 : hrs;
+			mins = mins < 10 ? '0' + mins : mins; 
 
 			j$('#autosaved').text('Draft saved at '+ hrs + ':' + mins + ' '+ap );
 			autosaveOn = false;
@@ -84,6 +91,23 @@
 		}
 	}
 	/* end of script not in use */
+
+	function authenticatejs() {
+
+		var currentTime = new Date();
+		var diffTime = (currentTime - idleTime)/ 1000 / 60;
+		if (diffTime > 1){
+			alert('authenticatejs, verify idle time, idletime = '+ idleTime +', current time = '+ currentTime+', time difference = '+diffTime);
+			idleTime = currentTime;
+			clearInterval(refreshIntervalId);
+			refreshIntervalId = setInterval(function() { timeoutrefresh(); }, 1000*60 ); //every minute
+		}
+	}
+
+	function timeoutrefresh(){
+		alert('this is the end');
+		location.reload();
+	}
 	
 </script>
 

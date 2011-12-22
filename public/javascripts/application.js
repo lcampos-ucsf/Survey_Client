@@ -1,15 +1,9 @@
-var j$ = jQuery.noConflict();
-
-j$(document).ready(function(){
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
-  j$("body").bind("click", function (e) {
-    j$('a.menu').parent("li").removeClass("open");
-  });
-
-  j$("a.menu").click(function (e) {
-    var j$li = j$(this).parent("li").toggleClass('open');
-    return false;
-  });
-
-});
+// This is a manifest file that'll be compiled into including all the files listed below.
+// Add new JavaScript/Coffee code in separate files in this directory and they'll automatically
+// be included in the compiled file accessible from http://example.com/assets/application.js
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// the compiled file.
+//
+//= require jquery
+//= require jquery_ujs
+//= require_tree .

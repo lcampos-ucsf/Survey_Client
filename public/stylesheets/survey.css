@@ -86,12 +86,13 @@ ul.a_list{
 }
 
 #progressbar {
-	width: 400px; 
+	width: 100%; 
 	height:25px; 
 	text-align:center; 
 	border: 1px solid #CCCCCC; 
 	border-radius: 3px 3px 3px 3px;
 	margin: 10px auto;
+	display:block;
 }
 
 #progress {
@@ -100,14 +101,14 @@ ul.a_list{
 	
 }
 
-#progress .text {
-	width: 400px; 
+#progressbar .text {
 	display:inline-block; 
 	line-height:25px; 
 }
 
 #autosaved {
-	line-height: 25px;
+	height: 15px;
+	display:block;
 }
 
 

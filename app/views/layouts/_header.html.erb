@@ -1,55 +1,106 @@
 <div class="topbar">
 
-  <div class="fill">
+	<div class="fill">
 
-    <div class="container" style="width:100% !important;padding: 0 10px;min-width:950px;">
+	    <div class="container" style="width:100% !important;padding: 0 10px;min-width:950px; background-color: #1797C0; ">
 
-      <h3><%= link_to "Nursing PI", root_path %></h3>
+	      <h3><%= link_to "UCSF", root_path %></h3>
 
-		<% if signed_in? %>
-			<ul>
-				<li><%= link_to "Home", root_path %></li>
-				<% if current_user.admin? %>
-				<li><%= link_to "Users", users_path %></li>
-				<li><%= link_to "Settings", edit_user_path(current_user) %></li>
-				<% end %>
-				<li><%= link_to "About", about_path %></li>
-				<li><%= link_to "Contact",contact_path %></li>
-			</ul>
-	    <% else %>
-	   		<ul class="nav secondary-nav" style="margin-right: 25px;">
-				<li><!-- %= link_to "Sign in", signin_path % --></li>
-			</ul>
-	    <% end %>
+		    <% if signed_in? %>
+			    <ul class="nav secondary-nav" style="margin-right: 25px;">
+			    	<li>
+			    		<%= link_to "Sign Out", signout_path %>
+			    	</li>
+			    </ul>
+			<% else %>
+			    <ul class="nav secondary-nav" style="margin-right: 25px;">
+			    	<li>
+			    		<!-- a data-controls-modal="settings-modal" data-backdrop="static" onclick="return true;">Sign In</a -->
+			    		<%= link_to "Sign In", signin_path %>
+			    	</li>
+			    </ul>
+			<% end %>
 
-	    <% if signed_in? %>
-	    <ul class="nav secondary-nav" style="margin-right: 25px;">
-	    	<li>
-	    		<%= link_to  image_tag(current_user.thumbnail+"?oauth_token="+serviceauth.token , :alt => current_user.name, :height => '25', :width => '25', :style => 'border-radius:3px;'), current_user,:style => 'padding:7px 0 0px 0;margin:0;' %>
-	    </td>
-	    	</li>
+	    </div>
 
-	    </ul>
+		<div id="settings-modal" class="modal hide fade" style="display: none;">
 
-		<ul class="nav secondary-nav">
-			<li>
-				<%= render_cell :SearchBox, :display , :uid => current_user.id %>
-			</li>
-			<li class="menu">
-				<a href="#" class="menu"><%= current_user.name %></a>
-				<ul class="menu-dropdown">
-					<li><%= link_to "My Account", current_user %></li>
-					<li><%= link_to "Help",help_path %></li>
-					<li class="divider"></li>
-					<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
-				</ul>
-			</li>
-		</ul>
-		
-		<% end %>
+	        <div class="modal-header">
+	          <a href="#" class="close">×</a>
+	          <h3>Authentication Settings</h3>
+	        </div>
 
-    </div>
+	        <div class="modal-body">
+		        <form action='/signin' id='authenticate_form' method='post' name='authenticate_form'>
+		            <div data-role='fieldcontain' style="align:center;">
+		                <h4>Environment</h4>
+		                <input id='options[provider]-1' name='options[provider]' type='radio' value='salesforce' >
+		                production (login.salesforce.com) <br/>
+		                </input>
+		                <input id='options[provider]-2' name='options[provider]' type='radio' value='salesforcesandbox'>
+		                sandbox (test.salesforce.com)<br/>
+		                </input>
+		                <!-- input id='options[provider]-3' name='options[provider]' type='radio' value='salesforceprerelease'>
+		                pre-release (prerellogin.pre.salesforce.com)<br/>
+		                </input>
+		                <input id='options[provider]-4' name='options[provider]' type='radio' value='databasedotcom'>
+		                database.com (login.database.com)<br/>
+		                </input -->
+		                <input checked='checked' id='options[provider]-5' name='options[provider]' type='radio' value='customurl'>
+		                custom domain
+		                </input>
+		                <input  id='options[curl]-1' name='options[curl]' type='text' placeholder="https://custom-domain.my.salesforce.com" value="<%= ENV['DEFAULT_CUSTOM_URL'] %>"/>
+		                
+		            </div>
+		            <div data-role='fieldcontain'>
+		                <h4>Display</h4>
+		                <input id='options[display]-1' name='options[display]' type='radio' value='page'>
+		                page<br/>
+		                </input>
+		                <input id='options[display]-2' name='options[display]' type='radio' value='popup'>
+		                popup<br/>
+		                </input>
+		                <input checked='checked' id='options[display]-3' name='options[display]' type='radio' value='touch'>
+		                touch<br/>
+		                </input>
+		            </div>
+		              	<h4>Access Level</h4>
+		              	<input checked='checked' class='custom' id='options[scope|api]' name='options[scope|api]' type='checkbox'>
+		              	api
+		              	</input>
+		              	<input class='custom' id='options[scope|chatter_api]' name='options[scope|chatter_api]' type='checkbox'>
+		              	chatter_api
+		              	</input>
+		              	<input class='custom' id='options[scope|full]' name='options[scope|full]' type='checkbox'>
+		              	full
+		              	</input>
+		              	<input checked='checked' class='custom' id='options[scope|id]' name='options[scope|id]' type='checkbox'>
+		              	id
+		              	</input>
+		              	<input checked='checked' class='custom' id='options[scope|refresh_token]' name='options[scope|refresh_token]' type='checkbox'>
+		              	refresh_token
+		              	</input>
+		              	<input class='custom' id='options[scope|visualforce]' name='options[scope|visualforce]' type='checkbox'>
+		              	visualforce
+		              	</input>
+		              	<input class='custom' id='options[scope|web]' name='options[scope|web]' type='checkbox'>
+		              	web
+		              	</input>
+		            <div data-role='fieldcontain'>
+		              	<h4>Immediate</h4>
+		              	<select data-role='slider' id='options[immediate]' name='options[immediate]'>
+		                	<option value='false'>No</option>
+		                	<option value='true'>Yes</option>
+		              	</select>
+		            </div>
+		            <br/>
+					<input class="btn primary" type="submit" value="Sign In" />
+		            
+		        </form>
+	        </div>
 
-  </div>
+	    </div>
+
+	</div>
 
 </div>
