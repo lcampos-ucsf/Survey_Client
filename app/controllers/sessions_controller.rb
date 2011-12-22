@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-
+    puts "create session, session[:return_to] = '#{session[:return_to]}' "
     puts 'Full Auth Hash >>>>>'
     puts env['omniauth.auth']
      
@@ -74,7 +74,10 @@ class SessionsController < ApplicationController
       client.authenticate :token => session[:auth_hash][:token], :instance_url => instUrl, :refresh_token => session[:auth_hash][:refresh_token]
       session[:client]= client
       flash[:success] = "Welcome #{env['omniauth.auth']['info']['name']}!"
-      redirect_to invite_path
+
+      #if logic to redirect to url that user tryied to access without login
+      #redirect_to invite_path
+      redirect_back_or(invite_path)
     else
       flash[:error] = 'Error while authenticating via ' + service_route.capitalize + '. The service did not return valid data.'
       redirect_to signup_path

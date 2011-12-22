@@ -6,7 +6,7 @@
 	j$(document).ready(function() {
 
 		setInterval(function() { ajaxautosave(); }, 1000*30); // 1000ms * 60s = 1m
-		refreshIntervalId = setInterval(function() { timeoutrefresh(); }, 1000*60 ); //every minute
+		refreshIntervalId = setInterval(function() { timeoutrefresh(); }, 1000*60*30 ); //every 30 mins
 		j$('form input, form textarea').each(function (i) {
 		  j$(this).live('click',  function(){
 			  if(!autosaveOn){
@@ -19,7 +19,7 @@
 		//catch user mouse activity
 		j$('#appContainer').mousemove(function(e){ 
 				authenticatejs();
-		});
+		}); 
 	});
 
 	function formsubmit(url, dir){
@@ -96,16 +96,16 @@
 
 		var currentTime = new Date();
 		var diffTime = (currentTime - idleTime)/ 1000 / 60;
-		if (diffTime > 1){
-			alert('authenticatejs, verify idle time, idletime = '+ idleTime +', current time = '+ currentTime+', time difference = '+diffTime);
+		if (diffTime > 5){
+			//alert('authenticatejs, verify idle time, idletime = '+ idleTime +', current time = '+ currentTime+', time difference = '+diffTime);
 			idleTime = currentTime;
 			clearInterval(refreshIntervalId);
-			refreshIntervalId = setInterval(function() { timeoutrefresh(); }, 1000*60 ); //every minute
+			refreshIntervalId = setInterval(function() { timeoutrefresh(); }, 1000*60*30 ); //every 30 mins
 		}
 	}
 
 	function timeoutrefresh(){
-		alert('this is the end');
+		//alert('this is the end');
 		location.reload();
 	}
 	

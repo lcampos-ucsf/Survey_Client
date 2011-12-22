@@ -19,7 +19,7 @@ module SessionsHelper
     puts "authenticate, '#{signed_in?}' "
     puts "authenticate, '#{signed_in?}' "
     puts "authenticate, '#{signed_in?}' "
-    puts "authenticate, '#{signed_in?}' "
+    puts "authenticate session[:return_to] , '#{session[:return_to]}' "
 
     if signed_in?
       puts "from now = '#{Time.now}'"
@@ -33,6 +33,7 @@ module SessionsHelper
         puts "else, timeleft = '#{@time_left}' " 
         unless @time_left > 0
           reset_session
+          store_location
           redirect_to root_path, :notice => "Your session has expired. Please login."
         end
       end
@@ -43,7 +44,7 @@ module SessionsHelper
   end
 
   def authenticateSF
-
+    puts "authenticateSF url params = '#{request.fullpath}' "
     #set default values
     auth_params = nil
     provider = 'salesforcesandbox'
