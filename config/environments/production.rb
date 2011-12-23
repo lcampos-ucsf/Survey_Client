@@ -34,6 +34,8 @@ SampleApp::Application.configure do
   
   ENV['sf_user'] = "005A0000001e1G6"
   ENV['sfdc_api_version'] = '23.0'
+
+  ENV['app_timeout'] = '5' #minutes
   
   #ENV['DATABASEDOTCOM_CLIENT_ID'] = ENV['sfdc_consumer_key']
   #ENV['DATABASEDOTCOM_CLIENT_SECRET'] = ENV['sfdc_consumer_secret'] 

@@ -2,7 +2,117 @@
 
 <script type="text/javascript">
 	var j$ = jQuery.noConflict();
+	var autosaveOn = false;
+	var idleTime = new Date();
+	var refreshIntervalId;
+	var timeout = '<%= ENV['app_timeout'] %>';
+	j$(document).ready(function() {
 
+		setInterval(function() { ajaxautosave(); }, 1000*60); // 1000ms * 60s = 1m
+		refreshIntervalId = setInterval(function() { timeoutrefresh(); }, 1000*60*timeout ); //every 30 mins
+		j$('form input, form textarea').each(function (i) {
+		  j$(this).live('click',  function(){
+			  if(!autosaveOn){
+			  	autosaveOn = true;
+			  }
+			  authenticatejs();
+			});
+		});
+
+		//catch user mouse activity
+		j$('#appContainer').mousemove(function(e){ 
+				authenticatejs();
+		}); 
+	});
+
+	function formsubmit(url, dir){
+		/*
+		j$.post("/surveys/update_multiple", j$("form").serialize(), function(val){
+
+				alert(val);
+				window.location = url;
+		});
+*/	
+		j$.ajax({
+			url: "/surveys/update_multiple",
+			type: "POST",
+			data: j$("form").serialize(),
+			async: false,
+			dataType: "script",
+			success: function(){
+				//alert('ajax post successfull');
+				
+			}
+
+		});
+
+		if(url.match("review") == null){
+			if(url.match(/dir=[0-9]+/) != null)
+				url = url.replace(/dir=[0-9]+/,'dir='+dir)
+			else
+				url = url+'&dir='+dir
+		}
+		window.location = url;
+	}
+
+	function ajaxautosave(){
+
+		if (autosaveOn) {
+			 j$.ajax({
+				url: "/surveys/update_multiple",
+				type: "POST",
+				data: j$("form").serialize(),
+				async: false,
+				success: function(){
+					//alert('ajax post successfull');
+					
+				}
+
+			});
+			var timestamp = new Date();
+			var hrs = timestamp.getHours();
+			var mins = timestamp.getMinutes();
+			var ap = hrs < 12 ? "AM" : "PM";
+			hrs = hrs > 12 ? hrs - 12 : hrs;
+			mins = mins < 10 ? '0' + mins : mins; 
+
+			j$('#autosaved').text('Draft saved at '+ hrs + ':' + mins + ' '+ap );
+			autosaveOn = false;
+		}
+	}
+	/* this script is not in use*/
+	function keepvallist(element, sId){
+
+		var txt = j$('#'+sId).val();
+		var nlabel = element.id;
+
+		if(txt.indexOf(nlabel) == -1){
+			txt+= nlabel + ' ;';
+			j$('#'+sId).val(txt);
+		}else{
+			txt = txt.replace(nlabel,'');
+			j$('#'+sId).val(txt);
+		}
+	}
+	/* end of script not in use */
+
+	function authenticatejs() {
+
+		var currentTime = new Date();
+		var diffTime = (currentTime - idleTime)/ 1000 / 60;
+		if (diffTime > 2){
+			//alert('authenticatejs, verify idle time, idletime = '+ idleTime +', current time = '+ currentTime+', time difference = '+diffTime);
+			idleTime = currentTime;
+			clearInterval(refreshIntervalId);
+			refreshIntervalId = setInterval(function() { timeoutrefresh(); }, 1000*60*timeout ); //every 30 mins
+		}
+	}
+
+	function timeoutrefresh(){
+		//alert('this is the end');
+		location.reload();
+	}
+	
 </script>
 
 

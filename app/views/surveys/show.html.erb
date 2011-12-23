@@ -3,10 +3,11 @@
 	var autosaveOn = false;
 	var idleTime = new Date();
 	var refreshIntervalId;
+	var timeout = '<%= ENV['app_timeout'] %>';
 	j$(document).ready(function() {
 
-		setInterval(function() { ajaxautosave(); }, 1000*30); // 1000ms * 60s = 1m
-		refreshIntervalId = setInterval(function() { timeoutrefresh(); }, 1000*60*30 ); //every 30 mins
+		setInterval(function() { ajaxautosave(); }, 1000*60); // 1000ms * 60s = 1m
+		refreshIntervalId = setInterval(function() { timeoutrefresh(); }, 1000*60*timeout ); //every 30 mins
 		j$('form input, form textarea').each(function (i) {
 		  j$(this).live('click',  function(){
 			  if(!autosaveOn){
@@ -97,11 +98,11 @@
 
 		var currentTime = new Date();
 		var diffTime = (currentTime - idleTime)/ 1000 / 60;
-		if (diffTime > 5){
+		if (diffTime > 2){
 			//alert('authenticatejs, verify idle time, idletime = '+ idleTime +', current time = '+ currentTime+', time difference = '+diffTime);
 			idleTime = currentTime;
 			clearInterval(refreshIntervalId);
-			refreshIntervalId = setInterval(function() { timeoutrefresh(); }, 1000*60*30 ); //every 30 mins
+			refreshIntervalId = setInterval(function() { timeoutrefresh(); }, 1000*60*timeout ); //every 30 mins
 		}
 	}
 

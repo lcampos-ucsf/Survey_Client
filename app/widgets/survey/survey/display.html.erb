@@ -5,7 +5,7 @@
 		var j$ = jQuery.noConflict();
 		j$(document).ready(function() {
 			var progress = '<%= @progressbar %>'
-			var pw = j$('#progressbar').width();
+			var pw = j$('#progressbar').width();   	
 			j$('#progress').css('width',progress+'%');
 			j$('#progress .text').css('width',pw );
 		});

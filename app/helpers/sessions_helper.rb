@@ -22,9 +22,10 @@ module SessionsHelper
     puts "authenticate session[:return_to] , '#{session[:return_to]}' "
 
     if signed_in?
-      puts "from now = '#{Time.now}'"
-      expire_time = 2.minutes.from_now
-      puts "from now = '#{expire_time}'"
+      puts "time-now = '#{Time.now}'"
+      timevar = ENV['app_timeout'].to_i
+      expire_time = timevar.minutes.from_now
+      puts "expire_time = '#{expire_time}'"
       if session[:expires_at].blank?
         session[:expires_at] = expire_time
         puts "if session[:expires_at].blank? = '#{session[:expires_at]}' "
