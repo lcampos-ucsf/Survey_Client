@@ -23,7 +23,7 @@ module SessionsHelper
 
     if signed_in?
       puts "from now = '#{Time.now}'"
-      expire_time = 30.minutes.from_now
+      expire_time = 2.minutes.from_now
       puts "from now = '#{expire_time}'"
       if session[:expires_at].blank?
         session[:expires_at] = expire_time

@@ -10,8 +10,7 @@ gem 'cells', "~>3.6.7"
 gem 'rack', "1.3.5"
 
 #api connection with salesforce
-#gem 'databasedotcom-rails'
-gem 'databasedotcom'
+gem 'databasedotcom', :git => 'git://github.com/lcampos/databasedotcom.git'
 
 #adding widget gem apotomo
 gem 'apotomo', '1.2.1'
@@ -20,7 +19,6 @@ gem 'jquery-rails', '>= 1.0.12'
 #authentication strategy with salesforce
 gem 'omniauth'
 gem 'omniauth-salesforce', :git => 'git://github.com/jonathansnd/omniauth-salesforce.git'
-#gem 'omniauth-salesforce', :git => 'git://github.com/lcampos/omniauth-salesforce.git'
 
 #add pagination to surveys
 gem 'kaminari'
