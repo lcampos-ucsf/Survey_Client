@@ -111,4 +111,12 @@ ul.a_list{
 	display:block;
 }
 
+.headerapp{
+  width:100% !important;
+  padding: 0 10px;
+  min-width:950px; 
+  background-color:#7B7F84; 
+  background: url("/images/bg-nav.gif") repeat scroll 0 0 transparent;
+}
+
 

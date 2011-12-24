@@ -14,7 +14,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #1797c0 url('/images/gradient_body.png') repeat-x; /*edit by lc */
+  background-color: #E4EFF8; /*edit by lc */
+
 }
 h1,
 h2,
@@ -196,6 +197,7 @@ body {
   margin-right: auto;
   zoom: 1;
 }
+
 .container:before, .container:after {
   display: table;
   content: "";
@@ -1311,7 +1313,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   overflow: visible;
 }
 .topbar a {
-  color: #bfbfbf;
+  color: #fff; /*#bfbfbf;*/
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 .topbar h3 a:hover, .topbar .brand:hover, .topbar ul .active > a {
@@ -1326,7 +1328,7 @@ table .headerSortUp.purple, table .headerSortDown.purple {
 .topbar h3 a, .topbar .brand {
   float: left;
   display: block;
-  padding: 8px 20px 12px;
+  padding: 6px 26px 3px; /*8px 20px 12px;*/
   margin-left: -20px;
   color: #ffffff;
   font-size: 20px;
