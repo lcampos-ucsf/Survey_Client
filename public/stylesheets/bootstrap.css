@@ -74,6 +74,7 @@ td {
   line-height: 1;
   font-family: inherit;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -1779,12 +1780,12 @@ a.menu:after, .dropdown-toggle:after {
 }
 .hero-unit h1 {
   margin-bottom: 0;
-  font-size: 60px;
+  font-size: 350%;
   line-height: 1;
   letter-spacing: -1px;
 }
 .hero-unit p {
-  font-size: 18px;
+  font-size: 130%;
   font-weight: 200;
   line-height: 27px;
 }

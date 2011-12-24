@@ -1,7 +1,6 @@
 SampleApp::Application.routes.draw do 
 
   get "invite/index"
-  get "invite/test"
 
   #resources :surveys
 
