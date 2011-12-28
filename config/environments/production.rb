@@ -2,7 +2,7 @@ SampleApp::Application.configure do
   
   # Settings specified here will take precedence over those in config/application.rb
   
-  ENV['full_host'] = "https://npi-dev.heroku.com"
+  ENV['full_host'] = "https://npi-qa.heroku.com"
 =begin
   #NPI-DEV
   ENV['SALESFORCE_KEY'] = ""
