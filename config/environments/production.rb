@@ -3,7 +3,7 @@ SampleApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
   
   ENV['full_host'] = "https://npi-qa.heroku.com"
-=begin
+
   #NPI-DEV
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -15,8 +15,8 @@ SampleApp::Application.configure do
   ENV['DATABASE_DOT_COM_SECRET'] = ""
   ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwGKWN18VcBTA0zJQA8mXhFhfxzf99_c9nB3f5ITBipAIYuBUb9Xox_UkcAsIVJuWTcjVOVQ"
   ENV['SALESFORCE_CUSTOM_SECRET'] = "7879557555915093217"
-=end
 
+=begin
   #NPI-QA
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -28,8 +28,9 @@ SampleApp::Application.configure do
   ENV['DATABASE_DOT_COM_SECRET'] = ""
   ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwHxOJHdUt59hvmAWrHeW0.k8nxwdOOzxEtMPKLExVkHnQBiSgIfW2t8u1R26mIMONEPPHSN"
   ENV['SALESFORCE_CUSTOM_SECRET'] = "479086689104364566"
-
+=end
   ENV['DEFAULT_CUSTOM_URL'] = "https://ucsf--myaccessdv.cs9.my.salesforce.com/"
+  ENV['SF_CUSTOM_DOMAIN'] = "https://medctr--npidev.cs11.my.salesforce.com/"
   
   ENV['sf_user'] = "005A0000001e1G6"
   ENV['sfdc_api_version'] = '23.0'

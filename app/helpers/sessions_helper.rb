@@ -53,8 +53,8 @@ module SessionsHelper
     auth_params = {
       :display => 'touch',
       :immediate => 'false',
-      :scope => 'full'
-      #:customurl => ENV['DEFAULT_CUSTOM_URL']
+      :scope => 'full',
+      :customurl => ENV['SF_CUSTOM_DOMAIN']
     }    
 
     #look for defined options
@@ -68,7 +68,12 @@ module SessionsHelper
       }
     end
 
+
+
     auth_params = URI.escape(auth_params.collect{|k,v| "#{k}=#{v}"}.join('&'))
+    
+    puts "authenticateSF , auth_params  = '#{auth_params}' "
+
     redirect_to "/auth/#{provider}?#{auth_params}"
   end
 
