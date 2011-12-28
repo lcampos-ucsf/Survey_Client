@@ -3,21 +3,8 @@ SampleApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
   
   ENV['full_host'] = "https://npi-dev.heroku.com"
-  #ENV['sfdc_login'] = "https://login.salesforce.com"
-
-  #You setup these in Setup > Development > Remote Access
-  #Set your callback url to https://yourtemplateapp.heroku.com/auth/forcedotcom/callback  
-
 =begin
-  #NPIQA
-  ENV['sfdc_consumer_key'] = "3MVG9GiqKapCZBwHxOJHdUt59hg74sCk_cEtqnjN5_Oz8VwuyGp7qS8hznIUW7_S8ovR7zPh6vrjWNVNJ.oog"
-  ENV['sfdc_consumer_secret'] = "2416048170923412785" 
-
-
-  #NPIDEV
-  ENV['sfdc_consumer_key'] = "3MVG9GiqKapCZBwGKWN18VcBTA5d82sFCh7vEQx5F1GRPo5guUOp1SJrDNereyBomRnYHv5oE7a1VJuu8fBdC"
-  ENV['sfdc_consumer_secret'] = "1042066715413818107"
-=end
+  #NPI-DEV
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
   ENV['SALESFORCE_SANDBOX_KEY'] = "3MVG9GiqKapCZBwGKWN18VcBTA1KmaZj2YV7uCR9OHjJefgNd6buWczB6y1MxYKYAr_isA1D8hizunIxddixO"
@@ -26,22 +13,28 @@ SampleApp::Application.configure do
   ENV['SALESFORCE_PRERELEASE_SECRET'] = ""
   ENV['DATABASE_DOT_COM_KEY'] = ""
   ENV['DATABASE_DOT_COM_SECRET'] = ""
-
   ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwGKWN18VcBTA0zJQA8mXhFhfxzf99_c9nB3f5ITBipAIYuBUb9Xox_UkcAsIVJuWTcjVOVQ"
   ENV['SALESFORCE_CUSTOM_SECRET'] = "7879557555915093217"
+=end
+
+  #NPI-QA
+  ENV['SALESFORCE_KEY'] = ""
+  ENV['SALESFORCE_SECRET'] = ""
+  ENV['SALESFORCE_SANDBOX_KEY'] = "3MVG9GiqKapCZBwHxOJHdUt59hvmAWrHeW0.k8nxwdOOzxEtMPKLExVkHnQBiSgIfW2t8u1R26mIMONEPPHSN"
+  ENV['SALESFORCE_SANDBOX_SECRET'] = "479086689104364566"
+  ENV['SALESFORCE_PRERELEASE_KEY'] = ""
+  ENV['SALESFORCE_PRERELEASE_SECRET'] = ""
+  ENV['DATABASE_DOT_COM_KEY'] = ""
+  ENV['DATABASE_DOT_COM_SECRET'] = ""
+  ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwHxOJHdUt59hvmAWrHeW0.k8nxwdOOzxEtMPKLExVkHnQBiSgIfW2t8u1R26mIMONEPPHSN"
+  ENV['SALESFORCE_CUSTOM_SECRET'] = "479086689104364566"
 
   ENV['DEFAULT_CUSTOM_URL'] = "https://ucsf--myaccessdv.cs9.my.salesforce.com/"
   
   ENV['sf_user'] = "005A0000001e1G6"
   ENV['sfdc_api_version'] = '23.0'
-
   ENV['app_timeout'] = '5' #minutes
   
-  #ENV['DATABASEDOTCOM_CLIENT_ID'] = ENV['sfdc_consumer_key']
-  #ENV['DATABASEDOTCOM_CLIENT_SECRET'] = ENV['sfdc_consumer_secret'] 
-
-  
-
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true

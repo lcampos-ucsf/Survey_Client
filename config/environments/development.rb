@@ -3,26 +3,8 @@ SampleApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   ENV['full_host'] = "https://localhost:3000"
-  #ENV['sfdc_login'] = "https://ucsf.my.salesforce.com"
-  #ENV['sfdc_login'] = "https://login.salesforce.com"
-  #ENV['sfdc_login'] = "https://jricosp2test-developer-edition.my.salesforce.com"
-
-  #You setup these in Setup > Development > Remote Access
-  #Set your callback url to https://localhost:3000/auth/forcedotcom/callback    
-  #ENV['sfdc_consumer_key'] = "3MVG9QDx8IX8nP5Ty6QthdXmQZN30GCq215akOxv3C1yKCktnBnJPhCD868k3wvV0yHD6lxZPNI1Tm8Bspjzg"
-  #ENV['sfdc_consumer_secret'] = "6920539322002446909"
-
 =begin
-  #NPIQA
-  ENV['sfdc_consumer_key'] = "3MVG9GiqKapCZBwHxOJHdUt59hg74sCk_cEtqnjN5_Oz8VwuyGp7qS8hznIUW7_S8ovR7zPh6vrjWNVNJ.oog"
-  ENV['sfdc_consumer_secret'] = "2416048170923412785"
-
-
-  #NPIDEV
-  ENV['sfdc_consumer_key'] = "3MVG9GiqKapCZBwGKWN18VcBTA5d82sFCh7vEQx5F1GRPo5guUOp1SJrDNereyBomRnYHv5oE7a1VJuu8fBdC"
-  ENV['sfdc_consumer_secret'] = "1042066715413818107"
-=end
-
+  #NPI-DEV
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
   ENV['SALESFORCE_SANDBOX_KEY'] = "3MVG9GiqKapCZBwGKWN18VcBTA1KmaZj2YV7ufz52FM8PLm6XWITmy2BseIvf3ROwvzZzKVVYFzAy.glsMTAj"
@@ -31,21 +13,28 @@ SampleApp::Application.configure do
   ENV['SALESFORCE_PRERELEASE_SECRET'] = ""
   ENV['DATABASE_DOT_COM_KEY'] = ""
   ENV['DATABASE_DOT_COM_SECRET'] = ""
-
   ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwGKWN18VcBTA0zJQA8mXhFhfxzf99_c9nB3f5ITBipAIYuBUb9Xox_UkcAsIVJuWTcjVOVQ"
   ENV['SALESFORCE_CUSTOM_SECRET'] = "7879557555915093217"
+=end
+
+  #NPI-QA
+  ENV['SALESFORCE_KEY'] = ""
+  ENV['SALESFORCE_SECRET'] = ""
+  ENV['SALESFORCE_SANDBOX_KEY'] = "3MVG9GiqKapCZBwHxOJHdUt59hnj4Vwa8tt1y5prV6Jk4WPd7oHKSAh5o41FkqvzRa6czvRYr_NqHdSf5K2Ob"
+  ENV['SALESFORCE_SANDBOX_SECRET'] = "7327542734086133767"
+  ENV['SALESFORCE_PRERELEASE_KEY'] = ""
+  ENV['SALESFORCE_PRERELEASE_SECRET'] = ""
+  ENV['DATABASE_DOT_COM_KEY'] = ""
+  ENV['DATABASE_DOT_COM_SECRET'] = ""
+  ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwHxOJHdUt59hnj4Vwa8tt1yBg5fW3OtJIEfoFnsGW_rT5huS5Zg02WpKjFPQ9Tmss.HKgAk"
+  ENV['SALESFORCE_CUSTOM_SECRET'] = "2691895098048201861"
 
   ENV['DEFAULT_CUSTOM_URL'] = "https://ucsf--myaccessdv.cs9.my.salesforce.com/"
   
   ENV['sf_user'] = "005A0000001e1G6"
   ENV['sfdc_api_version'] = '23.0'
-
   ENV['app_timeout'] = '5' #minutes
 
-  #ENV['DATABASEDOTCOM_CLIENT_ID'] =   ENV['sfdc_consumer_key']
-  #ENV['DATABASEDOTCOM_CLIENT_SECRET'] = ENV['sfdc_consumer_secret']
-
-  
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
