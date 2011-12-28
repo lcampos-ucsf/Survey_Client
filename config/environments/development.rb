@@ -30,7 +30,7 @@ SampleApp::Application.configure do
   ENV['SALESFORCE_CUSTOM_SECRET'] = "2691895098048201861"
 
   ENV['DEFAULT_CUSTOM_URL'] = "https://ucsf--myaccessdv.cs9.my.salesforce.com/"
-  ENV['SF_CUSTOM_DOMAIN'] = "https://medctr--npidev.cs11.my.salesforce.com/"
+  ENV['SF_CUSTOM_DOMAIN'] = "https://medctr--npiqa.cs11.my.salesforce.com/"
   
   ENV['sf_user'] = "005A0000001e1G6"
   ENV['sfdc_api_version'] = '23.0'
