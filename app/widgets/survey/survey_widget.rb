@@ -48,7 +48,7 @@ responds_to_event :submit, :with => :update_multiple
 					puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 					puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ has Display Logic"
 					puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-					eval_dl = displaylogic(l)
+					eval_dl = displaylogic(l, params[:id])
 					
 					if eval_dl #display logic is true
 						puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ eval_dl = '#{eval_dl}' "
@@ -79,7 +79,7 @@ responds_to_event :submit, :with => :update_multiple
 		
 	end
 
-	def displaylogic(conditional)
+	def displaylogic(conditional, inviteid)
 		#display logic should go here
 		puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! displaylogic, conditional = '#{conditional}'  "
 		#materialization
@@ -109,7 +109,7 @@ responds_to_event :submit, :with => :update_multiple
 
 				@qstring = "("+@qstring+")"
 
-				@rdata = response.query("Line_Item_Resource__c in #{@qstring}")
+				@rdata = response.query("Line_Item_Resource__c in #{@qstring} and Invitation__c = '#{inviteid}' ")
 
 				@h_rq = {}
 				if !@rdata.empty?
