@@ -134,22 +134,29 @@ module SurveysHelper
 		redirect_to "/invite/index", :notice => "Your survey was submitted successfully."
 	end
 
+	def surveyerrors
+		redirect_to "/invite/index", :notice => "This survey was poorly created and has errors."
+	end
+
 	def current_survey
 	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
 	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
 	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
 	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey = "
 	    #materialization
-		invite = session[:client].materialize("Invitation__c") 
+	    invite = session[:client].materialize("Invitation__c") 
 		
 	    @@current_survey ||=  invite.query("Id = '#{params[:id]}' and User__c = '#{ENV['sf_user']}' ")
+
+	    rescue => msg  
+   		puts "Something went wrong ("+msg.to_s+") "
+
 	    return @@current_survey
 
 	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
 	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
 	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
 	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
-	    #@@exchange_rage ||= (execute your SQL query and get the result here)
 
 	  end
 

@@ -2,8 +2,7 @@ class Survey::SurveyWidget < Apotomo::Widget
 
 include SurveysHelper
 
-helper_method :update_multiple
-helper_method :redirect_to
+helper_method :update_multiple, :surveyerrors
 responds_to_event :submit, :with => :update_multiple
 
 
@@ -70,6 +69,12 @@ responds_to_event :submit, :with => :update_multiple
 				end
 			end
 		end #end while
+
+		#catch survey sections with errors
+		#if @showsections.empty?
+			#surveyerrors
+			#redirect_to root_path, :notice => "Survey '#{@survey[0].Survey_Name__c}' has errors, please notify it to your manager."
+		#end
 
 		@showsections.each_with_index do |t, i|
 			child_id = "line_'#{i}'"

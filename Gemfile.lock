@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/lcampos/databasedotcom.git
-  revision: e940302618c6188a44324321ab5c5690f6fd4e3c
+  revision: ab553d3c1e7cb3e85b32d203d9989c0cc5e5194b
   specs:
     databasedotcom (1.2.7)
       json
@@ -86,7 +86,7 @@ GEM
     jquery-rails (1.0.18)
       railties (~> 3.0)
       thor (~> 0.14)
-    json (1.6.3)
+    json (1.6.4)
     kaminari (0.12.4)
       rails (>= 3.0.0)
     mail (2.3.0)

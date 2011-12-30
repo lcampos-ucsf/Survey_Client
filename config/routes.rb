@@ -1,6 +1,9 @@
 SampleApp::Application.routes.draw do 
 
   get "invite/index"
+  get "invite/new"
+
+  match "invite/create", :to => "invite#create"
 
   #resources :surveys
 

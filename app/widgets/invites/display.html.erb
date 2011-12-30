@@ -23,8 +23,8 @@
 				</td>
 				<td> <%= invite.Survey_Name__c %> </td>
 				<td></td>
-				<td><%= invite.Start_Date__c.strftime('%m/%d/%Y') %></td>
-				<td><%= invite.End_Date__c.strftime('%m/%d/%Y') %></td>
+				<td><%= invite.Start_Date__c.strftime('%m/%d/%Y') unless invite.Start_Date__c.nil? %></td>
+				<td><%= invite.End_Date__c.strftime('%m/%d/%Y') unless invite.End_Date__c.nil?%></td>
 			</tr>
 		</tbody>
 

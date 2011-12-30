@@ -1,4 +1,11 @@
 module SessionsHelper
+
+class T
+  include HTTParty
+  format :json
+end
+
+require 'omniauth-oauth2'
   
   def signed_in?
       !session[:auth_hash].nil?
@@ -19,7 +26,10 @@ module SessionsHelper
     puts "authenticate, '#{signed_in?}' "
     puts "authenticate, '#{signed_in?}' "
     puts "authenticate, '#{signed_in?}' "
-    puts "authenticate session[:return_to] , '#{session[:return_to]}' "
+    puts "authenticate session[:auth_hash][:refresh_token] , '#{session[:auth_hash][:refresh_token]}' "
+    puts "authenticate session[:client].oauth_token , '#{ session[:client].oauth_token }' "
+
+    refreshToken
 
     if signed_in?
       puts "time-now = '#{Time.now}'"
@@ -54,7 +64,7 @@ module SessionsHelper
       :display => 'touch',
       :immediate => 'false',
       :scope => 'full',
-      :customurl => ENV['SF_CUSTOM_DOMAIN']
+      :customurl => ENV['SF_CUSTOM_DOMAIN'] #'https://medctr--npidev.cs11.my.salesforce.com/'
     }    
 
     #look for defined options
@@ -81,7 +91,30 @@ module SessionsHelper
     store_location
     redirect_to signin_path, :notice => "Please sign in to access this page."
   end
-                      
+
+  def refreshToken
+    puts '>>> AUTH TOKEN EXPIRED ... USING REFRESH TOKEN >>> '
+    payload = 'grant_type=refresh_token' + '&client_id=' + ENV['SALESFORCE_SANDBOX_KEY']+ '&client_secret=' + ENV['SALESFORCE_SANDBOX_SECRET'] + '&refresh_token=' + session[:auth_hash][:refresh_token]
+    result = T.post('https://cs11.salesforce.com/services/oauth2/token',:body => payload)
+    puts "---------- result = '#{result}' "
+    puts ">>>>>> session[:client].oauth_token = '#{session[:client].oauth_token}' "
+    
+    #client = Databasedotcom::Client.new :host => 'https://cs11.salesforce.com'
+    #client.version = "23.0"
+    
+    #client.client_id = ENV['SALESFORCE_SANDBOX_KEY']
+    #client.client_secret = ENV['SALESFORCE_SANDBOX_SECRET']
+    instUrl = session[:auth_hash][:instance_url]
+    puts ">>>>>> result['access_token'] = '#{result['access_token']}' "
+    #session[:auth_hash][:refresh_token] = result['access_token']
+    session[:client].oauth_token = result['access_token']
+    puts ">>>>>> session[:client].oauth_token = '#{session[:client].oauth_token}' "
+    session[:client].authenticate :token => result['access_token'], :instance_url => instUrl, :refresh_token => session[:auth_hash][:refresh_token]
+   
+    
+    #serviceauth.save
+  end
+                   
   private
   
       def store_location

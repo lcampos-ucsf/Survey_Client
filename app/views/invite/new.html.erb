@@ -1,0 +1,9 @@
+<h1>Create</h1>
+
+<%= form_for(@invite, :url => {:controller => "invite",:action => "create"}) do |f| %>
+  
+    <%= render 'fields', :f => f %>
+    <div class="actions">
+        <%= f.submit "New" %>
+    </div>
+<% end %>
