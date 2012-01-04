@@ -19,7 +19,7 @@ class InviteController < ApplicationController
 
   def create
     puts "--------------------------- invite create params = '#{params}' , params[:invitation__c] = '#{params[:invitation__c]}', surveyees = '#{params[:invitation__c][:Surveyee__c]}' "
-    if params[:invitation__c][:Surveyee__c].size() > 0
+    if params[:invitation__c][:Surveyee__c]
       
       params[:invitation__c][:Surveyee__c].each do |s|
 
@@ -36,10 +36,21 @@ class InviteController < ApplicationController
             'Completed__c' => false })
 
       end
-      render :action => "index"
+
+    else
+      session[:client].create('Invitation__c',{
+            'Survey__c' => params[:invitation__c][:Survey__c], 
+            'User__c' => params[:invitation__c][:User__c],
+            'Status__c' => params[:invitation__c][:Status__c],
+            'Start_Date__c' => Time.parse(params[:invitation__c][:Start_Date__c]).getutc , 
+            'End_Date__c' => Time.parse(params[:invitation__c][:End_Date__c]).getutc, 
+            'OwnerId' => ENV['sf_user'], 
+            'Is_Preview__c' => false, 
+            'Invite_Sent__c' => false, 
+            'Completed__c' => false })
 
   	end
-  	
+  	render :action => "index"
   end
 
 end
