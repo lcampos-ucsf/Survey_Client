@@ -13,6 +13,7 @@ class InviteController < ApplicationController
     @surveyees = session[:client].query("select Id, Name from Surveyee__c") #surveyee.all 
     @surveys = session[:client].query("select Id, Name from Survey__c") #survey.all
     @users = session[:client].query("select Id, Name from User") #user.all
+    puts "------- Users = '#{@users}' "
   	@invite = 'invitation__c'
   end
 
