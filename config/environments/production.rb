@@ -3,7 +3,7 @@ SampleApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
   
   ENV['full_host'] = "https://npi-qa.heroku.com"
-
+=begin
   #NPI-DEV
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -15,10 +15,10 @@ SampleApp::Application.configure do
   ENV['DATABASE_DOT_COM_SECRET'] = ""
   ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwGKWN18VcBTA0zJQA8mXhFhZzBuJFdcK4FqhW0n1V8b71_YyPlGABPVBjmLDnh6xO8ungwM"
   ENV['SALESFORCE_CUSTOM_SECRET'] = "8360737005257889046"
+=end
   
-  ENV['DEFAULT_PROVIDER'] = "customurl"
 
-=begin
+
   #NPI-QA
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -30,10 +30,10 @@ SampleApp::Application.configure do
   ENV['DATABASE_DOT_COM_SECRET'] = ""
   ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwHxOJHdUt59hvmAWrHeW0.k8nxwdOOzxEtMPKLExVkHnQBiSgIfW2t8u1R26mIMONEPPHSN"
   ENV['SALESFORCE_CUSTOM_SECRET'] = "479086689104364566"
-=end  
-  ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npidev.cs11.my.salesforce.com"
   
+  ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npiqa.cs11.my.salesforce.com"
   
+  ENV['DEFAULT_PROVIDER'] = "customurl"
   ENV['sf_user'] = "005A0000001e1G6"
   ENV['sfdc_api_version'] = '23.0'
   ENV['app_timeout'] = '300' #seconds
