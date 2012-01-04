@@ -101,9 +101,9 @@ GEM
     multipart-post (1.1.4)
     nokogiri (1.5.0)
     nori (1.0.2)
-    oauth2 (0.5.1)
-      faraday (~> 0.7.4)
-      multi_json (~> 1.0.3)
+    oauth2 (0.5.2)
+      faraday (~> 0.7)
+      multi_json (~> 1.0)
     omniauth (1.0.1)
       hashie (~> 1.2)
       rack
@@ -111,6 +111,8 @@ GEM
       oauth2 (~> 0.5.0)
       omniauth (~> 1.0)
     onfire (0.2.0)
+    pg (0.12.0)
+      rake-compiler (~> 0.7)
     polyglot (0.3.3)
     rack (1.3.5)
     rack-cache (1.0.3)
@@ -137,6 +139,8 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.6)
     rake (0.9.2.2)
+    rake-compiler (0.7.9)
+      rake
     rdoc (3.12)
       json (~> 1.4)
     rspec (2.7.0)
@@ -164,7 +168,7 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.5)
+    sqlite3 (1.3.4)
     thor (0.14.6)
     tilt (1.3.3)
     treetop (1.4.10)
@@ -195,10 +199,11 @@ DEPENDENCIES
   multi_json (= 1.0.3)
   omniauth
   omniauth-salesforce!
+  pg (= 0.12.0)
   rack (= 1.3.5)
   rails (= 3.1.0)
   rspec
   rspec-rails
   savon
-  sqlite3
+  sqlite3 (= 1.3.4)
   webrat (= 0.7.1)
