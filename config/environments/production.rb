@@ -30,7 +30,7 @@ SampleApp::Application.configure do
   ENV['SALESFORCE_CUSTOM_SECRET'] = "479086689104364566"
 =end
   
-  ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npiqa.cs11.my.salesforce.com"
+  ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npidev.cs11.my.salesforce.com"
   
   ENV['DEFAULT_PROVIDER'] = "customurl"
   ENV['sf_user'] = "005A0000001e1G6"
