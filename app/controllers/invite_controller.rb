@@ -10,9 +10,9 @@ class InviteController < ApplicationController
   end
 
   def new
-    @surveyees = session[:client].query("select Id, Name from Surveyee__c") #surveyee.all 
-    @surveys = session[:client].query("select Id, Name from Survey__c") #survey.all
-    @users = session[:client].query("select Id, Name from User") #user.all
+    @surveyees = session[:client].query("select Id, Name from Surveyee__c order by Name asc") #surveyee.all 
+    @surveys = session[:client].query("select Id, Name from Survey__c order by Name asc") #survey.all
+    @users = session[:client].query("select Id, Name from User order by Name asc") #user.all
     puts "------- Users = '#{@users}' "
   	@invite = 'invitation__c'
   end

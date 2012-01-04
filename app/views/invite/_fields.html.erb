@@ -11,7 +11,7 @@
 
 <div class="input">
 	<%= f.label 'Status' %>
-	<%= f.select :Status__c, [['Completed','Completed'],['In Progress','In Progress'],['New','New'], ['Cancelled','Cancelled']], {:include_blank => 'None'} %>
+	<%= f.select :Status__c, [['New','New'], ['In Progress','In Progress'] ], {:include_blank => 'None'} %>
 </div>
 <div class="input">
   <%= f.label 'Start Date' %>
