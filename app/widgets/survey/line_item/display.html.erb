@@ -64,6 +64,11 @@
 			<% end %>
 			</ul>
 				<input type="hidden" value="<%= @respLabels %>" name="label_<%= @line_item.Id%>" id="label_<%= @line_item.Id%>" />
+
+		<!-- Date or DateTime Question -->
+		<% elsif @line_item.Question_Type__c == 'Date' || @line_item.Question_Type__c == 'Datetime'%>
+			<input type="text" name="q#_<%= @line_item.Id%>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" class="edit_form_field datepicker" value="<%= @respVal %>" />
+
 		<% end %>
 
 	<% end %>

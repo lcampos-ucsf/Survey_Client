@@ -7,11 +7,12 @@ class Survey::LineWidget < Apotomo::Widget
 		@surveyid = options[:surveyid]
 		@inviteid = options[:inviteid]
 		#materialization
-		response = session[:client].materialize("Response__c")
-		answerlabel = session[:client].materialize("Answer_Label__c")
-		lineitem = session[:client].materialize("Line_Item__c")
+		#response = session[:client].materialize("Response__c")
+		#answerlabel = session[:client].materialize("Answer_Label__c")
+		#lineitem = session[:client].materialize("Line_Item__c")
 
-		@line_items = lineitem.query( "Line__c = '#{@line.Id}' order by Sort_Order__c asc")
+		#@line_items = lineitem.query( "Line__c = '#{@line.Id}' order by Sort_Order__c asc")
+		@line_items = session[:client].query( "select Id, Name, Answer_Sequence__c, Content_Description__c, Display_Format__c, Help_Text__c, Line__c, Line_Item_Type__c, Question_Description__c, Question_Type__c, Resource__c, Resource_Name__c, Sort_Order__c from Line_Item__c where Line__c = '#{@line.Id}' order by Sort_Order__c asc")
 
 		@li_list = ''
 		@li_as_list = ''
@@ -38,13 +39,16 @@ class Survey::LineWidget < Apotomo::Widget
 		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ invitation id = '#{@inviteid}' "
 		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ line item list = '#{@li_list}' "
 		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ "
-		@response = response.query("Survey__c = '#{@surveyid}' and Invitation__c = '#{@inviteid}' and Line_Item__c in #{@li_list} order by Line_Item_Sort_Order__c asc ")
+		#@response = response.query("Survey__c = '#{@surveyid}' and Invitation__c = '#{@inviteid}' and Line_Item__c in #{@li_list} order by Line_Item_Sort_Order__c asc ")
+		@response = session[:client].query("select Id, Name, Date_Response__c, DateTime_Response__c, Integer_Response__c, Invitation__c, Label_Response__c, Line_Item__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Response_Type__c, Survey__c, Surveyee__c, Text_Long_Response__c, Text_Response__c from Response__c where Survey__c = '#{@surveyid}' and Invitation__c = '#{@inviteid}' and Line_Item__c in #{@li_list} order by Line_Item_Sort_Order__c asc ")
+		
 		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ responses = '#{@response}' "
 		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ "
 		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ "
 		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ "
 
-		@answerlabels = answerlabel.query("Answer_Sequence__c in #{@li_as_list} order by Sort_Order__c asc")
+		#@answerlabels = answerlabel.query("Answer_Sequence__c in #{@li_as_list} order by Sort_Order__c asc")
+		@answerlabels = session[:client].query("select Id, Name, Answer_Sequence__c, Answer_Text__c, Resource__c, Resource_Name__c, Sort_Order__c from Answer_Label__c where Answer_Sequence__c in #{@li_as_list} order by Sort_Order__c asc")
 
 		@h_response = {}
 		if !@response.empty?

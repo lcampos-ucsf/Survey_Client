@@ -119,4 +119,16 @@ ul.a_list{
   background: url("/images/bg-nav.gif") repeat scroll 0 0 transparent;
 }
 
+.customform {
+	margin-left: 150px;
+}
 
+#idletimeout{
+      padding:10px;
+      position:relative;
+      top:0px;
+      left:0;
+      right:0;
+      z-index:100000;
+      display:none;
+    }

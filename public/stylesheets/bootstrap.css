@@ -620,9 +620,11 @@ label {
   width: 130px;
   text-align: right;
   color: #404040;
+  margin-right: 2%;
 }
 form .input {
   margin-left: 150px;
+  margin-bottom: 3%;
 }
 input[type=checkbox], input[type=radio] {
   cursor: pointer;

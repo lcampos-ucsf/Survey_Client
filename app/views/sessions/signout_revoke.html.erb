@@ -1,0 +1,21 @@
+<center>
+	<h1> You Are Now Logged Out.</h1>
+
+
+	<div>
+	<p> You are being automatically forwarded. If you are not automatically forwarded, please click "Continue". Thank you! </p>
+	<%= button_to "Continue", {:controller => :pages, :action => "home", :sm => params[:sm]}, :class => 'btn', :id => 'signoutcontinue' %>
+
+	</div>
+
+</center>
+
+<% if @sfloguturl != nil %>
+	<iframe id="sfiframe" src="<%= @sfloguturl %>" style="display:none;"></iframe>
+<% end %>
+
+<script type="text/javascript">
+    document.getElementById('sfiframe').onload= function() {
+    	document.getElementById('signoutcontinue').click();
+    };
+</script>

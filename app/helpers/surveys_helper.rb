@@ -64,11 +64,7 @@ module SurveysHelper
 		@current_page = params[:page] ? params[:page] : 1
 
 		puts "************************************ update_multiple helper method on survey helper page no. =  '#{params[:page]}' , id = '#{@invite_id }', survey id = '#{@survey_id}', all params = '#{params.inspect}' "
-		
-		#materialization
-		response = session[:client].materialize("Response__c")
-		invite = session[:client].materialize("Invitation__c") 
-
+	
 		params.each do |key, value|
 			@var = key.index('q#') 	
 			if key.index('q#') != nil
@@ -96,13 +92,108 @@ module SurveysHelper
 
 		@hash_response.each_pair do |k,v|
 			v.each do |obj|
+				
 				if obj.type == 'text'
-					a << response.new(:Id => obj.rid, :Survey__c => obj.sid, :Invitation__c => obj.inviteid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value )
+					if obj.rid != nil
+						session[:client].upsert('Response__c','Id', obj.rid, {
+							'Survey__c' => obj.sid, 
+							'Invitation__c' => obj.inviteid, 
+							'Line_Item__c' => obj.qid, 
+							'Original_Question_Text__c' => obj.question, 
+							'Text_Long_Response__c' => obj.value })
+					else
+						session[:client].create('Response__c',{
+							'Survey__c' => obj.sid, 
+							'Invitation__c' => obj.inviteid, 
+							'Line_Item__c' => obj.qid, 
+							'OwnerId' => ENV['sf_user'], 
+							'Original_Question_Text__c' => obj.question, 
+							'Text_Long_Response__c' => obj.value })
+					end
+				
 				elsif obj.type == 'radio' || obj.type == 'onedd'
-					a << response.new(:Id => obj.rid, :Survey__c => obj.sid, :Invitation__c => obj.inviteid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value, :Label_Long_Response__c => obj.label)
+					if obj.rid != nil
+						session[:client].upsert('Response__c','Id', obj.rid, {
+							'Survey__c' => obj.sid, 
+							'Invitation__c' => obj.inviteid, 
+							'Line_Item__c' => obj.qid, 
+							'Original_Question_Text__c' => obj.question, 
+							'Text_Long_Response__c' => obj.value, 
+							'Label_Long_Response__c' => obj.label })
+					else
+						session[:client].create('Response__c',{
+							'Survey__c' => obj.sid, 
+							'Invitation__c' => obj.inviteid, 
+							'Line_Item__c' => obj.qid, 
+							'OwnerId' => ENV['sf_user'], 
+							'Original_Question_Text__c' => obj.question, 
+							'Text_Long_Response__c' => obj.value, 
+							'Label_Long_Response__c' => obj.label })
+					end
 				
 				elsif obj.type == 'multi'
-					a << response.new(:Id => obj.rid, :Survey__c => obj.sid, :Invitation__c => obj.inviteid, :Line_Item__c => obj.qid, :OwnerId => ENV['sf_user'], :Original_Question_Text__c => obj.question, :Text_Long_Response__c => obj.value, :Label_Long_Response__c => obj.label)
+					if obj.rid != nil
+						session[:client].upsert('Response__c','Id', obj.rid, { 
+							'Survey__c' => obj.sid, 
+							'Invitation__c' => obj.inviteid, 
+							'Line_Item__c' => obj.qid,  
+							'Original_Question_Text__c' => obj.question, 
+							'Text_Long_Response__c' => obj.value, 
+							'Label_Long_Response__c' => obj.label })
+					else
+						session[:client].create('Response__c',{ 
+							'Survey__c' => obj.sid, 
+							'Invitation__c' => obj.inviteid, 
+							'Line_Item__c' => obj.qid, 
+							'OwnerId' => ENV['sf_user'], 
+							'Original_Question_Text__c' => obj.question, 
+							'Text_Long_Response__c' => obj.value, 
+							'Label_Long_Response__c' => obj.label })
+					end
+				
+				elsif obj.type == 'date'
+					if obj.rid != nil
+						session[:client].upsert('Response__c','Id', obj.rid, {
+							'Survey__c' => obj.sid, 
+							'Invitation__c' => obj.inviteid, 
+							'Line_Item__c' => obj.qid, 
+							'Original_Question_Text__c' => obj.question, 
+							'Text_Long_Response__c' => obj.value, 
+							'Label_Long_Response__c' => obj.label,
+							'Date_Response__c' => Time.parse(obj.value).getutc })
+					else
+						session[:client].create('Response__c',{
+							'Survey__c' => obj.sid, 
+							'Invitation__c' => obj.inviteid, 
+							'Line_Item__c' => obj.qid, 
+							'OwnerId' => ENV['sf_user'], 
+							'Original_Question_Text__c' => obj.question, 
+							'Text_Long_Response__c' => obj.value, 
+							'Label_Long_Response__c' => obj.label,
+							'Date_Response__c' => Time.parse(obj.value).getutc })
+					end
+
+				elsif obj.type == 'datetime'
+					if obj.rid != nil
+						session[:client].upsert('Response__c','Id', obj.rid, { 
+							'Survey__c' => obj.sid, 
+							'Invitation__c' => obj.inviteid, 
+							'Line_Item__c' => obj.qid, 
+							'Original_Question_Text__c' => obj.question, 
+							'Text_Long_Response__c' => obj.value, 
+							'Label_Long_Response__c' => obj.label,
+							'DateTime_Response__c' => Time.parse(obj.value) })
+					else
+						session[:client].create('Response__c', { 
+							'Survey__c' => obj.sid, 
+							'Invitation__c' => obj.inviteid, 
+							'Line_Item__c' => obj.qid, 
+							'OwnerId' => ENV['sf_user'], 
+							'Original_Question_Text__c' => obj.question, 
+							'Text_Long_Response__c' => obj.value, 
+							'Label_Long_Response__c' => obj.label,
+							'DateTime_Response__c' => Time.parse(obj.value) })
+					end
 			
 				end
 			end
@@ -110,26 +201,26 @@ module SurveysHelper
 		end
 
 		#this updates invitation
-		invite_update = invite.find(@invite_id)
-		invite_update.Progress_Save__c = @current_page
-		a << invite_update
-
+		#invite_update = session[:client].find('Invitation__c', @invite_id)
+		session[:client].upsert('Invitation__c','Id', @invite_id, { 'Progress_Save__c' => @current_page })
+							
+		puts "----------- a = '#{a}'"
 		#this line saves every record submitted
-		if a.each(&:save)
-			puts "********************************* update_multiple helper method, records got saved"
-		end
+		#if a.each(&:save)
+		#	puts "********************************* update_multiple helper method, records got saved"
+		#end
 		@hash_response.clear
 
 	end
 
 	def submitsurvey
 		puts "********************************* submitsurvey helper method, survey got saved , invitation id = '#{params[:id]}' "
-
-		#materialization
-		invite = session[:client].materialize("Invitation__c") 
-		a = invite.find(params[:id])
-		a.Status__c = 'Completed'
-		a.save
+ 
+		#a = session[:client].find('Invitation__c', params[:id])
+		#a.Status__c = 'Completed'
+		#a.save
+		session[:client].upsert('Invitation__c','Id', params[:id], { 'Status__c' => 'Completed'})
+		
 
 		redirect_to "/invite/index", :notice => "Your survey was submitted successfully."
 	end
@@ -139,24 +230,13 @@ module SurveysHelper
 	end
 
 	def current_survey
-	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
-	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
-	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
-	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey = "
-	    #materialization
-	    invite = session[:client].materialize("Invitation__c") 
-		
-	    @@current_survey ||=  invite.query("Id = '#{params[:id]}' and User__c = '#{ENV['sf_user']}' ")
+	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
 
-	    rescue => msg  
-   		puts "Something went wrong ("+msg.to_s+") "
+	    @@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Surveyee__c from Invitation__c where Id = '#{params[:id]}' and User__c = '#{ENV['sf_user']}' ")
+		#rescue => msg  
+   		#puts "Something went wrong ("+msg.to_s+") "
 
 	    return @@current_survey
-
-	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
-	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
-	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
-	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey"
 
 	  end
 

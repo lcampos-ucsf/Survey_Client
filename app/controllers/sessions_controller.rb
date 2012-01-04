@@ -1,4 +1,7 @@
+require 'httparty'
+
 class SessionsController < ApplicationController
+  include HTTParty
   
   def new
     @title = "Sign in"
@@ -6,6 +9,30 @@ class SessionsController < ApplicationController
 
   def login
     redirect_to root_path
+  end
+
+  def signout_revoke
+    @title = 'Sign Out'
+
+        @sfloguturl = nil
+
+        if params[:orgurl] != nil
+
+            #Set ifram url for salesforce logout
+            @sfloguturl = "#{params[:orgurl]}/secur/logout.jsp"
+
+            #Revoke refresh token
+            if signed_in?
+                result = HTTParty.post("#{params[:orgurl]}/services/oauth2/revoke",:body => "token= #{session[:auth_hash][:refresh_token]}")
+                puts "Revoke post response = "+result.inspect
+            end
+        end
+
+        if params[:sm] == '1'
+            store_location
+        end
+    session[:client] = nil
+    reset_session
   end
 
   def deny_access
@@ -94,8 +121,6 @@ class SessionsController < ApplicationController
   
   def destroy
     sign_out
-    flash[:success] = "You've successfully signed out!"
-    redirect_to root_path
   end
 
 end

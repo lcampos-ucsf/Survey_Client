@@ -10,32 +10,35 @@ class InviteController < ApplicationController
   end
 
   def new
-  	#materialization
-	invite = session[:client].materialize("Invitation__c") 
-
-  	@invite = invite.new
+    @surveyees = session[:client].query("select Id, Name from Surveyee__c") #surveyee.all 
+    @surveys = session[:client].query("select Id, Name from Survey__c") #survey.all
+    @users = session[:client].query("select Id, Name from User") #user.all
+  	@invite = 'invitation__c'
   end
 
   def create
-  	#materialization
-	invite = session[:client].materialize("Invitation__c") 
-	arec = invite.new(params[:invitation__c])
-	arec.Completed__c = false
-	arec.Invite_Sent__c = false
-	arec.Is_Preview__c = false
-	#arec = invite.new(:OwnerId => '005A0000001e1G6', :Completed__c => false, :Invite_Sent__c => false, :Is_Preview__c => false)
-			
-  	puts "--------------------------- invite create params = '#{params}' , params[:invitation__c] = '#{params[:invitation__c]}' "
-  	respond_to do |format|
-      if arec.save
-        format.html { render :action => "index" }
-        format.xml  { head :ok }
-      else
-        format.html  { render :action => "new" }
-        format.xml  { render :xml => @partner.errors, :status => :unprocessable_entity }
-      end
-    end
+    puts "--------------------------- invite create params = '#{params}' , params[:invitation__c] = '#{params[:invitation__c]}', surveyees = '#{params[:invitation__c][:Surveyee__c]}' "
+    if params[:invitation__c][:Surveyee__c].size() > 0
+      
+      params[:invitation__c][:Surveyee__c].each do |s|
 
+        session[:client].create('Invitation__c',{
+            'Survey__c' => params[:invitation__c][:Survey__c], 
+            'User__c' => params[:invitation__c][:User__c],
+            'Status__c' => params[:invitation__c][:Status__c],
+            'Surveyee__c' => s, 
+            'Start_Date__c' => Time.parse(params[:invitation__c][:Start_Date__c]).getutc , 
+            'End_Date__c' => Time.parse(params[:invitation__c][:End_Date__c]).getutc, 
+            'OwnerId' => ENV['sf_user'], 
+            'Is_Preview__c' => false, 
+            'Invite_Sent__c' => false, 
+            'Completed__c' => false })
+
+      end
+      render :action => "index"
+
+  	end
+  	
   end
 
 end

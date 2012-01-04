@@ -8,6 +8,7 @@ gem 'httparty'
 gem 'savon'
 gem 'cells', "~>3.6.7"
 gem 'rack', "1.3.5"
+gem 'multi_json', '1.0.3'
 
 #api connection with salesforce
 gem 'databasedotcom', :git => 'git://github.com/lcampos/databasedotcom.git'
@@ -25,7 +26,7 @@ gem 'kaminari'
 
 #heroku dependency
 group :production do
-	gem 'pg'
+	#gem 'pg'
 end
 
 group :development do

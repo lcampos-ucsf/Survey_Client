@@ -10,17 +10,18 @@ responds_to_event :submit, :with => :update_multiple
 		@survey = options[:survey]
 		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
 		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
-		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
-		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution, params[:page] = '#{params[:page]}', params[:dir] = '#{params[:dir]}' "
+		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution, @survey = '#{@survey}' "
+		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution, params[:page] = '#{params[:page]}', params[:dir] = '#{params[:dir]}', @survey[0].Survey__c = '#{@survey[0].Survey__c}' "
 		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
 		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
 		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
 
 		#materialization
-		line = session[:client].materialize("Line__c") 
+		#line = session[:client].materialize("Line__c") 
 
 		@pageno = params[:page].to_i
-		@lines_query = line.query( "Survey__c = '#{@survey[0].Survey__c}' order by Sort_Order__c asc")
+		#@lines_query = line.query( "Survey__c = '#{@survey[0].Survey__c}' order by Sort_Order__c asc")
+		@lines_query = session[:client].query("select Id, Name, Description__c, Display_Logic__c, Sort_Order__c, Survey__c from Line__c where Survey__c = '#{@survey[0].Survey__c}' order by Sort_Order__c asc")
 		
 		@liq_array = []
 		 
@@ -33,6 +34,7 @@ responds_to_event :submit, :with => :update_multiple
 		while @showsections.empty? && @it_stop < 100
 			@lines = Kaminari.paginate_array(@liq_array).page(@pageno).per(1) # Paginates the array
 
+			puts "------------ @lines = '#{@lines}' "
 			@currentpg = @lines.current_page.to_f - 1
 			@totalpg = @lines.num_pages.to_f
 			@it_stop = @it_stop + 1
@@ -88,7 +90,7 @@ responds_to_event :submit, :with => :update_multiple
 		#display logic should go here
 		puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! displaylogic, conditional = '#{conditional}'  "
 		#materialization
-		response = session[:client].materialize("Response__c")
+		#response = session[:client].materialize("Response__c")
 
 		#conditional.each do |l|
 			if conditional.Display_Logic__c != nil
@@ -114,7 +116,8 @@ responds_to_event :submit, :with => :update_multiple
 
 				@qstring = "("+@qstring+")"
 
-				@rdata = response.query("Line_Item_Resource__c in #{@qstring} and Invitation__c = '#{inviteid}' ")
+				#@rdata = response.query("Line_Item_Resource__c in #{@qstring} and Invitation__c = '#{inviteid}' ")
+				@rdata = session[:client].query("select Id, Name, Invitation__c, Label_Response__c, Line_Item__c, Line_Item_Resource__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Response_Type__c, Survey__c, Text_Long_Response__c, Text_Response__c from Response__c where Line_Item_Resource__c in #{@qstring} and Invitation__c = '#{inviteid}' ")
 
 				@h_rq = {}
 				if !@rdata.empty?

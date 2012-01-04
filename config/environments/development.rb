@@ -15,7 +15,8 @@ SampleApp::Application.configure do
   ENV['DATABASE_DOT_COM_SECRET'] = ""
   ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwGKWN18VcBTA0zJQA8mXhFhfxzf99_c9nB3f5ITBipAIYuBUb9Xox_UkcAsIVJuWTcjVOVQ"
   ENV['SALESFORCE_CUSTOM_SECRET'] = "7879557555915093217"
-  ENV['SF_CUSTOM_DOMAIN'] = "https://medctr--npidev.cs11.my.salesforce.com/"
+
+  ENV['DEFAULT_PROVIDER'] = "customurl"
 
 =begin
   #NPI-QA
@@ -29,14 +30,13 @@ SampleApp::Application.configure do
   ENV['DATABASE_DOT_COM_SECRET'] = ""
   ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwHxOJHdUt59hnj4Vwa8tt1yBg5fW3OtJIEfoFnsGW_rT5huS5Zg02WpKjFPQ9Tmss.HKgAk"
   ENV['SALESFORCE_CUSTOM_SECRET'] = "2691895098048201861"
-  ENV['SF_CUSTOM_DOMAIN'] = "https://medctr--npiqa.cs11.my.salesforce.com/"
 =end
-  ENV['DEFAULT_CUSTOM_URL'] = "https://ucsf--myaccessdv.cs9.my.salesforce.com/"
+  ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npidev.cs11.my.salesforce.com"
 
   
   ENV['sf_user'] = "005A0000001e1G6"
   ENV['sfdc_api_version'] = '23.0'
-  ENV['app_timeout'] = '5' #minutes
+  ENV['app_timeout'] = '300' #seconds
 
 
   # In the development environment your application's code is reloaded on

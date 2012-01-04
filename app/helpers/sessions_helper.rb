@@ -8,12 +8,20 @@ end
 require 'omniauth-oauth2'
   
   def signed_in?
-      !session[:auth_hash].nil?
+    !session[:auth_hash].nil?
   end
 
-  def sign_out
-      session[:auth_hash] = nil
-      session[:expires_at] = nil
+  def sign_out(sm = 0)
+      instURL = ''
+      if signed_in?
+        instURL = session[:auth_hash][:instance_url]
+      end
+      
+      redirect_to signoutsf_path(:orgurl => instURL,:sm => sm)
+  end
+
+  def signout_exp
+    sign_out(1)
   end
 
   def redirect_back_or(default)
@@ -22,50 +30,24 @@ require 'omniauth-oauth2'
   end
 
   def authenticate
-    #deny_access unless signed_in?
-    puts "authenticate, '#{signed_in?}' "
-    puts "authenticate, '#{signed_in?}' "
-    puts "authenticate, '#{signed_in?}' "
-    puts "authenticate session[:auth_hash][:refresh_token] , '#{session[:auth_hash][:refresh_token]}' "
-    puts "authenticate session[:client].oauth_token , '#{ session[:client].oauth_token }' "
-
-    refreshToken
-
-    if signed_in?
-      puts "time-now = '#{Time.now}'"
-      timevar = ENV['app_timeout'].to_i
-      expire_time = timevar.minutes.from_now
-      puts "expire_time = '#{expire_time}'"
-      if session[:expires_at].blank?
-        session[:expires_at] = expire_time
-        puts "if session[:expires_at].blank? = '#{session[:expires_at]}' "
-      else
-        @time_left = (session[:expires_at].utc - Time.now.utc).to_i
-        puts "else, timeleft = '#{@time_left}' " 
-        unless @time_left > 0
-          reset_session
-          store_location
-          redirect_to root_path, :notice => "Your session has expired. Please login."
-        end
-      end
-    else
-      puts 'else, deny_access'
-      deny_access
-    end
+    deny_access unless signed_in?
   end
 
   def authenticateSF
     puts "authenticateSF url params = '#{request.fullpath}' "
     #set default values
     auth_params = nil
-    provider = 'salesforcesandbox'
+    provider = ENV['DEFAULT_PROVIDER']
 
     auth_params = {
       :display => 'touch',
       :immediate => 'false',
-      :scope => 'full',
-      :customurl => ENV['SF_CUSTOM_DOMAIN'] #'https://medctr--npidev.cs11.my.salesforce.com/'
+      :scope => 'full'
     }    
+
+    if provider == 'customurl'
+      auth_params[:customurl] = ENV['DEFAULT_CUSTOM_URL']
+    end
 
     #look for defined options
     if !params[:options].blank?
@@ -73,15 +55,16 @@ require 'omniauth-oauth2'
       auth_params = {
         :display => params[:options]['display'],
         :immediate => params[:options]['immediate'],
-        :scope => params[:options].to_a.flatten.keep_if{|v| v.start_with? "scope|"}.collect!{|v| v.sub(/scope\|/,"")}.join(" "),
-        :customurl => params[:options]['provider']=='customurl' ? params[:options]['curl'] : nil
+        :scope => params[:options].to_a.flatten.keep_if{|v| v.start_with? "scope|"}.collect!{|v| v.sub(/scope\|/,"")}.join(" ") 
       }
+
+      if params[:options]['provider'] == 'customurl'
+        auth_params[:customurl] = params[:options]['curl']
+      end
+
     end
 
-
-
-    auth_params = URI.escape(auth_params.collect{|k,v| "#{k}=#{v}"}.join('&'))
-    
+    auth_params = URI.escape(auth_params.collect{|k,v| "#{k}=#{v}"}.join('&'))    
     puts "authenticateSF , auth_params  = '#{auth_params}' "
 
     redirect_to "/auth/#{provider}?#{auth_params}"
@@ -95,24 +78,19 @@ require 'omniauth-oauth2'
   def refreshToken
     puts '>>> AUTH TOKEN EXPIRED ... USING REFRESH TOKEN >>> '
     payload = 'grant_type=refresh_token' + '&client_id=' + ENV['SALESFORCE_SANDBOX_KEY']+ '&client_secret=' + ENV['SALESFORCE_SANDBOX_SECRET'] + '&refresh_token=' + session[:auth_hash][:refresh_token]
-    result = T.post('https://cs11.salesforce.com/services/oauth2/token',:body => payload)
+    pl2 = 'grant_type=refresh_token&refresh_token=5Aep861ZcIr522KYf5zSCffhRGjmdmjiNSask1IfvF9Fdv9ZcutMl0hU70TPgTObXuUNBq4QK_0JQ%3D%3D&client_id=3MVG9GiqKapCZBwGKWN18VcBTA1KmaZj2YV7ufz52FM8PLm6XWITmy2BseIvf3ROwvzZzKVVYFzAy.glsMTAj&client_secret=2582046431606031750'
+    result = T.post('https://cs11.salesforce.com/services/oauth2/token',:body => pl2)
+    puts "---------- payload = '#{payload}' "
+    puts "---------- pl2 = '#{pl2}' "
+    puts "---------- pl2 decode = '#{URI.unescape(pl2)}' "
     puts "---------- result = '#{result}' "
     puts ">>>>>> session[:client].oauth_token = '#{session[:client].oauth_token}' "
-    
-    #client = Databasedotcom::Client.new :host => 'https://cs11.salesforce.com'
-    #client.version = "23.0"
-    
-    #client.client_id = ENV['SALESFORCE_SANDBOX_KEY']
-    #client.client_secret = ENV['SALESFORCE_SANDBOX_SECRET']
     instUrl = session[:auth_hash][:instance_url]
     puts ">>>>>> result['access_token'] = '#{result['access_token']}' "
-    #session[:auth_hash][:refresh_token] = result['access_token']
     session[:client].oauth_token = result['access_token']
     puts ">>>>>> session[:client].oauth_token = '#{session[:client].oauth_token}' "
     session[:client].authenticate :token => result['access_token'], :instance_url => instUrl, :refresh_token => session[:auth_hash][:refresh_token]
-   
-    
-    #serviceauth.save
+
   end
                    
   private

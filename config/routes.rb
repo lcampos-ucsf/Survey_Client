@@ -28,11 +28,13 @@ SampleApp::Application.routes.draw do
 
   resources :sessions, :only => [:new,:create,:destroy]
 
-  match '/signup',  :to => 'pages#home'
+  match '/home',  :to => 'pages#home'
   match '/invite', :to => 'invite#index'
 
   match '/signin',  :to => 'sessions#authenticateSF'
   match '/signout',  :to => 'sessions#destroy'
+  match '/signoutsf',  :to => 'sessions#signout_revoke'
+  match '/signoutexp',  :to => 'sessions#signout_exp'
 
   
   match '/auth/:provider/callback', :to => 'sessions#create'

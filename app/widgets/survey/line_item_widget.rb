@@ -52,6 +52,14 @@ class Survey::LineItemWidget < Apotomo::Widget
                 @array.each { |k,v| @resphash[k]=v }
             end
            # replace :state => :selectmultiple
+           
+         ## Date or Datetime Question
+        elsif @line_item.Question_Type__c == 'Date' || @line_item.Question_Type__c == 'Datetime'
+            if @responserecord != nil
+                @respVal = @responserecord[0].Text_Long_Response__c
+                @respId = @responserecord[0].Id
+            end
+
         end
 
     elsif @line_item.Line_Item_Type__c == 'Content'
