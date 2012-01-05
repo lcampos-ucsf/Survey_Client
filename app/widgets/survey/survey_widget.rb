@@ -10,17 +10,8 @@ responds_to_event :submit, :with => :update_multiple
 		@survey = options[:survey]
 		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
 		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
-		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution, @survey = '#{@survey}' "
-		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution, params[:page] = '#{params[:page]}', params[:dir] = '#{params[:dir]}', @survey[0].Survey__c = '#{@survey[0].Survey__c}' "
-		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
-		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
-		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
-
-		#materialization
-		#line = session[:client].materialize("Line__c") 
-
+		
 		@pageno = params[:page].to_i
-		#@lines_query = line.query( "Survey__c = '#{@survey[0].Survey__c}' order by Sort_Order__c asc")
 		@lines_query = session[:client].query("select Id, Name, Description__c, Display_Logic__c, Sort_Order__c, Survey__c from Line__c where Survey__c = '#{@survey[0].Survey__c}' order by Sort_Order__c asc")
 		
 		@liq_array = []
@@ -72,80 +63,62 @@ responds_to_event :submit, :with => :update_multiple
 			end
 		end #end while
 
-		#catch survey sections with errors
-		#if @showsections.empty?
-			#surveyerrors
-			#redirect_to root_path, :notice => "Survey '#{@survey[0].Survey_Name__c}' has errors, please notify it to your manager."
-		#end
-
-		@showsections.each_with_index do |t, i|
-			child_id = "line_'#{i}'"
-	       	next if self[child_id]  # we already added it.
-	        self << widget("survey/line", child_id, :line_data => t, :surveyid => @survey[0].Survey__c, :inviteid => params[:id])
-		end 
-		
+		#catch survey sections being empty
+		if @showsections.to_s == '[]'
+			puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ @showsections = '#{@showsections}' "
+			surveyerrors
+		else
+			@showsections.each_with_index do |t, i|
+				child_id = "line_'#{i}'"
+		       	next if self[child_id]  # we already added it.
+		        self << widget("survey/line", child_id, :line_data => t, :surveyid => @survey[0].Survey__c, :inviteid => params[:id])
+			end 
+		end
 	end
 
 	def displaylogic(conditional, inviteid)
 		#display logic should go here
 		puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! displaylogic, conditional = '#{conditional}'  "
-		#materialization
-		#response = session[:client].materialize("Response__c")
+	
+		if conditional.Display_Logic__c != nil
+			@string = conditional.Display_Logic__c 
+			@expressions = @string.split(/\s/)
 
-		#conditional.each do |l|
-			if conditional.Display_Logic__c != nil
-				puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Display Logic = '#{conditional.Display_Logic__c}' "
-				puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-				puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-				puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-				@string = conditional.Display_Logic__c #"((@q_gender == #male ) or (@q_patient_admit_service == #surgical))" 
-				puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! string = '#{@string}' "
-
-				#@expressions = @string.split(/\(|\)/).reject(&:blank?) #this regex splits contents inside and out of (), reject eliminates blank and nil strings on array
-				@expressions = @string.split(/\s/)
-
-				@qstring = ''
-				@string.split.each do |s|
-					puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! string split s = '#{s}' "
-
-					if s.include? '@'
-						#ternary operator that I should remember to use on survey_helper.rb
-						@qstring == '' ? (@qstring = "\'#{s.gsub(/\(|\)/,"")}\'") : (@qstring += ", \'#{s.gsub(/\(|\)/,"")}\'")
-					end
+			@qstring = ''
+			@string.split.each do |s|
+				if s.include? '@'
+					#ternary operator that I should remember to use on survey_helper.rb
+					@qstring == '' ? (@qstring = "\'#{s.gsub(/\(|\)/,"")}\'") : (@qstring += ", \'#{s.gsub(/\(|\)/,"")}\'")
 				end
-
-				@qstring = "("+@qstring+")"
-
-				#@rdata = response.query("Line_Item_Resource__c in #{@qstring} and Invitation__c = '#{inviteid}' ")
-				@rdata = session[:client].query("select Id, Name, Invitation__c, Label_Response__c, Line_Item__c, Line_Item_Resource__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Response_Type__c, Survey__c, Text_Long_Response__c, Text_Response__c from Response__c where Line_Item_Resource__c in #{@qstring} and Invitation__c = '#{inviteid}' ")
-
-				@h_rq = {}
-				if !@rdata.empty?
-		            @rdata.each { |r| @h_rq[r.Line_Item_Resource__c] ? @h_rq[r.Line_Item_Resource__c] << r : @h_rq[r.Line_Item_Resource__c] = [r] }
-		        end
-
-		        @expressions.each do |e|
-		        	if e.include? '@' 
-		        		question = e.match(/@[a-zA-Z0-9_\-]+/)
-		        		qv = "'" + @h_rq["#{question}"][0].Text_Long_Response__c + "'"
-		        		e["#{question}"] = qv
-
-		        	elsif e.include? '#' 
-		        		answer = e.match(/#[a-zA-Z0-9_\-]+/)
-		        		m_ans = "'" + answer.to_s + "'"
-		        		e["#{answer}"] = m_ans
-		        	end
-		        end
-
-
-				puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for expressions = '#{@expressions}' "
-				@evalstring = @expressions * ""
-				puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' , eval = '#{eval(@evalstring)}' "
-
-				return eval(@evalstring)
-				
 			end
-		#end
+
+			@qstring = "("+@qstring+")"
+			@rdata = session[:client].query("select Id, Name, Invitation__c, Label_Response__c, Line_Item__c, Line_Item_Resource__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Response_Type__c, Survey__c, Text_Long_Response__c, Text_Response__c from Response__c where Line_Item_Resource__c in #{@qstring} and Invitation__c = '#{inviteid}' ")
+
+			@h_rq = {}
+			if !@rdata.empty?
+	            @rdata.each { |r| @h_rq[r.Line_Item_Resource__c] ? @h_rq[r.Line_Item_Resource__c] << r : @h_rq[r.Line_Item_Resource__c] = [r] }
+	        end
+
+	        @expressions.each do |e|
+	        	if e.include? '@' 
+	        		question = e.match(/@[a-zA-Z0-9_\-]+/)
+	        		qv = "'" + @h_rq["#{question}"][0].Text_Long_Response__c + "'"
+	        		e["#{question}"] = qv
+
+	        	elsif e.include? '#' 
+	        		answer = e.match(/#[a-zA-Z0-9_\-]+/)
+	        		m_ans = "'" + answer.to_s + "'"
+	        		e["#{answer}"] = m_ans
+	        	end
+	        end
+
+			@evalstring = @expressions * ""
+			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' , eval = '#{eval(@evalstring)}' "
+
+			return eval(@evalstring)
+			
+		end
 	end
 
 	def display

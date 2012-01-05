@@ -88,8 +88,6 @@ module SurveysHelper
 			end
 		end
 
-		a = []
-
 		@hash_response.each_pair do |k,v|
 			v.each do |obj|
 				
@@ -201,32 +199,22 @@ module SurveysHelper
 		end
 
 		#this updates invitation
-		#invite_update = session[:client].find('Invitation__c', @invite_id)
+		puts "------------------ update_multiple, update invitation status ------------------"
 		session[:client].upsert('Invitation__c','Id', @invite_id, { 'Progress_Save__c' => @current_page })
-							
-		puts "----------- a = '#{a}'"
-		#this line saves every record submitted
-		#if a.each(&:save)
-		#	puts "********************************* update_multiple helper method, records got saved"
-		#end
+
 		@hash_response.clear
 
 	end
 
 	def submitsurvey
 		puts "********************************* submitsurvey helper method, survey got saved , invitation id = '#{params[:id]}' "
- 
-		#a = session[:client].find('Invitation__c', params[:id])
-		#a.Status__c = 'Completed'
-		#a.save
 		session[:client].upsert('Invitation__c','Id', params[:id], { 'Status__c' => 'Completed'})
-		
-
 		redirect_to "/invite/index", :notice => "Your survey was submitted successfully."
 	end
 
 	def surveyerrors
-		redirect_to "/invite/index", :notice => "This survey was poorly created and has errors."
+		puts "********************************* surveyerrors helper method"
+	    raise SurveysController.new('el error')
 	end
 
 	def current_survey

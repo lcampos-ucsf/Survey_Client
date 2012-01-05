@@ -65,7 +65,7 @@
         var refreshIntervalId;
         var timeout = <%= ENV['app_timeout'] %>;
         
-
+        if ( j$('#idletimeout')[0] || j$('#idletimeout a')[0] ) { 
         j$.idleTimeout('#idletimeout', '#idletimeout a', {
           idleAfter: timeout,
           pollingInterval: 250,
@@ -87,6 +87,9 @@
             j$(this).slideUp(); // hide the warning bar
           }
         });
+
+      }
+
       }
       
     </script>

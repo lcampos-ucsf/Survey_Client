@@ -11,16 +11,18 @@ var j$ = jQuery.noConflict();
 
   j$(document).ready(function() {
 
-  	j$('.datepicker').each(function(){
-		j$(this).datepicker({ dateFormat: 'dd/mm/yy' });
-		j$(this).live('click',  function(){
-			var h = j$(this).height();  
-			var st = j$(this).offset();  
-			var t = st.bottom;
-			var l = st.left;
-			j$('.ui-datepicker').css('top',t+'px');
-			j$('.ui-datepicker').css('left',l+'px');
-			j$('.ui-datepicker').css('font-size','11px');
+  	if ( j$('.datepicker')[0] ) { //do something 
+	  	j$('.datepicker').each(function(){
+			j$(this).datepicker({ dateFormat: 'mm/dd/yy' });
+			j$(this).live('click',  function(){
+				var h = j$(this).height();  
+				var st = j$(this).offset();  
+				var t = st.bottom;
+				var l = st.left;
+				j$('.ui-datepicker').css('top',t+'px');
+				j$('.ui-datepicker').css('left',l+'px');
+				j$('.ui-datepicker').css('font-size','11px');
+			});
 		});
-	});
+	}
   });
