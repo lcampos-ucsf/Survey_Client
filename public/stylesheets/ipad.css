@@ -1,0 +1,7 @@
+	
+	input[type=checkbox], input[type=radio] {
+		width:25px;
+  	height:25px;
+  }
+
+  input[type=radio]{ -webkit-border-radius:12px; }
