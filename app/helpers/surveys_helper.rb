@@ -158,7 +158,7 @@ module SurveysHelper
 							'Original_Question_Text__c' => obj.question, 
 							'Text_Long_Response__c' => obj.value, 
 							'Label_Long_Response__c' => obj.label,
-							'Date_Response__c' => Time.parse(obj.value).getutc })
+							'Date_Response__c' => Date.strptime(obj.value, "%m/%d/%Y").to_datetime() })
 					else
 						session[:client].create('Response__c',{
 							'Survey__c' => obj.sid, 
@@ -168,7 +168,7 @@ module SurveysHelper
 							'Original_Question_Text__c' => obj.question, 
 							'Text_Long_Response__c' => obj.value, 
 							'Label_Long_Response__c' => obj.label,
-							'Date_Response__c' => Time.parse(obj.value).getutc })
+							'Date_Response__c' => Date.strptime(obj.value, "%m/%d/%Y").to_datetime() })
 					end
 
 				elsif obj.type == 'datetime'
@@ -180,7 +180,7 @@ module SurveysHelper
 							'Original_Question_Text__c' => obj.question, 
 							'Text_Long_Response__c' => obj.value, 
 							'Label_Long_Response__c' => obj.label,
-							'DateTime_Response__c' => Time.parse(obj.value) })
+							'DateTime_Response__c' => Date.strptime(obj.value, "%m/%d/%Y").to_datetime() })
 					else
 						session[:client].create('Response__c', { 
 							'Survey__c' => obj.sid, 
@@ -190,7 +190,7 @@ module SurveysHelper
 							'Original_Question_Text__c' => obj.question, 
 							'Text_Long_Response__c' => obj.value, 
 							'Label_Long_Response__c' => obj.label,
-							'DateTime_Response__c' => Time.parse(obj.value) })
+							'DateTime_Response__c' => Date.strptime(obj.value, "%m/%d/%Y").to_datetime() })
 					end
 			
 				end

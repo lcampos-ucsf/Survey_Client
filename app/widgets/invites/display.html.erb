@@ -3,7 +3,9 @@
 <table>
 	<thead>
 		<tr>
+			<td></td>
 			<td>Action</td>
+			<td>Id</td>
 			<td>Name</td>
 			<td>Description</td>
 			<td>Start Date</td>
@@ -15,14 +17,16 @@
 	
 		<tbody>
 			<tr>
+				<td> <a href="/invite/<%= invite.Id%>/edit" >Edit</a> </td>
 				<td>
 					<a href="/surveys/<%= invite.Id%>/show?page=1" class="btn primary medium" > Start </a>
 					<% if invite.Progress_Save__c != nil %>
 						<a href="/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn success medium" > Resume </a>
 					<% end %>
 				</td>
+				<td> <%= invite.Name %> </td>
 				<td> <%= invite.Survey_Name__c %> </td>
-				<td></td>
+				<td> <%= invite.Survey__r.Description__c %> </td>
 				<td><%= invite.Start_Date__c.strftime('%m/%d/%Y') unless invite.Start_Date__c.nil? %></td>
 				<td><%= invite.End_Date__c.strftime('%m/%d/%Y') unless invite.End_Date__c.nil?%></td>
 			</tr>

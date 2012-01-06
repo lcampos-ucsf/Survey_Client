@@ -42,8 +42,12 @@
 		});
 
 		if(url.match("review") == null){
-			if(url.match(/page/) == null){
-				url = url+'?page=1';
+			if(url.match(/page/) == null ){
+				if(url.match(/dir=[0-9]+/) == null){
+					url = url+'?page=1';
+				}else{
+					url = url+'&page=1';
+				}
 			}
 			if(url.match(/dir=[0-9]+/) != null)
 				url = url.replace(/dir=[0-9]+/,'dir='+dir);

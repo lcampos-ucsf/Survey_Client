@@ -2,8 +2,10 @@ SampleApp::Application.routes.draw do
 
   get "invite/index"
   get "invite/new"
-
+  
   match "invite/create", :to => "invite#create"
+  match "invite/:id/edit", :to => "invite#edit"
+  match "invite/update", :to => "invite#update"
 
   #resources :surveys
 

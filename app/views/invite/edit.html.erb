@@ -1,0 +1,9 @@
+<h1>Edit</h1>
+
+<%= form_for(@invite, :url => {:controller => "invite",:action => "update"}) do |f| %>
+  
+    <%= render 'edit_fields', :f => f %>
+    <div class="actions">
+        <%= f.submit "Save", :class => 'btn primary customform' %>
+    </div>
+<% end %>
