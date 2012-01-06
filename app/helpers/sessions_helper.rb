@@ -30,7 +30,35 @@ require 'omniauth-oauth2'
   end
 
   def authenticate
-    deny_access unless signed_in?
+    #deny_access unless signed_in?
+    puts "authenticate, '#{signed_in?}' "
+    puts "authenticate, '#{signed_in?}' "
+    puts "authenticate, '#{signed_in?}' "
+    puts "authenticate session[:return_to] , '#{session[:return_to]}' "
+
+    if signed_in?
+      puts "from now = '#{Time.now}'"
+      ve_to = ENV['app_timeout'].to_i / 60
+      puts " ve_to = '#{ve_to}' " 
+      expire_time = ve_to.minutes.from_now
+      puts "from now = '#{expire_time}'"
+      if session[:expires_at].blank?
+        session[:expires_at] = expire_time
+        puts "if session[:expires_at].blank? = '#{session[:expires_at]}' "
+      else
+        @time_left = (session[:expires_at].utc - Time.now.utc).to_i
+        puts "else, timeleft = '#{@time_left}' " 
+        unless @time_left > 0
+          reset_session
+          store_location
+          #redirect_to root_path, :notice => "Your session has expired. Please login."
+          signout_exp
+        end
+      end
+    else
+      puts 'else, deny_access'
+      deny_access
+    end
   end
 
   def authenticateSF
