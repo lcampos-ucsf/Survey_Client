@@ -5,11 +5,12 @@
 		<tr>
 			<td></td>
 			<td>Action</td>
-			<td>Id</td>
 			<td>Name</td>
+			<td>Subject</td>
 			<td>Description</td>
 			<td>Start Date</td>
 			<td>End Date</td>
+			<td>Last Mod. Date</td>
 		</tr>
 	</thead>
 
@@ -19,16 +20,19 @@
 			<tr>
 				<td> <a href="/invite/<%= invite.Id%>/edit" >Edit</a> </td>
 				<td>
-					<a href="/surveys/<%= invite.Id%>/show?page=1" class="btn primary medium" > Start </a>
+					<a href="/surveys/<%= invite.Id%>/show?page=1" class="btn primary small" > Start </a>
 					<% if invite.Progress_Save__c != nil %>
-						<a href="/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn success medium" > Resume </a>
+						<a href="/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn success small" > Resume </a>
 					<% end %>
 				</td>
-				<td> <%= invite.Name %> </td>
 				<td> <%= invite.Survey_Name__c %> </td>
+				<td> <%= invite.Surveyee__r.Name %> </td>
 				<td> <%= invite.Survey__r.Description__c %> </td>
-				<td><%= invite.Start_Date__c.strftime('%m/%d/%Y') unless invite.Start_Date__c.nil? %></td>
-				<td><%= invite.End_Date__c.strftime('%m/%d/%Y') unless invite.End_Date__c.nil?%></td>
+				<td> <%= invite.Start_Date__c.strftime('%m/%d/%Y') unless invite.Start_Date__c.nil? %> </td>
+				<td> <%= invite.End_Date__c.strftime('%m/%d/%Y') unless invite.End_Date__c.nil?%> </td>
+				<td> <% time = Time.parse(invite.LastModifiedDate.strftime('%d/%m/%Y %I:%M%P %Z')) %> 
+					 <%= time.in_time_zone("Pacific Time (US & Canada)").strftime('%m/%d/%Y %I:%M%P %Z') %>
+				</td>
 			</tr>
 		</tbody>
 

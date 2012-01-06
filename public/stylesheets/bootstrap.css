@@ -649,8 +649,10 @@ select {
   padding: initial;
 }
 input[type=checkbox], input[type=radio] {
-  width: auto;
-  height: auto;
+  /*width: auto;
+  height: auto;*/
+  width:25px;
+  height:25px;
   padding: 0;
   margin: 3px 0;
   *margin-top: 0;
