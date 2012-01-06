@@ -1,22 +1,20 @@
 <%= widget_div do %>
 
-<table>
+<table class="tablesorter" >
 	<thead>
 		<tr>
-			<td></td>
-			<td>Action</td>
-			<td>Name</td>
-			<td>Subject</td>
-			<td>Description</td>
-			<td>Start Date</td>
-			<td>End Date</td>
-			<td>Last Mod. Date</td>
+			<th></th>
+			<th>Action</th>
+			<th>Name</th>
+			<th>Subject</th>
+			<th>Description</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>Last Mod. Date</th>
 		</tr>
 	</thead>
-
+<tbody>
 	<% for invite in @invites do %>
-	
-		<tbody>
 			<tr>
 				<td> <a href="/invite/<%= invite.Id%>/edit" >Edit</a> </td>
 				<td>
@@ -26,18 +24,16 @@
 					<% end %>
 				</td>
 				<td> <%= invite.Survey_Name__c %> </td>
-				<td> <%= invite.Surveyee__r.Name %> </td>
-				<td> <%= invite.Survey__r.Description__c %> </td>
+				<td> <%= invite.Surveyee__r.Name unless invite.Surveyee__c.nil? %> </td>
+				<td> <%= invite.Survey__r.Description__c unless invite.Survey__r.Description__c.nil? %> </td>
 				<td> <%= invite.Start_Date__c.strftime('%m/%d/%Y') unless invite.Start_Date__c.nil? %> </td>
 				<td> <%= invite.End_Date__c.strftime('%m/%d/%Y') unless invite.End_Date__c.nil?%> </td>
 				<td> <% time = Time.parse(invite.LastModifiedDate.strftime('%d/%m/%Y %I:%M%P %Z')) %> 
 					 <%= time.in_time_zone("Pacific Time (US & Canada)").strftime('%m/%d/%Y %I:%M%P %Z') %>
 				</td>
 			</tr>
-		</tbody>
-
 	<% end %>
-
+</tbody>
 	
 </table>
 
