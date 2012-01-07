@@ -10,22 +10,40 @@
   <!-- %= collection_select('invitation__c', 'User__c', @users, :Id, :Name, :prompt => true, :selected => f.object.User__c )% -->
 </div>  
 
-<!-- div class="input">
-  < %= f.label 'Owner' %>
-  < %= select("invitation__c", "OwnerId", @users.collect {|p| [ p.Name, p.Id ] }, {:include_blank => 'None', :selected => f.object.OwnerId}) %>
-</div -->  
+<% if session[:user_profile] != 'Admin' %>
+  <div class="input">
+  	<%= f.label 'Status' %>
+  	<%= f.text_field :Status__c, :disabled => (true unless session[:user_profile] == 'Admin')  %>
+  </div>
+<% else %>
+  <div class="input">
+    <%= f.label 'Status' %>
+    <%= f.select :Status__c, [['New','New'], ['In Progress','In Progress'] ], {:include_blank => 'None', :selected => f.object.Status__c } %>
+  </div>
+<% end %>
 
 <div class="input">
-	<%= f.label 'Status' %>
-	<%= f.text_field :Status__c, :disabled => true %>
-</div>
-<div class="input">
   <%= f.label 'Start Date' %>
-  <%= f.text_field :Start_Date__c, :value => (f.object.Start_Date__c.strftime('%m/%d/%Y') unless f.object.Start_Date__c.nil?), :disabled => true %>
+  <%= f.text_field :Start_Date__c, :value => (f.object.Start_Date__c.strftime('%m/%d/%Y') unless f.object.Start_Date__c.nil?), :disabled => (true unless session[:user_profile] == 'Admin'), :class => ("datepicker" unless session[:user_profile] != 'Admin') %>
 </div>
 <div class="input">
   <%= f.label 'End Date' %>
-  <%= f.text_field :End_Date__c, :value => (f.object.End_Date__c.strftime('%m/%d/%Y') unless f.object.End_Date__c.nil?), :disabled => true  %>
+  <%= f.text_field :End_Date__c, :value => (f.object.End_Date__c.strftime('%m/%d/%Y') unless f.object.End_Date__c.nil?), :disabled => (true unless session[:user_profile] == 'Admin'), :class => ("datepicker" unless session[:user_profile] != 'Admin') %>
+</div>
+<div class="input">
+  <%= f.label 'Concept' %>
+  <%= f.text_field :Text_Survey_Subject__c, :disabled => (true unless session[:user_profile] == 'Admin') %>
 </div>
 
+<% if session[:user_profile] != 'Admin' %>
+  <div class="input">
+    <%= f.label 'Subject' %>
+    <%= f.text_field :Survey_Subject__c, :value => (f.object.Survey_Subject__r.Name unless f.object.Survey_Subject__c.nil?), :disabled => true %>
+  </div>
+<% else %>
+  <div class="input">
+    <%= f.label 'Subject' %>
+    <%= select("invitation__c", "Survey_Subject__c", @subjects.collect {|p| [ p.Name, p.Id ] }, {:include_blank => 'None', :selected => f.object.Survey_Subject__c}) %>
+  </div>
+<% end %>
 

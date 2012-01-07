@@ -200,7 +200,7 @@ module SurveysHelper
 
 		#this updates invitation
 		puts "------------------ update_multiple, update invitation status ------------------"
-		session[:client].upsert('Invitation__c','Id', @invite_id, { 'Progress_Save__c' => @current_page })
+		session[:client].upsert('Invitation__c','Id', @invite_id, { 'Progress_Save__c' => @current_page, 'Status__c' => 'In Progress' })
 
 		@hash_response.clear
 
@@ -220,7 +220,7 @@ module SurveysHelper
 	def current_survey
 	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
 
-	    @@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Surveyee__c from Invitation__c where Id = '#{params[:id]}' and User__c = '#{session[:user_id]}' ")
+	    @@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Survey_Subject__c from Invitation__c where Id = '#{params[:id]}' and User__c = '#{session[:user_id]}' ")
 		#rescue => msg  
    		#puts "Something went wrong ("+msg.to_s+") "
 

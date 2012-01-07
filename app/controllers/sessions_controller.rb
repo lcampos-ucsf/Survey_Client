@@ -102,6 +102,14 @@ class SessionsController < ApplicationController
       session[:client]= client
       flash[:success] = "Welcome #{env['omniauth.auth']['info']['name']}!"
 
+      u_data = session[:client].query("select Id, Survey_Role__c from User where Id = '#{session[:user_id]}' ")
+   
+      if u_data[0].Survey_Role__c != nil
+        session[:user_profile] = u_data[0].Survey_Role__c
+      else
+        session[:user_profile] = ''
+      end
+
       #if logic to redirect to url that user tryied to access without login
       #redirect_to invite_path
       redirect_back_or(invite_path)

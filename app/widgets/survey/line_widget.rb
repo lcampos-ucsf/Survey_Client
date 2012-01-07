@@ -40,7 +40,7 @@ class Survey::LineWidget < Apotomo::Widget
 		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ line item list = '#{@li_list}' "
 		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ "
 		#@response = response.query("Survey__c = '#{@surveyid}' and Invitation__c = '#{@inviteid}' and Line_Item__c in #{@li_list} order by Line_Item_Sort_Order__c asc ")
-		@response = session[:client].query("select Id, Name, Date_Response__c, DateTime_Response__c, Integer_Response__c, Invitation__c, Label_Response__c, Line_Item__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Response_Type__c, Survey__c, Surveyee__c, Text_Long_Response__c, Text_Response__c from Response__c where Survey__c = '#{@surveyid}' and Invitation__c = '#{@inviteid}' and Line_Item__c in #{@li_list} order by Line_Item_Sort_Order__c asc ")
+		@response = session[:client].query("select Id, Name, Date_Response__c, DateTime_Response__c, Integer_Response__c, Invitation__c, Label_Response__c, Line_Item__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Response_Type__c, Survey__c, Survey_Subject__c, Text_Long_Response__c, Text_Response__c from Response__c where Survey__c = '#{@surveyid}' and Invitation__c = '#{@inviteid}' and Line_Item__c in #{@li_list} order by Line_Item_Sort_Order__c asc ")
 		
 		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ responses = '#{@response}' "
 		puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ "

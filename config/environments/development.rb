@@ -33,7 +33,7 @@ SampleApp::Application.configure do
 =end
   ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npidev.cs11.my.salesforce.com"
 
-  
+  ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-dev.heroku.com/surveys/index"  
   ENV['sf_user'] = "005A0000001e1G6"
   ENV['sfdc_api_version'] = '23.0'
   ENV['app_timeout'] = '300' #seconds

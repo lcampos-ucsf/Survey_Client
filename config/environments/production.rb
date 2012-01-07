@@ -17,6 +17,7 @@ SampleApp::Application.configure do
   ENV['SALESFORCE_CUSTOM_SECRET'] = "8360737005257889046"
 
   ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npidev.cs11.my.salesforce.com"
+  ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-dev.heroku.com/surveys/index"  
 =begin
   #NPI-QA
   ENV['SALESFORCE_KEY'] = ""
@@ -31,9 +32,10 @@ SampleApp::Application.configure do
   ENV['SALESFORCE_CUSTOM_SECRET'] = "479086689104364566"
   
   ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npiqa.cs11.my.salesforce.com"
+  ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-qa.heroku.com/surveys/index"  
 =end 
 
-
+  
   ENV['DEFAULT_PROVIDER'] = "customurl"
   ENV['sf_user'] = "005A0000001e1G6"
   ENV['sfdc_api_version'] = '23.0'

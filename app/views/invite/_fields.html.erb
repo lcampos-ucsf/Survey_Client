@@ -1,5 +1,3 @@
-
-
 <div class="input">
   <%= f.label 'Survey' %>
   <%= select("invitation__c", "Survey__c", @surveys.collect {|p| [ p.Name, p.Id ] }, {:include_blank => 'None'}) %>
@@ -8,11 +6,6 @@
   <%= f.label 'Survey Taker' %>
   <%= select("invitation__c", "User__c", @users.collect {|p| [ p.Name, p.Id ] }, {:include_blank => 'None'}) %>
 </div>  
-
-<div class="input">
-	<%= f.label 'Status' %>
-	<%= f.select :Status__c, [['New','New'], ['In Progress','In Progress'] ], {:include_blank => 'None'} %>
-</div>
 <div class="input">
   <%= f.label 'Start Date' %>
   <%= f.text_field :Start_Date__c, :class => "datepicker" %>
@@ -22,8 +15,15 @@
   <%= f.text_field :End_Date__c, :class => "datepicker" %>
 </div>
 
+
+
 <h4>Optional Information</h4>
 <div class="input">
+  <%= f.label 'Concept' %>
+  <%= f.text_field :Text_Survey_Subject__c %>
+</div>
+
+<div class="input">
   <%= f.label 'Subject' %>
-  <%= select("invitation__c", "Surveyee__c", @surveyees.collect {|p| [ p.Name, p.Id ] }, {:include_blank => false}, :multiple => true, :size => 10 ) %>
+  <%= select("invitation__c", "Survey_Subject__c", @subjects.collect {|p| [ p.Name, p.Id ] }, {:include_blank => false}, :multiple => true, :size => 10 ) %>
 </div>

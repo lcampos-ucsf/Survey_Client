@@ -5,10 +5,10 @@
 		<tr>
 			<th></th>
 			<th>Action</th>
-			<th>Name</th>
+			<th>Title</th>
 			<th>Status</th>
-			<th>Subject</th>
-			<th>Description</th>
+			<th>Subject/Concept</th>
+			<!-- th>Description</th -->
 			<th>Start Date</th>
 			<th>End Date</th>
 			<th>Last Mod. Date</th>
@@ -27,12 +27,16 @@
 				</td>
 				<td> <%= invite.Survey_Name__c %> </td>
 				<td> <%= invite.Status__c unless invite.Status__c.nil?%> </td>
-				<td> <%= invite.Surveyee__r.Name unless invite.Surveyee__c.nil? %> </td>
-				<td> <%= invite.Survey__r.Description__c unless invite.Survey__r.Description__c.nil? %> </td>
+				<td> <%= invite.Invitation_Subject__c unless invite.Invitation_Subject__c.nil? %> </td>
+				<!-- td> < %= invite.Survey__r.Description__c unless invite.Survey__r.Description__c.nil? % > </td -->
 				<td> <%= invite.Start_Date__c.strftime('%m/%d/%Y') unless invite.Start_Date__c.nil? %> </td>
 				<td> <%= invite.End_Date__c.strftime('%m/%d/%Y') unless invite.End_Date__c.nil?%> </td>
-				<td> <% time = Time.parse(invite.LastModifiedDate.strftime('%d/%m/%Y %I:%M%P %Z')) %> 
-					 <%= time.in_time_zone("Pacific Time (US & Canada)").strftime('%m/%d/%Y %I:%M%P %Z') %>
+				<td> 
+					 <% if invite.Progress_Save__c != nil 
+							time = Time.parse(invite.LastModifiedDate.strftime('%d/%m/%Y %I:%M%P %Z')) 
+					 %> 
+					 	<%= time.in_time_zone("Pacific Time (US & Canada)").strftime('%m/%d/%Y %I:%M%P %Z') %>
+					 <% end %>
 				</td>
 			</tr>
 	<% end %>
