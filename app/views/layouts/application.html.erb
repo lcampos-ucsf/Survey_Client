@@ -13,6 +13,7 @@
     <%= javascript_include_tag 'jquery.idletimeout.js' %>
     <%= javascript_include_tag 'application.js' %>
     <%= javascript_include_tag 'bootstrap-dropdown.js' %>
+    <%= javascript_include_tag 'bootstrap-alerts.js' %>
     <!-- %= javascript_include_tag 'application.js' %>
     < %= javascript_include_tag 'bootstrap-alerts.js' %>
     < %= javascript_include_tag 'bootstrap-twipsy.js' %>
@@ -44,6 +45,12 @@
             <div class="alert-message <%= key %>"><%= value.html_safe %></div>
             
             <% end %>
+
+            <div class="alert-message warning fade in" data-alert="alert">
+              <a class="close" href="#">×</a>
+              <p><h5 class="" style="color:red;" >Warning :</h5>
+This is a UCSF Medical Center computer system which may be accessed and used only by authorized personnel. All data in this system is confidential.  System actions are logged, and system use is for business purposes only   Unauthorized access and use of this system may subject violators to criminal, civil, and/or administrative actions.</p>
+            </div>
                       
             <%= yield %>
 

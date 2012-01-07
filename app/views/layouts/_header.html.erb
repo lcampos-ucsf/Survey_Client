@@ -8,6 +8,7 @@
 
 		    <% if signed_in? %>
 			    <ul class="nav secondary-nav" style="margin-right: 25px;">
+			    	<li><span style="line-height:40px" ><%= session[:name] %></span></li>
 			    	<li class="dropdown" data-dropdown="dropdown" > 
 			    		<a href="#" class="dropdown-toggle">Surveys</a>
 				    	<ul class="dropdown-menu">
@@ -19,6 +20,7 @@
 			    	<li>
 			    		<%= link_to "Sign Out", signout_path %>
 			    	</li>
+			    	<li> <img src="<%= session[:image] %>" width="30px" height="30px" style="margin-top:5px;" /> </li>
 			    </ul>
 			<% else %>
 			    <ul class="nav secondary-nav" style="margin-right: 25px;">
