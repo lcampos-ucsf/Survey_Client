@@ -85,7 +85,7 @@ ul.a_list{
     display:block;
 }
 
-#progressbar, #pb {
+#pb {
 	width: 100%; 
 	height:25px; 
 	text-align:center; 
@@ -94,11 +94,20 @@ ul.a_list{
 	margin: 10px auto;
 	display:block;
 }
+#progressbar {
+	width: 100%; 
+	height:25px; 
+	text-align:center; 
+	border: 1px solid #AAA; 
+	border-radius: 3px 3px 3px 3px;
+	margin: 10px auto;
+	display:block;
+}
 
 #progress {
-	background-color:#93BF35; 
+	background-color:#D5D5D5; 
 	height:100%;
-	
+    border-radius: 3px 3px 3px 3px;
 }
 
 #progressbar .text , #pb .text{
