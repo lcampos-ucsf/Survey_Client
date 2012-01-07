@@ -11,7 +11,7 @@ class InviteController < ApplicationController
 
   def new
     @subjects = session[:client].query("select Id, Name from Survey_Subject__c order by Name asc")
-    @surveys = session[:client].query("select Id, Name from Survey__c order by Name asc")
+    @surveys = session[:client].query("select Id, Name, Type__c from Survey__c where Type__c = 'Published' order by Name asc")
     @users = session[:client].query("select Id, Name from User order by Name asc")
     puts "------- Users = '#{@users}' "
   	@invite = 'invitation__c'
