@@ -3,7 +3,7 @@ SampleApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
   
   ENV['full_host'] = "https://npi-qa.heroku.com"
-
+=begin
   #NPI-DEV
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -17,8 +17,8 @@ SampleApp::Application.configure do
   ENV['SALESFORCE_CUSTOM_SECRET'] = "8360737005257889046"
 
   ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npidev.cs11.my.salesforce.com"
+=end 
 
-=begin
   #NPI-QA
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -32,7 +32,7 @@ SampleApp::Application.configure do
   ENV['SALESFORCE_CUSTOM_SECRET'] = "479086689104364566"
   
   ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npiqa.cs11.my.salesforce.com"
-=end  
+ 
 
   ENV['DEFAULT_PROVIDER'] = "customurl"
   ENV['sf_user'] = "005A0000001e1G6"
