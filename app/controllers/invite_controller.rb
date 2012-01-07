@@ -28,7 +28,7 @@ class InviteController < ApplicationController
             'Surveyee__c' => s, 
             'Start_Date__c' => Date.strptime(params[:invitation__c][:Start_Date__c], "%m/%d/%Y").to_datetime(), 
             'End_Date__c' => Date.strptime(params[:invitation__c][:End_Date__c], "%m/%d/%Y").to_datetime(), 
-            'OwnerId' => ENV['sf_user'], 
+            'OwnerId' => session[:user_id], 
             'Is_Preview__c' => false, 
             'Invite_Sent__c' => false, 
             'Completed__c' => false })
@@ -42,7 +42,7 @@ class InviteController < ApplicationController
             'Status__c' => params[:invitation__c][:Status__c],
             'Start_Date__c' => Date.strptime(params[:invitation__c][:Start_Date__c], "%m/%d/%Y").to_datetime(), 
             'End_Date__c' => Date.strptime(params[:invitation__c][:End_Date__c], "%m/%d/%Y").to_datetime(), 
-            'OwnerId' => ENV['sf_user'], 
+            'OwnerId' => session[:user_id], 
             'Is_Preview__c' => false, 
             'Invite_Sent__c' => false, 
             'Completed__c' => false })
@@ -57,7 +57,7 @@ class InviteController < ApplicationController
   end
 
   def update
-    session[:client].upsert('Invitation__c','Id', params[:Id], { 'User__c' => params[:invitation__c][:User__c], 'OwnerId' => params[:invitation__c][:OwnerId] })
+    session[:client].upsert('Invitation__c','Id', params[:Id], { 'User__c' => params[:invitation__c][:User__c], 'OwnerId' => params[:invitation__c][:User__c] })
     redirect_to invite_index_path
   end
 

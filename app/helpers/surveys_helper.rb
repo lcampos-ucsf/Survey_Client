@@ -104,7 +104,7 @@ module SurveysHelper
 							'Survey__c' => obj.sid, 
 							'Invitation__c' => obj.inviteid, 
 							'Line_Item__c' => obj.qid, 
-							'OwnerId' => ENV['sf_user'], 
+							'OwnerId' => session[:user_id], 
 							'Original_Question_Text__c' => obj.question, 
 							'Text_Long_Response__c' => obj.value })
 					end
@@ -123,7 +123,7 @@ module SurveysHelper
 							'Survey__c' => obj.sid, 
 							'Invitation__c' => obj.inviteid, 
 							'Line_Item__c' => obj.qid, 
-							'OwnerId' => ENV['sf_user'], 
+							'OwnerId' => session[:user_id], 
 							'Original_Question_Text__c' => obj.question, 
 							'Text_Long_Response__c' => obj.value, 
 							'Label_Long_Response__c' => obj.label })
@@ -143,7 +143,7 @@ module SurveysHelper
 							'Survey__c' => obj.sid, 
 							'Invitation__c' => obj.inviteid, 
 							'Line_Item__c' => obj.qid, 
-							'OwnerId' => ENV['sf_user'], 
+							'OwnerId' => session[:user_id], 
 							'Original_Question_Text__c' => obj.question, 
 							'Text_Long_Response__c' => obj.value, 
 							'Label_Long_Response__c' => obj.label })
@@ -164,7 +164,7 @@ module SurveysHelper
 							'Survey__c' => obj.sid, 
 							'Invitation__c' => obj.inviteid, 
 							'Line_Item__c' => obj.qid, 
-							'OwnerId' => ENV['sf_user'], 
+							'OwnerId' => session[:user_id], 
 							'Original_Question_Text__c' => obj.question, 
 							'Text_Long_Response__c' => obj.value, 
 							'Label_Long_Response__c' => obj.label,
@@ -186,7 +186,7 @@ module SurveysHelper
 							'Survey__c' => obj.sid, 
 							'Invitation__c' => obj.inviteid, 
 							'Line_Item__c' => obj.qid, 
-							'OwnerId' => ENV['sf_user'], 
+							'OwnerId' => session[:user_id], 
 							'Original_Question_Text__c' => obj.question, 
 							'Text_Long_Response__c' => obj.value, 
 							'Label_Long_Response__c' => obj.label,
@@ -220,7 +220,7 @@ module SurveysHelper
 	def current_survey
 	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
 
-	    @@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Surveyee__c from Invitation__c where Id = '#{params[:id]}' and User__c = '#{ENV['sf_user']}' ")
+	    @@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Surveyee__c from Invitation__c where Id = '#{params[:id]}' and User__c = '#{session[:user_id]}' ")
 		#rescue => msg  
    		#puts "Something went wrong ("+msg.to_s+") "
 

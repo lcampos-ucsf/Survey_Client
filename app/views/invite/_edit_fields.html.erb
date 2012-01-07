@@ -10,10 +10,10 @@
   <!-- %= collection_select('invitation__c', 'User__c', @users, :Id, :Name, :prompt => true, :selected => f.object.User__c )% -->
 </div>  
 
-<div class="input">
-  <%= f.label 'Owner' %>
-  <%= select("invitation__c", "OwnerId", @users.collect {|p| [ p.Name, p.Id ] }, {:include_blank => 'None', :selected => f.object.OwnerId}) %>
-</div>  
+<!-- div class="input">
+  < %= f.label 'Owner' %>
+  < %= select("invitation__c", "OwnerId", @users.collect {|p| [ p.Name, p.Id ] }, {:include_blank => 'None', :selected => f.object.OwnerId}) %>
+</div -->  
 
 <div class="input">
 	<%= f.label 'Status' %>
