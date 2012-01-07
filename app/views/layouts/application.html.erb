@@ -22,6 +22,9 @@
     < %= javascript_include_tag 'bootstrap-modal.js' %>
     < %= javascript_include_tag 'bootstrap-popover.js' % -->
     
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-icon" href="/images/ucsf_ipad_logo.png"/>
 
   </head>
 
@@ -42,7 +45,7 @@
             </div>
 
             <% flash.each do |key, value| %>
-            <div class="alert-message <%= key %>"><%= value.html_safe %></div>
+            <div class="alert-message <%= key %> info"><%= value.html_safe %></div>
             
             <% end %>
 
