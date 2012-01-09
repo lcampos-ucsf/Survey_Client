@@ -3,7 +3,7 @@ SampleApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
   
   ENV['full_host'] = "https://npi-qa.heroku.com"
-=begin
+
   #NPI-DEV
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -18,7 +18,7 @@ SampleApp::Application.configure do
 
   ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npidev.cs11.my.salesforce.com"
   ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-dev.heroku.com/surveys/index"  
-=end 
+=begin
   #NPI-QA
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -33,7 +33,7 @@ SampleApp::Application.configure do
   
   ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npiqa.cs11.my.salesforce.com"
   ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-qa.heroku.com/surveys/index"  
-
+=end 
 
   
   ENV['DEFAULT_PROVIDER'] = "customurl"
