@@ -39,7 +39,7 @@ SampleApp::Application.configure do
   ENV['DEFAULT_PROVIDER'] = "customurl"
   ENV['sf_user'] = "005A0000001e1G6"
   ENV['sfdc_api_version'] = '23.0'
-  ENV['app_timeout'] = '300' #seconds
+  ENV['app_timeout'] = '60' #seconds
   
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
