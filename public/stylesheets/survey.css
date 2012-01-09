@@ -177,6 +177,7 @@ table.tablesorter tbody td {
 	padding: 4px;
 	background-color: #FFF;
 	vertical-align: middle;
+	height: 35px;
 }
 table.tablesorter tbody tr.odd td {
 	background-color:#F0F0F6;
@@ -193,4 +194,6 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 	background-color: #8dbdd8;
 }
 
-
+.invite_form_label{
+	text-transform: capitalize;
+}
