@@ -1,23 +1,8 @@
 <%= javascript_include_tag 'jquery.tablesorter.min.js' %>
 
 <h1>All Surveys</h1>
-<script type="text/javascript">
-	var j$ = jQuery.noConflict();
-	j$(document).ready(function() {
-		j$(".tablesorter").tablesorter({ 
-	        headers: { 
-	            // assign the secound column (we start counting zero) 
-	            0: { sorter: false }, 
-	            1: { sorter: false },
-	            8: { sorter:false } 
-	        } 
-    	}); 
 
-	});
-
-</script>
-
-<table class="tablesorter" >
+<table class="tablesorter inviteall_tb" >
 	<thead>
 		<tr>
 			<th></th>
@@ -26,10 +11,8 @@
 			<th>Status</th>
 			<th>Survey Taker</th>
 			<th>Subject/Concept</th>
-			<!-- th>Description</th -->
 			<th>Start Date</th>
 			<th>End Date</th>
-			<!-- th>Last Mod. Date</th -->
 		</tr>
 	</thead>
 <tbody>
@@ -49,16 +32,8 @@
 				<td> <%= invite.Status__c unless invite.Status__c.nil?%> </td>
 				<td> <%= invite.User__r.Name %> </td>
 				<td> <%= invite.Invitation_Subject__c unless invite.Invitation_Subject__c.nil? %> </td>
-				<!-- td> < %= invite.Survey__r.Description__c unless invite.Survey__r.Description__c.nil? % > </td -->
 				<td> <%= invite.Start_Date__c.strftime('%m/%d/%Y') unless invite.Start_Date__c.nil? %> </td>
 				<td> <%= invite.End_Date__c.strftime('%m/%d/%Y') unless invite.End_Date__c.nil?%> </td>
-				<!-- td> 
-					 < % if invite.Progress_Save__c != nil 
-							time = Time.parse(invite.LastModifiedDate.strftime('%d/%m/%Y %I:%M%P %Z')) 
-					 %> 
-					 	< %= time.in_time_zone("Pacific Time (US & Canada)").strftime('%m/%d/%Y %I:%M%P %Z') %>
-					 < % end %>
-				</td -->
 			</tr>
 	<% end %>
 </tbody>

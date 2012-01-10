@@ -1,20 +1,4 @@
 <%= javascript_include_tag 'jquery.tablesorter.min.js' %>
 
 <h1>My Surveys</h1>
-<script type="text/javascript">
-	var j$ = jQuery.noConflict();
-	j$(document).ready(function() {
-		j$(".tablesorter").tablesorter({ 
-	        headers: { 
-	            // assign the secound column (we start counting zero) 
-	            0: { sorter: false }, 
-	            1: { sorter: false },
-	            7: { sorter:false } 
-	        } 
-    	}); 
-
-	});
-
-</script>
-
 <%= render_widget :invites %>

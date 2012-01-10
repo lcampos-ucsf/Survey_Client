@@ -4,21 +4,9 @@
 	<script type="text/javascript">
 		var j$ = jQuery.noConflict();
 		j$(document).ready(function() {
-			//var progress = '<%= @progressbar %>'
-			//var pw = j$('#progressbar').width();   	
-			//j$('#progress').css('width',progress+'%');
-			//j$('#progress .text').css('width',pw );
-
 			j$("#pb").progressbar({ value: <%= @progressbar.to_i %> });
 		});
 	</script>
-
- 	<!--div id="progressbar" >
-	   <div id="progress" >
-	   		<span class="text" >< % = @progressbar.to_i % > %</span>
-	   </div>
-	</div -->
-
 	<div id="pb-container" >
 		<div id="pb"></div>
 		<div class="text" ><%= @progressbar.to_i %> %</div>
