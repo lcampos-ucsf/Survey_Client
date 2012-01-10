@@ -28,6 +28,11 @@ var autosaveOn = false;
 
 	//Add autosave events to surveys
 	if( j$('form')[0] ) {
+
+		j$('#nextbtn').click(function(){
+				//this.val();
+				alert("live event next click");
+			});
 		setInterval(function() { ajaxautosave(); }, 1000*60); // 1000ms * 60s = 1m
 		j$('form input.edit_form_field, form textarea.edit_form_field, form select.edit_form_field').each(function (i) {
 			j$(this).live({
@@ -74,8 +79,8 @@ var autosaveOn = false;
   });//end ready function
 
 	function formsubmit(url, dir){
-		alert('formsubmit,');
-		alert('formsubmit, url = '+url);
+		//alert('formsubmit,');
+		//alert('formsubmit, url = '+url);
 		j$.ajax({
 			url: "/surveys/update_multiple",
 			type: "POST",

@@ -15,7 +15,7 @@
   	<!-- %= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, :rel => 'next', :remote => remote, :id => 'nextbtn',    :onclick => 'formsubmit('+url+')' % -->
 
     <a onclick="formsubmit('<%= url %>','1')" class="btn primary medium" >Next ›</a>
-    <a onclick="alert('testing button');" class="btn primary medium" >Next Test ›</a>
+    <a class="btn primary medium nextbtn" id="nextbtn" >Next Test ›</a>
   <% end %>
 
 </span>
