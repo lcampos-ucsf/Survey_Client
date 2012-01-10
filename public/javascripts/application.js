@@ -29,9 +29,12 @@ var autosaveOn = false;
 	//Add autosave events to surveys
 	if( j$('form')[0] ) {
 
-		j$('#nextbtn').click(function(){
-				//this.val();
-				alert("live event next click");
+		var n_btn = j$('#nextbtn');
+		n_btn.click(function(){
+				var url = n_btn.attr('l');
+
+				alert("live event next click, url = "+url );
+				formsubmit(url,'1');
 			});
 		setInterval(function() { ajaxautosave(); }, 1000*60); // 1000ms * 60s = 1m
 		j$('form input.edit_form_field, form textarea.edit_form_field, form select.edit_form_field').each(function (i) {
