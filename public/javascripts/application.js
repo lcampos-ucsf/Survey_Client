@@ -74,6 +74,7 @@ var autosaveOn = false;
   });//end ready function
 
 	function formsubmit(url, dir){
+		alert('formsubmit,');
 		alert('formsubmit, url = '+url);
 		j$.ajax({
 			url: "/surveys/update_multiple",
