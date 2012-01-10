@@ -1,12 +1,4 @@
-// This is a manifest file that'll be compiled into including all the files listed below.
-// Add new JavaScript/Coffee code in separate files in this directory and they'll automatically
-// be included in the compiled file accessible from http://example.com/assets/application.js
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// the compiled file.
-//
-//= require jquery
-//= require jquery_ujs
-//= require_tree .
+
 var j$ = jQuery.noConflict();
 var autosaveOn = false;
 
@@ -63,7 +55,6 @@ var autosaveOn = false;
 		//invite all
 		j$('.tablesorter.inviteall_tb').tablesorter({ 
 	        headers: { 
-	            // assign the secound column (we start counting zero) 
 	            0: { sorter: false }, 
 	            1: { sorter: false },
 	            8: { sorter:false } 
@@ -73,7 +64,6 @@ var autosaveOn = false;
     	//invite index
     	j$(".tablesorter.inviteindex_tb").tablesorter({ 
 	        headers: { 
-	            // assign the secound column (we start counting zero) 
 	            0: { sorter: false }, 
 	            1: { sorter: false },
 	            7: { sorter:false } 
@@ -134,5 +124,29 @@ var autosaveOn = false;
 			autosaveOn = false;
 		}
 	}
+
+	// JavaScript
+	//function loadScript(src, callback) {
+	function loadScript(src) {
+	    var head = document.getElementsByTagName('head')[0],
+	        script = document.createElement('script');
+	    done = false;
+	    script.setAttribute('src', src);
+	    script.setAttribute('type', 'text/javascript');
+	    script.setAttribute('charset', 'utf-8');
+	    script.onload = script.onreadstatechange = function() {
+	        if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+	            done = true;
+	            script.onload = script.onreadystatechange = null;
+	            }
+	    }
+	    //head.insertBefore(script, head.firstChild);
+	    head.insertBefore(script, head.lastChild);
+	}
+
+
+
+
+
 
 	

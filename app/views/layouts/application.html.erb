@@ -11,7 +11,17 @@
     <%= javascript_include_tag 'jquery-ui-1.8.16.custom.min.js' %>
     <%= javascript_include_tag 'application.js' %>
     <!--  %= javascript_include_tag 'bootstrap-alerts.js' % -->
-    
+    <!-- %= javascript_include_tag 'jquery.idletimer.js' %>
+    < %= javascript_include_tag 'jquery.idletimeout.js' % -->
+
+    <script type="text/javascript">
+      // load the my-script-file.js and display an alert dialog once the script has been loaded
+      loadScript('/javascripts/bootstrap-dropdown.js');
+      loadScript('/javascripts/jquery.idletimer.js');
+      loadScript('/javascripts/jquery.idletimeout.js');
+      loadScript('/javascripts/bootstrap-alerts.js');
+    </script>
+
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <link rel="apple-touch-icon" href="/images/ucsf_ipad_logo.png"/>
@@ -56,9 +66,7 @@
 
     </div>
 
-    <!-- %= javascript_include_tag 'jquery.idletimer.js' %>
-    < %= javascript_include_tag 'jquery.idletimeout.js' % -->
-    <!-- script type="text/javascript">
+    <script type="text/javascript">
 
       if(<%= signed_in? %>){
 
@@ -66,7 +74,7 @@
         var autosaveOn = false;
         var idleTime = new Date();
         var refreshIntervalId;
-        var timeout = < %= ENV['app_timeout'] %>;
+        var timeout = <%= ENV['app_timeout'] %>;
         
         if ( j$('#idletimeout')[0] || j$('#idletimeout a')[0] ) { 
         j$.idleTimeout('#idletimeout', '#idletimeout a', {
@@ -114,7 +122,7 @@
             }
         }
       }
-    </script -->
+    </script>
   </body>
 
 </html>
