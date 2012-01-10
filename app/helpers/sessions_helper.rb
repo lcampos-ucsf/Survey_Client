@@ -1,10 +1,5 @@
 module SessionsHelper
 
-class T
-  include HTTParty
-  format :json
-end
-
 require 'omniauth-oauth2'
   
   def signed_in?
@@ -30,18 +25,10 @@ require 'omniauth-oauth2'
   end
 
   def authenticate
-    #deny_access unless signed_in?
-    puts "authenticate, '#{signed_in?}' "
-    puts "authenticate, '#{signed_in?}' "
-    puts "authenticate, '#{signed_in?}' "
-    puts "authenticate session[:return_to] , '#{session[:return_to]}' "
-
+    puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb authenticate, signed_in ? = '#{signed_in?}' ^^^^^^^^^^^^^^^^^^^^"
     if signed_in?
-      puts "from now = '#{Time.now}'"
       ve_to = ENV['app_timeout'].to_i / 60
-      puts " ve_to = '#{ve_to}' " 
       expire_time = ve_to.minutes.from_now
-      puts "from now = '#{expire_time}'"
       if session[:expires_at].blank?
         session[:expires_at] = expire_time
         puts "if session[:expires_at].blank? = '#{session[:expires_at]}' "
@@ -51,18 +38,17 @@ require 'omniauth-oauth2'
         unless @time_left > 0
           reset_session
           store_location
-          #redirect_to root_path, :notice => "Your session has expired. Please login."
           signout_exp
         end
       end
     else
-      puts 'else, deny_access'
       deny_access
     end
   end
 
   def authenticateSF
-    puts "authenticateSF url params = '#{request.fullpath}' "
+    puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb authenticateSF, url params = '#{request.fullpath}' ^^^^^^^^^^^^^^^^^^^^"
+
     #set default values
     auth_params = nil
     provider = ENV['DEFAULT_PROVIDER']
@@ -93,8 +79,7 @@ require 'omniauth-oauth2'
     end
 
     auth_params = URI.escape(auth_params.collect{|k,v| "#{k}=#{v}"}.join('&'))    
-    puts "authenticateSF , auth_params  = '#{auth_params}' "
-
+    
     redirect_to "/auth/#{provider}?#{auth_params}"
   end
 
@@ -102,25 +87,7 @@ require 'omniauth-oauth2'
     store_location
     redirect_to signin_path, :notice => "Please sign in to access this page."
   end
-
-  def refreshToken
-    puts '>>> AUTH TOKEN EXPIRED ... USING REFRESH TOKEN >>> '
-    payload = 'grant_type=refresh_token' + '&client_id=' + ENV['SALESFORCE_SANDBOX_KEY']+ '&client_secret=' + ENV['SALESFORCE_SANDBOX_SECRET'] + '&refresh_token=' + session[:auth_hash][:refresh_token]
-    pl2 = 'grant_type=refresh_token&refresh_token=5Aep861ZcIr522KYf5zSCffhRGjmdmjiNSask1IfvF9Fdv9ZcutMl0hU70TPgTObXuUNBq4QK_0JQ%3D%3D&client_id=3MVG9GiqKapCZBwGKWN18VcBTA1KmaZj2YV7ufz52FM8PLm6XWITmy2BseIvf3ROwvzZzKVVYFzAy.glsMTAj&client_secret=2582046431606031750'
-    result = T.post('https://cs11.salesforce.com/services/oauth2/token',:body => pl2)
-    puts "---------- payload = '#{payload}' "
-    puts "---------- pl2 = '#{pl2}' "
-    puts "---------- pl2 decode = '#{URI.unescape(pl2)}' "
-    puts "---------- result = '#{result}' "
-    puts ">>>>>> session[:client].oauth_token = '#{session[:client].oauth_token}' "
-    instUrl = session[:auth_hash][:instance_url]
-    puts ">>>>>> result['access_token'] = '#{result['access_token']}' "
-    session[:client].oauth_token = result['access_token']
-    puts ">>>>>> session[:client].oauth_token = '#{session[:client].oauth_token}' "
-    session[:client].authenticate :token => result['access_token'], :instance_url => instUrl, :refresh_token => session[:auth_hash][:refresh_token]
-
-  end
-                   
+                    
   private
   
       def store_location

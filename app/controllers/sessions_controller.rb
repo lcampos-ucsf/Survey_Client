@@ -46,21 +46,21 @@ class SessionsController < ApplicationController
   end
 
   def create
-    puts "create session, session[:return_to] = '#{session[:return_to]}' "
-    puts 'Full Auth Hash >>>>>'
-    puts env['omniauth.auth']
+    puts "^^^^^^^^^^^^^^^^^^^^ session_controller.rb create, , session[:return_to] = '#{session[:return_to]}' ^^^^^^^^^^^^^^^^^^^^"
+    #puts 'Full Auth Hash >>>>>'
+    #puts env['omniauth.auth']
      
-    puts 'User Login >>>>'
+    #puts 'User Login >>>>'
     session[:auth_hash] = env['omniauth.auth']['credentials']
-    puts 'tokens: '+env['omniauth.auth']['credentials'].to_s
+    #puts 'tokens: '+env['omniauth.auth']['credentials'].to_s
     session[:user_id] = env['omniauth.auth']['extra']['user_id']
-    puts 'user id: '+env['omniauth.auth']['extra']['user_id'].to_s
+    #puts 'user id: '+env['omniauth.auth']['extra']['user_id'].to_s
     session[:org_id] = env['omniauth.auth']['extra']['organization_id']
-    puts 'org id: '+env['omniauth.auth']['extra']['organization_id'].to_s
+    #puts 'org id: '+env['omniauth.auth']['extra']['organization_id'].to_s
     session[:image] = env['omniauth.auth']['info']['image']
-    puts 'image : '+env['omniauth.auth']['info']['image'].to_s
+    #puts 'image : '+env['omniauth.auth']['info']['image'].to_s
     session[:name] = env['omniauth.auth']['info']['name']
-    puts 'name : '+env['omniauth.auth']['info']['name'].to_s
+    #puts 'name : '+env['omniauth.auth']['info']['name'].to_s
 
     #obtain name of the service
     params[:provider] ? service_route = params[:provider] : service_route = 'No service recognized (invalid callback)'
@@ -95,8 +95,8 @@ class SessionsController < ApplicationController
           client.client_secret = ENV['SALESFORCE_CUSTOM_SECRET']
       end
 
-      puts '<<<<<<<<<<<<<<<<<<<<<<< INSTANCE URL >>>>>>>>>>>>>>>>>>>>>'
-      puts instUrl
+      #puts '<<<<<<<<<<<<<<<<<<<<<<< INSTANCE URL >>>>>>>>>>>>>>>>>>>>>'
+      #puts instUrl
       
       client.authenticate :token => session[:auth_hash][:token], :instance_url => instUrl, :refresh_token => session[:auth_hash][:refresh_token]
       session[:client]= client
@@ -110,8 +110,6 @@ class SessionsController < ApplicationController
         session[:user_profile] = ''
       end
 
-      #if logic to redirect to url that user tryied to access without login
-      #redirect_to invite_path
       redirect_back_or(invite_path)
     else
       flash[:error] = 'Error while authenticating via ' + service_route.capitalize + '. The service did not return valid data.'

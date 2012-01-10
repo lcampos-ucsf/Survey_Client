@@ -8,8 +8,7 @@ responds_to_event :submit, :with => :update_multiple
 
 	has_widgets do
 		@survey = options[:survey]
-		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
-		puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Kaminari execution"
+		puts "^^^^^^^^^^^^^^^^^^^^ survey_widget.rb Kaminari execution ^^^^^^^^^^^^^^^^^^^^"
 		
 		@pageno = params[:page].to_i
 		@lines_query = session[:client].query("select Id, Name, Description__c, Display_Logic__c, Sort_Order__c, Survey__c from Line__c where Survey__c = '#{@survey[0].Survey__c}' order by Sort_Order__c asc")
@@ -24,30 +23,18 @@ responds_to_event :submit, :with => :update_multiple
 		@it_stop = 0
 		while @showsections.empty? && @it_stop < 100
 			@lines = Kaminari.paginate_array(@liq_array).page(@pageno).per(1) # Paginates the array
-
-			puts "------------ @lines = '#{@lines}' "
 			@currentpg = @lines.current_page.to_f - 1
 			@totalpg = @lines.num_pages.to_f
 			@it_stop = @it_stop + 1
-
-			
 			@progressbar = (@currentpg  / @totalpg) * 100
-			puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ @currentpg = '#{@currentpg}', @totalpg = '#{@totalpg}', @progressbar = '#{@progressbar}', @it_stop = '#{@it_stop}' "
-
-
 			@lines.each do |l|
 				if l.Display_Logic__c != nil
-					puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-					puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ has Display Logic"
-					puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 					eval_dl = displaylogic(l, params[:id])
 					
 					if eval_dl #display logic is true
-						puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ eval_dl = '#{eval_dl}' "
 						@showsections << l
 					end
 				else
-					puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ HAD NO DISPLAY LOGIC "
 					@showsections << l
 				end
 			end
@@ -65,7 +52,7 @@ responds_to_event :submit, :with => :update_multiple
 
 		#catch survey sections being empty
 		if @showsections.to_s == '[]'
-			puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ @showsections = '#{@showsections}' "
+			puts "^^^^^^^^^^^^^^^^^^^^ survey_widget.rb survey displaylogic error ^^^^^^^^^^^^^^^^^^^^"
 			surveyerrors
 		else
 			@showsections.each_with_index do |t, i|
@@ -78,7 +65,7 @@ responds_to_event :submit, :with => :update_multiple
 
 	def displaylogic(conditional, inviteid)
 		#display logic should go here
-		puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! displaylogic, conditional = '#{conditional}'  "
+		#puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! displaylogic, conditional = '#{conditional}'  "
 	
 		if conditional.Display_Logic__c != nil
 			@string = conditional.Display_Logic__c 
@@ -114,7 +101,7 @@ responds_to_event :submit, :with => :update_multiple
 	        end
 
 			@evalstring = @expressions * ""
-			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' , eval = '#{eval(@evalstring)}' "
+			#puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' , eval = '#{eval(@evalstring)}' "
 
 			return eval(@evalstring)
 			

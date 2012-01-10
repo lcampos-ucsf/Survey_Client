@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/lcampos/databasedotcom.git
-  revision: 8434b8178335e995a6b27d0ce2999df6105d5087
+  revision: 335fabc48d8d1d65045def1db5b06ace33759ff7
   specs:
     databasedotcom (1.2.7)
       json

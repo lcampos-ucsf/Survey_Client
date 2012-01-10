@@ -58,13 +58,12 @@ module SurveysHelper
 	end
 
 	def update_multiple
+		puts "^^^^^^^^^^^^^^^^^^^^ survey_helper.rb update_multiple ^^^^^^^^^^^^^^^^^^^^"
 		@hash_response = {}
 		@invite_id = params[:id]
 		@survey_id = current_survey[0].Survey__c
 		@current_page = params[:page] ? params[:page] : 1
 
-		puts "************************************ update_multiple helper method on survey helper page no. =  '#{params[:page]}' , id = '#{@invite_id }', survey id = '#{@survey_id}', all params = '#{params.inspect}' "
-	
 		params.each do |key, value|
 			@var = key.index('q#') 	
 			if key.index('q#') != nil
@@ -207,25 +206,20 @@ module SurveysHelper
 	end
 
 	def submitsurvey
-		puts "********************************* submitsurvey helper method, survey got saved , invitation id = '#{params[:id]}' "
+		puts "^^^^^^^^^^^^^^^^^^^^ survey_helper.rb submitsurvey ^^^^^^^^^^^^^^^^^^^^"
 		session[:client].upsert('Invitation__c','Id', params[:id], { 'Status__c' => 'Completed'})
 		redirect_to "/invite/index", :notice => "Your survey was submitted successfully."
 	end
 
 	def surveyerrors
-		puts "********************************* surveyerrors helper method"
+		puts "^^^^^^^^^^^^^^^^^^^^ survey_helper.rb surveyerrors ^^^^^^^^^^^^^^^^^^^^"
 	    raise SurveysController.new('el error')
 	end
 
 	def current_survey
-	    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& current_survey &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-
+	    puts "^^^^^^^^^^^^^^^^^^^^ surveys_helper.rb current_survey ^^^^^^^^^^^^^^^^^^^^"
 	    @@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Survey_Subject__c from Invitation__c where Id = '#{params[:id]}' and User__c = '#{session[:user_id]}' ")
-		#rescue => msg  
-   		#puts "Something went wrong ("+msg.to_s+") "
-
-	    return @@current_survey
-
-	  end
+		return @@current_survey
+	end
 
 end
