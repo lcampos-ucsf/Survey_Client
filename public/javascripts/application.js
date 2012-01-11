@@ -37,6 +37,8 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	if( j$('form')[0] ) {
 
 		if (isiPad) {
+			//fixes onclick issue on nav buttons with ipad
+			//next btn
 			var n_btn = j$('#nextbtn');
 			n_btn.click(function(){
 					var oc = n_btn.attr('onclick');
@@ -44,7 +46,26 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 					var url = u[1];
 					formsubmit(url,'1');
 			});
+
+			//review btn
+			var r_btn = j$('#reviewbtn');
+			r_btn.click(function(){
+					var oc = r_btn.attr('onclick');
+					var u = oc.split("'");
+					var url = u[1];
+					formsubmit(url,'1');
+			});
+
+			//preview btn
+			var p_btn = j$('#previewbtn');
+			p_btn.click(function(){
+					var oc = p_btn.attr('onclick');
+					var u = oc.split("'");
+					var url = u[1];
+					formsubmit(url,'0');
+			});
 		}
+		
 		setInterval(function() { ajaxautosave(); }, 1000*60); // 1000ms * 60s = 1m
 		j$('form input.edit_form_field, form textarea.edit_form_field, form select.edit_form_field').each(function (i) {
 			j$(this).live({
