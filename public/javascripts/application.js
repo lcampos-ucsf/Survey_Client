@@ -35,7 +35,8 @@ var autosaveOn = false;
 
 				alert("live event next click, url = "+url );
 				formsubmit(url,'1');
-			});
+		});
+
 		setInterval(function() { ajaxautosave(); }, 1000*60); // 1000ms * 60s = 1m
 		j$('form input.edit_form_field, form textarea.edit_form_field, form select.edit_form_field').each(function (i) {
 			j$(this).live({
@@ -82,8 +83,7 @@ var autosaveOn = false;
   });//end ready function
 
 	function formsubmit(url, dir){
-		//alert('formsubmit,');
-		//alert('formsubmit, url = '+url);
+		alert('formsubmit, url = '+url);
 		j$.ajax({
 			url: "/surveys/update_multiple",
 			type: "POST",
@@ -94,7 +94,7 @@ var autosaveOn = false;
 			}
 
 		});
-
+		alert('after ajax');
 		if(url.match("review") == null){
 			if(url.match(/page/) == null ){
 				if(url.match(/dir=[0-9]+/) == null){
