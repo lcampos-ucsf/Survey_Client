@@ -1,6 +1,13 @@
 
 var j$ = jQuery.noConflict();
 var autosaveOn = false;
+// For use within normal web clients 
+var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
+// For use within iPad developer UIWebView
+// Thanks to Andrew Hedges!
+var ua = navigator.userAgent;
+var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2/i.test(ua);
 
   j$(document).ready(function() {
 
@@ -82,26 +89,6 @@ var autosaveOn = false;
 	}//end if
 
   });//end ready function
-
-  	// For use within normal web clients 
-	var isiPad = navigator.userAgent.match(/iPad/i) != null;
-
-	// For use within iPad developer UIWebView
-	// Thanks to Andrew Hedges!
-	var ua = navigator.userAgent;
-	var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2/i.test(ua);
-
-	if (isiPad) {
-	var a = document.getElementsByTagName("a");
-	for(var i=0;i<a.length;i++)
-	{
-	    a[i].onclick=function()
-	    {
-	        window.location=this.getAttribute("href");
-	        return false
-	    }
-	}
-	}
 
 	function formsubmit(url, dir){
 
