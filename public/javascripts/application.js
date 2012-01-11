@@ -29,14 +29,15 @@ var autosaveOn = false;
 	//Add autosave events to surveys
 	if( j$('form')[0] ) {
 
-		var n_btn = j$('#nextbtn');
-		n_btn.click(function(){
-				var url = n_btn.attr('l');
+		if (isiPad) {
+			var n_btn = j$('#nextbtn');
+			n_btn.click(function(){
+					var url = n_btn.attr('l');
 
-				alert("live event next click, url = "+url );
-				formsubmit(url,'1');
-		});
-
+					alert("live event next click, url = "+url );
+					formsubmit(url,'1');
+			});
+		}
 		setInterval(function() { ajaxautosave(); }, 1000*60); // 1000ms * 60s = 1m
 		j$('form input.edit_form_field, form textarea.edit_form_field, form select.edit_form_field').each(function (i) {
 			j$(this).live({
@@ -82,8 +83,28 @@ var autosaveOn = false;
 
   });//end ready function
 
+  	// For use within normal web clients 
+	var isiPad = navigator.userAgent.match(/iPad/i) != null;
+
+	// For use within iPad developer UIWebView
+	// Thanks to Andrew Hedges!
+	var ua = navigator.userAgent;
+	var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2/i.test(ua);
+
+	if (isiPad) {
+	var a = document.getElementsByTagName("a");
+	for(var i=0;i<a.length;i++)
+	{
+	    a[i].onclick=function()
+	    {
+	        window.location=this.getAttribute("href");
+	        return false
+	    }
+	}
+	}
+
 	function formsubmit(url, dir){
-		alert('formsubmit, url = '+url);
+
 		j$.ajax({
 			url: "/surveys/update_multiple",
 			type: "POST",
@@ -94,7 +115,7 @@ var autosaveOn = false;
 			}
 
 		});
-		alert('after ajax');
+
 		if(url.match("review") == null){
 			if(url.match(/page/) == null ){
 				if(url.match(/dir=[0-9]+/) == null){
