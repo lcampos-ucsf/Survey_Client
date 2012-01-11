@@ -39,9 +39,9 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		if (isiPad) {
 			var n_btn = j$('#nextbtn');
 			n_btn.click(function(){
-					var url = n_btn.attr('l');
-
-					alert("live event next click, url = "+url );
+					var oc = n_btn.attr('onclick');
+					var u = oc.split("'");
+					var url = u[1];
 					formsubmit(url,'1');
 			});
 		}
