@@ -48,8 +48,15 @@ class Survey::LineItemWidget < Apotomo::Widget
             end
            # replace :state => :selectmultiple
            
-         ## Date or Datetime Question
+        ## Date or Datetime Question
         elsif @line_item.Question_Type__c == 'Date' || @line_item.Question_Type__c == 'Datetime'
+            if @responserecord != nil
+                @respVal = @responserecord[0].Text_Long_Response__c
+                @respId = @responserecord[0].Id
+            end
+
+        ## Integer Question
+        elsif @line_item.Question_Type__c == 'Integer'
             if @responserecord != nil
                 @respVal = @responserecord[0].Text_Long_Response__c
                 @respId = @responserecord[0].Id

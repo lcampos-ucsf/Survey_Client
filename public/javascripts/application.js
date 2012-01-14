@@ -10,7 +10,6 @@ var ua = navigator.userAgent;
 var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2/i.test(ua);
 
   j$(document).ready(function() {
-
   	//Add datepicker calendar to inputs
   	if ( j$('form .datepicker')[0] ) { //do something 
 	  	j$('form .datepicker').each(function(){
@@ -66,7 +65,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			});
 		}
 		
-		setInterval(function() { ajaxautosave(); }, 1000*60); // 1000ms * 60s = 1m
+		setInterval(function() { ajaxautosave(); }, 1000*10); // 1000ms * 60s = 1m
 		j$('form input.edit_form_field, form textarea.edit_form_field, form select.edit_form_field').each(function (i) {
 			j$(this).live({
 			  click: function() {
@@ -78,12 +77,12 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			    if(!autosaveOn){
 			  		autosaveOn = true;
 			  	}
-			  },
+			  }/*,
 			  focus: function() {
 			    if(!autosaveOn){
 			  		autosaveOn = true;
 			  	}
-			  }
+			  }*/
 			});					
 		});
 	}//end if
@@ -119,7 +118,12 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			data: j$("form").serialize(),
 			async: false,
 			dataType: "script",
-			success: function(){
+			success: function(data){
+				alert('sucessful post');
+
+			},
+			error: function(){
+				alert('error on post');
 			}
 
 		});
@@ -148,7 +152,20 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				type: "POST",
 				data: j$("form").serialize(),
 				async: false,
-				success: function(){
+				success: function(data){
+
+					//alert('empty data object? = '+ j$.isEmptyObject(data[0]) );
+					//alert('execute if = '+ !j$.isEmptyObject(data[0]) );
+					if ( !j$.isEmptyObject(data[0]) ){
+						for (var x = 0; x< data.length; x++){  
+						 var s = data[x];
+						 var n_id = s.key+s.id;
+						 j$('#' + s.key).attr('name',n_id);
+						}
+					}
+				},
+				error: function(){
+					alert('error on post');
 				}
 
 			});

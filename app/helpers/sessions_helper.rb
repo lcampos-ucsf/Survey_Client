@@ -7,6 +7,7 @@ require 'omniauth-oauth2'
   end
 
   def sign_out(sm = 0)
+      puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb sign_out ^^^^^^^^^^^^^^^^^^^^"
       instURL = ''
       if signed_in?
         instURL = session[:auth_hash][:instance_url]
@@ -16,6 +17,7 @@ require 'omniauth-oauth2'
   end
 
   def signout_exp
+    puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb signout_exp ^^^^^^^^^^^^^^^^^^^^"
     sign_out(1)
   end
 
@@ -36,6 +38,7 @@ require 'omniauth-oauth2'
         @time_left = (session[:expires_at].utc - Time.now.utc).to_i
         puts "else, timeleft = '#{@time_left}' " 
         unless @time_left > 0
+          puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb authenticate unless ^^^^^^^^^^^^^^^^^^^^"
           reset_session
           store_location
           signout_exp
@@ -61,6 +64,8 @@ require 'omniauth-oauth2'
 
     if provider == 'customurl'
       auth_params[:customurl] = ENV['DEFAULT_CUSTOM_URL']
+    elsif provider == 'salesforcesandbox'
+      auth_params[:customurl] = ENV['DEFAULT_SANDBOX_URL']
     end
 
     #look for defined options
@@ -91,6 +96,7 @@ require 'omniauth-oauth2'
   private
   
       def store_location
+        puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb store_location ^^^^^^^^^^^^^^^^^^^^"
         session[:return_to] = request.fullpath
       end
 

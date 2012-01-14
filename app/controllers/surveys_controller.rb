@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
 	
   before_filter :authenticate
-  rescue_from SurveysController::Exception, :with => :catch_exceptions
+  #rescue_from SurveysController::Exception, :with => :catch_exceptions
 
   include SurveysHelper
 
