@@ -49,7 +49,13 @@ class SessionsController < ApplicationController
     puts "^^^^^^^^^^^^^^^^^^^^ session_controller.rb create, , session[:return_to] = '#{session[:return_to]}' ^^^^^^^^^^^^^^^^^^^^"
     #puts 'Full Auth Hash >>>>>'
     #puts env['omniauth.auth']
-     
+    
+    #add reset_session here and copy any signup path
+    @starturl = session[:return_to]
+    reset_session
+
+    session[:return_to] = @starturl
+
     #puts 'User Login >>>>'
     session[:auth_hash] = env['omniauth.auth']['credentials']
     #puts 'tokens: '+env['omniauth.auth']['credentials'].to_s
@@ -61,6 +67,13 @@ class SessionsController < ApplicationController
     #puts 'image : '+env['omniauth.auth']['info']['image'].to_s
     session[:name] = env['omniauth.auth']['info']['name']
     #puts 'name : '+env['omniauth.auth']['info']['name'].to_s
+
+    #add user ip
+    session[:user_ip] = request.remote_ip
+
+    puts "///////////////////// user ip is = '#{session[:user_ip]}' " 
+    puts "///////////////////// user ip is = '#{session[:user_ip]}' " 
+    puts "///////////////////// user ip is = '#{session[:user_ip]}' " 
 
     #obtain name of the service
     params[:provider] ? service_route = params[:provider] : service_route = 'No service recognized (invalid callback)'

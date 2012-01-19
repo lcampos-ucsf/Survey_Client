@@ -16,7 +16,7 @@ SampleApp::Application.configure do
   ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwGKWN18VcBTA0zJQA8mXhFhfxzf99_c9nB3f5ITBipAIYuBUb9Xox_UkcAsIVJuWTcjVOVQ"
   ENV['SALESFORCE_CUSTOM_SECRET'] = "7879557555915093217"
 
-  ENV['DEFAULT_PROVIDER'] = 'salesforcesandbox'#"customurl"
+  ENV['DEFAULT_PROVIDER'] = "customurl" #'salesforcesandbox'
 
 =begin
   #NPI-QA
@@ -34,10 +34,9 @@ SampleApp::Application.configure do
   ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npidev.cs11.my.salesforce.com"
   ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
 
-  ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-dev.heroku.com/surveys/index"  
-  ENV['sf_user'] = "005A0000001e1G6"
+  ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-dev.heroku.com/surveys/index" 
   ENV['sfdc_api_version'] = '23.0'
-  ENV['app_timeout'] = '300' #seconds
+  ENV['app_timeout'] = '900' #seconds
 
 
   # In the development environment your application's code is reloaded on

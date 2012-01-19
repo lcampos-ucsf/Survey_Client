@@ -1,5 +1,9 @@
 <h1> <%= @survey[0].Survey_Name__c %> </h1>
 
+<div>
+	<strong>Description:</strong> <%= @survey[0].Survey__r.Description__c %>
+</div>
+
 <%= widget_div do %>
 	<script type="text/javascript">
 		var j$ = jQuery.noConflict();

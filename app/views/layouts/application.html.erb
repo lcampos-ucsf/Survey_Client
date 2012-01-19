@@ -8,19 +8,26 @@
     <%= csrf_meta_tag %>
     <%= render 'layouts/stylesheets' %>
     <%= javascript_include_tag 'jquery.js' %>
-    <%= javascript_include_tag 'jquery-ui-1.8.16.custom.min.js' %>
+    <%= javascript_include_tag 'jquery-ui-1.8.17.custom.min.js' %>
     <%= javascript_include_tag 'application.js' %>
+    <%= javascript_include_tag 'jquery.idletimer.js' %>
+    <%= javascript_include_tag 'jquery.idletimeout.js' %>
     <!--  %= javascript_include_tag 'bootstrap-alerts.js' % -->
     <!-- %= javascript_include_tag 'jquery.idletimer.js' %>
     < %= javascript_include_tag 'jquery.idletimeout.js' % -->
 
     <script type="text/javascript">
       // load the my-script-file.js and display an alert dialog once the script has been loaded
+      //loadScript('/javascripts/jquery-ui-1.8.16.custom.min.js');
       loadScript('/javascripts/bootstrap-dropdown.js');
-      loadScript('/javascripts/jquery.idletimer.js');
-      loadScript('/javascripts/jquery.idletimeout.js');
+      //loadScript('/javascripts/jquery.idletimer.js');
+      //loadScript('/javascripts/jquery.idletimeout.js');
       loadScript('/javascripts/bootstrap-alerts.js');
+      loadScript('/javascripts/bootstrap-modal.js');
+      
     </script>
+    <!-- Security Update-->
+    <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />

@@ -1,7 +1,9 @@
 class SurveysController < ApplicationController
 	
   before_filter :authenticate
-  #rescue_from SurveysController::Exception, :with => :catch_exceptions
+
+  rescue_from Exceptions::SurveyNotAvailable, :with => :survey_error
+  rescue_from Exceptions::SurveyBuildError, :with => :survey_error
 
   include SurveysHelper
 
@@ -32,13 +34,9 @@ class SurveysController < ApplicationController
   
   private
 
-  def catch_exceptions
-    puts "------------ catch_exceptions"
-    redirect_to "/surveys/#{params[:id]}/review"
-    
-    rescue => exception
-      puts "Caught exception !  '#{exception}' "
-      raise
+  def survey_error(exception)
+      puts "waaaaaaaaahhhhhhhhhhhjjjjjjjjjjjjjjjjsadDDsasa^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ exception = '#{exception}' "
+      redirect_to "/invite/index", :alert => exception.message
   end
 
 end

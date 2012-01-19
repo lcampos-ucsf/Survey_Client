@@ -1,3 +1,5 @@
+
+
 <div class="input">
   <%= f.label 'Survey', :class => "invite_form_label" %>
   <%= select("invitation__c", "Survey__c", @surveys.collect {|p| [ p.Name, p.Id ] }, {:include_blank => 'None'}) %>

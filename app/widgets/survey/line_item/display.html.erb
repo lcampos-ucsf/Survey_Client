@@ -75,6 +75,45 @@
 
 		<% end %>
 
+	<% elsif @line_item.Line_Item_Type__c == 'Content' %>
+
+		<% if @line_item.Content_Type__c == 'Image' %>
+			<div id="my-modal-image-<%= @line_item.Id%>" class="modal hide fade" style="display: none;">
+				<div class="modal-header">
+		          <a href="#" class="close">×</a>
+		          <h3>Image</h3>
+		        </div>
+
+		        <div class="modal-body">
+					<img src ="<%= @line_item.Autocomplete_URL__c%>" style="margin: auto; display:block;" />
+				</div>
+
+				<div class="modal-footer">
+				</div>
+			</div>
+			<a class="btn" data-controls-modal="my-modal-image-<%= @line_item.Id%>" data-backdrop="static" >Launch Content</a>
+
+		<% elsif @line_item.Content_Type__c == 'Text' %>
+			<h4 style="color:#666666;"> <%= @line_item.Content_Description__c %> </h4>
+
+		<% elsif @line_item.Content_Type__c == 'File' %>
+			<div id="my-modal-file-<%= @line_item.Id%>" class="modal hide fade" style="display: none;">
+				<div class="modal-header">
+		          <a href="#" class="close">×</a>
+		          <h3>File</h3>
+		        </div>
+
+		        <div class="modal-body">
+					<iframe src="<%= @line_item.Autocomplete_URL__c %>" frameborder="0" ></iframe>
+				</div>
+
+				<div class="modal-footer">
+				</div>
+			</div>
+			<a class="btn" data-controls-modal="my-modal-file-<%= @line_item.Id%>" data-backdrop="static" >Launch File</a>
+
+		<% end %>
+
 	<% end %>
 
 <% end %>

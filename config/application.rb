@@ -42,5 +42,8 @@ module SampleApp
     config.filter_parameters += [:password]
     #only https-ssl
     config.force_ssl = true
+
+    #paranoid countermeasures against mass assignment
+    config.active_record.whitelist_attributes = true
   end
 end

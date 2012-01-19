@@ -112,18 +112,20 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 	function formsubmit(url, dir){
 
+		var dt = j$("form").serialize();
+		dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 		j$.ajax({
 			url: "/surveys/update_multiple",
 			type: "POST",
-			data: j$("form").serialize(),
+			data: dt,
 			async: false,
 			dataType: "script",
 			success: function(data){
-				alert('sucessful post');
+				//alert('sucessful post');
 
 			},
 			error: function(){
-				alert('error on post');
+				//alert('error on post');
 			}
 
 		});
@@ -147,10 +149,13 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	function ajaxautosave(){
 
 		if (autosaveOn) {
-			 j$.ajax({
+			var dt = j$("form").serialize();
+			dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
+
+			j$.ajax({
 				url: "/surveys/update_multiple",
 				type: "POST",
-				data: j$("form").serialize(),
+				data: dt,
 				async: false,
 				success: function(data){
 
@@ -165,7 +170,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 					}
 				},
 				error: function(){
-					alert('error on post');
+					//alert('error on post');
 				}
 
 			});

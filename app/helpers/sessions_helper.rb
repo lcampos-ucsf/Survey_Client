@@ -28,6 +28,15 @@ require 'omniauth-oauth2'
 
   def authenticate
     puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb authenticate, signed_in ? = '#{signed_in?}' ^^^^^^^^^^^^^^^^^^^^"
+
+    #check ip
+    puts "//////////////////// session_helper.rb, check ip. session[:user_ip] = '#{session[:user_ip]}', request ip = '#{request.remote_ip}' "
+    if session[:user_ip] != request.remote_ip
+      deny_access
+      return false
+    end
+
+    #check session
     if signed_in?
       ve_to = ENV['app_timeout'].to_i / 60
       expire_time = ve_to.minutes.from_now
@@ -39,6 +48,7 @@ require 'omniauth-oauth2'
         puts "else, timeleft = '#{@time_left}' " 
         unless @time_left > 0
           puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb authenticate unless ^^^^^^^^^^^^^^^^^^^^"
+          #session[:expires_at] = expire_time
           reset_session
           store_location
           signout_exp
@@ -46,6 +56,15 @@ require 'omniauth-oauth2'
       end
     else
       deny_access
+    end
+  end
+
+  def admin_only
+    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& admin_only &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& admin_only &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& admin_only &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+    if session[:user_profile] != 'Admin'
+      raise Exceptions::InsufficientPriviledges.new('Insufficient Privileges to access this section.')
     end
   end
 

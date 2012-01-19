@@ -1,7 +1,22 @@
 <h1>Create</h1>
 
+<% if flash[:notice] %>
+    <div id="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <%= form_for(@invite, :url => {:controller => "invite",:action => "create"}) do |f| %>
-  
+
+    <!-- % if @invite.errors.any? %>
+	<div id="error_explanation">
+	<h4>< %= pluralize(@invite.errors.count, "error") %> occurred while trying to save</h4>
+	  <ul>
+	  < % @invite.errors.each do |attr, msg| %>
+	    <li>< %= msg %></li>
+	  < % end %>
+	  </ul>
+	</div>
+	< % end % -->
+
     <%= render 'fields', :f => f %>
     <div class="actions">
         <%= f.submit "Save", :class => 'btn primary customform' %>

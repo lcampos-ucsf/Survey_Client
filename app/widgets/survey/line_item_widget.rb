@@ -65,7 +65,7 @@ class Survey::LineItemWidget < Apotomo::Widget
         end
 
     elsif @line_item.Line_Item_Type__c == 'Content'
-        replace :state => :comment
+        #replace :state => :comment
     end
 
     render

@@ -24,12 +24,16 @@ gem 'omniauth-salesforce', :git => 'git://github.com/jonathansnd/omniauth-salesf
 #add pagination to surveys
 gem 'kaminari'
 
+#add security before saving input
+gem 'sanitize', '2.0.3'
+
 #heroku dependency
 group :production do
 	gem 'pg', '0.12.0'
 end
 
 group :development do
+	gem 'rspec'
   	gem 'rspec-rails'
   	gem 'annotate', '2.4.0'
 	gem 'faker', '0.3.1'
