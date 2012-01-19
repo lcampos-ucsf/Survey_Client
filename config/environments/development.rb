@@ -16,7 +16,9 @@ SampleApp::Application.configure do
   ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwGKWN18VcBTA0zJQA8mXhFhfxzf99_c9nB3f5ITBipAIYuBUb9Xox_UkcAsIVJuWTcjVOVQ"
   ENV['SALESFORCE_CUSTOM_SECRET'] = "7879557555915093217"
 
-  ENV['DEFAULT_PROVIDER'] = "customurl" #'salesforcesandbox'
+  ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npidev.cs11.my.salesforce.com"
+  ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
+  ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-dev.heroku.com/index"  
 
 =begin
   #NPI-QA
@@ -30,11 +32,14 @@ SampleApp::Application.configure do
   ENV['DATABASE_DOT_COM_SECRET'] = ""
   ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwHxOJHdUt59hnj4Vwa8tt1yBg5fW3OtJIEfoFnsGW_rT5huS5Zg02WpKjFPQ9Tmss.HKgAk"
   ENV['SALESFORCE_CUSTOM_SECRET'] = "2691895098048201861"
-=end
-  ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npidev.cs11.my.salesforce.com"
-  ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
 
-  ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-dev.heroku.com/surveys/index" 
+  ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npiqa.cs11.my.salesforce.com"
+  ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
+  ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-qa.heroku.com/index" 
+=end
+
+  
+  ENV['DEFAULT_PROVIDER'] = "customurl" #'salesforcesandbox'
   ENV['sfdc_api_version'] = '23.0'
   ENV['app_timeout'] = '900' #seconds
 
