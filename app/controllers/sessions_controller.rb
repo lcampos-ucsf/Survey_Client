@@ -15,11 +15,16 @@ class SessionsController < ApplicationController
     @title = 'Sign Out'
 
         @sfloguturl = nil
+        @idplogouturl = nil
 
         if params[:orgurl] != nil
 
             #Set ifram url for salesforce logout
             @sfloguturl = "#{params[:orgurl]}/secur/logout.jsp"
+
+            if ENV['DEFAULT_PROVIDER'] == "customurl"
+              @idplogouturl = ENV['IDP_UCSF_LOGOUT']
+            end
 
             #Revoke refresh token
             if signed_in?

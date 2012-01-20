@@ -1,6 +1,7 @@
 
 var j$ = jQuery.noConflict();
 var autosaveOn = false;
+
 // For use within normal web clients 
 var isiPad = navigator.userAgent.match(/iPad/i) != null;
 
@@ -32,8 +33,21 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		//j$('#pb').progressbar({ value: '<%= @progressbar.to_i %>' });
 	}
 
+	// toggles the survey description when click on link  
+	if ( j$('#description-toggle')[0] ) {
+		j$('#description-toggle').click(function() {
+			j$('#desc_content').toggle(400);
+			return false;
+		});
+	}
+
 	//Add autosave events to surveys
 	if( j$('form')[0] ) {
+
+		//Eliminates cache for every form
+		j$('form').each(function() {
+	       this.reset();
+	    });
 
 		if (isiPad) {
 			//fixes onclick issue on nav buttons with ipad
@@ -108,6 +122,49 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
     	}); 
 	}//end if
 
+	//autocomplete functionality
+	if( j$('.autocomplete_comp')[0] ){
+
+		j$('.autocomplete_comp').autocomplete({
+			//minLength: 2,
+			source: function(request, response) {
+		        j$.ajax({
+		            url: "/surveys/autocompletequery",
+		            data: "{}",
+		            dataType: "json",
+		            headers: {'X-CSRF-Token': AUTH_TOKEN },
+		            type: "POST",
+		            contentType: "application/json; charset=utf-8",
+		            success: function(data) {
+		            	/*
+		            	var list = j$.map(data, function(item) {
+		                    return {
+		                        value: item.Name
+		                         	
+		                    }
+		                });
+		                alert('data = '+list);
+		                var re = j$.ui.autocomplete.escapeRegex(request.term);
+				        var matcher = new RegExp( "^" + re, "i" );
+				        var a = j$.grep( wordlist, function(item,index){
+				            return matcher.test(item);
+				        });
+				        response( a ); */
+
+		               	response(j$.map(data, function(item) {
+		                    return {
+		                        value: item.Name
+		                    }
+		                }))
+		            },
+		            error: function(XMLHttpRequest, textStatus, errorThrown) {
+		                alert(errorTrown);
+		            }
+		        });
+    		}
+		});
+	}
+
   });//end ready function
 
 	function formsubmit(url, dir){
@@ -156,7 +213,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				url: "/surveys/update_multiple",
 				type: "POST",
 				data: dt,
-				async: false,
+				async: true,
 				success: function(data){
 
 					//alert('empty data object? = '+ j$.isEmptyObject(data[0]) );

@@ -167,4 +167,20 @@ module SurveysHelper
 		return
 	end
 
+	def autocompletequery
+		puts "&&&&&&&&&&&&&&&&&&&&&&&&& autocompletequery"
+		puts "&&&&&&&&&&&&&&&&&&&&&&&&& autocompletequery"
+		puts "&&&&&&&&&&&&&&&&&&&&&&&&& autocompletequery"
+		puts "&&&&&&&&&&&&&&&&&&&&&&&&& autocompletequery"
+		
+		p = session[:client].query("select Id, Name from Master_Patient__c ")
+
+		puts "&&&&&&&&&&&&&&&&&&&&&&&&& p = '#{p.to_json}' "
+
+		respond_to do |format|
+			format.json { render :json => p.to_json }		
+		end
+			
+	end
+
 end
