@@ -19,7 +19,7 @@ SampleApp::Application.configure do
   ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npidev.cs11.my.salesforce.com"
   ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
   ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-dev.heroku.com/index"  
-  ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://medctr--npidev.cs11.my.salesforce.com'
+  ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://npi-dev.heroku.com'
   
 
 =begin
@@ -38,7 +38,7 @@ SampleApp::Application.configure do
   ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npiqa.cs11.my.salesforce.com"
   ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
   ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-qa.heroku.com/index"  
-  ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://medctr--npiqa.cs11.my.salesforce.com'
+  ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://npi-qa.heroku.com'
   
 =end 
 
