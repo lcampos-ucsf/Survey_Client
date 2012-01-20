@@ -6,7 +6,7 @@ class Survey::LineWidget < Apotomo::Widget
 		@line = options[:line_data]
 		@surveyid = options[:surveyid]
 		@inviteid = options[:inviteid]
-		@line_items = session[:client].query( "select Id, Name, Answer_Sequence__c, Content_Description__c, Display_Format__c, Line__c, Line_Item_Type__c, Question_Description__c, Question_Type__c, Resource__c, Resource_Name__c, Sort_Order__c, Autocomplete_URL__c, Content_Type__c from Line_Item__c where Line__c = '#{@line.Id}' order by Sort_Order__c asc")
+		@line_items = session[:client].query( "select Id, Name, Answer_Sequence__c, Content_Description__c, Display_Format__c, Line__c, Line_Item_Type__c, Question_Description__c, Question_Type__c, Resource__c, Resource_Name__c, Sort_Order__c, URL__c, Content_Type__c, Enable_Autocomplete__c from Line_Item__c where Line__c = '#{@line.Id}' order by Sort_Order__c asc")
 
 		@li_list = ''
 		@li_as_list = ''

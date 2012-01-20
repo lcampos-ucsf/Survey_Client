@@ -21,12 +21,10 @@ SampleApp::Application.routes.draw do
   #match "surveys/index", :to => "surveys#index"
 
   match "surveys/:id/show", :to => "surveys#show"
-  
   match "surveys/:id/review", :to => "surveys#review"
-
-   match "surveys/update_multiple", :to => "surveys#update_multiple"
-
-   match "surveys/:id/submitsurvey", :to => "surveys#submitsurvey"
+  match "surveys/update_multiple", :to => "surveys#update_multiple"
+  match "surveys/autocompletequery", :to => "surveys#autocompletequery"
+  match "surveys/:id/submitsurvey", :to => "surveys#submitsurvey"
 
 
   resources :sessions, :only => [:new,:create,:destroy]

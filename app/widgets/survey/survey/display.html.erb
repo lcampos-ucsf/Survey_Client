@@ -1,12 +1,15 @@
 <h1> <%= @survey[0].Survey_Name__c %> </h1>
 
-<div>
-	<strong>Description:</strong> <%= @survey[0].Survey__r.Description__c %>
+
+<a href="#" id="description-toggle"> Click for survey description:</a>
+<div id="desc_content" style="display:none;" >
+	<%= @survey[0].Survey__r.Description__c %>
 </div>
 
 <%= widget_div do %>
 	<script type="text/javascript">
 		var j$ = jQuery.noConflict();
+
 		j$(document).ready(function() {
 			j$("#pb").progressbar({ value: <%= @progressbar.to_i %> });
 		});
@@ -26,7 +29,7 @@
 
 		<% @lines.each_with_index do |line, i| %>
 
-			<h2 >Questions - Section <%= line.Sort_Order__c %> </h2>
+			<h2 ><%= line.Name %> </h2>
 			<h3 class="line_head_h3" ><%= line.Description__c%></h3>
 			<div class="line-wrap" >
 

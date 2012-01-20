@@ -3,11 +3,16 @@
 	<% if @line_item.Line_Item_Type__c == 'Question' %>
 
 		<label class="q_text" > <%= @line_item.Question_Description__c %> : </label>
-		<input type="hidden" name="<%= @line_item.Id%>" value="<%= @line_item.Question_Description__c %>"/>
+		<input type="hidden" name="<%= @line_item.Id%>" value="<%= @line_item.Question_Description__c %>" />
 
 		<!-- Text Question -->
 		<% if @line_item.Question_Type__c == 'Text' %>
-			<input type="text" name="qq_<%= @line_item.Id%>_text_<%= @respId %>" id="qq_<%= @line_item.Id%>_text_<%= @respId %>"class="edit_form_field" value="<%= @respVal %>" />
+
+			<%if @line_item.Enable_Autocomplete__c == true %>
+				<input type="text" name="qq_<%= @line_item.Id%>_text_<%= @respId %>" id="qq_<%= @line_item.Id%>_text_<%= @respId %>" class="edit_form_field autocomplete_comp" value="<%= @respVal %>" autocomplete="off" />
+			<% else %>
+				<input type="text" name="qq_<%= @line_item.Id%>_text_<%= @respId %>" id="qq_<%= @line_item.Id%>_text_<%= @respId %>" class="edit_form_field" value="<%= @respVal %>" autocomplete="off" />
+			<% end %>
 
 		<!-- SelectOneQuestion Question -->
 		<% elsif @line_item.Question_Type__c == 'SelectOneQuestion' %>
@@ -67,11 +72,11 @@
 
 		<!-- Date or DateTime Question -->
 		<% elsif @line_item.Question_Type__c == 'Date' || @line_item.Question_Type__c == 'Datetime'%>
-			<input type="text" name="qq_<%= @line_item.Id%>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" id="qq_<%= @line_item.Id%>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" class="edit_form_field datepicker" value="<%= @respVal %>" />
+			<input type="text" name="qq_<%= @line_item.Id%>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" id="qq_<%= @line_item.Id%>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" class="edit_form_field datepicker" value="<%= @respVal %>" autocomplete="off" />
 
 		<!-- Integer Question -->
 		<% elsif @line_item.Question_Type__c == 'Integer' %>
-			<input type="text" name="qq_<%= @line_item.Id%>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" id="qq_<%= @line_item.Id%>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" class="edit_form_field" value="<%= @respVal %>" />
+			<input type="text" name="qq_<%= @line_item.Id%>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" id="qq_<%= @line_item.Id%>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" class="edit_form_field" value="<%= @respVal %>" autocomplete="off" />
 
 		<% end %>
 
@@ -85,7 +90,7 @@
 		        </div>
 
 		        <div class="modal-body">
-					<img src ="<%= @line_item.Autocomplete_URL__c%>" style="margin: auto; display:block;" />
+					<img src ="<%= @line_item.URL__c%>" style="margin: auto; display:block;" />
 				</div>
 
 				<div class="modal-footer">
@@ -103,8 +108,8 @@
 		          <h3>File</h3>
 		        </div>
 
-		        <div class="modal-body">
-					<iframe src="<%= @line_item.Autocomplete_URL__c %>" frameborder="0" ></iframe>
+		        <div class="modal-body file-mbody">
+					<iframe src="<%= @line_item.URL__c %>" frameborder="0" height="100%" width="100%" ></iframe>
 				</div>
 
 				<div class="modal-footer">
