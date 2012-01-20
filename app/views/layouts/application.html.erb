@@ -121,6 +121,7 @@
            
               a[i].onclick=function()
               {
+                  if(this.getAttribute("href")) 
                     window.location=this.getAttribute("href");
                   return false
             }

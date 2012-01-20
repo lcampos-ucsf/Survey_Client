@@ -96,7 +96,7 @@
 				<div class="modal-footer">
 				</div>
 			</div>
-			<a class="btn" href="#" data-controls-modal="my-modal-image-<%= @line_item.Id%>" data-backdrop="static" >Launch Content</a>
+			<a class="btn" data-controls-modal="my-modal-image-<%= @line_item.Id%>" data-backdrop="static" >Launch Content</a>
 
 		<% elsif @line_item.Content_Type__c == 'Text' %>
 			<h4 style="color:#666666;"> <%= @line_item.Content_Description__c %> </h4>
@@ -115,7 +115,7 @@
 				<div class="modal-footer">
 				</div>
 			</div>
-			<a class="btn" href="#" data-controls-modal="my-modal-file-<%= @line_item.Id%>" data-backdrop="static" >Launch File</a>
+			<a class="btn" data-controls-modal="my-modal-file-<%= @line_item.Id%>" data-backdrop="static" >Launch File</a>
 
 		<% end %>
 
