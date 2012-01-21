@@ -27,8 +27,6 @@ gem 'kaminari'
 #add security before saving input
 gem 'sanitize', '2.0.3'
 
-#add debugging
-gem 'ruby-debug19'
 
 #heroku dependency
 group :production do
@@ -40,6 +38,8 @@ group :development do
   	gem 'rspec-rails'
   	gem 'annotate', '2.4.0'
 	gem 'faker', '0.3.1'
+	#add debugging
+	gem 'ruby-debug19'
 end
 
 group :test do
