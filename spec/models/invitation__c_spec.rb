@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe "Invitation__c" do
 	pending "add some description"
-=begin	
 	describe "all" do
 		context ":Start_Date__c" do
 			it "should have a Start Date"
@@ -28,5 +27,5 @@ describe "Invitation__c" do
 			it "should have Subject"
 		end
 	end
-=end 
+
 end

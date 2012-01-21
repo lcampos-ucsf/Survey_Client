@@ -120,7 +120,8 @@
         {
             a[i].onclick=function()
             {
-                window.location=this.getAttribute("href");
+                if(this.getAttribute("href")) 
+                  window.location=this.getAttribute("href");
                 return false
             }
         }

@@ -16,49 +16,52 @@ class InviteController < ApplicationController
   end
 
   def new
-  	@invite = 'Invitation__c'
+  	@invite = Invitation__c.new
   end
 
   def create
     puts "--------------------------- invite create params = '#{params}' , params[:invitation__c] = '#{params[:invitation__c]}', survey subject = '#{params[:invitation__c][:Survey_Subject__c]}' "
+    debugger
     if params[:invitation__c][:Survey_Subject__c] 
       params[:invitation__c][:Survey_Subject__c].each do |s|
 
+        puts "&&&&&&&&&&&&&&&&&&&&&&&& invitation if, s = '#{s}' " 
         session[:client].create('Invitation__c',{
-            'Survey__c' => Sanitize.clean(params[:invitation__c][:Survey__c]), 
-            'User__c' => Sanitize.clean(params[:invitation__c][:User__c]),
+            'Survey__c' => params[:invitation__c][:Survey__c], 
+            'User__c' => params[:invitation__c][:User__c],
             'Status__c' => 'New',
             'Survey_Subject__c' => s, 
-            'Start_Date__c' => Date.strptime(Sanitize.clean(params[:invitation__c][:Start_Date__c]), "%m/%d/%Y").to_datetime(), 
-            'End_Date__c' => Date.strptime(Sanitize.clean(params[:invitation__c][:End_Date__c]), "%m/%d/%Y").to_datetime(), 
+            'Start_Date__c' => Date.strptime(params[:invitation__c][:Start_Date__c], "%m/%d/%Y").to_datetime(), 
+            'End_Date__c' => Date.strptime(params[:invitation__c][:End_Date__c], "%m/%d/%Y").to_datetime(), 
             'OwnerId' => session[:user_id], 
             'Is_Preview__c' => false, 
             'Invite_Sent__c' => false, 
             'Completed__c' => false,
-            'Text_Survey_Subject__c' => Sanitize.clean(params[:invitation__c][:Text_Survey_Subject__c]) })
+            'Text_Survey_Subject__c' => params[:invitation__c][:Text_Survey_Subject__c]  })
 
+            puts "&&&&&&&&&&&&&&&&&&&&&&&& invitation if end, s = '#{s}' " 
       end
 
     else
-     # @i = Invitation__c.new(params[:invitation__c])
+    #@i = Invitation__c.new(params[:invitation__c])
 
-      #if @i.valid?
+     # if @i.valid?
       session[:client].create('Invitation__c',{
-            'Survey__c' => Sanitize.clean(params[:invitation__c][:Survey__c]), 
-            'User__c' => Sanitize.clean(params[:invitation__c][:User__c]),
+            'Survey__c' => params[:invitation__c][:Survey__c], 
+            'User__c' => params[:invitation__c][:User__c],
             'Status__c' => 'New',
-            'Start_Date__c' => Date.strptime(Sanitize.clean(params[:invitation__c][:Start_Date__c]), "%m/%d/%Y").to_datetime(), 
-            'End_Date__c' => Date.strptime(Sanitize.clean(params[:invitation__c][:End_Date__c]), "%m/%d/%Y").to_datetime(), 
+            'Start_Date__c' => Date.strptime(params[:invitation__c][:Start_Date__c], "%m/%d/%Y").to_datetime(), 
+            'End_Date__c' => Date.strptime(params[:invitation__c][:End_Date__c], "%m/%d/%Y").to_datetime(), 
             'OwnerId' => session[:user_id], 
             'Is_Preview__c' => false, 
             'Invite_Sent__c' => false, 
             'Completed__c' => false,
-            'Text_Survey_Subject__c' => Sanitize.clean(params[:invitation__c][:Text_Survey_Subject__c]) })
-     # else
-     #   setinviteformvalues
-     #   render :action => 'new'
-     #   return
-     # end      
+            'Text_Survey_Subject__c' => params[:invitation__c][:Text_Survey_Subject__c] != '' ? Sanitize.clean(params[:invitation__c][:Text_Survey_Subject__c]) : '' })
+      #else
+      #  setinviteformvalues
+      #  render :action => 'new'
+      #  return
+      #end      
 
   	end
   	redirect_to invite_index_path
@@ -79,6 +82,7 @@ class InviteController < ApplicationController
         'User__c' => Sanitize.clean(params[:invitation__c][:User__c]), 
         'OwnerId' => Sanitize.clean(params[:invitation__c][:User__c]),
         'Status__c' => Sanitize.clean(params[:invitation__c][:Status__c]),
+        'Survey_Subject__c' => params[:invitation__c][:Survey_Subject__c],
         'Start_Date__c' => Date.strptime(Sanitize.clean(params[:invitation__c][:Start_Date__c]), "%m/%d/%Y").to_datetime(), 
         'End_Date__c' => Date.strptime(Sanitize.clean(params[:invitation__c][:End_Date__c]), "%m/%d/%Y").to_datetime(),
         'Text_Survey_Subject__c' => Sanitize.clean(params[:invitation__c][:Text_Survey_Subject__c]) })

@@ -27,6 +27,9 @@ gem 'kaminari'
 #add security before saving input
 gem 'sanitize', '2.0.3'
 
+#add debugging
+gem 'ruby-debug19'
+
 #heroku dependency
 group :production do
 	gem 'pg', '0.12.0'

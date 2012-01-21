@@ -96,7 +96,9 @@
 				<div class="modal-footer">
 				</div>
 			</div>
-			<a class="btn" data-controls-modal="my-modal-image-<%= @line_item.Id%>" data-backdrop="static" >Launch Content</a>
+			<a class="img_thumb_modal" data-controls-modal="my-modal-image-<%= @line_item.Id%>" data-backdrop="static" >
+			<img src ="<%= @line_item.URL__c%>" height="90px" />
+			Click image to enlarge</a>
 
 		<% elsif @line_item.Content_Type__c == 'Text' %>
 			<h4 style="color:#666666;"> <%= @line_item.Content_Description__c %> </h4>

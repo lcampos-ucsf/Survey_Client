@@ -1,6 +1,7 @@
 #require 'active_model'
 
 class Invitation__c
+	belongs_to :Survey__c
 		
 	include ActiveModel::Validations
 	include ActiveModel::Conversion
@@ -14,15 +15,30 @@ class Invitation__c
 	validates_presence_of :End_Date__c, :message => "End Date must be provided"
 	validates_length_of :Text_Survey_Subject__c, :maximum => 200, :too_long => "Concept has a limit of 200 chars"
 
-=begin
+
 	def initialize(attributes = {})
-		attributes.each do |name, value|
-			puts "each name = '#{name}', value = '#{value}'  " 
-			send("#{name}=",value)
+
+		if attributes
+			attributes.each do |name, value|
+				puts "each name = '#{name}', value = '#{value}'  " 
+				send("#{name}=",value)
+			end
 		end
 	end
-=end
+
 	def persisted?
 		false
 	end
+
+
+=begin
+	def initialize(attributes = {})
+	@attributes = attributes
+	end
+
+	def read_attribute_for_validation(key)
+	@attributes[key]
+	end	
+=end
+
 end

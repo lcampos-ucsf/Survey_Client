@@ -1,6 +1,6 @@
 
 class Survey__c
-	#has_many :Invitation__c
+	has_one :Invitation__c
 		
 	include ActiveModel::Validations
 	include ActiveModel::Conversion
@@ -15,9 +15,11 @@ class Survey__c
 	#validates_length_of :Text_Survey_Subject__c, :maximum => 200, :too_long => "Concept has a limit of 200 chars"
 
 	def initialize(attributes = {})
-		attributes.each do |name, value|
-			puts "each name = '#{name}', value = '#{value}'  " 
-			send("#{name}=",value)
+		if attributes
+			attributes.each do |name, value|
+				puts "each name = '#{name}', value = '#{value}'  " 
+				send("#{name}=",value)
+			end
 		end
 	end
 
