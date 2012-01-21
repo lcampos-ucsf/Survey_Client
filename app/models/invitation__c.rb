@@ -11,10 +11,10 @@ class Invitation__c
 	attr_accessor :Start_Date__c, :End_Date__c, :Text_Survey_Subject__c, :User__c, :Survey_Subject__c #,:Survey__c 
 
 	#validates_presence_of :Survey__c, :message => "Survey must be provided"
-	validates_presence_of :User__c, :message => "User must be provided"
-	validates_presence_of :Start_Date__c, :message => "Start Date must be provided"
-	validates_presence_of :End_Date__c, :message => "End Date must be provided"
-	validates_length_of :Text_Survey_Subject__c, :maximum => 200, :too_long => "Concept has a limit of 200 chars"
+	#validates_presence_of :User__c, :message => "User must be provided"
+	#validates_presence_of :Start_Date__c, :message => "Start Date must be provided"
+	#validates_presence_of :End_Date__c, :message => "End Date must be provided"
+	#validates_length_of :Text_Survey_Subject__c, :maximum => 200, :too_long => "Concept has a limit of 200 chars"
 
 
 	def initialize(attributes = {})
