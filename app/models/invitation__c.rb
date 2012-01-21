@@ -1,7 +1,8 @@
-#require 'active_model'
+require 'active_model'
 
 class Invitation__c
 	belongs_to :Survey__c
+	accepts_nested_attributes_for :Survey__c
 		
 	include ActiveModel::Validations
 	include ActiveModel::Conversion
