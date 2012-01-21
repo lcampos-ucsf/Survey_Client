@@ -79,7 +79,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			});
 		}
 		
-		setInterval(function() { ajaxautosave(); }, 1000*10); // 1000ms * 60s = 1m
+		setInterval(function() { ajaxautosave(); }, 1000*60); // 1000ms * 60s = 1m
 		j$('form input.edit_form_field, form textarea.edit_form_field, form select.edit_form_field').each(function (i) {
 			j$(this).live({
 			  click: function() {

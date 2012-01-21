@@ -255,3 +255,16 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 	font-weight: normal;
 	margin: -1px;
 }
+
+.img_thumb_modal{
+	cursor:pointer;
+}
+
+.img_thumb_modal img{
+	display:block; 
+	border-radius:5px;
+}
+
+
+
+

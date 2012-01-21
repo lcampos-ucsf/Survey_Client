@@ -43,7 +43,7 @@ SampleApp::Application.configure do
   
   ENV['DEFAULT_PROVIDER'] = "customurl" #'salesforcesandbox'
   ENV['sfdc_api_version'] = '23.0'
-  ENV['app_timeout'] = '900' #seconds
+  ENV['app_timeout'] = '900' #(15 mins)time in seconds
 
 
   # In the development environment your application's code is reloaded on
