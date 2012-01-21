@@ -7,9 +7,9 @@ class Invitation__c
 	include ActiveModel::Conversion
 	extend ActiveModel::Naming
 
-	attr_accessor :Start_Date__c, :End_Date__c, :Text_Survey_Subject__c, :Survey__c, :User__c, :Survey_Subject__c #, :errors
+	attr_accessor :Start_Date__c, :End_Date__c, :Text_Survey_Subject__c, :User__c, :Survey_Subject__c #,:Survey__c 
 
-	validates_presence_of :Survey__c, :message => "Survey must be provided"
+	#validates_presence_of :Survey__c, :message => "Survey must be provided"
 	validates_presence_of :User__c, :message => "User must be provided"
 	validates_presence_of :Start_Date__c, :message => "Start Date must be provided"
 	validates_presence_of :End_Date__c, :message => "End Date must be provided"
