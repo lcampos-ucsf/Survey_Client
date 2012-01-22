@@ -34,10 +34,16 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	}
 
 	// toggles the survey description when click on link  
-	if ( j$('#description-toggle')[0] ) {
-		j$('#description-toggle').click(function() {
-			j$('#desc_content').toggle(400);
-			return false;
+	if ( j$('.description-toggle')[0] ) {
+
+		j$('.description-toggle').each(function(){
+			//alert('each toggle, this.class = '+j$(this).class)
+			j$(this).click(function() {
+				//alert('inside click functionality');
+				//j$(this).find('.desc_content').toggle(400);
+				j$(this).siblings('.desc_content').toggle('slow');
+				return false;
+			});
 		});
 	}
 
@@ -107,8 +113,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		j$('.tablesorter.inviteall_tb').tablesorter({ 
 	        headers: { 
 	            0: { sorter: false }, 
-	            1: { sorter: false },
-	            8: { sorter:false } 
+	            1: { sorter: false }
 	        } 
     	}); 
 

@@ -265,6 +265,9 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 	border-radius:5px;
 }
 
+.h2_subtitle {
+	padding: 15px 0;
+}
 
 
 
