@@ -5,6 +5,14 @@
 		<label class="q_text" > <%= @line_item.Question_Description__c %> : </label>
 		<input type="hidden" name="<%= @line_item.Id%>" value="<%= @line_item.Question_Description__c %>" />
 
+		<% if @line_item.Help_Text__c != nil %>
+			<p style="width:100%; font-size:95%;" >
+				<a href="#" class="description-toggle">More Info:</a>
+				<span class="desc_content" style="display:none;" ><%= @line_item.Help_Text__c %></span>
+			</p>
+
+		<% end %>
+
 		<!-- Text Question -->
 		<% if @line_item.Question_Type__c == 'Text' %>
 
@@ -90,7 +98,8 @@
 		        </div>
 
 		        <div class="modal-body">
-					<img src ="<%= @line_item.URL__c%>" style="margin: auto; display:block;" />
+					<img src ="<%= @line_item.URL__c%>" style="margin: auto; display:block; max-width:520px; max-height:600px;" />
+
 				</div>
 
 				<div class="modal-footer">

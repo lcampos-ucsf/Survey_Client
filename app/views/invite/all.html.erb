@@ -2,21 +2,21 @@
 
 <h1>All Surveys</h1>
 
+<h2 class="h2_subtitle" >New</h2>
 <table class="tablesorter inviteall_tb" >
 	<thead>
 		<tr>
 			<th></th>
 			<th>Action</th>
 			<th>Title</th>
-			<th>Status</th>
 			<th>Survey Taker</th>
 			<th>Subject/Concept</th>
 			<th>Start Date</th>
 			<th>End Date</th>
 		</tr>
 	</thead>
-<tbody>
-	<% for invite in @invites do %>
+	<tbody>
+	<% for invite in @invites_new do %>
 			<tr>
 				<td> <a href="/invite/<%= invite.Id%>/edit" >Edit</a> </td>
 				<td>
@@ -29,13 +29,83 @@
 					end %>
 				</td>
 				<td> <%= invite.Survey_Name__c %> </td>
-				<td> <%= invite.Status__c unless invite.Status__c.nil?%> </td>
 				<td> <%= invite.User__r.Name %> </td>
 				<td> <%= invite.Invitation_Subject__c unless invite.Invitation_Subject__c.nil? %> </td>
 				<td> <%= invite.Start_Date__c.strftime('%m/%d/%Y') unless invite.Start_Date__c.nil? %> </td>
 				<td> <%= invite.End_Date__c.strftime('%m/%d/%Y') unless invite.End_Date__c.nil?%> </td>
 			</tr>
 	<% end %>
-</tbody>
-	
+	</tbody>
+</table>
+
+<h2 class="h2_subtitle" >In Progress</h2>
+<table class="tablesorter inviteall_tb" >
+	<thead>
+		<tr>
+			<th></th>
+			<th>Action</th>
+			<th>Title</th>
+			<th>Survey Taker</th>
+			<th>Subject/Concept</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% for invite in @invites_inprogress do %>
+			<tr>
+				<td> <a href="/invite/<%= invite.Id%>/edit" >Edit</a> </td>
+				<td>
+					<% if invite.Status__c != 'Completed'
+						if invite.Progress_Save__c != nil %>
+							<a href="/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn success small" > Resume </a>
+						<% else %>
+							<a href="/surveys/<%= invite.Id%>/show?page=1" class="btn primary small" > Start </a>
+						<% end
+					end %>
+				</td>
+				<td> <%= invite.Survey_Name__c %> </td>
+				<td> <%= invite.User__r.Name %> </td>
+				<td> <%= invite.Invitation_Subject__c unless invite.Invitation_Subject__c.nil? %> </td>
+				<td> <%= invite.Start_Date__c.strftime('%m/%d/%Y') unless invite.Start_Date__c.nil? %> </td>
+				<td> <%= invite.End_Date__c.strftime('%m/%d/%Y') unless invite.End_Date__c.nil?%> </td>
+			</tr>
+	<% end %>
+	</tbody>
+</table>
+
+<h2 class="h2_subtitle" >Complete</h2>
+<table class="tablesorter inviteall_tb" >
+	<thead>
+		<tr>
+			<th></th>
+			<th>Action</th>
+			<th>Title</th>
+			<th>Survey Taker</th>
+			<th>Subject/Concept</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% for invite in @invites_complete do %>
+			<tr>
+				<td> <a href="/invite/<%= invite.Id%>/edit" >Edit</a> </td>
+				<td>
+					<% if invite.Status__c != 'Completed'
+						if invite.Progress_Save__c != nil %>
+							<a href="/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn success small" > Resume </a>
+						<% else %>
+							<a href="/surveys/<%= invite.Id%>/show?page=1" class="btn primary small" > Start </a>
+						<% end
+					end %>
+				</td>
+				<td> <%= invite.Survey_Name__c %> </td>
+				<td> <%= invite.User__r.Name %> </td>
+				<td> <%= invite.Invitation_Subject__c unless invite.Invitation_Subject__c.nil? %> </td>
+				<td> <%= invite.Start_Date__c.strftime('%m/%d/%Y') unless invite.Start_Date__c.nil? %> </td>
+				<td> <%= invite.End_Date__c.strftime('%m/%d/%Y') unless invite.End_Date__c.nil?%> </td>
+			</tr>
+	<% end %>
+	</tbody>
 </table>
