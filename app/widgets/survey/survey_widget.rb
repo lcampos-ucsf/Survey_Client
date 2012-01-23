@@ -80,7 +80,7 @@ responds_to_event :submit, :with => :update_multiple
 			end
 
 			@qstring = "("+@qstring+")"
-			@rdata = session[:client].query("select Id, Name, Invitation__c, Label_Response__c, Line_Item__c, Line_Item_Resource__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Response_Type__c, Survey__c, Text_Long_Response__c, Text_Response__c from Response__c where Line_Item_Resource__c in #{@qstring} and Invitation__c = '#{inviteid}' ")
+			@rdata = session[:client].query("select Id, Name, Invitation__c, Label_Response__c, Line_Item__c, Line_Item_Resource__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Response_Type__c, Survey__c, Text_Long_Response__c, Text_Response__c, Integer_Response__c from Response__c where Line_Item_Resource__c in #{@qstring} and Invitation__c = '#{inviteid}' ")
 
 			@h_rq = {}
 			if !@rdata.empty?
@@ -90,7 +90,14 @@ responds_to_event :submit, :with => :update_multiple
 	        @expressions.each do |e|
 	        	if e.include? '@' 
 	        		question = e.match(/@[a-zA-Z0-9_\-]+/)
-	        		qv = "'" + @h_rq["#{question}"][0].Text_Long_Response__c + "'"
+	        		if @h_rq["#{question}"][0].Response_Type__c == 'Integer'
+	        			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Integer Response = '#{@h_rq["#{question}"][0].Integer_Response__c }' "
+	        			qv =  @h_rq["#{question}"][0].Integer_Response__c.to_s 
+	        			puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! qv = '#{qv}' "
+	        		else
+	        			qv = "'" + @h_rq["#{question}"][0].Text_Long_Response__c + "'"
+	        		end
+
 	        		e["#{question}"] = qv
 
 	        	elsif e.include? '#' 
@@ -100,8 +107,11 @@ responds_to_event :submit, :with => :update_multiple
 	        	end
 	        end
 
+			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! expressions = '#{@expressions}' "
+			
 			@evalstring = @expressions * ""
-			#puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' , eval = '#{eval(@evalstring)}' "
+			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' "
+			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' , eval = '#{eval(@evalstring)}' "
 
 			return eval(@evalstring)
 			
