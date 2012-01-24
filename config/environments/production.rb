@@ -37,7 +37,7 @@ SampleApp::Application.configure do
   ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
   ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-qa.heroku.com/index"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://npi-qa.heroku.com'
-=end    
+   
 
 
   
