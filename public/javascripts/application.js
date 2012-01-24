@@ -48,15 +48,17 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	}
 
 	//j$('#wua').popover('show');
-	j$(function () {
-		j$("a[rel=popover]")
-		.popover({
-			offset: 10
-		})
-		.click(function(e) {
-			e.preventDefault()
-		});
-	}); 
+	if ( j$("a[rel=popover]") ) {
+		j$(function () {
+			j$("a[rel=popover]")
+				.popover({
+					offset: 10
+				})
+				.click(function(e) {
+					e.preventDefault()
+			});
+		}); 
+	}
 
 	//Add autosave events to surveys
 	if( j$('form')[0] ) {
