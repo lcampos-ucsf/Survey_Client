@@ -7,9 +7,12 @@
 
 		<% if @line_item.Help_Text__c != nil %>
 			<p style="width:100%; font-size:95%;" >
-				<a href="#" class="description-toggle">More Info:</a>
-				<span class="desc_content" style="display:none;" ><%= @line_item.Help_Text__c %></span>
+				<!-- a href="#" class="description-toggle label notice">Info</a>
+				<span class="desc_content" style="display:none;" >< %= @line_item.Help_Text__c %></span -->
+				<a data-placement="right" class="label notice" data-content="<%= @line_item.Help_Text__c %>" rel="popover" href="#" data-original-title="" >Info</a>
 			</p>
+
+			
 
 		<% end %>
 
@@ -86,6 +89,12 @@
 		<% elsif @line_item.Question_Type__c == 'Integer' %>
 			<input type="text" name="qq_<%= @line_item.Id%>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" id="qq_<%= @line_item.Id%>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" class="edit_form_field" value="<%= @respVal %>" autocomplete="off" />
 
+		<!-- Calculation Question -->
+		<% elsif @line_item.Question_Type__c == 'Calculation' %>
+			<input type="text" name="qq_<%= @line_item.Id%>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" id="q_total_cal" class="edit_form_field calculation" data-calc-logic="a0XZ00000008Vi9MAE + a0XZ00000008jyoMAA" value="<%= @respVal %>" autocomplete="off" />
+
+			<input type="hidden" value="qq_<%= @line_item.Id%>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" class="" />
+
 		<% end %>
 
 	<% elsif @line_item.Line_Item_Type__c == 'Content' %>
@@ -106,7 +115,7 @@
 			</div>
 			<a class="img_thumb_modal" data-controls-modal="my-modal-image-<%= @line_item.Id%>" data-backdrop="static" >
 			<img src ="<%= @line_item.URL__c%>" height="90px" />
-			Click image to enlarge</a>
+			Click to enlarge</a>
 
 		<% elsif @line_item.Content_Type__c == 'Text' %>
 			<h4 style="color:#666666;"> <%= @line_item.Content_Description__c %> </h4>
