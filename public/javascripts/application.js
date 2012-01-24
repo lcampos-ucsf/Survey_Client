@@ -47,7 +47,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		});
 	}
 
-	//j$('#wua').popover('show');
+	//popover functionality trigger
 	if ( j$("a[rel=popover]") ) {
 		j$(function () {
 			j$("a[rel=popover]")
