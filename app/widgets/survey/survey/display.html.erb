@@ -1,10 +1,12 @@
 <h1> <%= @survey[0].Survey_Name__c %> </h1>
 
 
-<a href="#" class="description-toggle"> Click for survey description:</a>
+<!-- a href="#" class="description-toggle label notice">Description :</a>
 <div class="desc_content" style="display:none;" >
-	<%= @survey[0].Survey__r.Description__c %>
-</div>
+	< %= @survey[0].Survey__r.Description__c %>
+</div -->
+
+<a data-placement="right" trigger="manual" class="label notice" data-content="<%= @survey[0].Survey__r.Description__c %>" rel="popover" href="#" data-original-title="">Description :</a>
 
 <%= widget_div do %>
 	<script type="text/javascript">

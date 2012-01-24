@@ -47,6 +47,17 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		});
 	}
 
+	//j$('#wua').popover('show');
+	j$(function () {
+		j$("a[rel=popover]")
+		.popover({
+			offset: 10
+		})
+		.click(function(e) {
+			e.preventDefault()
+		});
+	}); 
+
 	//Add autosave events to surveys
 	if( j$('form')[0] ) {
 
@@ -169,6 +180,81 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
     		}
 		});
 	}
+
+
+	//calculation component functionality
+	j$('.calculation').each(function(){
+		var parent_cal = this;
+		var logic = j$(parent_cal).attr('data-calc-logic');
+		var l_arr = logic.split(/[\-\*\+]+/);
+		var inputs = j$('.edit_form_field');
+		var inputs_ids = {};
+
+		for(var l = 0; l < inputs.length; l++){
+			for(var s = 0; s < l_arr.length; s++ ){
+				var idd = inputs[l].id;
+				var id2 = idd.split('_');
+				l_arr[s] = l_arr[s].replace(/^\s*|\s*$/g,'');
+				id2[1] = id2[1].replace(/^\s*|\s*$/g,'');
+
+				if(id2[1] == l_arr[s]){
+					var child = inputs[l].id;
+					inputs_ids[l_arr[s]] = child;
+				}
+			}
+		}
+		
+		j$.each(l_arr, function(){
+			j$('#'+inputs_ids[this]).change(function(){
+				var dict = {};
+				var logic2 = logic;
+				//get values for logic	
+				for(var i = 0; i < l_arr.length; i++){
+					var val = j$('#'+inputs_ids[l_arr[i]]).val();
+					dict[l_arr[i]] = val ? val : 0 ;
+				}
+				//replace values on logic string
+				for(var j=0; j<l_arr.length; j++){
+					logic2 = logic2.replace(l_arr[j], dict[l_arr[j]]);
+				}
+				j$(parent_cal).val( eval(logic2) );
+
+			});
+		});
+		
+	});
+
+	//optional to override real .html() if you want
+  // $.fn.html = $.fn.formhtml;
+/*	var oldHTML = j$.fn.html;
+
+	j$.fn.formhtml = function() {
+		if (arguments.length) return oldHTML.apply(this,arguments);
+		j$("input,button", this).each(function() {
+		  this.setAttribute('value',this.value);
+		});
+		j$("textarea", this).each(function() {
+		  // updated - thanks Raja!
+		  this.innerHTML = this.value;
+		});
+		j$("input:radio,input:checkbox", this).each(function() {
+		  // im not really even sure you need to do this for "checked"
+		  // but what the heck, better safe than sorry
+		  if (this.checked) this.setAttribute('checked', 'checked');
+		  else this.removeAttribute('checked');
+		});
+		j$("option", this).each(function() {
+		  // also not sure, but, better safe...
+		  if (this.selected) this.setAttribute('selected', 'selected');
+		  else this.removeAttribute('selected');
+		});
+		return oldHTML.apply(this);
+	};
+	*/
+
+  
+
+
 
   });//end ready function
 
