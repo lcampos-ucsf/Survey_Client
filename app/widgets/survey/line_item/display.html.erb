@@ -92,7 +92,7 @@
 
 		<!-- Calculation Question -->
 		<% elsif @line_item.Question_Type__c == 'Calculation' %>
-			<input type="text" name="qq_<%= @line_item.Id %>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" id="qq_<%= @line_item.Id %>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" class="edit_form_field calculation" data-calc-logic="<%= @line_item.Calculation_Logic__c %>" value="<%= @respVal %>" autocomplete="off" />
+			<input type="text" name="qq_<%= @line_item.Id %>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" id="qq_<%= @line_item.Id %>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" class="edit_form_field calculation" data-calc-logic="<%= @line_item.Calculation_Logic__c %>" disabled value="<%= @respVal %>" autocomplete="off" />
 
 
 		<% end %>
