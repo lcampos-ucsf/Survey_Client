@@ -13,7 +13,7 @@
 			
 			<h4><%= h r.Original_Question_Text__c %></h4>
 
-			<% if r.Response_Type__c == 'Text' ||  r.Response_Type__c == 'Date' || r.Response_Type__c == 'Datetime' || r.Response_Type__c == 'Integer'%>
+			<% if r.Response_Type__c == 'Text' ||  r.Response_Type__c == 'Date' || r.Response_Type__c == 'Datetime' || r.Response_Type__c == 'Integer' || r.Response_Type__c == 'Calculation'%>
 				<span class="a_text"><%= h r.Text_Long_Response__c %> </span>
 
 			<% elsif r.Response_Type__c == 'SelectMultipleQuestions' %>
