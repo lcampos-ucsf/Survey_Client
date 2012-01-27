@@ -249,12 +249,13 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			j$('.'+elemId).val(value);
 		}else if (type == 'checkbox'){
 			var vs = j$('.'+elemId).val();
-			//code needs revision
+			
+			//this code needs revision
 			var values = j$('input:checkbox:checked.'+elemId).map(function () {
 			  return this.value;
 			}).get();
 
-			var vvv = values.join(';');]
+			var vvv = values.join(';');
 
 			j$('.'+elemId).val(values);
 			values = '';
