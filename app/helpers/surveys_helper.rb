@@ -23,7 +23,7 @@ module SurveysHelper
 							'Line_Item__c' => qid, 
 							'OwnerId' => @uid,
 							'Original_Question_Text__c' => question, 
-							'Text_Long_Response__c' => value,
+							'Text_Long_Response__c' => (value != nil || value != '') ? value : nil,
 							'Label_Long_Response__c' => (@resp_type == 'text') ? nil : label, 
 							'Date_Response__c' => (@resp_type == 'date') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
 							'DateTime_Response__c' => (@resp_type == 'datetime') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
@@ -41,10 +41,15 @@ module SurveysHelper
 		def value
 			if @resp_type == 'multi'
 				@rval = ''
-				@resp_value.each do |rv|
-					@rval = @rval + rv + ';'
+				@resp_value = @resp_value.to_a
+				if @resp_value[0] != '' || @resp_value[0] != nil 
+					@resp_value.each do |rv|
+						if rv != ''
+							@rval = @rval + rv + ';'
+						end
+					end
 				end
-				@rval
+				Sanitize.clean(@rval)
 			else
 				Sanitize.clean(@resp_value)
 			end
@@ -78,10 +83,12 @@ module SurveysHelper
 
 	def update_multiple
 		puts "^^^^^^^^^^^^^^^^^^^^ survey_helper.rb update_multiple ^^^^^^^^^^^^^^^^^^^^"
+		puts "^^^^^^^^^^^^^^^^^^^^ params = '#{params.inspect}' "
 		@hash_response = {}
 		@invite_id = params[:id]
 		@survey_id = current_survey[0].Survey__c
 		@current_page = params[:page] ? params[:page] : 1
+		@autosave = params[:as] ? params[:as] : false
 
 		params.each do |key, value|
 			@var = key.index('qq') 	
@@ -92,9 +99,16 @@ module SurveysHelper
 
 					if @array[2] == 'multi'
 						@v = ''
-						value.each do |id|
-							@v += params[id] + ';'
+						puts "(((((((((((((( multi string = '#{value}', array = '#{value.index('[')}', key = '#{key}' "
+						if value != ''|| value != nil
+							value.each do |id|
+								if params[id] != nil
+									@v += params[id] + ';'
+								end
+							end
 						end
+
+						puts "---------------------- @v = '#{@v}' "
 
 						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], @v, key, session[:user_id])
 					else
@@ -106,22 +120,42 @@ module SurveysHelper
 			end
 		end
 
+		@error = Array.new
+		@hash_response.each_pair do |key, val|
+			val.each do |o|
+				@vr = validate_response(o)
+				if @vr != nil
+					@error << @vr
+				end
+			end
+		end
+
+		puts "ajax error = '#{@error.to_json}' "
+
+		puts " --------------------------- @autosave = '#{@autosave}' "
+
 		@wt = Array.new
 		@hash_response.each_pair do |k,v|
 			v.each do |obj|
+				puts "******************* obj = '#{obj}' "
 				@sr = save_response(obj)
 				@wt << @sr
 			end
-
 		end
 
 		#this updates invitation
 		puts "------------------ update_multiple, update invitation status ------------------"
 		session[:client].upsert('Invitation__c','Id', @invite_id, { 'Progress_Save__c' => Sanitize.clean(@current_page), 'Status__c' => 'In Progress' })
 
+		
 		respond_to do |format|
-			format.json { render :json => @wt.to_json }		
+			if @error.empty? || @autosave
+				format.json { render :json => @wt.to_json }		
+			else
+				format.json { render :json => @error.to_json, :status => :unprocessable_entity }
+			end
 		end
+
 
 	end
 
@@ -139,8 +173,7 @@ module SurveysHelper
 	def current_survey
 	    puts "^^^^^^^^^^^^^^^^^^^^ surveys_helper.rb current_survey ^^^^^^^^^^^^^^^^^^^^"
 	    @@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Survey_Subject__c, Survey__r.Description__c from Invitation__c where Id = '#{params[:id]}' and User__c = '#{session[:user_id]}' ")
-		puts "^^^^^^^^^^^^^^^^^^^^ surveys_helper.rb current_survey = '#{@@current_survey}' ^^^^^^^^^^^^^^^^^^^^"
-
+		
 		if @@current_survey.to_s == '[]'
 			raise Exceptions::SurveyNotAvailable.new("The survey you are looking for is currently not available.")
 		else
@@ -150,7 +183,15 @@ module SurveysHelper
 
 	def save_response(respObj)
 		puts "---------------- save_response -------------------"
-		if respObj.rid != nil
+		
+		@id = false
+		if respObj.rid == '' || respObj.rid == nil
+			@id = false
+		else
+			@id = true
+		end
+
+		if @id
 			session[:client].upsert('Response__c','Id', respObj.rid, respObj.resp_a)
 		else
 			q = session[:client].query("select Id, Name, Invitation__c, Line_Item__c from Response__c where Invitation__c = '#{respObj.inviteid}' and Line_Item__c = '#{respObj.qid}' ")
@@ -165,6 +206,40 @@ module SurveysHelper
 		end
 
 		return
+	end
+
+	def validate_response(rObj)
+		puts "validate response = '#{rObj.type}', value = '#{rObj.value}' "
+		if rObj.value == nil || rObj.value == ''
+			if rObj.type == 'onedd'
+				return { :msg => 'Please select an option', :id => rObj.key }
+			
+			elsif rObj.type == 'multi'
+				puts "multi = '#{rObj.value}', rObj.key = '#{rObj.key}' "
+				return { :msg => 'Please select at least one option', :id => rObj.key }
+			else
+				return { :msg => 'Please enter a value', :id => rObj.key }
+			end
+
+		elsif rObj.type == 'integer'
+			val = rObj.value.match(/\A[+-]?\d+?(\.\d+)?\Z/) == nil ? false : true 
+			if val == false
+				return { :msg => 'Number contains invalid characters', :id => rObj.key }
+			end
+			return
+		elsif rObj.type == 'date'
+			val = rObj.value.match(/\A(?:0?[1-9]|1[0-2])\/(?:0?[1-9]|[1-2]\d|3[01])\/\d{4}\Z/) == nil ? false : true
+			if val == false
+				return { :msg => 'Not a valid date format', :id => rObj.key }
+			end
+		elsif rObj.type == 'radio'
+			puts "$$$$$$$$$$$$$ rObj.value = '#{rObj.value}' "
+
+		#else
+		#	return { :msg => 'The error was here', :id => rObj.key }
+		end
+
+		
 	end
 
 	def autocompletequery
