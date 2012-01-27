@@ -87,7 +87,8 @@ module SurveysHelper
 		@hash_response = {}
 		@invite_id = params[:id]
 		@survey_id = current_survey[0].Survey__c
-		@current_page = params[:page] ? params[:page] : 1
+		#@current_page = (params[:page] != nil || params[:page] != '') ? params[:page] : 1
+		@current_page = params[:page].match(/\A([1-9])\Z/) == nil ? '1' : params[:page]
 		@autosave = params[:as] ? params[:as] : false
 
 		params.each do |key, value|
@@ -145,6 +146,7 @@ module SurveysHelper
 
 		#this updates invitation
 		puts "------------------ update_multiple, update invitation status ------------------"
+		puts "--------------- @current page = '#{@current_page}' "
 		session[:client].upsert('Invitation__c','Id', @invite_id, { 'Progress_Save__c' => Sanitize.clean(@current_page), 'Status__c' => 'In Progress' })
 
 		
