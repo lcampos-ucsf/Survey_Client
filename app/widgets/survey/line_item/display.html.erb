@@ -17,7 +17,7 @@
 		<% if @line_item.Question_Type__c == 'Text' %>
 
 			<%if @line_item.Enable_Autocomplete__c == true %>
-				<input type="text" name="qq_<%= @line_item.Id%>_text_<%= @respId %>" id="qq_<%= @line_item.Id%>_text_<%= @respId %>" class="edit_form_field autocomplete_comp" value="<%= @respVal %>" autocomplete="off" />
+				<input type="text" name="qq_<%= @line_item.Id%>_text_<%= @respId %>" id="qq_<%= @line_item.Id%>_text_<%= @respId %>" class="edit_form_field autocomplete_comp" data-url="<%= @line_item.URL__c%>" value="<%= @respVal %>" autocomplete="off" />
 			<% else %>
 				<input type="text" name="qq_<%= @line_item.Id%>_text_<%= @respId %>" id="qq_<%= @line_item.Id%>_text_<%= @respId %>" class="edit_form_field" value="<%= @respVal %>" autocomplete="off" />
 			<% end %>
@@ -93,7 +93,8 @@
 		<!-- Calculation Question -->
 		<% elsif @line_item.Question_Type__c == 'Calculation' %>
 			<span class="a_text"><%= @respVal %> </span>
-			<input type="hidden" name="qq_<%= @line_item.Id %>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" id="qq_<%= @line_item.Id %>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" class="edit_form_field calculation" data-calc-logic="<%= @line_item.Calculation_Logic__c %>" value="<%= @respVal %>" autocomplete="off" />
+
+			<input type="text" name="qq_<%= @line_item.Id %>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" id="qq_<%= @line_item.Id %>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" class="edit_form_field calculation" data-calc-logic="<%= @line_item.Calculation_Logic__c %>" value="<%= @respVal %>" style="display:none;" autocomplete="off" />
 
 
 		<% end %>

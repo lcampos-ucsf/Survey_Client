@@ -147,11 +147,16 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	//autocomplete functionality
 	if( j$('.autocomplete_comp')[0] ){
 
-		j$('.autocomplete_comp').autocomplete({
+		j$('.autocomplete_comp').each(function (i) {
+			var url = j$(this).attr('data-url');
+			var aId = j$(this).attr('id');
+			j$(this).autocomplete({
+		//j$('.autocomplete_comp').autocomplete({
 			//minLength: 2,
 			source: function(request, response) {
+				var txt = j$('#'+aId).val().toLowerCase();
 		        j$.ajax({
-		            url: "/surveys/autocompletequery",
+		            url: url,
 		            data: "{}",
 		            dataType: "json",
 		            headers: {'X-CSRF-Token': AUTH_TOKEN },
@@ -174,9 +179,11 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				        response( a ); */
 
 		               	response(j$.map(data, function(item) {
-		                    return {
-		                        value: item.Name
-		                    }
+		               		var n = item.Name.toLowerCase();
+		                    if (n.indexOf(txt) != -1)
+		                    	return { value: item.Name }
+		                    else 
+		                    	return
 		                }))
 		            },
 		            error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -185,11 +192,13 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		        });
     		}
 		});
+	});
 	}
 
 
 	//calculation component functionality
 	j$('.calculation').each(function(){
+		//alert('calculation, this.id = '+this.id);
 		var parent_cal = this;
 		var logic = j$(parent_cal).attr('data-calc-logic');
 		//split logic, may have empty vals
@@ -227,6 +236,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				//replace values on logic string
 				for(var j=0; j<l_arr.length; j++){
 					logic2 = logic2.replace(l_arr[j], dict[l_arr[j]]);
+					//alert('logic2 = '+logic2);
 				}
 				//hide error msg
 				j$(parent_cal).prev().removeClass('errorhighlight');
@@ -234,10 +244,14 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 				var vl = eval(logic2)
 				j$(parent_cal).prev().text(vl);
-				j$(parent_cal).val('');
-				j$(parent_cal).val( vl );
+				//if(vl != j$(parent_cal).val()){
+					j$(parent_cal).val('');
+					j$(parent_cal).val( vl );
+					j$(parent_cal).change();
+				//}
 
 			});
+			
 		});
 		
 	});
