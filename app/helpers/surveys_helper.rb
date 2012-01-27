@@ -27,7 +27,7 @@ module SurveysHelper
 							'Label_Long_Response__c' => (@resp_type == 'text') ? nil : label, 
 							'Date_Response__c' => (@resp_type == 'date') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
 							'DateTime_Response__c' => (@resp_type == 'datetime') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
-							'Integer_Response__c' => (@resp_type == 'integer') ? value.to_i : nil }
+							'Integer_Response__c' => (@resp_type == 'integer' || @resp_type == 'calculation' ) ? value.to_i : nil }
 		end
 
 		def sid
@@ -235,6 +235,13 @@ module SurveysHelper
 			elsif val == false
 				return { :msg => 'Number contains invalid characters', :id => rObj.key }
 			elsif l > 17
+				return { :msg => 'Number contains more than 17 characters', :id => rObj.key }
+			end
+			return
+		elsif rObj.type == 'calculation'
+			l = rObj.value.length
+			puts "----------- calculation length = '#{l}' "
+			if l > 17
 				return { :msg => 'Number contains more than 17 characters', :id => rObj.key }
 			end
 			return

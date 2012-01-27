@@ -105,17 +105,21 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			    if(!autosaveOn){
 			  		autosaveOn = true;
 			  	}
+			  	var id = j$(this).attr('id');
+			  	var sid = id.split('_');
+			  	if(sid[2] == 'radio' || sid[2] == 'multi')
+			  		wipeErrorMsg(this);
 			  },
 			  change: function() {
 			    if(!autosaveOn){
 			  		autosaveOn = true;
 			  	}
-			  }, /*,
-			  focus: function() {
-			    if(!autosaveOn){
-			  		autosaveOn = true;
-			  	}
-			  }*/
+			  	wipeErrorMsg(this);
+			  }, 
+			  keyup: function(){
+			  	wipeErrorMsg(this);
+			  }
+			  
 			});					
 		});
 	}//end if
@@ -186,7 +190,6 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 	//calculation component functionality
 	j$('.calculation').each(function(){
-		//alert('calculation id = '+this.id);
 		var parent_cal = this;
 		var logic = j$(parent_cal).attr('data-calc-logic');
 		//split logic, may have empty vals
@@ -197,7 +200,6 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		var l_arr = new Array();
 		for (k in l_a1) if(l_a1[k]) l_arr.push(l_a1[k].replace(/^\s*|\s*$/g,''))
 
-		//alert('calculation 1, l_arr = '+l_arr);
 		//get valid input's id
 		for(var l = 0; l < inputs.length; l++){
 			for(var s = 0; s < l_arr.length; s++ ){
@@ -215,10 +217,8 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		//alert('calculation 2');
 		j$.each(l_arr, function(){
 			j$('#'+inputs_ids[this]).change(function(){
-				//alert('calculation 3, change');
 				var dict = {};
 				var logic2 = logic;
-				//alert('logic2 = '+logic2);
 				//get values for logic	
 				for(var i = 0; i < l_arr.length; i++){
 					var val = j$('#'+inputs_ids[l_arr[i]]).val();
@@ -227,10 +227,15 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				//replace values on logic string
 				for(var j=0; j<l_arr.length; j++){
 					logic2 = logic2.replace(l_arr[j], dict[l_arr[j]]);
-					//alert('logic2 = '+logic2);
 				}
-				//alert('final logic = '+logic2);
-				j$(parent_cal).val( eval(logic2) );
+				//hide error msg
+				j$(parent_cal).prev().removeClass('errorhighlight');
+				j$(parent_cal).prev().prev().css('display','none');
+
+				var vl = eval(logic2)
+				j$(parent_cal).prev().text(vl);
+				j$(parent_cal).val('');
+				j$(parent_cal).val( vl );
 
 			});
 		});
@@ -244,19 +249,14 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			j$('.'+elemId).val(value);
 		}else if (type == 'checkbox'){
 			var vs = j$('.'+elemId).val();
-			//alert('checkbox id = '+id);
-			
+			//code needs revision
 			var values = j$('input:checkbox:checked.'+elemId).map(function () {
 			  return this.value;
 			}).get();
 
-			//alert('values = '+values);
-
-			var vvv = values.join(';');
-			//alert('values join = '+ vvv);
+			var vvv = values.join(';');]
 
 			j$('.'+elemId).val(values);
-			//alert('array values = '+values);
 			values = '';
 
 		}
@@ -310,35 +310,15 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 						 		//alert('id = '+s.id);
 						 		p_error = j$('#' + s.id).parent().prev('p');
 						 		j$('#' + s.id).css('display','block');
+						 	}else if(el[2] == 'calculation'){
+						 		p_error = j$('#' + s.id).prev().prev('p');
+						 		j$('#' + s.id).prev().addClass('errorhighlight');
 						 	}else{
 								p_error = j$('#' + s.id).prev('p');
 							}
 							p_error.text(s.msg);
 							p_error.css('display','block');
 							j$('#' + s.id).addClass('errorhighlight');
-
-							//add event to remove error message
-							j$('#' + s.id).live({
-								change: function() {
-									p_error.css('display','none');
-									j$('#' + s.id).removeClass('errorhighlight');
-								},
-								keyup: function(){
-									p_error.css('display','none');
-									j$('#' + s.id).removeClass('errorhighlight');
-								}
-
-
-							});
-							/* j$('#' + s.id).keyup( function(){
-								p_error.css('display','none');
-								j$('#' + s.id).removeClass('errorhighlight');
-							});
-
-							j$('#' + s.id).change( function(){
-								p_error.css('display','none');
-								j$('#' + s.id).removeClass('errorhighlight');
-							}); */
 						}
 					}
 				}
@@ -412,6 +392,21 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			});
 			
 		}
+	}
+
+	function wipeErrorMsg(elem){
+		var eId = j$(elem).attr('id').replace('[]','');
+	  	var eAr = eId.split('_');
+		var p_error;
+		if(eAr[2] == 'radio')
+			p_error = j$('#' + eId).parent().parent().prev('p');
+		else if(eAr[2] == 'multi'){
+			p_error = j$('#' + eId).parent().prev('p');
+		}else{
+			p_error = j$('#' + eId).prev('p');
+		}
+		p_error.css('display','none');
+		j$(elem).removeClass('errorhighlight');
 	}
 
 	// JavaScript

@@ -3,7 +3,7 @@ class SurveysController < ApplicationController
   before_filter :authenticate
 
   rescue_from Exceptions::SurveyNotAvailable, :with => :survey_error
-  rescue_from Exceptions::SurveyBuildError, :with => :survey_error
+  rescue_from Exceptions::SurveyBuildError, :with => :survey_error_review
 
   include SurveysHelper
 
@@ -37,6 +37,11 @@ class SurveysController < ApplicationController
   def survey_error(exception)
       puts "waaaaaaaaahhhhhhhhhhhjjjjjjjjjjjjjjjjsadDDsasa^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ exception = '#{exception}' "
       redirect_to "/invite/index", :alert => exception.message
+  end
+
+  def survey_error_review(exception)
+    puts "Build error on survey, sent user to review page"
+    redirect_to "/surveys/#{params[:id]}/review"
   end
 
 end

@@ -32,9 +32,9 @@
 				<% @answerlabels.each do |al| %>
 					<li> 
 						<% if @respVal == al.Resource_Name__c %>
-							<input type="radio" name="qq_<%= @line_item.Id%>_radio_<%= @respId %>" id="qq_<%= @line_item.Id%>_radio_<%= @respId %>" class="edit_form_field" value="<%= al.Resource_Name__c%>" checked onclick="ff('<%= @line_item.Id%>', this.value, this.id,'radio');"/>
+							<input type="radio" name="qq_<%= @line_item.Id%>_radio_<%= @respId %>" id="qq_<%= @line_item.Id%>_radio_<%= @respId %>" class="edit_form_field" value="<%= al.Resource_Name__c%>" checked onclick="ff('<%= @line_item.Id %>', this.value, this.id,'radio');"/>
 						<% else %>
-							<input type="radio" name="qq_<%= @line_item.Id%>_radio_<%= @respId %>" id="qq_<%= @line_item.Id%>_radio_<%= @respId %>" class="edit_form_field" value="<%= al.Resource_Name__c%>" onclick="ff('<%= @line_item.Id%>', this.value, this.id, 'radio');" />
+							<input type="radio" name="qq_<%= @line_item.Id%>_radio_<%= @respId %>" id="qq_<%= @line_item.Id%>_radio_<%= @respId %>" class="edit_form_field" value="<%= al.Resource_Name__c%>" onclick="ff('<%= @line_item.Id %>', this.value, this.id, 'radio');" />
 						<% end %>
 
 						<input type="hidden" name="<%= al.Resource_Name__c%>" value="<%= al.Answer_Text__c %>"/>
@@ -92,7 +92,8 @@
 
 		<!-- Calculation Question -->
 		<% elsif @line_item.Question_Type__c == 'Calculation' %>
-			<input type="text" name="qq_<%= @line_item.Id %>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" id="qq_<%= @line_item.Id %>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" class="edit_form_field calculation" data-calc-logic="<%= @line_item.Calculation_Logic__c %>" disabled value="<%= @respVal %>" autocomplete="off" />
+			<span class="a_text"><%= @respVal %> </span>
+			<input type="hidden" name="qq_<%= @line_item.Id %>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" id="qq_<%= @line_item.Id %>_<%= @line_item.Question_Type__c.downcase %>_<%= @respId %>" class="edit_form_field calculation" data-calc-logic="<%= @line_item.Calculation_Logic__c %>" value="<%= @respVal %>" autocomplete="off" />
 
 
 		<% end %>
