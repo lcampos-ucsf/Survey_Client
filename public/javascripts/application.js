@@ -98,7 +98,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			});
 		}
 		
-		setInterval(function() { ajaxautosave(); }, 1000*60); // 1000ms * 60s = 1m
+		setInterval(function() { ajaxautosave(); }, 1000*5); // 1000ms * 60s = 1m
 		j$('form input.edit_form_field, form textarea.edit_form_field, form select.edit_form_field').each(function (i) {
 			j$(this).live({
 			  click: function() {
@@ -176,7 +176,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		                }))
 		            },
 		            error: function(XMLHttpRequest, textStatus, errorThrown) {
-		                alert(errorTrown);
+		               // alert(errorTrown);
 		            }
 		        });
     		}
@@ -186,12 +186,19 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 	//calculation component functionality
 	j$('.calculation').each(function(){
+		//alert('calculation id = '+this.id);
 		var parent_cal = this;
 		var logic = j$(parent_cal).attr('data-calc-logic');
-		var l_arr = logic.split(/[\-\*\+]+/);
+		//split logic, may have empty vals
+		var l_a1 = logic.split(/[\(\)\-\*\+]+/);
 		var inputs = j$('.edit_form_field');
 		var inputs_ids = {};
+		//array cleansing
+		var l_arr = new Array();
+		for (k in l_a1) if(l_a1[k]) l_arr.push(l_a1[k].replace(/^\s*|\s*$/g,''))
 
+		//alert('calculation 1, l_arr = '+l_arr);
+		//get valid input's id
 		for(var l = 0; l < inputs.length; l++){
 			for(var s = 0; s < l_arr.length; s++ ){
 				var idd = inputs[l].id;
@@ -205,11 +212,13 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				}
 			}
 		}
-		
+		//alert('calculation 2');
 		j$.each(l_arr, function(){
 			j$('#'+inputs_ids[this]).change(function(){
+				//alert('calculation 3, change');
 				var dict = {};
 				var logic2 = logic;
+				//alert('logic2 = '+logic2);
 				//get values for logic	
 				for(var i = 0; i < l_arr.length; i++){
 					var val = j$('#'+inputs_ids[l_arr[i]]).val();
@@ -218,7 +227,9 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				//replace values on logic string
 				for(var j=0; j<l_arr.length; j++){
 					logic2 = logic2.replace(l_arr[j], dict[l_arr[j]]);
+					//alert('logic2 = '+logic2);
 				}
+				//alert('final logic = '+logic2);
 				j$(parent_cal).val( eval(logic2) );
 
 			});
@@ -226,113 +237,158 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		
 	});
 
-	//optional to override real .html() if you want
-  // $.fn.html = $.fn.formhtml;
-/*	var oldHTML = j$.fn.html;
-
-	j$.fn.formhtml = function() {
-		if (arguments.length) return oldHTML.apply(this,arguments);
-		j$("input,button", this).each(function() {
-		  this.setAttribute('value',this.value);
-		});
-		j$("textarea", this).each(function() {
-		  // updated - thanks Raja!
-		  this.innerHTML = this.value;
-		});
-		j$("input:radio,input:checkbox", this).each(function() {
-		  // im not really even sure you need to do this for "checked"
-		  // but what the heck, better safe than sorry
-		  if (this.checked) this.setAttribute('checked', 'checked');
-		  else this.removeAttribute('checked');
-		});
-		j$("option", this).each(function() {
-		  // also not sure, but, better safe...
-		  if (this.selected) this.setAttribute('selected', 'selected');
-		  else this.removeAttribute('selected');
-		});
-		return oldHTML.apply(this);
-	};
-	*/
-
-  
-
-
-
   });//end ready function
+
+  	function ff(elemId, value, id, type){
+  		if(type == 'radio'){
+			j$('.'+elemId).val(value);
+		}else if (type == 'checkbox'){
+			var vs = j$('.'+elemId).val();
+			//alert('checkbox id = '+id);
+			
+			var values = j$('input:checkbox:checked.'+elemId).map(function () {
+			  return this.value;
+			}).get();
+
+			//alert('values = '+values);
+
+			var vvv = values.join(';');
+			//alert('values join = '+ vvv);
+
+			j$('.'+elemId).val(values);
+			//alert('array values = '+values);
+			values = '';
+
+		}
+	}
 
 	function formsubmit(url, dir){
 
 		var dt = j$("form").serialize();
-		dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
+		//dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 		j$.ajax({
 			url: "/surveys/update_multiple",
 			type: "POST",
 			data: dt,
 			async: false,
+			headers: {'X-CSRF-Token': AUTH_TOKEN },
 			dataType: "script",
 			success: function(data){
 				//alert('sucessful post');
 
+				if(url.match("review") == null){
+					if(url.match(/page/) == null ){
+						if(url.match(/dir=[0-9]+/) == null){
+							url = url+'?page=1';
+						}else{
+							url = url+'&page=1';
+						}
+					}
+					if(url.match(/dir=[0-9]+/) != null)
+						url = url.replace(/dir=[0-9]+/,'dir='+dir);
+					else
+						url = url+'&dir='+dir;
+				}
+				window.location = url;
+				
+
 			},
-			error: function(){
-				//alert('error on post');
+			error: function(data, textStatus){
+				autosaveOn = false;
+				var arr = eval(data.responseText);
+				
+				if ( !j$.isEmptyObject(arr[0]) ){
+					for (var x = 0; x< arr.length; x++){  
+					 var s = arr[x];
+					 if(s != null){
+					 	
+					 	var el = s.id.split('_');
+					 	var p_error;
+					 	if(el[2] == 'radio')
+					 		p_error = j$('#' + s.id).parent().parent().prev('p');
+					 	else if(el[2] == 'multi'){
+					 		//alert('id = '+s.id);
+					 		p_error = j$('#' + s.id).parent().prev('p');
+					 		j$('#' + s.id).css('display','block');
+					 		j$('#' + s.id).css('background-color','red');
+					 	}else{
+							p_error = j$('#' + s.id).prev('p');
+						}
+						p_error.text(s.msg);
+						p_error.css('display','block');
+						j$('#' + s.id).css('border','1px solid red');
+					}
+					}
+				}
 			}
 
 		});
 
-		if(url.match("review") == null){
-			if(url.match(/page/) == null ){
-				if(url.match(/dir=[0-9]+/) == null){
-					url = url+'?page=1';
-				}else{
-					url = url+'&page=1';
-				}
-			}
-			if(url.match(/dir=[0-9]+/) != null)
-				url = url.replace(/dir=[0-9]+/,'dir='+dir);
-			else
-				url = url+'&dir='+dir;
-		}
-		window.location = url;
+		
 	}
 
 	function ajaxautosave(){
 
 		if (autosaveOn) {
 			var dt = j$("form").serialize();
-			dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
+			//dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
+			dt += (dt ? "&" : "") + "as=true";
 
 			j$.ajax({
 				url: "/surveys/update_multiple",
 				type: "POST",
 				data: dt,
 				async: true,
+				headers: {'X-CSRF-Token': AUTH_TOKEN },
 				success: function(data){
 
-					//alert('empty data object? = '+ j$.isEmptyObject(data[0]) );
-					//alert('execute if = '+ !j$.isEmptyObject(data[0]) );
 					if ( !j$.isEmptyObject(data[0]) ){
 						for (var x = 0; x< data.length; x++){  
 						 var s = data[x];
 						 var n_id = s.key+s.id;
 						 j$('#' + s.key).attr('name',n_id);
+						 j$('#' + s.key).attr('id',n_id);
 						}
 					}
+
+					var timestamp = new Date();
+					var hrs = timestamp.getHours();
+					var mins = timestamp.getMinutes();
+					var ap = hrs < 12 ? "AM" : "PM";
+					hrs = hrs > 12 ? hrs - 12 : hrs;
+					mins = mins < 10 ? '0' + mins : mins; 
+
+					j$('#autosaved').text('Draft saved at '+ hrs + ':' + mins + ' '+ap );
+					autosaveOn = false;
 				},
-				error: function(){
-					//alert('error on post');
+				error: function(data, textStatus){
+					autosaveOn = false;
+					//alert('error2 = '+data['responseText']);
+					var arr = eval(data.responseText);
+					
+					if ( !j$.isEmptyObject(arr[0]) ){
+						for (var x = 0; x< arr.length; x++){  
+						 var s = arr[x];
+						 if(s != null){
+						 	
+						 	var el = s.id.split('_');
+						 	var p_error;
+						 	if(el[2] == 'radio')
+						 		p_error = j$('#' + s.id).parent().parent().prev('p');
+						 	else{
+								p_error = j$('#' + s.id).prev('p');
+							}
+							p_error.text(s.msg);
+							p_error.css('display','block');
+							j$('#' + s.id).css('border','1px solid red');
+						}
+						}
+					}
+					
 				}
 
 			});
-			var timestamp = new Date();
-			var hrs = timestamp.getHours();
-			var mins = timestamp.getMinutes();
-			var ap = hrs < 12 ? "AM" : "PM";
-			hrs = hrs > 12 ? hrs - 12 : hrs;
-			mins = mins < 10 ? '0' + mins : mins; 
-
-			j$('#autosaved').text('Draft saved at '+ hrs + ':' + mins + ' '+ap );
-			autosaveOn = false;
+			
 		}
 	}
 

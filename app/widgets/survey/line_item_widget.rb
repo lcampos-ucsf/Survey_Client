@@ -10,6 +10,7 @@ class Survey::LineItemWidget < Apotomo::Widget
     @respId = ''
     @respVal = ''
     @resphash = {}
+
     
     if @line_item.Line_Item_Type__c == 'Question'
         ## Text Question
@@ -38,9 +39,12 @@ class Survey::LineItemWidget < Apotomo::Widget
             @array = []
 
             if @responserecord != nil 
-                @array = @responserecord[0].Text_Long_Response__c.split(';')
+                if @responserecord[0].Text_Long_Response__c != nil
+                    @array = @responserecord[0].Text_Long_Response__c.split(';')
+                end
                 @respId = @responserecord[0].Id
                 @respLabels = @responserecord[0].Label_Long_Response__c;
+                @respVal = @responserecord[0].Text_Long_Response__c
             end
 
             if !@array.empty?
@@ -57,6 +61,13 @@ class Survey::LineItemWidget < Apotomo::Widget
 
         ## Integer Question
         elsif @line_item.Question_Type__c == 'Integer'
+            if @responserecord != nil
+                @respVal = @responserecord[0].Text_Long_Response__c
+                @respId = @responserecord[0].Id
+            end
+
+        ## Calculation Question
+        elsif @line_item.Question_Type__c == 'Calculation'
             if @responserecord != nil
                 @respVal = @responserecord[0].Text_Long_Response__c
                 @respId = @responserecord[0].Id
