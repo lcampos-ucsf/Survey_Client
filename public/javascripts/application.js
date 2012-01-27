@@ -110,7 +110,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			    if(!autosaveOn){
 			  		autosaveOn = true;
 			  	}
-			  }/*,
+			  }, /*,
 			  focus: function() {
 			    if(!autosaveOn){
 			  		autosaveOn = true;
@@ -299,25 +299,47 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				
 				if ( !j$.isEmptyObject(arr[0]) ){
 					for (var x = 0; x< arr.length; x++){  
-					 var s = arr[x];
-					 if(s != null){
-					 	
-					 	var el = s.id.split('_');
-					 	var p_error;
-					 	if(el[2] == 'radio')
-					 		p_error = j$('#' + s.id).parent().parent().prev('p');
-					 	else if(el[2] == 'multi'){
-					 		//alert('id = '+s.id);
-					 		p_error = j$('#' + s.id).parent().prev('p');
-					 		j$('#' + s.id).css('display','block');
-					 		j$('#' + s.id).css('background-color','red');
-					 	}else{
-							p_error = j$('#' + s.id).prev('p');
+						var s = arr[x];
+						if(s != null){
+						 	
+						 	var el = s.id.split('_');
+						 	var p_error;
+						 	if(el[2] == 'radio')
+						 		p_error = j$('#' + s.id).parent().parent().prev('p');
+						 	else if(el[2] == 'multi'){
+						 		//alert('id = '+s.id);
+						 		p_error = j$('#' + s.id).parent().prev('p');
+						 		j$('#' + s.id).css('display','block');
+						 	}else{
+								p_error = j$('#' + s.id).prev('p');
+							}
+							p_error.text(s.msg);
+							p_error.css('display','block');
+							j$('#' + s.id).addClass('errorhighlight');
+
+							//add event to remove error message
+							j$('#' + s.id).live({
+								change: function() {
+									p_error.css('display','none');
+									j$('#' + s.id).removeClass('errorhighlight');
+								},
+								keyup: function(){
+									p_error.css('display','none');
+									j$('#' + s.id).removeClass('errorhighlight');
+								}
+
+
+							});
+							/* j$('#' + s.id).keyup( function(){
+								p_error.css('display','none');
+								j$('#' + s.id).removeClass('errorhighlight');
+							});
+
+							j$('#' + s.id).change( function(){
+								p_error.css('display','none');
+								j$('#' + s.id).removeClass('errorhighlight');
+							}); */
 						}
-						p_error.text(s.msg);
-						p_error.css('display','block');
-						j$('#' + s.id).css('border','1px solid red');
-					}
 					}
 				}
 			}

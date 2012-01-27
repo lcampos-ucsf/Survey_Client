@@ -136,11 +136,13 @@ module SurveysHelper
 		puts " --------------------------- @autosave = '#{@autosave}' "
 
 		@wt = Array.new
-		@hash_response.each_pair do |k,v|
-			v.each do |obj|
-				puts "******************* obj = '#{obj}' "
-				@sr = save_response(obj)
-				@wt << @sr
+		if @error.empty?
+			@hash_response.each_pair do |k,v|
+				v.each do |obj|
+					puts "******************* obj = '#{obj}' "
+					@sr = save_response(obj)
+					@wt << @sr
+				end
 			end
 		end
 
@@ -194,6 +196,7 @@ module SurveysHelper
 		end
 
 		if @id
+			puts "---------- save response, respObj.resp_a = '#{respObj.resp_a}' "
 			session[:client].upsert('Response__c','Id', respObj.rid, respObj.resp_a)
 		else
 			q = session[:client].query("select Id, Name, Invitation__c, Line_Item__c from Response__c where Invitation__c = '#{respObj.inviteid}' and Line_Item__c = '#{respObj.qid}' ")
@@ -225,20 +228,41 @@ module SurveysHelper
 
 		elsif rObj.type == 'integer'
 			val = rObj.value.match(/\A[+-]?\d+?(\.\d+)?\Z/) == nil ? false : true 
-			if val == false
+			l = rObj.value.length
+			puts "----------- integer length = '#{l}' "
+			if val == false && l > 17
+				return { :msg => 'Number contains invalid characters and contains more than 17 characters', :id => rObj.key }
+			elsif val == false
 				return { :msg => 'Number contains invalid characters', :id => rObj.key }
+			elsif l > 17
+				return { :msg => 'Number contains more than 17 characters', :id => rObj.key }
 			end
 			return
 		elsif rObj.type == 'date'
 			val = rObj.value.match(/\A(?:0?[1-9]|1[0-2])\/(?:0?[1-9]|[1-2]\d|3[01])\/\d{4}\Z/) == nil ? false : true
+			arr = rObj.value.split('/')
+			puts "------------day is = '#{arr[1]}' " 
+			puts "------------month is = '#{arr[0]}' " 
+			puts "------------year is = '#{arr[2]}' " 
 			if val == false
 				return { :msg => 'Not a valid date format', :id => rObj.key }
+			elsif arr[0].to_i > 12 || arr[0].to_i < 1
+				return { :msg => 'Not a valid month', :id => rObj.key }
+			elsif arr[1].to_i > 31 || arr[1].to_i < 0
+				return { :msg => 'Not a valid day', :id => rObj.key }
+			elsif arr[2].to_i > 4000 || arr[2].to_i < 0
+				return { :msg => 'Not a valid year', :id => rObj.key }
 			end
 		elsif rObj.type == 'radio'
 			puts "$$$$$$$$$$$$$ rObj.value = '#{rObj.value}' "
 
-		#else
-		#	return { :msg => 'The error was here', :id => rObj.key }
+		elsif rObj.type == 'text'
+			l = rObj.value.length
+			puts "----------- text length = '#{l}' "
+			if l > 250
+				return { :msg => 'The text entered contains more than 250 characters', :id => rObj.key }
+			end
+			return
 		end
 
 		

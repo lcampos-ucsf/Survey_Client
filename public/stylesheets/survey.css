@@ -269,5 +269,8 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 	padding: 15px 0;
 }
 
+.errorhighlight{
+	border: 1px solid red;
+}
 
 
