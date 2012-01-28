@@ -274,4 +274,8 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 	border: 1px solid red;
 }
 
+.btnfixedsize{
+	width:46px;
+	text-align:center;
+}
 

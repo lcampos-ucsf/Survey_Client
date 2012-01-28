@@ -22,9 +22,9 @@
 				<td>
 					<% if invite.Status__c != 'Completed'
 						if invite.Progress_Save__c != nil %>
-							<a href="/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn success small" > Resume </a>
+							<a href="/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn success small btnfixedsize" > Resume </a>
 						<% else %>
-							<a href="/surveys/<%= invite.Id%>/show?page=1" class="btn primary small" > Start </a>
+							<a href="/surveys/<%= invite.Id%>/show?page=1" class="btn primary small btnfixedsize" > Start </a>
 						<% end
 					end %>
 				</td>
@@ -58,9 +58,9 @@
 				<td>
 					<% if invite.Status__c != 'Completed'
 						if invite.Progress_Save__c != nil %>
-							<a href="/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn success small" > Resume </a>
+							<a href="/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn success small btnfixedsize" > Resume </a>
 						<% else %>
-							<a href="/surveys/<%= invite.Id%>/show?page=1" class="btn primary small" > Start </a>
+							<a href="/surveys/<%= invite.Id%>/show?page=1" class="btn primary small btnfixedsize" > Start </a>
 						<% end
 					end %>
 				</td>
@@ -94,9 +94,9 @@
 				<td>
 					<% if invite.Status__c != 'Completed'
 						if invite.Progress_Save__c != nil %>
-							<a href="/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn success small" > Resume </a>
+							<a href="/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn success small btnfixedsize" > Resume </a>
 						<% else %>
-							<a href="/surveys/<%= invite.Id%>/show?page=1" class="btn primary small" > Start </a>
+							<a href="/surveys/<%= invite.Id%>/show?page=1" class="btn primary small btnfixedsize" > Start </a>
 						<% end
 					end %>
 				</td>
