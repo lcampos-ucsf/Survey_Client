@@ -90,6 +90,7 @@ responds_to_event :submit, :with => :update_multiple
 	        @expressions.each do |e|
 	        	if e.include? '@' 
 	        		question = e.match(/@[a-zA-Z0-9_\-]+/)
+	        		#add no response validation
 	        		if @h_rq["#{question}"][0].Response_Type__c == 'Integer' || @h_rq["#{question}"][0].Response_Type__c == 'Calculation'
 	        			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Integer Response = '#{@h_rq["#{question}"][0].Integer_Response__c }' "
 	        			qv =  @h_rq["#{question}"][0].Integer_Response__c.to_s 

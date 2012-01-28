@@ -82,7 +82,8 @@ ul.a_list{
 	border: 1px solid #CCCCCC;
     border-radius: 3px 3px 3px 3px;
     width:400px;
-    display:block;
+    height:14px;
+    display:table;
 }
 
 #pb {
