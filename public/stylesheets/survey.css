@@ -279,17 +279,6 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 	text-align:center;
 }
 
-#loading { 
-	/*display:none;*/ 
-	position:fixed; 
-	left:50%; 
-	top:50%; 
-	width:100%; 
-	height:100%;
-	z-index:99999;
-	/*background-image:url("transparentbg.png"); */
-}
-
 .helptext{
 	border-radius: 10px 10px 10px 10px;
     display: inline-block;
@@ -301,7 +290,10 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     letter-spacing:1px;
 }
 
-
+.loading_gif{
+	display: block;
+    margin: 9px auto 0 auto;
+}
 
 
 
