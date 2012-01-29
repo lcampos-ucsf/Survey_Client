@@ -2,16 +2,15 @@
 
 	<% if @line_item.Line_Item_Type__c == 'Question' %>
 
-		<label class="q_text" > <%= @line_item.Question_Description__c %> : </label>
+		<label class="q_text" >
+			<% if @line_item.Help_Text__c != nil %>
+					<a data-placement="right" class="label notice helptext" data-content="<%= @line_item.Help_Text__c %>" rel="popover" href="#" data-original-title="" >?</a>
+			<% end %>
+			<%= @line_item.Question_Description__c %> : 
+		</label>
 		<input type="hidden" name="<%= @line_item.Id%>" value="<%= @line_item.Question_Description__c %>" />
 
-		<% if @line_item.Help_Text__c != nil %>
-			<p style="width:100%; font-size:95%;" >
-				<!-- a href="#" class="description-toggle label notice">Info</a>
-				<span class="desc_content" style="display:none;" >< %= @line_item.Help_Text__c %></span -->
-				<a data-placement="right" class="label notice" data-content="<%= @line_item.Help_Text__c %>" rel="popover" href="#" data-original-title="" >Info</a>
-			</p>
-		<% end %>
+		
 		<p style="display:none; color:red;" class="error"></p>
 		<!-- Text Question -->
 		<% if @line_item.Question_Type__c == 'Text' %>

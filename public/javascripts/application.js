@@ -278,7 +278,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	}
 
 	function formsubmit(url, dir){
-
+		showmodaltransition();
 		var dt = j$("form").serialize();
 		//dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 		j$.ajax({
@@ -290,7 +290,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			dataType: "script",
 			success: function(data){
 				//alert('sucessful post');
-
+				
 				if(url.match("review") == null){
 					if(url.match(/page/) == null ){
 						if(url.match(/dir=[0-9]+/) == null){
@@ -306,10 +306,11 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				}
 				window.location = url;
 				
-
 			},
 			error: function(data, textStatus){
 				autosaveOn = false;
+				//j$("#loading").hide();
+
 				var arr = eval(data.responseText);
 				
 				if ( !j$.isEmptyObject(arr[0]) ){
@@ -341,7 +342,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 		});
 
-		
+		hidemodaltransition();
 	}
 
 	function ajaxautosave(){
@@ -443,6 +444,21 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	    head.insertBefore(script, head.lastChild);
 	}
 
+	function showmodaltransition(){
+		j$('#my-modal-loading').modal({
+				show: true,
+				backdrop: true,
+				keyboard: true
+			});
+	}
+
+	function hidemodaltransition(){
+		j$('#my-modal-loading').modal({
+				show: false,
+				backdrop: true,
+				keyboard: true
+			});
+	}
 
 
 

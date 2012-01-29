@@ -1,11 +1,6 @@
 <h1> <%= @survey[0].Survey_Name__c %> </h1>
 
 
-<!-- a href="#" class="description-toggle label notice">Description :</a>
-<div class="desc_content" style="display:none;" >
-	< %= @survey[0].Survey__r.Description__c %>
-</div -->
-
 <a data-placement="right" trigger="manual" class="label notice" data-content="<%= @survey[0].Survey__r.Description__c %>" rel="popover" href="#" data-original-title="">Description :</a>
 
 <%= widget_div do %>
@@ -15,11 +10,22 @@
 		j$(document).ready(function() {
 			j$("#pb").progressbar({ value: <%= @progressbar.to_i %> });
 		});
+		
 	</script>
 	<div id="pb-container" >
 		<div id="pb"></div>
 		<div class="text" ><%= @progressbar.to_i %> %</div>
 	</div>
+
+	<div id="my-modal-loading" class="modal hide fade" style="display: none; height:80px !important; width:90px !important; left:67% !important; top:80% !important;" data-keyboard="true" data-backdrop="true" data-controls-modal="modal-from-dom">
+		
+        <div class="modal-body file-mbody">
+			<span>Loading ...</span>
+		</div>
+
+	</div>
+
+	<!-- a class="btn" data-controls-modal="my-modal-loading" data-backdrop="static" >Load</a -->
 
 	<div id="autosaved" > </div>
 	
