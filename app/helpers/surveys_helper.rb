@@ -100,10 +100,13 @@ module SurveysHelper
 
 					if @array[2] == 'multi'
 						@v = ''
-						puts "(((((((((((((( multi string = '#{value}', array = '#{value.index('[')}', key = '#{key}' "
+						puts "(((((((((((((( multi string = '#{value}', array = '#{value}', key = '#{key}' "
+						value.delete_at(0)
+						puts " multi array = '#{value}' " 
 						if value != ''|| value != nil
 							value.each do |id|
-								if params[id] != nil
+								puts "multi validations, params[id] = '#{params[id]}', @v = '#{@v}' "
+								if params[id] != nil && @v.index(params[id]) == nil
 									@v += params[id] + ';'
 								end
 							end

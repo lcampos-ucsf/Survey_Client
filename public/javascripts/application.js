@@ -262,7 +262,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
   		if(type == 'radio'){
 			j$('.'+elemId).val(value);
 		}else if (type == 'checkbox'){
-			var vs = j$('.'+elemId).val();
+			var vs = j$('.'+elemId);
 			
 			//this code needs revision
 			var values = j$('input:checkbox:checked.'+elemId).map(function () {
@@ -270,7 +270,6 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			}).get();
 
 			var vvv = values.join(';');
-
 			j$('.'+elemId).val(values);
 			values = '';
 
