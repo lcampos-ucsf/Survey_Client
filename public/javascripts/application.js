@@ -37,9 +37,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	if ( j$('.description-toggle')[0] ) {
 
 		j$('.description-toggle').each(function(){
-			//alert('each toggle, this.class = '+j$(this).class)
 			j$(this).click(function() {
-				//alert('inside click functionality');
 				//j$(this).find('.desc_content').toggle(400);
 				j$(this).siblings('.desc_content').toggle('slow');
 				return false;
@@ -150,9 +148,20 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		j$('.autocomplete_comp').each(function (i) {
 			var url = j$(this).attr('data-url');
 			var aId = j$(this).attr('id');
+			var divparent = j$(this).parent();
+			/*
+			var aVal = j$(this).val(),
+			
+			span = j$("<span>").addClass('label notice').text(aVal),
+			a = j$("<a>").addClass("remove").attr({
+				href: "javascript:",
+				title: "Remove " + aVal
+			}).text(" x").appendTo(span);
+			//alert('aVal'+aVal);
+			span.insertBefore('#'+aId);
+			j$(this).val(''); */
+
 			j$(this).autocomplete({
-		//j$('.autocomplete_comp').autocomplete({
-			//minLength: 2,
 			source: function(request, response) {
 				var txt = j$('#'+aId).val().toLowerCase();
 		        j$.ajax({
@@ -163,21 +172,6 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		            type: "POST",
 		            contentType: "application/json; charset=utf-8",
 		            success: function(data) {
-		            	/*
-		            	var list = j$.map(data, function(item) {
-		                    return {
-		                        value: item.Name
-		                         	
-		                    }
-		                });
-		                alert('data = '+list);
-		                var re = j$.ui.autocomplete.escapeRegex(request.term);
-				        var matcher = new RegExp( "^" + re, "i" );
-				        var a = j$.grep( wordlist, function(item,index){
-				            return matcher.test(item);
-				        });
-				        response( a ); */
-
 		               	response(j$.map(data, function(item) {
 		               		var n = item.Name.toLowerCase();
 		                    if (n.indexOf(txt) != -1)
@@ -190,15 +184,39 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		               // alert(errorTrown);
 		            }
 		        });
-    		}
+    		},
+    		select: function(e, ui) {
+				//create formatted friend
+				var val = ui.item.value,
+				span = j$("<span>").addClass('label notice').text(val),
+				a = j$("<a>").addClass("remove").attr({
+					href: "javascript:",
+					title: "Remove " + val
+				}).text(" x").appendTo(span);
+
+				//add friend to friend div
+				span.insertBefore('#'+aId);
+				updateInputValue(aId);
+				ui.item.value = '';
+			}
+
 		});
 	});
+
+		//add live handler for clicks on remove links
+		j$(".remove", document.getElementById("ac_comp") ).live("click", function(){
+			//remove current friend
+			var iId = j$(this).parent().parent().find('input').attr('id')
+			j$(this).parent().parent().find('input').focus();
+			j$(this).parent().remove();
+			
+			updateInputValue(iId);
+		});
 	}
 
 
 	//calculation component functionality
 	j$('.calculation').each(function(){
-		//alert('calculation, this.id = '+this.id);
 		var parent_cal = this;
 		var logic = j$(parent_cal).attr('data-calc-logic');
 		//split logic, may have empty vals
@@ -236,7 +254,6 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				//replace values on logic string
 				for(var j=0; j<l_arr.length; j++){
 					logic2 = logic2.replace(l_arr[j], dict[l_arr[j]]);
-					//alert('logic2 = '+logic2);
 				}
 				//hide error msg
 				j$(parent_cal).prev().removeClass('errorhighlight');
@@ -262,17 +279,16 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
   		if(type == 'radio'){
 			j$('.'+elemId).val(value);
 		}else if (type == 'checkbox'){
-			var vs = j$('.'+elemId);
+			//var vs = j$('.'+elemId);
 			
 			//this code needs revision
 			var values = j$('input:checkbox:checked.'+elemId).map(function () {
 			  return this.value;
 			}).get();
 
-			var vvv = values.join(';');
+			//var vvv = values.join(';');
 			j$('.'+elemId).val(values);
 			values = '';
-
 		}
 	}
 
@@ -288,7 +304,6 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			headers: {'X-CSRF-Token': AUTH_TOKEN },
 			dataType: "script",
 			success: function(data){
-				//alert('sucessful post');
 				
 				if(url.match("review") == null){
 					if(url.match(/page/) == null ){
@@ -308,7 +323,6 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			},
 			error: function(data, textStatus){
 				autosaveOn = false;
-				//j$("#loading").hide();
 
 				var arr = eval(data.responseText);
 				
@@ -322,7 +336,6 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 						 	if(el[2] == 'radio')
 						 		p_error = j$('#' + s.id).parent().parent().prev('p');
 						 	else if(el[2] == 'multi'){
-						 		//alert('id = '+s.id);
 						 		p_error = j$('#' + s.id).parent().prev('p');
 						 		j$('#' + s.id).css('display','block');
 						 	}else if(el[2] == 'calculation'){
@@ -457,6 +470,18 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				backdrop: true,
 				keyboard: true
 			});
+	}
+
+	function updateInputValue(id){
+		var p = j$('#'+id).parent().attr('id');
+		var arr = new Array;
+		j$('#'+p+' span').each(function(index, elem){
+		    arr.push( j$(this).text().replace(/(\s+)?.$/, "") );
+		});
+		var v = arr.join(";");
+		j$('#'+id).parent().next().val(v);
+		//this triggers all onchange hooks to this input
+		j$('#'+id).parent().next().change();
 	}
 
 

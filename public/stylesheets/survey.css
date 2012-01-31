@@ -84,6 +84,8 @@ ul.a_list{
     width:400px;
     height:14px;
     display:table;
+    -moz-transition:border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+	box-shadow:0 1px 3px rgba(0, 0, 0, 0.1) inset;
 }
 
 #pb {
@@ -295,6 +297,37 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     margin: 9px auto 0 auto;
 }
 
+.ac_comp {
+	border: 1px solid #ccc;
+	border-radius: 3px; 
+	clear:both;
+	width:500px;
+	-moz-transition:border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+	box-shadow:0 1px 3px rgba(0, 0, 0, 0.1) inset;
+	padding:5px;
+}
 
+.ac_comp input:focus, .ac_comp input {
+	-moz-transition: border 0, box-shadow 0 !important;
+	box-shadow:0 !important;
+	border:none !important;
+	border-color:none !important;
+	background: none !important;
+	margin:0px;
+	padding:1px;
+	height:15px;
+}
+
+.ac_comp span {
+	padding:4px;
+	margin: 0 2px;
+	display: inline-block;
+}
+
+a .remove{
+	margin:0 4px;
+	font-size:90%; 
+	font-weight:bold;
+}
 
 

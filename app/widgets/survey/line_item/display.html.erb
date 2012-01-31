@@ -16,9 +16,23 @@
 		<% if @line_item.Question_Type__c == 'Text' %>
 
 			<%if @line_item.Enable_Autocomplete__c == true %>
-				<input type="text" name="qq_<%= @line_item.Id%>_text_<%= @respId %>" id="qq_<%= @line_item.Id%>_text_<%= @respId %>" class="edit_form_field autocomplete_comp" data-url="<%= @line_item.URL__c%>" value="<%= @respVal %>" autocomplete="off" />
+				<div class="ac_comp" id="acp_<%= @line_item.Id%>" >
+
+					<% if @respVal != nil || @respVal != ''
+						va = @respVal.split(';') 
+						va.each do |vl|
+					%>
+					<span class="label notice"><%= vl %><a class="remove" href="javascript:" title="Remove <%= vl %>"> x</a></span>
+					<%
+						end
+					end
+					%>
+					<input type="text" id="ac_comp_<%= @line_item.Id%>" class="autocomplete_comp" data-url="<%= @line_item.URL__c%>" value="" style="border:none !important; box-shadow: none; width:120px;" autocomplete="off" />
+				</div>
+				<input type="text" name="qq_<%= @line_item.Id%>_text_<%= @respId %>" id="qq_<%= @line_item.Id%>_text_<%= @respId %>" class="edit_form_field" value="<%= @respVal %>" autocomplete="off" style="display:none;"/>
+
 			<% else %>
-				<input type="text" name="qq_<%= @line_item.Id%>_text_<%= @respId %>" id="qq_<%= @line_item.Id%>_text_<%= @respId %>" class="edit_form_field" value="<%= @respVal %>" autocomplete="off" />
+				<input type="text" name="qq_<%= @line_item.Id%>_text_<%= @respId %>" id="qq_<%= @line_item.Id%>_text_<%= @respId %>" class="edit_form_field" value="<%= @respVal %>" autocomplete="off"  />
 			<% end %>
 
 		<!-- SelectOneQuestion Question -->
