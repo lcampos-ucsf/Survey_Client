@@ -341,6 +341,9 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 						 	}else if(el[2] == 'calculation'){
 						 		p_error = j$('#' + s.id).prev().prev('p');
 						 		j$('#' + s.id).prev().addClass('errorhighlight');
+						 	}else if(el[2] == 'text'){
+						 		var type = j$('#' + s.id).attr('text-type');
+						 		p_error = (type == 'autocomplete') ? j$('#' + s.id).prev().prev('p') : j$('#' + s.id).prev('p')
 						 	}else{
 								p_error = j$('#' + s.id).prev('p');
 							}

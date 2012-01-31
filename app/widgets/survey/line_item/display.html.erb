@@ -29,7 +29,7 @@
 					%>
 					<input type="text" id="ac_comp_<%= @line_item.Id%>" class="autocomplete_comp" data-url="<%= @line_item.URL__c%>" value="" style="border:none !important; box-shadow: none; width:120px;" autocomplete="off" />
 				</div>
-				<input type="text" name="qq_<%= @line_item.Id%>_text_<%= @respId %>" id="qq_<%= @line_item.Id%>_text_<%= @respId %>" class="edit_form_field" value="<%= @respVal %>" autocomplete="off" style="display:none;"/>
+				<input type="text" name="qq_<%= @line_item.Id%>_text_<%= @respId %>" id="qq_<%= @line_item.Id%>_text_<%= @respId %>" text-type="autocomplete" class="edit_form_field" value="<%= @respVal %>" autocomplete="off" style="display:none;"/>
 
 			<% else %>
 				<input type="text" name="qq_<%= @line_item.Id%>_text_<%= @respId %>" id="qq_<%= @line_item.Id%>_text_<%= @respId %>" class="edit_form_field" value="<%= @respVal %>" autocomplete="off"  />
