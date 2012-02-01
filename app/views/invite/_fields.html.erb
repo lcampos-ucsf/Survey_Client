@@ -2,19 +2,31 @@
 
 <div class="input">
   <%= f.label 'Survey', :class => "invite_form_label" %>
-  <%= select("invitation__c", "Survey__c", @surveys.collect {|p| [ p.Name, p.Id ] }, {:include_blank => 'None'}) %>
+  <div style="display:inline-block;">
+    <p style="display:none;color:red;" ></p>
+    <%= select("invitation__c", "Survey__c", @surveys.collect {|p| [ p.Name, p.Id ] }, {:include_blank => 'None'}, :class => "select" ) %>
+  </div>
 </div>	
 <div class="input">
   <%= f.label 'Survey Taker', :class => "invite_form_label" %>
-  <%= select("invitation__c", "User__c", @users.collect {|p| [ p.Name, p.Id ] }, {:include_blank => 'None'}) %>
+  <div style="display:inline-block;">
+    <p style="display:none;color:red;" >error message</p>
+    <%= select("invitation__c", "User__c", @users.collect {|p| [ p.Name, p.Id ] }, {:include_blank => 'None'}, :class => "select" ) %>
+  </div>
 </div>  
 <div class="input">
   <%= f.label 'Start Date', :class => "invite_form_label" %>
-  <%= f.text_field :Start_Date__c, :class => "datepicker" %>
+  <div style="display:inline-block;">
+    <p style="display:none;color:red;" >error message</p>
+    <%= f.text_field :Start_Date__c, :class => "datepicker" %>
+  </div>
 </div>
 <div class="input">
   <%= f.label 'End Date', :class => "invite_form_label" %>
-  <%= f.text_field :End_Date__c, :class => "datepicker" %>
+  <div style="display:inline-block;">
+    <p style="display:none;color:red;" >error message</p>
+    <%= f.text_field :End_Date__c, :class => "datepicker" %>
+  </div>
 </div>
 
 
@@ -27,5 +39,5 @@
 
 <div class="input">
   <%= f.label 'Subject', :class => "invite_form_label" %>
-  <%= select("invitation__c", "Survey_Subject__c", @subjects.collect {|p| [ p.Name, p.Id ] }, {:include_blank => false}, :multiple => true, :size => 10 ) %>
+  <%= select("invitation__c", "Survey_Subject__c", @subjects.collect {|p| [ p.Name, p.Id ] }, {:include_blank => false}, :multiple => true, :size => 10, :class => "select_opt" ) %>
 </div>

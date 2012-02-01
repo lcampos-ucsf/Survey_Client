@@ -120,6 +120,18 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			  
 			});					
 		});
+
+		//create invite form
+		j$('form.new_invitation__c input, form.new_invitation__c textarea, form.new_invitation__c select').each(function (i) {
+			j$(this).live({
+			
+			change: function() {
+			  	wipeErrorMsg(this);
+			  }
+
+			});
+		});
+
 	}//end if
 
 	//Add tablesorter 
@@ -487,6 +499,45 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		j$('#'+id).parent().next().change();
 	}
 
+	//validations on create invite section
+	function validateinvite(){
+		//alert('validateinvite');
+		var errors = false;
+		j$('form.new_invitation__c input, form.new_invitation__c textarea, form.new_invitation__c select').each(function (i) {
+			var cl = j$(this).attr('class');
+			var val = j$(this).val();
+			if(cl){
+				
+				if(cl == 'select' && (val == '' || val == null) ){
+					errors = true;
+					j$(this).addClass('errorhighlight');
+					j$(this).prev().text('Please select an option');
+					j$(this).prev().css('display','block');
+				}else if(cl.indexOf('datepicker') != -1 ){
+					if(val == '' || val == null){
+						errors = true;
+						j$(this).addClass('errorhighlight');
+						j$(this).prev().text('Please choose an option');
+						j$(this).prev().css('display','block');
+					}else{
+						var vldate = val.match(/^(?:0?[1-9]|1[0-2])\/(?:0?[1-9]|[1-2]\d|3[01])\/\d{4}$/) == null ? false : true;
+						if(!vldate){
+							errors = true;
+							j$(this).addClass('errorhighlight');
+							j$(this).prev().text('This is not a valid date format');
+							j$(this).prev().css('display','block');
+						}
+							
+					}
+				}
+			}
+
+		});
+
+		if(!errors){
+			j$('#commitinvite').click();
+		}
+	}
 
 
 
