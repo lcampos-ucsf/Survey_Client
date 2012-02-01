@@ -503,6 +503,8 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	function validateinvite(){
 		//alert('validateinvite');
 		var errors = false;
+		var StartDate='';
+		var EndDate='';
 		j$('form.new_invitation__c input, form.new_invitation__c textarea, form.new_invitation__c select').each(function (i) {
 			var cl = j$(this).attr('class');
 			var val = j$(this).val();
@@ -526,6 +528,20 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 							j$(this).addClass('errorhighlight');
 							j$(this).prev().text('This is not a valid date format');
 							j$(this).prev().css('display','block');
+						}else{
+							var sd = j$(this).attr('id').match('Start');
+							var ed = j$(this).attr('id').match('End');
+							if(j$(this).attr('id').match('Start')){
+								StartDate = new Date(val);
+							}else if(j$(this).attr('id').match('End')){
+								EndDate = new Date(val);
+								if(EndDate < StartDate){
+									errors = true;
+									j$(this).addClass('errorhighlight');
+									j$(this).prev().text('End Date cannot be before Start Date');
+									j$(this).prev().css('display','block');
+								}
+							}
 						}
 							
 					}
