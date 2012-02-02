@@ -85,7 +85,7 @@ module SurveysHelper
 		puts "^^^^^^^^^^^^^^^^^^^^ survey_helper.rb update_multiple ^^^^^^^^^^^^^^^^^^^^"
 		puts "^^^^^^^^^^^^^^^^^^^^ params = '#{params.inspect}' "
 		@hash_response = {}
-		@invite_id = params[:id]
+		@invite_id = Sanitize.clean(params[:id])
 		@survey_id = current_survey[0].Survey__c
 
 		#@current_page = params[:page].match(/\A([1-9])\Z/) == nil ? '1' : params[:page]
@@ -154,7 +154,7 @@ module SurveysHelper
 		#this updates invitation
 		puts "------------------ update_multiple, update invitation status ------------------"
 		puts "--------------- @current page = '#{@current_page}' "
-		session[:client].upsert('Invitation__c','Id', @invite_id, { 'Progress_Save__c' => Sanitize.clean(@current_page), 'Status__c' => 'In Progress' })
+		session[:client].upsert('Invitation__c','Id', @invite_id, { 'Progress_Save__c' => @current_page, 'Status__c' => 'In Progress' })
 
 		
 		respond_to do |format|
@@ -170,7 +170,7 @@ module SurveysHelper
 
 	def submitsurvey
 		puts "^^^^^^^^^^^^^^^^^^^^ survey_helper.rb submitsurvey ^^^^^^^^^^^^^^^^^^^^"
-		session[:client].upsert('Invitation__c','Id', params[:id], { 'Status__c' => 'Completed'})
+		session[:client].upsert('Invitation__c','Id', Sanitize.clean(params[:id]), { 'Status__c' => 'Completed'})
 		redirect_to "/invite/index", :notice => "Your survey was submitted successfully."
 	end
 
@@ -181,7 +181,7 @@ module SurveysHelper
 
 	def current_survey
 	    puts "^^^^^^^^^^^^^^^^^^^^ surveys_helper.rb current_survey ^^^^^^^^^^^^^^^^^^^^"
-	    @@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Survey_Subject__c, Survey__r.Description__c from Invitation__c where Id = '#{params[:id]}' and User__c = '#{session[:user_id]}' ")
+	    @@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Survey_Subject__c, Survey__r.Description__c from Invitation__c where Id = '#{Sanitize.clean(params[:id])}' and User__c = '#{session[:user_id]}' ")
 		
 		if @@current_survey.to_s == '[]'
 			raise Exceptions::SurveyNotAvailable.new("The survey you are looking for is currently not available.")

@@ -122,7 +122,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		});
 
 		//create invite form
-		j$('form.new_invitation__c input, form.new_invitation__c textarea, form.new_invitation__c select').each(function (i) {
+		j$('form input, form textarea, form select').each(function (i) {
 			j$(this).live({
 			
 			change: function() {
@@ -501,23 +501,23 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 	//validations on create invite section
 	function validateinvite(){
-		alert('validateinvite');
+		//alert('validateinvite');
 		var errors = false;
 		var StartDate='';
 		var EndDate='';
-		j$('form.new_invitation__c input, form.new_invitation__c textarea, form.new_invitation__c select').each(function (i) {
+		j$('form input, form textarea, form select').each(function (i) {
 			var cl = j$(this).attr('class');
 			var val = j$(this).val();
 			if(cl){
 				
 				if(cl == 'select' && (val == '' || val == null) ){
-					alert('select,  cl = '+cl);
+					//alert('select,  cl = '+cl);
 					errors = true;
 					j$(this).addClass('errorhighlight');
 					j$(this).prev().text('Please select an option');
 					j$(this).prev().css('display','block');
 				}else if(cl.indexOf('datepicker') != -1 ){
-					alert('datepicker, cl = '+cl);
+					//alert('datepicker, cl = '+cl);
 					if(val == '' || val == null){
 						errors = true;
 						j$(this).addClass('errorhighlight');
