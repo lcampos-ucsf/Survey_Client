@@ -87,8 +87,10 @@ module SurveysHelper
 		@hash_response = {}
 		@invite_id = params[:id]
 		@survey_id = current_survey[0].Survey__c
-		#@current_page = (params[:page] != nil || params[:page] != '') ? params[:page] : 1
-		@current_page = params[:page].match(/\A([1-9])\Z/) == nil ? '1' : params[:page]
+
+		#@current_page = params[:page].match(/\A([1-9])\Z/) == nil ? '1' : params[:page]
+		#security enhancement
+		@current_page = (params[:page]!= nil) ? ( params[:page].match(/^[1-9]*$/) == nil ? '1' : Sanitize.clean(params[:page]).to_i ) : '1'
 		@autosave = params[:as] ? params[:as] : false
 
 		params.each do |key, value|

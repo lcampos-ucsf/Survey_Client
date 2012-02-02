@@ -4,7 +4,7 @@
     <div id="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<%= form_for(@invite, :url => {:controller => "invite",:action => "create"}) do |f| %>
+<%= form_for(@invite, :url => {:controller => "invite",:action => "create"}, :class => "newinvite") do |f| %>
 
     <!-- % if @invite.errors.any? %>
 	<div id="error_explanation">

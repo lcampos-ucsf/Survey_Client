@@ -10,7 +10,10 @@ responds_to_event :submit, :with => :update_multiple
 		@survey = options[:survey]
 		puts "^^^^^^^^^^^^^^^^^^^^ survey_widget.rb Kaminari execution ^^^^^^^^^^^^^^^^^^^^"
 		
-		@pageno = params[:page].to_i
+		#security enhancement
+		@pageno = (params[:page]!= nil) ? ( params[:page].match(/^[1-9]*$/) == nil ? '1' : Sanitize.clean(params[:page]).to_i ) : '1'
+
+		puts "-------------------- after sanitize, pageno = '#{@pageno}' "
 		@lines_query = session[:client].query("select Id, Name, Description__c, Display_Logic__c, Sort_Order__c, Survey__c from Line__c where Survey__c = '#{@survey[0].Survey__c}' order by Sort_Order__c asc")
 		
 		@liq_array = []

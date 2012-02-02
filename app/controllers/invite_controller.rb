@@ -16,12 +16,12 @@ class InviteController < ApplicationController
   end
 
   def new
-  	@invite = Invitation__c.new
+  	@invite = 'invitation__c'
   end
 
   def create
     puts "--------------------------- invite create params = '#{params}' , params[:invitation__c] = '#{params[:invitation__c]}', survey subject = '#{params[:invitation__c][:Survey_Subject__c]}' "
-    debugger
+    
     if params[:invitation__c][:Survey_Subject__c] 
       params[:invitation__c][:Survey_Subject__c].each do |s|
 
@@ -43,9 +43,7 @@ class InviteController < ApplicationController
       end
 
     else
-    #@i = Invitation__c.new(params[:invitation__c])
-
-     # if @i.valid?
+      
       session[:client].create('Invitation__c',{
             'Survey__c' => params[:invitation__c][:Survey__c], 
             'User__c' => params[:invitation__c][:User__c],
@@ -57,11 +55,6 @@ class InviteController < ApplicationController
             'Invite_Sent__c' => false, 
             'Completed__c' => false,
             'Text_Survey_Subject__c' => params[:invitation__c][:Text_Survey_Subject__c] != '' ? Sanitize.clean(params[:invitation__c][:Text_Survey_Subject__c]) : '' })
-      #else
-      #  setinviteformvalues
-      #  render :action => 'new'
-      #  return
-      #end      
 
   	end
   	redirect_to invite_index_path
