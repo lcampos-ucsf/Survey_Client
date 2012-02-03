@@ -22,7 +22,7 @@ module SurveysHelper
 							'Invitation__c' => inviteid, 
 							'Line_Item__c' => qid, 
 							'OwnerId' => @uid,
-							'Original_Question_Text__c' => question.match(/^\s*([0-9a-zA-Z]*)\s*$/), 
+							'Original_Question_Text__c' => question, #.match(/^\s*([0-9a-zA-Z]*)\s*$/), 
 							'Text_Long_Response__c' => (value != nil || value != '') ? value : nil,
 							'Label_Long_Response__c' => (@resp_type == 'text') ? nil : label, 
 							'Date_Response__c' => (@resp_type == 'date') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
@@ -270,12 +270,12 @@ module SurveysHelper
 
 		elsif rObj.type == 'text'
 			l = rObj.value.length
-			val = rObj.value.match(/^\s*([0-9a-zA-Z]*)\s*$/) == nil ? false : true
+			#val = rObj.value.match(/^\s*([0-9a-zA-Z]*)\s*$/) == nil ? false : true
 			puts "----------- text length = '#{l}' "
 			if l > 250
 				return { :msg => 'The text entered contains more than 250 characters', :id => rObj.key }
-			elsif val == false
-				return { :msg => 'Not a valid text format, enter only alphanumeric values', :id => rObj.key }
+			#elsif val == false
+			#	return { :msg => 'Not a valid text format, enter only alphanumeric values', :id => rObj.key }
 			end
 			return
 		end
