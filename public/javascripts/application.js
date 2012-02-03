@@ -127,7 +127,10 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			
 			change: function() {
 			  	wipeErrorMsg(this);
-			  }
+			}, 
+			keyup: function(){
+				wipeErrorMsg(this);
+			}
 
 			});
 		});
@@ -502,6 +505,8 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	//validations on create invite section
 	function validateinvite(){
 		//alert('validateinvite');
+		showmodaltransition();
+
 		var errors = false;
 		var StartDate='';
 		var EndDate='';
@@ -547,6 +552,14 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 						}
 							
 					}
+				}else if(cl == 'bulk_text_input' && (val != '') ){
+					var vlInt = val.match(/^[0-9]$/) == null ? false :true;
+					if(!vlInt){
+						errors = true;
+						j$(this).addClass('errorhighlight');
+						j$(this).prev().text('This is not a valid numeric format');
+						j$(this).prev().css('display','block');
+					}
 				}
 			}
 
@@ -554,6 +567,8 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 		if(!errors){
 			j$('#commitinvite').click();
+		}else{
+			hidemodaltransition();
 		}
 	}
 

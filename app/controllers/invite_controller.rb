@@ -22,41 +22,24 @@ class InviteController < ApplicationController
   def create
     puts "--------------------------- invite create params = '#{params}' , params[:invitation__c] = '#{params[:invitation__c]}', survey subject = '#{params[:invitation__c][:Survey_Subject__c]}' "
     
-    if params[:invitation__c][:Survey_Subject__c] 
-      params[:invitation__c][:Survey_Subject__c].each do |s|
+   
+    @iter = (params[:invitation__c][:Bulk__c].blank? ) ? '1' : ( params[:invitation__c][:Bulk__c].match(/^[0-9]*$/) == nil ? '1' : Sanitize.clean(params[:invitation__c][:Bulk__c]).to_i )  
+    puts "-------------- @iter = '#{@iter}' "
+    i = 0
+    while i < @iter.to_i
 
-        puts "&&&&&&&&&&&&&&&&&&&&&&&& invitation if, s = '#{s}' " 
-        session[:client].create('Invitation__c',{
-            'Survey__c' => params[:invitation__c][:Survey__c], 
-            'User__c' => params[:invitation__c][:User__c],
-            'Status__c' => 'New',
-            'Survey_Subject__c' => s, 
-            'Start_Date__c' => Date.strptime(params[:invitation__c][:Start_Date__c], "%m/%d/%Y").to_datetime(), 
-            'End_Date__c' => Date.strptime(params[:invitation__c][:End_Date__c], "%m/%d/%Y").to_datetime(), 
-            'OwnerId' => session[:user_id], 
-            'Is_Preview__c' => false, 
-            'Invite_Sent__c' => false, 
-            'Completed__c' => false,
-            'Text_Survey_Subject__c' => params[:invitation__c][:Text_Survey_Subject__c]  })
+      if params[:invitation__c][:Survey_Subject__c] 
+        params[:invitation__c][:Survey_Subject__c].each do |s|
+          puts "&&&&&&&&&&&&&&&&&&&&&&&& invitation if, s = '#{s}' " 
+          createinvite(params[:invitation__c],s)
+        end
 
-            puts "&&&&&&&&&&&&&&&&&&&&&&&& invitation if end, s = '#{s}' " 
-      end
+      else
+        createinvite(params[:invitation__c],'')
+    	end
 
-    else
-      
-      session[:client].create('Invitation__c',{
-            'Survey__c' => params[:invitation__c][:Survey__c], 
-            'User__c' => params[:invitation__c][:User__c],
-            'Status__c' => 'New',
-            'Start_Date__c' => Date.strptime(params[:invitation__c][:Start_Date__c], "%m/%d/%Y").to_datetime(), 
-            'End_Date__c' => Date.strptime(params[:invitation__c][:End_Date__c], "%m/%d/%Y").to_datetime(), 
-            'OwnerId' => session[:user_id], 
-            'Is_Preview__c' => false, 
-            'Invite_Sent__c' => false, 
-            'Completed__c' => false,
-            'Text_Survey_Subject__c' => params[:invitation__c][:Text_Survey_Subject__c] != '' ? Sanitize.clean(params[:invitation__c][:Text_Survey_Subject__c]) : '' })
-
-  	end
+      i += 1
+    end  
   	redirect_to invite_index_path
   end
 
@@ -65,7 +48,7 @@ class InviteController < ApplicationController
     if session[:user_profile] == 'Admin'
        @subjects = session[:client].query("select Id, Name from Survey_Subject__c order by Name asc")
     end
-    @invite = session[:client].query("select Id, Name, Survey__c, Survey_Name__c, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, OwnerId, Text_Survey_Subject__c, Survey_Subject__c, Survey_Subject__r.Name from Invitation__c where Id = '#{params[:id]}' ")  
+    @invite = session[:client].query("select Id, Name, Survey__c, Survey_Name__c, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, OwnerId, Text_Survey_Subject__c, Survey_Subject__c, Survey_Subject__r.Name from Invitation__c where Id = '#{Sanitize.clean(params[:id])}' ")  
   end
 
   def update
@@ -106,5 +89,24 @@ class InviteController < ApplicationController
     @users = session[:client].query("select Id, Name from User order by Name asc")
   end
 
+  def createinvite(rdata, s)
+    puts "------createinvite method, rdata = '#{rdata}' ----------- "
+
+    session[:client].create('Invitation__c',{
+      'Survey__c' => Sanitize.clean(rdata[:Survey__c]), 
+      'User__c' => Sanitize.clean(rdata[:User__c]),
+      'Status__c' => 'New',
+      'Survey_Subject__c' => s, 
+      'Start_Date__c' => Date.strptime(Sanitize.clean(rdata[:Start_Date__c]), "%m/%d/%Y").to_datetime(), 
+      'End_Date__c' => Date.strptime(Sanitize.clean(rdata[:End_Date__c]), "%m/%d/%Y").to_datetime(), 
+      'OwnerId' => session[:user_id], 
+      'Is_Preview__c' => false, 
+      'Invite_Sent__c' => false, 
+      'Completed__c' => false,
+      'Text_Survey_Subject__c' => rdata[:Text_Survey_Subject__c] != '' ? Sanitize.clean(rdata[:Text_Survey_Subject__c]) : ''  })
+
+    
+    
+  end
 
 end
