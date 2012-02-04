@@ -553,7 +553,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 							
 					}
 				}else if(cl == 'bulk_text_input' && (val != '') ){
-					var vlInt = val.match(/^[0-9]$/) == null ? false :true;
+					var vlInt = val.match(/^[0-9]{0,3}$/) == null ? false :true;
 					if(!vlInt){
 						errors = true;
 						j$(this).addClass('errorhighlight');

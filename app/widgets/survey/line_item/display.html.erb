@@ -18,7 +18,7 @@
 			<%if @line_item.Enable_Autocomplete__c == true %>
 				<div class="ac_comp" id="acp_<%= @line_item.Id%>" >
 
-					<% if @respVal != nil || @respVal != ''
+					<% if !@respVal.blank?
 						va = @respVal.split(';') 
 						va.each do |vl|
 					%>

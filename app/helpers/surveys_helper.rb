@@ -3,7 +3,7 @@ module SurveysHelper
 	class Response
 		attr_reader :sid, :qid, :value, :type, :update_val
 
-		def initialize(sid, inviteId, qid, qtxt, value, type, rid, label, htmlid, uid)
+		def initialize(sid, inviteId, qid, qtxt, value, type, rid, label, htmlid, uid, vlength, decimals, maxval, minval, isrequired)
 			@resp_sid = sid
 			@resp_qid = qid
 			@resp_value = value
@@ -14,7 +14,11 @@ module SurveysHelper
 			@resp_iid = inviteId
 			@key = htmlid
 			@uid = uid
-
+			@vlength = vlength
+			@maxval = maxval
+			@minval = minval
+			@decimals = decimals
+			@isrequired = isrequired
 		end
 
 		def resp_a
@@ -79,6 +83,26 @@ module SurveysHelper
 			Sanitize.clean(@key)
 		end
 
+		def vlength
+			@vlength
+		end
+
+		def maxval
+			@maxval
+		end
+
+		def minval
+			@minval
+		end
+
+		def decimals
+			@decimals
+		end
+
+		def isrequired
+			@isrequired
+		end
+
 	end
 
 	def update_multiple
@@ -92,6 +116,34 @@ module SurveysHelper
 		#security enhancement
 		@current_page = (params[:page]!= nil) ? ( params[:page].match(/^[1-9]*$/) == nil ? '1' : Sanitize.clean(params[:page]).to_i ) : '1'
 		@autosave = params[:as] ? params[:as] : false
+
+		#get line item external ids for query
+		@li_eid_list = ''
+		params.each do |key, value|
+			if key.index('qq') != nil
+				if key.index('qq') >= 0
+					@aeid = key.split('_')
+					#line item external ids
+					@li_eid_list = (@li_eid_list == '') ? ( @li_eid_list + "\'#{@aeid[1]}\'" ) : ( @li_eid_list + ", \'#{@aeid[1]}\'" )
+				end
+			end
+		end
+
+		@li_eid_list = "("+@li_eid_list+")"
+
+		#query values for response and validations
+		@li_details = session[:client].query("select Id, Name, Decimals__c, External_ID__c, Length__c, Max_Value__c, Min_Value__c, Required__c, Sort_Order__c from Line_Item__c where Id in #{@li_eid_list} order by Sort_Order__c asc  ")
+
+		@h_li = {}
+		if !@li_details.empty?
+            @li_details.each { |r| @h_li[r.Id] ? @h_li[r.Id] << r : @h_li[r.Id] = [r] }
+        end
+
+		puts "----------+++++++++++++++------------- @li_eid_list = '#{@li_eid_list}' "
+		puts "----------+++++++++++++++------------- @li_eid_list = '#{@li_eid_list}' "
+		puts "----------+++++++++++++++------------- @li_eid_list = '#{@li_eid_list}' "
+		puts "----------+++++++++++++++------------- @li_eid_list = '#{@li_eid_list}' "
+		puts "----------+++++++++++++++------------- @li_details = '#{@li_details}' "
 
 		params.each do |key, value|
 			@var = key.index('qq') 	
@@ -114,11 +166,15 @@ module SurveysHelper
 							end
 						end
 
-						puts "---------------------- @v = '#{@v}' "
-
-						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], @v, key, session[:user_id])
+						#(sid, inviteId, qid, qtxt, value, type, rid, label, htmlid, uid, vlength, decimals, maxval, minval, isrequired)
+						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], @v, key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c )
+						#@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], @v, key, session[:user_id])
 					else
-						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], params[value], key, session[:user_id])
+
+						puts "testing li item hash, @h_li[@qid] = '#{@h_li[@qid][0]}' "
+
+						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], params[value], key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c )
+						#@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], params[value], key, session[:user_id])
 					end
 
 					@hash_response[@array[1]] ? @hash_response[@array[1]] << @robj : @hash_response[@array[1]] = [@robj]
@@ -220,7 +276,11 @@ module SurveysHelper
 
 	def validate_response(rObj)
 		puts "validate response = '#{rObj.type}', value = '#{rObj.value}' "
-		if rObj.value == nil || rObj.value == ''
+		puts "validate response, isrequired = '#{rObj.isrequired}', length = '#{rObj.vlength}', maxval = '#{rObj.maxval}', minval = '#{rObj.minval}', decimals = '#{rObj.decimals}' "
+		puts "validate response, isrequired = '#{rObj.isrequired}', length = '#{rObj.vlength.blank?}', maxval = '#{rObj.maxval.blank?}', minval = '#{rObj.minval.blank?}', decimals = '#{rObj.decimals.blank?}' "
+
+
+		if (rObj.value == nil || rObj.value == '') && rObj.isrequired
 			if rObj.type == 'onedd'
 				return { :msg => 'Please select an option', :id => rObj.key }
 			
@@ -231,18 +291,53 @@ module SurveysHelper
 				return { :msg => 'Please enter a value', :id => rObj.key }
 			end
 
-		elsif rObj.type == 'integer'
+		elsif rObj.type == 'integer' || rObj.type == 'calculation'
 			val = rObj.value.match(/\A[+-]?\d+?(\.\d+)?\Z/) == nil ? false : true 
 			l = rObj.value.length
-			puts "----------- integer length = '#{l}' "
-			if val == false && l > 17
-				return { :msg => 'Number contains invalid characters and contains more than 17 characters', :id => rObj.key }
-			elsif val == false
+			#custom validations
+			if val == true
+				num = rObj.value.split('.')
+				n = num[0]
+				d = num[1]
+			end
+
+			if val == false
 				return { :msg => 'Number contains invalid characters', :id => rObj.key }
+			elsif val == false && l > 17
+				return { :msg => 'Number contains invalid characters and contains more than 17 characters', :id => rObj.key }
 			elsif l > 17
 				return { :msg => 'Number contains more than 17 characters', :id => rObj.key }
+
+			else
+
+				if rObj.vlength.blank? == false
+					if n.length.to_f > rObj.vlength.to_f
+						return { :msg => 'Number value is to big', :id => rObj.key }
+					end
+				end
+
+				if rObj.decimals.blank? == false
+					if d.length > rObj.decimals
+						return { :msg => 'You exceeded the allowed decimal values '+rObj.decimals.to_i.to_s , :id => rObj.key }
+					end
+				end
+
+				if rObj.maxval.blank? == false
+					if rObj.value.to_f > rObj.maxval.to_f
+						return { :msg => 'Value exceeds maximum allowed, '+rObj.maxval, :id => rObj.key }
+					end
+				end
+
+				if rObj.minval.blank? == false
+					if rObj.value.to_f < rObj.minval.to_f
+						return { :msg => 'Value is lower than the minimum expected, '+rObj.minval, :id => rObj.key }
+					end
+				end
+
+			
 			end
 			return
+=begin
 		elsif rObj.type == 'calculation'
 			l = rObj.value.length
 			puts "----------- calculation length = '#{l}' "
@@ -250,6 +345,7 @@ module SurveysHelper
 				return { :msg => 'Number contains more than 17 characters', :id => rObj.key }
 			end
 			return
+=end
 		elsif rObj.type == 'date'
 			val = rObj.value.match(/\A(?:0?[1-9]|1[0-2])\/(?:0?[1-9]|[1-2]\d|3[01])\/\d{4}\Z/) == nil ? false : true
 			arr = rObj.value.split('/')
@@ -264,6 +360,24 @@ module SurveysHelper
 				return { :msg => 'Not a valid day', :id => rObj.key }
 			elsif arr[2].to_i > 4000 || arr[2].to_i < 0
 				return { :msg => 'Not a valid year', :id => rObj.key }
+			else
+
+				if rObj.maxval.blank? == false
+					myval = Date.strptime(rObj.value, '%m/%d/%Y')
+					sysval = Date.strptime(rObj.maxval, '%m/%d/%Y')
+					if myval > sysval
+						return { :msg => 'Date value exceeds maximum allowed, '+rObj.maxval, :id => rObj.key }
+					end
+				end
+
+				if rObj.minval.blank? == false
+					myval = Date.strptime(rObj.value, '%m/%d/%Y')
+					sysval = Date.strptime(rObj.maxval, '%m/%d/%Y')
+					if myval < sysval
+						return { :msg => 'Date value is lower than the minimum expected, '+rObj.minval, :id => rObj.key }
+					end
+				end
+
 			end
 		elsif rObj.type == 'radio'
 			puts "$$$$$$$$$$$$$ rObj.value = '#{rObj.value}' "
@@ -272,8 +386,14 @@ module SurveysHelper
 			l = rObj.value.length
 			#val = rObj.value.match(/^\s*([0-9a-zA-Z]*)\s*$/) == nil ? false : true
 			puts "----------- text length = '#{l}' "
-			if l > 250
-				return { :msg => 'The text entered contains more than 250 characters', :id => rObj.key }
+			if l > 1000
+				return { :msg => 'The text entered contains more than 1000 characters', :id => rObj.key }
+			else
+				if rObj.vlength.blank? == false
+					if l > rObj.vlength.to_f
+						return { :msg => 'The text entered contains more than '+rObj.vlength.to_i.to_s+' characters', :id => rObj.key }
+					end
+				end
 			#elsif val == false
 			#	return { :msg => 'Not a valid text format, enter only alphanumeric values', :id => rObj.key }
 			end
