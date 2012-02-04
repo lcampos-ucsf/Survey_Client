@@ -298,7 +298,7 @@ module SurveysHelper
 			if val == true
 				num = rObj.value.split('.')
 				n = num[0]
-				d = num[1]
+				d = num[1] != nil ? num[1] : ''
 			end
 
 			if val == false
@@ -310,6 +310,7 @@ module SurveysHelper
 
 			else
 
+				puts "-------------+++++++++++++++ value = '#{rObj.value.to_f}'" 
 				if rObj.vlength.blank? == false
 					if n.length.to_f > rObj.vlength.to_f
 						return { :msg => 'Number value is to big', :id => rObj.key }
