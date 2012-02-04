@@ -373,7 +373,7 @@ module SurveysHelper
 
 				if rObj.minval.blank? == false
 					myval = Date.strptime(rObj.value, '%m/%d/%Y')
-					sysval = Date.strptime(rObj.maxval, '%m/%d/%Y')
+					sysval = Date.strptime(rObj.minval, '%m/%d/%Y')
 					if myval < sysval
 						return { :msg => 'Date value is lower than the minimum expected, '+rObj.minval, :id => rObj.key }
 					end
