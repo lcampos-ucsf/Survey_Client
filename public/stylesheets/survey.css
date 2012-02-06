@@ -331,7 +331,7 @@ a .remove{
 	font-size:90%; 
 	font-weight:bold;
 }
-
+/*
 .btn.orange {
     background-color: #EA903A;
     background-image: -moz-linear-gradient(center top , #EA903A, #D96F23);
@@ -344,3 +344,21 @@ a .remove{
 .btn:hover.orange{
 	background-position:0 !important;
 }
+*/
+.btn.orange {
+	background-color: #EA903A;
+	background-repeat: repeat-x;
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#EA903A), to(#D96F23));
+	background-image: -moz-linear-gradient(top, #D96F23, #EA903A);
+	background-image: -ms-linear-gradient(top, #D96F23, #EA903A);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #EA903A), color-stop(100%, #D96F23));
+	background-image: -webkit-linear-gradient(top, #D96F23, #EA903A);
+	background-image: -o-linear-gradient(top, #D96F23, #EA903A);
+	background-image: linear-gradient(top, #D96F23, #EA903A);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EA903A', endColorstr='#D96F23', GradientType=0);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	border-color: #EA903A #EA903A #3d773d;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+
+
