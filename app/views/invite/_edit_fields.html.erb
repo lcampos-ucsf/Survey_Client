@@ -6,29 +6,44 @@
 </div>	
 <div class="input">
   <%= f.label 'Survey Taker', :class => "invite_form_label" %>
-  <%= select("invitation__c", "User__c", @users.collect {|p| [ p.Name, p.Id ] }, {:include_blank => 'None', :selected => f.object.User__c}) %>
+  <div style="display:inline-block;">
+    <p style="display:none;color:red;" >error message</p>
+    <%= select("invitation__c", "User__c", @users.collect {|p| [ p.Name, p.Id ] }, {:include_blank => 'None', :selected => f.object.User__c}, :class => "select") %>
+  </div>
   <!-- %= collection_select('invitation__c', 'User__c', @users, :Id, :Name, :prompt => true, :selected => f.object.User__c )% -->
 </div>  
 
 <% if session[:user_profile] != 'Admin' %>
   <div class="input">
   	<%= f.label 'Status', :class => "invite_form_label" %>
-  	<%= f.text_field :Status__c, :disabled => (true unless session[:user_profile] == 'Admin')  %>
+    <div style="display:inline-block;">
+      <p style="display:none;color:red;" >error message</p>
+    	<%= f.text_field :Status__c, :disabled => (true unless session[:user_profile] == 'Admin')  %>
+    </div>
   </div>
 <% else %>
   <div class="input">
     <%= f.label 'Status', :class => "invite_form_label" %>
-    <%= f.select :Status__c, [['New','New'], ['In Progress','In Progress'], ['Completed','Completed'], ['Cancelled','Cancelled'] ], {:include_blank => 'None', :selected => f.object.Status__c } %>
+    <div style="display:inline-block;">
+      <p style="display:none;color:red;" >error message</p>
+      <%= f.select :Status__c, [['New','New'], ['In Progress','In Progress'], ['Completed','Completed'], ['Cancelled','Cancelled'] ], {:include_blank => 'None', :selected => f.object.Status__c }, :class => "select" %>
+    </div>
   </div>
 <% end %>
 
 <div class="input">
   <%= f.label 'Start Date', :class => "invite_form_label" %>
-  <%= f.text_field :Start_Date__c, :value => (f.object.Start_Date__c.strftime('%m/%d/%Y') unless f.object.Start_Date__c.nil?), :disabled => (true unless session[:user_profile] == 'Admin'), :class => ("datepicker" unless session[:user_profile] != 'Admin') %>
+  <div style="display:inline-block;">
+    <p style="display:none;color:red;" >error message</p>
+    <%= f.text_field :Start_Date__c, :value => (f.object.Start_Date__c.strftime('%m/%d/%Y') unless f.object.Start_Date__c.nil?), :disabled => (true unless session[:user_profile] == 'Admin'), :class => ("datepicker" unless session[:user_profile] != 'Admin') %>
+  </div>
 </div>
 <div class="input">
   <%= f.label 'End Date', :class => "invite_form_label" %>
-  <%= f.text_field :End_Date__c, :value => (f.object.End_Date__c.strftime('%m/%d/%Y') unless f.object.End_Date__c.nil?), :disabled => (true unless session[:user_profile] == 'Admin'), :class => ("datepicker" unless session[:user_profile] != 'Admin') %>
+  <div style="display:inline-block;">
+    <p style="display:none;color:red;" >error message</p>
+    <%= f.text_field :End_Date__c, :value => (f.object.End_Date__c.strftime('%m/%d/%Y') unless f.object.End_Date__c.nil?), :disabled => (true unless session[:user_profile] == 'Admin'), :class => ("datepicker" unless session[:user_profile] != 'Admin') %>
+  </div>
 </div>
 
 <h4>Optional Information</h4>

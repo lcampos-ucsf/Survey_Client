@@ -559,6 +559,13 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 						j$(this).addClass('errorhighlight');
 						j$(this).prev().text('This is not a valid numeric format');
 						j$(this).prev().css('display','block');
+					}else{
+						if(val > 100){
+							errors = true;
+							j$(this).addClass('errorhighlight');
+							j$(this).prev().text('The maximum value allowed is 100');
+							j$(this).prev().css('display','block');
+						}
 					}
 				}
 			}

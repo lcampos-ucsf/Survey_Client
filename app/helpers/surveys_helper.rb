@@ -128,7 +128,6 @@ module SurveysHelper
 				end
 			end
 		end
-
 		@li_eid_list = "("+@li_eid_list+")"
 
 		#query values for response and validations
@@ -138,12 +137,6 @@ module SurveysHelper
 		if !@li_details.empty?
             @li_details.each { |r| @h_li[r.Id] ? @h_li[r.Id] << r : @h_li[r.Id] = [r] }
         end
-
-		puts "----------+++++++++++++++------------- @li_eid_list = '#{@li_eid_list}' "
-		puts "----------+++++++++++++++------------- @li_eid_list = '#{@li_eid_list}' "
-		puts "----------+++++++++++++++------------- @li_eid_list = '#{@li_eid_list}' "
-		puts "----------+++++++++++++++------------- @li_eid_list = '#{@li_eid_list}' "
-		puts "----------+++++++++++++++------------- @li_details = '#{@li_details}' "
 
 		params.each do |key, value|
 			@var = key.index('qq') 	
@@ -170,9 +163,6 @@ module SurveysHelper
 						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], @v, key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c )
 						#@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], @v, key, session[:user_id])
 					else
-
-						puts "testing li item hash, @h_li[@qid] = '#{@h_li[@qid][0]}' "
-
 						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], params[value], key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c )
 						#@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], params[value], key, session[:user_id])
 					end
@@ -183,25 +173,15 @@ module SurveysHelper
 		end
 
 		@error = Array.new
+		@wt = Array.new
 		@hash_response.each_pair do |key, val|
 			val.each do |o|
 				@vr = validate_response(o)
 				if @vr != nil
 					@error << @vr
-				end
-			end
-		end
-
-		puts "ajax error = '#{@error.to_json}' "
-
-		puts " --------------------------- @autosave = '#{@autosave}' "
-
-		@wt = Array.new
-		if @error.empty?
-			@hash_response.each_pair do |k,v|
-				v.each do |obj|
-					puts "******************* obj = '#{obj}' "
-					@sr = save_response(obj)
+				else
+					puts "******************* obj = '#{o}' "
+					@sr = save_response(o)
 					@wt << @sr
 				end
 			end
@@ -209,10 +189,8 @@ module SurveysHelper
 
 		#this updates invitation
 		puts "------------------ update_multiple, update invitation status ------------------"
-		puts "--------------- @current page = '#{@current_page}' "
 		session[:client].upsert('Invitation__c','Id', @invite_id, { 'Progress_Save__c' => @current_page, 'Status__c' => 'In Progress' })
 
-		
 		respond_to do |format|
 			if @error.empty? || @autosave
 				format.json { render :json => @wt.to_json }		
@@ -276,9 +254,6 @@ module SurveysHelper
 
 	def validate_response(rObj)
 		puts "validate response = '#{rObj.type}', value = '#{rObj.value}' "
-		puts "validate response, isrequired = '#{rObj.isrequired}', length = '#{rObj.vlength}', maxval = '#{rObj.maxval}', minval = '#{rObj.minval}', decimals = '#{rObj.decimals}' "
-		puts "validate response, isrequired = '#{rObj.isrequired}', length = '#{rObj.vlength.blank?}', maxval = '#{rObj.maxval.blank?}', minval = '#{rObj.minval.blank?}', decimals = '#{rObj.decimals.blank?}' "
-
 
 		if (rObj.value == nil || rObj.value == '') && rObj.isrequired
 			if rObj.type == 'onedd'
@@ -308,9 +283,7 @@ module SurveysHelper
 			elsif l > 17
 				return { :msg => 'Number contains more than 17 characters', :id => rObj.key }
 
-			else
-
-				puts "-------------+++++++++++++++ value = '#{rObj.value.to_f}'" 
+			else 
 				if rObj.vlength.blank? == false
 					if n.length.to_f > rObj.vlength.to_f
 						return { :msg => 'Number value is to big', :id => rObj.key }
@@ -338,21 +311,10 @@ module SurveysHelper
 			
 			end
 			return
-=begin
-		elsif rObj.type == 'calculation'
-			l = rObj.value.length
-			puts "----------- calculation length = '#{l}' "
-			if l > 17
-				return { :msg => 'Number contains more than 17 characters', :id => rObj.key }
-			end
-			return
-=end
+
 		elsif rObj.type == 'date'
 			val = rObj.value.match(/\A(?:0?[1-9]|1[0-2])\/(?:0?[1-9]|[1-2]\d|3[01])\/\d{4}\Z/) == nil ? false : true
 			arr = rObj.value.split('/')
-			puts "------------day is = '#{arr[1]}' " 
-			puts "------------month is = '#{arr[0]}' " 
-			puts "------------year is = '#{arr[2]}' " 
 			if val == false
 				return { :msg => 'Not a valid date format', :id => rObj.key }
 			elsif arr[0].to_i > 12 || arr[0].to_i < 1
@@ -381,7 +343,6 @@ module SurveysHelper
 
 			end
 		elsif rObj.type == 'radio'
-			puts "$$$$$$$$$$$$$ rObj.value = '#{rObj.value}' "
 
 		elsif rObj.type == 'text'
 			l = rObj.value.length
@@ -395,8 +356,6 @@ module SurveysHelper
 						return { :msg => 'The text entered contains more than '+rObj.vlength.to_i.to_s+' characters', :id => rObj.key }
 					end
 				end
-			#elsif val == false
-			#	return { :msg => 'Not a valid text format, enter only alphanumeric values', :id => rObj.key }
 			end
 			return
 		end
@@ -406,13 +365,7 @@ module SurveysHelper
 
 	def autocompletequery
 		puts "&&&&&&&&&&&&&&&&&&&&&&&&& autocompletequery"
-		puts "&&&&&&&&&&&&&&&&&&&&&&&&& autocompletequery"
-		puts "&&&&&&&&&&&&&&&&&&&&&&&&& autocompletequery"
-		puts "&&&&&&&&&&&&&&&&&&&&&&&&& autocompletequery"
-		
 		p = session[:client].query("select Id, Name from Master_Patient__c ")
-
-		puts "&&&&&&&&&&&&&&&&&&&&&&&&& p = '#{p.to_json}' "
 
 		respond_to do |format|
 			format.json { render :json => p.to_json }		
