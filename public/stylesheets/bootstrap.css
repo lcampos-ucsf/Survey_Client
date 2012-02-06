@@ -1821,7 +1821,8 @@ footer {
 .btn.info,
 .alert-message.info,
 .btn.info:hover,
-.alert-message.info:hover {
+.alert-message.info:hover,
+.btn.orange, .btn.orange:hover {
   color: #ffffff;
 }
 .btn .close, .alert-message .close {

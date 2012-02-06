@@ -6,7 +6,7 @@ class InvitesWidget < Apotomo::Widget
    
     #security enhancement
 	@pageno = (params[:page]!= nil) ? ( params[:page].match(/^[1-9]*$/) == nil ? '1' : Sanitize.clean(params[:page]).to_i ) : '1'
-    @invites = Kaminari.paginate_array(@invites_query).page(@pageno).per(15) # Paginates the array
+    @invites = Kaminari.paginate_array(@invites_query).page(@pageno).per(10) # Paginates the array
     render
   end
 end
