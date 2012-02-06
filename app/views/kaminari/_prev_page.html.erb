@@ -9,7 +9,7 @@
 <span class="prev">
   <!-- %= link_to_unless current_page.first?, raw(t 'views.pagination.previous'), url, :rel => 'prev', :remote => remote, :id => 'previousbtn',:onclick => 'formsubmit()' % -->
 <% if url.index('invite') %>
-	<%= link_to_unless current_page.first?, raw(t 'views.pagination.previous'), url, :rel => 'prev', :remote => remote, :class => "btn secondary medium" %>
+	<%= link_to_unless current_page.first?, raw(t 'views.pagination.previous'), url, :rel => 'prev', :remote => remote, :class => "btn secondary medium", :onclick => "showmodaltransition()" %>
 <% else %>
   <a onclick="formsubmit('<%= url %>','0');" class="btn secondary medium" id="previewbtn" >‹ Prev</a>
 

@@ -13,7 +13,7 @@
 
     if !current_page.last? %>
 
-      <%= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, :rel => 'next', :remote => remote, :class=> "btn primary medium" %>
+      <%= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, :rel => 'next', :remote => remote, :class=> "btn primary medium", :onclick => "showmodaltransition()" %>
 <%  end
   else %>
   <% if current_page.last? %>

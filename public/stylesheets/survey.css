@@ -331,20 +331,7 @@ a .remove{
 	font-size:90%; 
 	font-weight:bold;
 }
-/*
-.btn.orange {
-    background-color: #EA903A;
-    background-image: -moz-linear-gradient(center top , #EA903A, #D96F23);
-    background-repeat: repeat-x;
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    color: #FFFFFF;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
 
-.btn:hover.orange{
-	background-position:0 !important;
-}
-*/
 .btn.orange {
 	background-color: #EA903A;
 	background-repeat: repeat-x;
