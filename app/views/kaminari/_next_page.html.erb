@@ -9,11 +9,13 @@
 <span class="next">
 
   <!-- %= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, :rel => 'next', :remote => remote % -->
-<% if url.index('invite') %>
+<% if url.index('invite')
 
-  <%= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, :rel => 'next', :remote => remote, :class=> "btn primary medium" %>
+    if !current_page.last? %>
 
-<% else %>
+      <%= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, :rel => 'next', :remote => remote, :class=> "btn primary medium" %>
+<%  end
+  else %>
   <% if current_page.last? %>
   	<a onclick="formsubmit('review?sid=<%= @survey[0].Survey__c %>','1');" class="btn primary medium" id="reviewbtn" >Review ›</a>
   <% else %>
