@@ -7,5 +7,10 @@
     remote:        data-remote
 -%>
 <span class="last">
-  <%= link_to_unless current_page.last?, raw(t 'views.pagination.last'), url, {:remote => remote} %>
+<%  if url.index('invite')
+    else%>
+  <!-- %= link_to_unless current_page.last?, raw(t 'views.pagination.last'), url, {:remote => remote} % -->
+  <a onclick="formsubmit('review?sid=<%= @survey[0].Survey__c %>','1');" class="btn primary medium" id="reviewbtn" >Review ›</a>
+
+  <% end %>
 </span>

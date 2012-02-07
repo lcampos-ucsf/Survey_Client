@@ -16,9 +16,7 @@
       <%= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, :rel => 'next', :remote => remote, :class=> "btn primary medium", :onclick => "showmodaltransition()" %>
 <%  end
   else %>
-  <% if current_page.last? %>
-  	<a onclick="formsubmit('review?sid=<%= @survey[0].Survey__c %>','1');" class="btn primary medium" id="reviewbtn" >Review ›</a>
-  <% else %>
+  <% if !current_page.last? %>
   	<!-- %= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, :rel => 'next', :remote => remote, :id => 'nextbtn',    :onclick => 'formsubmit('+url+')' % -->
 
     <a onclick="formsubmit('<%= url %>','1')" class="btn primary medium" id="nextbtn" >Next ›</a>

@@ -20,9 +20,9 @@
         <% end -%>
       <% end -%>
       <%= next_page_tag unless current_page.last? %>
-    <% end %>
+    <% end %> <!-- ends comment -->
 
-    <%= next_page_tag %>
-    <!-- %= last_page_tag unless current_page.last? % -->
+    <%= next_page_tag unless current_page.last? %>
+    <%= last_page_tag unless !current_page.last? %>
   </nav>
 <% end -%>
