@@ -83,7 +83,7 @@ responds_to_event :submit, :with => :update_multiple
 			end
 
 			@qstring = "("+@qstring+")"
-			@rdata = session[:client].query("select Id, Name, Invitation__c, Label_Response__c, Line_Item__c, Line_Item_Resource__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Response_Type__c, Survey__c, Text_Long_Response__c, Text_Response__c, Integer_Response__c from Response__c where Line_Item_Resource__c in #{@qstring} and Invitation__c = '#{inviteid}' ")
+			@rdata = session[:client].query("select Id, Name, Invitation__c, Label_Response__c, Line_Item__c, Line_Item_Resource__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Response_Type__c, Survey__c, Text_Long_Response__c, Text_Response__c, Integer_Response__c, Date_Response__c from Response__c where Line_Item_Resource__c in #{@qstring} and Invitation__c = '#{inviteid}' ")
 
 			@h_rq = {}
 			if !@rdata.empty?
@@ -100,6 +100,12 @@ responds_to_event :submit, :with => :update_multiple
 		        			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Integer Response = '#{@h_rq["#{question}"][0].Integer_Response__c }' "
 		        			qv =  @h_rq["#{question}"][0].Integer_Response__c.to_s 
 		        			puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! qv = '#{qv}' "
+
+		        		elsif @h_rq["#{question}"][0].Response_Type__c == 'Date' 
+		        			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Date Response = '#{@h_rq["#{question}"][0].Date_Response__c }' "
+		        			qv =  @h_rq["#{question}"][0].Text_Long_Response__c
+		        			puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! qv = '#{qv}' "
+		        			
 		        		else
 		        			qv = "'" + @h_rq["#{question}"][0].Text_Long_Response__c + "'"
 		        		end
@@ -114,6 +120,7 @@ responds_to_event :submit, :with => :update_multiple
 	        end
 
 			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! expressions = '#{@expressions}' "
+			#puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! eval 12/01/2011 > 01/01/2012 = '#{eval(12/01/2011 > 01/01/2012)}' "
 			
 			@evalstring = @expressions * ""
 			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' "
