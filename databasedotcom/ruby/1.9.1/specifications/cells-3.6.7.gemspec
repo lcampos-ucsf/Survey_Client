@@ -1,18 +1,18 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "cells"
+  s.name = %q{cells}
   s.version = "3.6.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Nick Sutterer"]
-  s.date = "2011-09-27"
-  s.description = "Cells are view components for Rails. They are lightweight controllers, can be rendered in views and thus provide an elegant and fast way for encapsulation and component-orientation."
-  s.email = ["apotonick@gmail.com"]
-  s.homepage = "http://cells.rubyforge.org"
-  s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.12"
-  s.summary = "View Components for Rails."
+  s.authors = [%q{Nick Sutterer}]
+  s.date = %q{2011-09-27}
+  s.description = %q{Cells are view components for Rails. They are lightweight controllers, can be rendered in views and thus provide an elegant and fast way for encapsulation and component-orientation.}
+  s.email = [%q{apotonick@gmail.com}]
+  s.homepage = %q{http://cells.rubyforge.org}
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{View Components for Rails.}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

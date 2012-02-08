@@ -1,19 +1,19 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "jquery-rails"
+  s.name = %q{jquery-rails}
   s.version = "1.0.19"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.3.6") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Andr\u{e9} Arko"]
-  s.date = "2011-11-26"
-  s.description = "This gem provides jQuery and the jQuery-ujs driver for your Rails 3 application."
-  s.email = ["andre@arko.net"]
-  s.homepage = "http://rubygems.org/gems/jquery-rails"
-  s.require_paths = ["lib"]
-  s.rubyforge_project = "jquery-rails"
-  s.rubygems_version = "1.8.12"
-  s.summary = "Use jQuery with Rails 3"
+  s.authors = [%q{André Arko}]
+  s.date = %q{2011-11-26}
+  s.description = %q{This gem provides jQuery and the jQuery-ujs driver for your Rails 3 application.}
+  s.email = [%q{andre@arko.net}]
+  s.homepage = %q{http://rubygems.org/gems/jquery-rails}
+  s.require_paths = [%q{lib}]
+  s.rubyforge_project = %q{jquery-rails}
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{Use jQuery with Rails 3}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

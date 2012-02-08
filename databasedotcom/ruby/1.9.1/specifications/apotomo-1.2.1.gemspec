@@ -1,18 +1,18 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "apotomo"
+  s.name = %q{apotomo}
   s.version = "1.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Nick Sutterer"]
-  s.date = "2011-10-13"
-  s.description = "Web component framework for Rails providing widgets that trigger events and know when and how to update themselves with AJAX."
-  s.email = ["apotonick@gmail.com"]
-  s.homepage = "http://github.com/apotonick/apotomo"
-  s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.12"
-  s.summary = "Web components for Rails."
+  s.authors = [%q{Nick Sutterer}]
+  s.date = %q{2011-10-13}
+  s.description = %q{Web component framework for Rails providing widgets that trigger events and know when and how to update themselves with AJAX.}
+  s.email = [%q{apotonick@gmail.com}]
+  s.homepage = %q{http://github.com/apotonick/apotomo}
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{Web components for Rails.}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

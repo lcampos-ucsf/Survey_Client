@@ -1,18 +1,18 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "multi_xml"
+  s.name = %q{multi_xml}
   s.version = "0.4.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Erik Michaels-Ober"]
-  s.date = "2011-09-26"
-  s.description = "A gem to provide swappable XML backends utilizing LibXML, Nokogiri, Ox, or REXML."
-  s.email = "sferik@gmail.com"
-  s.homepage = "https://github.com/sferik/multi_xml"
-  s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.12"
-  s.summary = "A generic swappable back-end for XML parsing"
+  s.authors = [%q{Erik Michaels-Ober}]
+  s.date = %q{2011-09-26}
+  s.description = %q{A gem to provide swappable XML backends utilizing LibXML, Nokogiri, Ox, or REXML.}
+  s.email = %q{sferik@gmail.com}
+  s.homepage = %q{https://github.com/sferik/multi_xml}
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{A generic swappable back-end for XML parsing}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

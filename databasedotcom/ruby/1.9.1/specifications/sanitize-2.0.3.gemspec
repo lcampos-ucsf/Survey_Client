@@ -1,19 +1,19 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "sanitize"
+  s.name = %q{sanitize}
   s.version = "2.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Ryan Grove"]
-  s.date = "2011-07-02"
-  s.email = "ryan@wonko.com"
-  s.homepage = "https://github.com/rgrove/sanitize/"
-  s.require_paths = ["lib"]
+  s.authors = [%q{Ryan Grove}]
+  s.date = %q{2011-07-02}
+  s.email = %q{ryan@wonko.com}
+  s.homepage = %q{https://github.com/rgrove/sanitize/}
+  s.require_paths = [%q{lib}]
   s.required_ruby_version = Gem::Requirement.new(">= 1.8.7")
-  s.rubyforge_project = "riposte"
-  s.rubygems_version = "1.8.12"
-  s.summary = "Whitelist-based HTML sanitizer."
+  s.rubyforge_project = %q{riposte}
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{Whitelist-based HTML sanitizer.}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

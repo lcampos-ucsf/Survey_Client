@@ -1,18 +1,18 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "hike"
+  s.name = %q{hike}
   s.version = "1.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Sam Stephenson"]
-  s.date = "2011-08-16"
-  s.description = "A Ruby library for finding files in a set of paths."
-  s.email = ["sstephenson@gmail.com"]
-  s.homepage = "http://github.com/sstephenson/hike"
-  s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.12"
-  s.summary = "Find files in a set of paths"
+  s.authors = [%q{Sam Stephenson}]
+  s.date = %q{2011-08-16}
+  s.description = %q{A Ruby library for finding files in a set of paths.}
+  s.email = [%q{sstephenson@gmail.com}]
+  s.homepage = %q{http://github.com/sstephenson/hike}
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{Find files in a set of paths}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

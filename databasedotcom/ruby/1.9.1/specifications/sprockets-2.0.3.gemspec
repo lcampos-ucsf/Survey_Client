@@ -1,19 +1,19 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "sprockets"
+  s.name = %q{sprockets}
   s.version = "2.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Sam Stephenson", "Joshua Peek"]
-  s.date = "2011-10-16"
-  s.description = "Sprockets is a Rack-based asset packaging system that concatenates and serves JavaScript, CoffeeScript, CSS, LESS, Sass, and SCSS."
-  s.email = ["sstephenson@gmail.com", "josh@joshpeek.com"]
-  s.homepage = "http://getsprockets.org/"
-  s.require_paths = ["lib"]
-  s.rubyforge_project = "sprockets"
-  s.rubygems_version = "1.8.12"
-  s.summary = "Rack-based asset packaging system"
+  s.authors = [%q{Sam Stephenson}, %q{Joshua Peek}]
+  s.date = %q{2011-10-16}
+  s.description = %q{Sprockets is a Rack-based asset packaging system that concatenates and serves JavaScript, CoffeeScript, CSS, LESS, Sass, and SCSS.}
+  s.email = [%q{sstephenson@gmail.com}, %q{josh@joshpeek.com}]
+  s.homepage = %q{http://getsprockets.org/}
+  s.require_paths = [%q{lib}]
+  s.rubyforge_project = %q{sprockets}
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{Rack-based asset packaging system}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

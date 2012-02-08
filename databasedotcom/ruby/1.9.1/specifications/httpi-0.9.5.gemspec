@@ -1,19 +1,19 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "httpi"
+  s.name = %q{httpi}
   s.version = "0.9.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Daniel Harrington", "Martin Tepper"]
-  s.date = "2011-06-29"
-  s.description = "HTTPI provides a common interface for Ruby HTTP libraries."
-  s.email = "me@rubiii.com"
-  s.homepage = "http://github.com/rubiii/httpi"
-  s.require_paths = ["lib"]
-  s.rubyforge_project = "httpi"
-  s.rubygems_version = "1.8.12"
-  s.summary = "Interface for Ruby HTTP libraries"
+  s.authors = [%q{Daniel Harrington}, %q{Martin Tepper}]
+  s.date = %q{2011-06-29}
+  s.description = %q{HTTPI provides a common interface for Ruby HTTP libraries.}
+  s.email = %q{me@rubiii.com}
+  s.homepage = %q{http://github.com/rubiii/httpi}
+  s.require_paths = [%q{lib}]
+  s.rubyforge_project = %q{httpi}
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{Interface for Ruby HTTP libraries}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

@@ -60,7 +60,7 @@ warnflags = -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwri
 CFLAGS   = -fno-common $(cflags)  -fno-common -pipe  -g -DXP_UNIX -O3 -Wall -Wcast-qual -Wwrite-strings -Wconversion -Wmissing-noreturn -Winline 
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS = -DHAVE_XMLHASFEATURE -DHAVE_XMLFIRSTELEMENTCHILD -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETPARSERSTRUCTUREDERRORS -I/opt/local/include/libxml2 -I/usr/local/include/libxml2 -I/Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/include/libxml2 -I/opt/local/include -I/usr/local/include -I/Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/include -I/usr/include -I/usr/include/libxml2 -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE $(DEFS) $(cppflags)
+CPPFLAGS = -DHAVE_XMLHASFEATURE -DHAVE_XMLFIRSTELEMENTCHILD -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETPARSERSTRUCTUREDERRORS -I/opt/local/include/libxml2 -I/usr/local/include/libxml2 -I/Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/include/libxml2 -I/opt/local/include -I/usr/local/include -I/Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/include -I/usr/include -I/usr/include/libxml2 -I/Users/luiscampos/.rvm/usr/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE $(DEFS) $(cppflags)
 CXXFLAGS = $(CFLAGS) $(cxxflags)
 ldflags  = -L. 
 dldflags = -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress -Wl,-flat_namespace
@@ -92,8 +92,8 @@ COPY = cp
 
 preload = 
 
-libpath = . $(libdir) /opt/local/lib /usr/local/lib /Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/lib /usr/lib
-LIBPATH =  -L. -L$(libdir) -L/opt/local/lib -L/usr/local/lib -L/Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/lib -L/usr/lib
+libpath = . $(libdir) /opt/local/lib /usr/local/lib /Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/lib /usr/lib /Users/luiscampos/.rvm/usr/lib
+LIBPATH =  -L. -L$(libdir) -L/opt/local/lib -L/usr/local/lib -L/Users/luiscampos/.rvm/rubies/ruby-1.9.2-p290/lib -L/usr/lib -L/Users/luiscampos/.rvm/usr/lib
 DEFFILE = 
 
 CLEANFILES = mkmf.log

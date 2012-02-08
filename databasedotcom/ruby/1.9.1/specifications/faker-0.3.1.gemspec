@@ -1,22 +1,22 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "faker"
+  s.name = %q{faker}
   s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Benjamin Curtis"]
-  s.date = "2008-04-03"
-  s.description = "A port of Perl's Data::Faker - Generates fake names, phone numbers, etc."
-  s.email = "benjamin.curtis@gmail.com"
-  s.extra_rdoc_files = ["History.txt", "License.txt", "Manifest.txt", "README.txt"]
-  s.files = ["History.txt", "License.txt", "Manifest.txt", "README.txt"]
-  s.homepage = "http://faker.rubyforge.org"
-  s.rdoc_options = ["--main", "README.txt"]
-  s.require_paths = ["lib"]
-  s.rubyforge_project = "faker"
-  s.rubygems_version = "1.8.12"
-  s.summary = "A port of Perl's Data::Faker - Generates fake names, phone numbers, etc."
+  s.authors = [%q{Benjamin Curtis}]
+  s.date = %q{2008-04-03}
+  s.description = %q{A port of Perl's Data::Faker - Generates fake names, phone numbers, etc.}
+  s.email = %q{benjamin.curtis@gmail.com}
+  s.extra_rdoc_files = [%q{History.txt}, %q{License.txt}, %q{Manifest.txt}, %q{README.txt}]
+  s.files = [%q{History.txt}, %q{License.txt}, %q{Manifest.txt}, %q{README.txt}]
+  s.homepage = %q{http://faker.rubyforge.org}
+  s.rdoc_options = [%q{--main}, %q{README.txt}]
+  s.require_paths = [%q{lib}]
+  s.rubyforge_project = %q{faker}
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{A port of Perl's Data::Faker - Generates fake names, phone numbers, etc.}
 
   if s.respond_to? :specification_version then
     s.specification_version = 2

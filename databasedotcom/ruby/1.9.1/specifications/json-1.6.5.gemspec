@@ -1,23 +1,23 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "json"
+  s.name = %q{json}
   s.version = "1.6.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Florian Frank"]
-  s.date = "2012-01-15"
-  s.description = "This is a JSON implementation as a Ruby extension in C."
-  s.email = "flori@ping.de"
-  s.extensions = ["ext/json/ext/parser/extconf.rb", "ext/json/ext/generator/extconf.rb"]
-  s.extra_rdoc_files = ["README.rdoc"]
-  s.files = ["README.rdoc", "ext/json/ext/parser/extconf.rb", "ext/json/ext/generator/extconf.rb"]
-  s.homepage = "http://flori.github.com/json"
-  s.rdoc_options = ["--title", "JSON implemention for Ruby", "--main", "README.rdoc"]
-  s.require_paths = ["ext/json/ext", "ext", "lib"]
-  s.rubyforge_project = "json"
-  s.rubygems_version = "1.8.12"
-  s.summary = "JSON Implementation for Ruby"
+  s.authors = [%q{Florian Frank}]
+  s.date = %q{2012-01-15}
+  s.description = %q{This is a JSON implementation as a Ruby extension in C.}
+  s.email = %q{flori@ping.de}
+  s.extensions = [%q{ext/json/ext/parser/extconf.rb}, %q{ext/json/ext/generator/extconf.rb}]
+  s.extra_rdoc_files = [%q{README.rdoc}]
+  s.files = [%q{README.rdoc}, %q{ext/json/ext/parser/extconf.rb}, %q{ext/json/ext/generator/extconf.rb}]
+  s.homepage = %q{http://flori.github.com/json}
+  s.rdoc_options = [%q{--title}, %q{JSON implemention for Ruby}, %q{--main}, %q{README.rdoc}]
+  s.require_paths = [%q{ext/json/ext}, %q{ext}, %q{lib}]
+  s.rubyforge_project = %q{json}
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{JSON Implementation for Ruby}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

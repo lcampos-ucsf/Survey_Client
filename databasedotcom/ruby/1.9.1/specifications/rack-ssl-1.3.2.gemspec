@@ -1,19 +1,20 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "rack-ssl"
+  s.name = %q{rack-ssl}
   s.version = "1.3.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Joshua Peek"]
-  s.date = "2011-03-23"
-  s.description = "    Rack middleware to force SSL/TLS.\n"
-  s.email = "josh@joshpeek.com"
-  s.homepage = "https://github.com/josh/rack-ssl"
-  s.require_paths = ["lib"]
-  s.rubyforge_project = "rack-ssl"
-  s.rubygems_version = "1.8.12"
-  s.summary = "Force SSL/TLS in your app."
+  s.authors = [%q{Joshua Peek}]
+  s.date = %q{2011-03-23}
+  s.description = %q{    Rack middleware to force SSL/TLS.
+}
+  s.email = %q{josh@joshpeek.com}
+  s.homepage = %q{https://github.com/josh/rack-ssl}
+  s.require_paths = [%q{lib}]
+  s.rubyforge_project = %q{rack-ssl}
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{Force SSL/TLS in your app.}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

@@ -1,18 +1,18 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "omniauth-oauth2"
+  s.name = %q{omniauth-oauth2}
   s.version = "1.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Michael Bleigh"]
-  s.date = "2011-11-02"
-  s.description = "An abstract OAuth2 strategy for OmniAuth."
-  s.email = ["michael@intridea.com"]
-  s.homepage = "https://github.com/intridea/omniauth-oauth2"
-  s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.12"
-  s.summary = "An abstract OAuth2 strategy for OmniAuth."
+  s.authors = [%q{Michael Bleigh}]
+  s.date = %q{2011-11-02}
+  s.description = %q{An abstract OAuth2 strategy for OmniAuth.}
+  s.email = [%q{michael@intridea.com}]
+  s.homepage = %q{https://github.com/intridea/omniauth-oauth2}
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{An abstract OAuth2 strategy for OmniAuth.}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

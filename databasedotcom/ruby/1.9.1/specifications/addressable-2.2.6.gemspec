@@ -1,22 +1,25 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "addressable"
+  s.name = %q{addressable}
   s.version = "2.2.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Bob Aman"]
-  s.date = "2011-05-12"
-  s.description = "Addressable is a replacement for the URI implementation that is part of\nRuby's standard library. It more closely conforms to the relevant RFCs and\nadds support for IRIs and URI templates.\n"
-  s.email = "bob@sporkmonger.com"
-  s.extra_rdoc_files = ["README.md"]
-  s.files = ["README.md"]
-  s.homepage = "http://addressable.rubyforge.org/"
-  s.rdoc_options = ["--main", "README.md"]
-  s.require_paths = ["lib"]
-  s.rubyforge_project = "addressable"
-  s.rubygems_version = "1.8.12"
-  s.summary = "URI Implementation"
+  s.authors = [%q{Bob Aman}]
+  s.date = %q{2011-05-12}
+  s.description = %q{Addressable is a replacement for the URI implementation that is part of
+Ruby's standard library. It more closely conforms to the relevant RFCs and
+adds support for IRIs and URI templates.
+}
+  s.email = %q{bob@sporkmonger.com}
+  s.extra_rdoc_files = [%q{README.md}]
+  s.files = [%q{README.md}]
+  s.homepage = %q{http://addressable.rubyforge.org/}
+  s.rdoc_options = [%q{--main}, %q{README.md}]
+  s.require_paths = [%q{lib}]
+  s.rubyforge_project = %q{addressable}
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{URI Implementation}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

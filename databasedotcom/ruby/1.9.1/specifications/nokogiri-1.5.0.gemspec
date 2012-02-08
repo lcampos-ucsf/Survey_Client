@@ -1,25 +1,29 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "nokogiri"
+  s.name = %q{nokogiri}
   s.version = "1.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Aaron Patterson", "Mike Dalessio", "Yoko Harada"]
-  s.date = "2011-06-30"
-  s.description = "Nokogiri (\u{e9}\u{8b}\u{b8}) is an HTML, XML, SAX, and Reader parser.  Among Nokogiri's\nmany features is the ability to search documents via XPath or CSS3 selectors.\n\nXML is like violence - if it doesn\u{e2}\u{80}\u{99}t solve your problems, you are not using\nenough of it."
-  s.email = ["aaronp@rubyforge.org", "mike.dalessio@gmail.com", "yokolet@gmail.com"]
-  s.executables = ["nokogiri"]
-  s.extensions = ["ext/nokogiri/extconf.rb"]
-  s.extra_rdoc_files = ["Manifest.txt", "README.ja.rdoc", "CHANGELOG.rdoc", "CHANGELOG.ja.rdoc", "README.rdoc", "ext/nokogiri/xml_sax_push_parser.c", "ext/nokogiri/xml_relax_ng.c", "ext/nokogiri/html_sax_parser_context.c", "ext/nokogiri/html_entity_lookup.c", "ext/nokogiri/xml_text.c", "ext/nokogiri/nokogiri.c", "ext/nokogiri/xml_element_decl.c", "ext/nokogiri/xml_encoding_handler.c", "ext/nokogiri/html_document.c", "ext/nokogiri/xslt_stylesheet.c", "ext/nokogiri/xml_attribute_decl.c", "ext/nokogiri/xml_io.c", "ext/nokogiri/xml_document_fragment.c", "ext/nokogiri/xml_namespace.c", "ext/nokogiri/xml_libxml2_hacks.c", "ext/nokogiri/xml_sax_parser_context.c", "ext/nokogiri/xml_comment.c", "ext/nokogiri/xml_sax_parser.c", "ext/nokogiri/html_element_description.c", "ext/nokogiri/xml_xpath_context.c", "ext/nokogiri/xml_syntax_error.c", "ext/nokogiri/xml_document.c", "ext/nokogiri/xml_entity_decl.c", "ext/nokogiri/xml_node.c", "ext/nokogiri/xml_node_set.c", "ext/nokogiri/xml_reader.c", "ext/nokogiri/xml_processing_instruction.c", "ext/nokogiri/xml_element_content.c", "ext/nokogiri/xml_dtd.c", "ext/nokogiri/xml_attr.c", "ext/nokogiri/xml_schema.c", "ext/nokogiri/xml_cdata.c", "ext/nokogiri/xml_entity_reference.c"]
-  s.files = ["bin/nokogiri", "Manifest.txt", "README.ja.rdoc", "CHANGELOG.rdoc", "CHANGELOG.ja.rdoc", "README.rdoc", "ext/nokogiri/xml_sax_push_parser.c", "ext/nokogiri/xml_relax_ng.c", "ext/nokogiri/html_sax_parser_context.c", "ext/nokogiri/html_entity_lookup.c", "ext/nokogiri/xml_text.c", "ext/nokogiri/nokogiri.c", "ext/nokogiri/xml_element_decl.c", "ext/nokogiri/xml_encoding_handler.c", "ext/nokogiri/html_document.c", "ext/nokogiri/xslt_stylesheet.c", "ext/nokogiri/xml_attribute_decl.c", "ext/nokogiri/xml_io.c", "ext/nokogiri/xml_document_fragment.c", "ext/nokogiri/xml_namespace.c", "ext/nokogiri/xml_libxml2_hacks.c", "ext/nokogiri/xml_sax_parser_context.c", "ext/nokogiri/xml_comment.c", "ext/nokogiri/xml_sax_parser.c", "ext/nokogiri/html_element_description.c", "ext/nokogiri/xml_xpath_context.c", "ext/nokogiri/xml_syntax_error.c", "ext/nokogiri/xml_document.c", "ext/nokogiri/xml_entity_decl.c", "ext/nokogiri/xml_node.c", "ext/nokogiri/xml_node_set.c", "ext/nokogiri/xml_reader.c", "ext/nokogiri/xml_processing_instruction.c", "ext/nokogiri/xml_element_content.c", "ext/nokogiri/xml_dtd.c", "ext/nokogiri/xml_attr.c", "ext/nokogiri/xml_schema.c", "ext/nokogiri/xml_cdata.c", "ext/nokogiri/xml_entity_reference.c", "ext/nokogiri/extconf.rb"]
-  s.homepage = "http://nokogiri.org"
-  s.rdoc_options = ["--main", "README.rdoc"]
-  s.require_paths = ["lib"]
+  s.authors = [%q{Aaron Patterson}, %q{Mike Dalessio}, %q{Yoko Harada}]
+  s.date = %q{2011-06-30}
+  s.description = %q{Nokogiri (é¸) is an HTML, XML, SAX, and Reader parser.  Among Nokogiri's
+many features is the ability to search documents via XPath or CSS3 selectors.
+
+XML is like violence - if it doesnât solve your problems, you are not using
+enough of it.}
+  s.email = [%q{aaronp@rubyforge.org}, %q{mike.dalessio@gmail.com}, %q{yokolet@gmail.com}]
+  s.executables = [%q{nokogiri}]
+  s.extensions = [%q{ext/nokogiri/extconf.rb}]
+  s.extra_rdoc_files = [%q{Manifest.txt}, %q{README.ja.rdoc}, %q{CHANGELOG.rdoc}, %q{CHANGELOG.ja.rdoc}, %q{README.rdoc}, %q{ext/nokogiri/xml_sax_push_parser.c}, %q{ext/nokogiri/xml_relax_ng.c}, %q{ext/nokogiri/html_sax_parser_context.c}, %q{ext/nokogiri/html_entity_lookup.c}, %q{ext/nokogiri/xml_text.c}, %q{ext/nokogiri/nokogiri.c}, %q{ext/nokogiri/xml_element_decl.c}, %q{ext/nokogiri/xml_encoding_handler.c}, %q{ext/nokogiri/html_document.c}, %q{ext/nokogiri/xslt_stylesheet.c}, %q{ext/nokogiri/xml_attribute_decl.c}, %q{ext/nokogiri/xml_io.c}, %q{ext/nokogiri/xml_document_fragment.c}, %q{ext/nokogiri/xml_namespace.c}, %q{ext/nokogiri/xml_libxml2_hacks.c}, %q{ext/nokogiri/xml_sax_parser_context.c}, %q{ext/nokogiri/xml_comment.c}, %q{ext/nokogiri/xml_sax_parser.c}, %q{ext/nokogiri/html_element_description.c}, %q{ext/nokogiri/xml_xpath_context.c}, %q{ext/nokogiri/xml_syntax_error.c}, %q{ext/nokogiri/xml_document.c}, %q{ext/nokogiri/xml_entity_decl.c}, %q{ext/nokogiri/xml_node.c}, %q{ext/nokogiri/xml_node_set.c}, %q{ext/nokogiri/xml_reader.c}, %q{ext/nokogiri/xml_processing_instruction.c}, %q{ext/nokogiri/xml_element_content.c}, %q{ext/nokogiri/xml_dtd.c}, %q{ext/nokogiri/xml_attr.c}, %q{ext/nokogiri/xml_schema.c}, %q{ext/nokogiri/xml_cdata.c}, %q{ext/nokogiri/xml_entity_reference.c}]
+  s.files = [%q{bin/nokogiri}, %q{Manifest.txt}, %q{README.ja.rdoc}, %q{CHANGELOG.rdoc}, %q{CHANGELOG.ja.rdoc}, %q{README.rdoc}, %q{ext/nokogiri/xml_sax_push_parser.c}, %q{ext/nokogiri/xml_relax_ng.c}, %q{ext/nokogiri/html_sax_parser_context.c}, %q{ext/nokogiri/html_entity_lookup.c}, %q{ext/nokogiri/xml_text.c}, %q{ext/nokogiri/nokogiri.c}, %q{ext/nokogiri/xml_element_decl.c}, %q{ext/nokogiri/xml_encoding_handler.c}, %q{ext/nokogiri/html_document.c}, %q{ext/nokogiri/xslt_stylesheet.c}, %q{ext/nokogiri/xml_attribute_decl.c}, %q{ext/nokogiri/xml_io.c}, %q{ext/nokogiri/xml_document_fragment.c}, %q{ext/nokogiri/xml_namespace.c}, %q{ext/nokogiri/xml_libxml2_hacks.c}, %q{ext/nokogiri/xml_sax_parser_context.c}, %q{ext/nokogiri/xml_comment.c}, %q{ext/nokogiri/xml_sax_parser.c}, %q{ext/nokogiri/html_element_description.c}, %q{ext/nokogiri/xml_xpath_context.c}, %q{ext/nokogiri/xml_syntax_error.c}, %q{ext/nokogiri/xml_document.c}, %q{ext/nokogiri/xml_entity_decl.c}, %q{ext/nokogiri/xml_node.c}, %q{ext/nokogiri/xml_node_set.c}, %q{ext/nokogiri/xml_reader.c}, %q{ext/nokogiri/xml_processing_instruction.c}, %q{ext/nokogiri/xml_element_content.c}, %q{ext/nokogiri/xml_dtd.c}, %q{ext/nokogiri/xml_attr.c}, %q{ext/nokogiri/xml_schema.c}, %q{ext/nokogiri/xml_cdata.c}, %q{ext/nokogiri/xml_entity_reference.c}, %q{ext/nokogiri/extconf.rb}]
+  s.homepage = %q{http://nokogiri.org}
+  s.rdoc_options = [%q{--main}, %q{README.rdoc}]
+  s.require_paths = [%q{lib}]
   s.required_ruby_version = Gem::Requirement.new(">= 1.8.7")
-  s.rubyforge_project = "nokogiri"
-  s.rubygems_version = "1.8.12"
-  s.summary = "Nokogiri (\u{e9}\u{8b}\u{b8}) is an HTML, XML, SAX, and Reader parser"
+  s.rubyforge_project = %q{nokogiri}
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{Nokogiri (é¸) is an HTML, XML, SAX, and Reader parser}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

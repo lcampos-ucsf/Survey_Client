@@ -1,23 +1,23 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "rspec"
+  s.name = %q{rspec}
   s.version = "2.8.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Steven Baker", "David Chelimsky"]
-  s.date = "2012-01-05"
-  s.description = "BDD for Ruby"
-  s.email = "rspec-users@rubyforge.org"
-  s.extra_rdoc_files = ["README.markdown"]
-  s.files = ["README.markdown"]
-  s.homepage = "http://github.com/rspec"
-  s.licenses = ["MIT"]
-  s.rdoc_options = ["--charset=UTF-8"]
-  s.require_paths = ["lib"]
-  s.rubyforge_project = "rspec"
-  s.rubygems_version = "1.8.12"
-  s.summary = "rspec-2.8.0"
+  s.authors = [%q{Steven Baker}, %q{David Chelimsky}]
+  s.date = %q{2012-01-05}
+  s.description = %q{BDD for Ruby}
+  s.email = %q{rspec-users@rubyforge.org}
+  s.extra_rdoc_files = [%q{README.markdown}]
+  s.files = [%q{README.markdown}]
+  s.homepage = %q{http://github.com/rspec}
+  s.licenses = [%q{MIT}]
+  s.rdoc_options = [%q{--charset=UTF-8}]
+  s.require_paths = [%q{lib}]
+  s.rubyforge_project = %q{rspec}
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{rspec-2.8.0}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

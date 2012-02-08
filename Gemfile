@@ -35,7 +35,8 @@ gem 'sanitize', '2.0.3'
 
 #heroku dependency
 group :production do
-	gem 'pg', '0.12.0'
+	#this is commented for fedora purposes
+	#gem 'pg', '0.12.0'
 end
 
 group :development do

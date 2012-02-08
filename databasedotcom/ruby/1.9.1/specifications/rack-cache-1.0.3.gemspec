@@ -1,21 +1,21 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "rack-cache"
+  s.name = %q{rack-cache}
   s.version = "1.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Ryan Tomayko"]
-  s.date = "2011-08-27"
-  s.description = "HTTP Caching for Rack"
-  s.email = "r@tomayko.com"
-  s.extra_rdoc_files = ["README", "COPYING", "TODO", "CHANGES"]
-  s.files = ["README", "COPYING", "TODO", "CHANGES"]
-  s.homepage = "http://tomayko.com/src/rack-cache/"
-  s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Rack::Cache", "--main", "Rack::Cache"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.12"
-  s.summary = "HTTP Caching for Rack"
+  s.authors = [%q{Ryan Tomayko}]
+  s.date = %q{2011-08-27}
+  s.description = %q{HTTP Caching for Rack}
+  s.email = %q{r@tomayko.com}
+  s.extra_rdoc_files = [%q{README}, %q{COPYING}, %q{TODO}, %q{CHANGES}]
+  s.files = [%q{README}, %q{COPYING}, %q{TODO}, %q{CHANGES}]
+  s.homepage = %q{http://tomayko.com/src/rack-cache/}
+  s.rdoc_options = [%q{--line-numbers}, %q{--inline-source}, %q{--title}, %q{Rack::Cache}, %q{--main}, %q{Rack::Cache}]
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{HTTP Caching for Rack}
 
   if s.respond_to? :specification_version then
     s.specification_version = 2

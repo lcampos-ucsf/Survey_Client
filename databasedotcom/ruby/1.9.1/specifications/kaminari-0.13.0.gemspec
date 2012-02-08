@@ -1,22 +1,22 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "kaminari"
+  s.name = %q{kaminari}
   s.version = "0.13.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Akira Matsuda"]
-  s.date = "2011-12-22"
-  s.description = "Kaminari is a Scope & Engine based, clean, powerful, agnostic, customizable and sophisticated paginator for Rails 3"
-  s.email = ["ronnie@dio.jp"]
-  s.extra_rdoc_files = ["README.rdoc"]
-  s.files = ["README.rdoc"]
-  s.homepage = "https://github.com/amatsuda/kaminari"
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
-  s.rubyforge_project = "kaminari"
-  s.rubygems_version = "1.8.12"
-  s.summary = "A pagination engine plugin for Rails 3 or other modern frameworks"
+  s.authors = [%q{Akira Matsuda}]
+  s.date = %q{2011-12-22}
+  s.description = %q{Kaminari is a Scope & Engine based, clean, powerful, agnostic, customizable and sophisticated paginator for Rails 3}
+  s.email = [%q{ronnie@dio.jp}]
+  s.extra_rdoc_files = [%q{README.rdoc}]
+  s.files = [%q{README.rdoc}]
+  s.homepage = %q{https://github.com/amatsuda/kaminari}
+  s.licenses = [%q{MIT}]
+  s.require_paths = [%q{lib}]
+  s.rubyforge_project = %q{kaminari}
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{A pagination engine plugin for Rails 3 or other modern frameworks}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

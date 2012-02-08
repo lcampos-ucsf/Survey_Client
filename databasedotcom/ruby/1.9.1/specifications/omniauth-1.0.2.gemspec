@@ -1,18 +1,18 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "omniauth"
+  s.name = %q{omniauth}
   s.version = "1.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.3.6") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Michael Bleigh", "Erik Michaels-Ober"]
-  s.date = "2012-01-17"
-  s.description = "A generalized Rack framework for multiple-provider authentication."
-  s.email = ["michael@intridea.com", "sferik@gmail.com"]
-  s.homepage = "http://github.com/intridea/omniauth"
-  s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.12"
-  s.summary = "A generalized Rack framework for multiple-provider authentication."
+  s.authors = [%q{Michael Bleigh}, %q{Erik Michaels-Ober}]
+  s.date = %q{2012-01-17}
+  s.description = %q{A generalized Rack framework for multiple-provider authentication.}
+  s.email = [%q{michael@intridea.com}, %q{sferik@gmail.com}]
+  s.homepage = %q{http://github.com/intridea/omniauth}
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{A generalized Rack framework for multiple-provider authentication.}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
