@@ -1,7 +1,11 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
-gem 'sqlite3', '1.3.4'
+
+#gem 'sqlite3', '1.3.4'
+#this is for fedora purposes
+gem 'sqlite3-ruby', :require => 'sqlite3'
+
 gem 'gravatar_image_tag', '1.0.0.pre2'
 
 gem 'httparty'
