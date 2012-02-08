@@ -9,6 +9,7 @@ gem 'savon'
 gem 'cells', "~>3.6.7"
 gem 'rack', "1.3.6"
 gem 'multi_json', '1.0.4'
+gem 'rake', '0.9.2'
 
 #api connection with salesforce
 gem 'databasedotcom', :git => 'git://github.com/lcampos/databasedotcom.git'
