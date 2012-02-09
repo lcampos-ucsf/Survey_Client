@@ -114,7 +114,7 @@ module SurveysHelper
 
 		#@current_page = params[:page].match(/\A([1-9])\Z/) == nil ? '1' : params[:page]
 		#security enhancement
-		@current_page = (params[:page]!= nil) ? ( params[:page].match(/^[1-9]*$/) == nil ? '1' : Sanitize.clean(params[:page]).to_i ) : '1'
+		@current_page = (params[:page]!= nil) ? ( params[:page].match(/^[0-9]*$/) == nil ? '1' : Sanitize.clean(params[:page]).to_i ) : '1'
 		@autosave = params[:as] ? params[:as] : false
 
 		#get line item external ids for query
