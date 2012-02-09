@@ -1,25 +1,26 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "rake-compiler"
+  s.name = %q{rake-compiler}
   s.version = "0.8.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.3.5") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Luis Lavena"]
-  s.date = "2012-01-08"
-  s.description = "Provide a standard and simplified way to build and package\nRuby extensions (C, Java) using Rake as glue."
-  s.email = "luislavena@gmail.com"
-  s.executables = ["rake-compiler"]
-  s.extra_rdoc_files = ["README.rdoc", "LICENSE.txt", "History.txt"]
-  s.files = ["bin/rake-compiler", "README.rdoc", "LICENSE.txt", "History.txt"]
-  s.homepage = "http://github.com/luislavena/rake-compiler"
-  s.licenses = ["MIT"]
-  s.rdoc_options = ["--main", "README.rdoc", "--title", "rake-compiler -- Documentation"]
-  s.require_paths = ["lib"]
+  s.authors = [%q{Luis Lavena}]
+  s.date = %q{2012-01-08}
+  s.description = %q{Provide a standard and simplified way to build and package
+Ruby extensions (C, Java) using Rake as glue.}
+  s.email = %q{luislavena@gmail.com}
+  s.executables = [%q{rake-compiler}]
+  s.extra_rdoc_files = [%q{README.rdoc}, %q{LICENSE.txt}, %q{History.txt}]
+  s.files = [%q{bin/rake-compiler}, %q{README.rdoc}, %q{LICENSE.txt}, %q{History.txt}]
+  s.homepage = %q{http://github.com/luislavena/rake-compiler}
+  s.licenses = [%q{MIT}]
+  s.rdoc_options = [%q{--main}, %q{README.rdoc}, %q{--title}, %q{rake-compiler -- Documentation}]
+  s.require_paths = [%q{lib}]
   s.required_ruby_version = Gem::Requirement.new(">= 1.8.6")
-  s.rubyforge_project = "rake-compiler"
-  s.rubygems_version = "1.8.12"
-  s.summary = "Rake-based Ruby Extension (C, Java) task generator."
+  s.rubyforge_project = %q{rake-compiler}
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{Rake-based Ruby Extension (C, Java) task generator.}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

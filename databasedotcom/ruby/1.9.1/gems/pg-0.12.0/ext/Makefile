@@ -60,7 +60,7 @@ warnflags = -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwri
 CFLAGS   = -fno-common $(cflags)  -fno-common -pipe 
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS = -DRUBY_EXTCONF_H=\"$(RUBY_EXTCONF_H)\" -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE $(DEFS) $(cppflags) -I/Library/PostgreSQL/9.1/include
+CPPFLAGS = -DRUBY_EXTCONF_H=\"$(RUBY_EXTCONF_H)\" -I/Users/luiscampos/.rvm/usr/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE $(DEFS) $(cppflags) -I/Library/PostgreSQL/9.1/include
 CXXFLAGS = $(CFLAGS) $(cxxflags)
 ldflags  = -L.  -L/Library/PostgreSQL/9.1/lib
 dldflags = -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress -Wl,-flat_namespace
@@ -92,8 +92,8 @@ COPY = cp
 
 preload = 
 
-libpath = . $(libdir)
-LIBPATH =  -L. -L$(libdir)
+libpath = . $(libdir) /Users/luiscampos/.rvm/usr/lib
+LIBPATH =  -L. -L$(libdir) -L/Users/luiscampos/.rvm/usr/lib
 DEFFILE = 
 
 CLEANFILES = mkmf.log
