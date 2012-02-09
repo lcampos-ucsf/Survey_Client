@@ -265,7 +265,8 @@ module SurveysHelper
 			else
 				return { :msg => 'Please enter a value', :id => rObj.key }
 			end
-
+		elsif (rObj.value == nil || rObj.value == '') && rObj.isrequired == false
+			return
 		elsif rObj.type == 'integer' || rObj.type == 'calculation'
 			val = rObj.value.match(/\A[+-]?\d+?(\.\d+)?\Z/) == nil ? false : true 
 			l = rObj.value.length
