@@ -17,7 +17,9 @@ class SessionsController < ApplicationController
         @sfloguturl = nil
         @idplogouturl = nil
 
+        puts "---------------signout_revoke---------------------"
         if params[:orgurl] != nil
+            puts "signout_revoke --------------- orgurl = '#{params[:orgurl]}' "
 
             #Set ifram url for salesforce logout
             @sfloguturl = "#{params[:orgurl]}/secur/logout.jsp"
@@ -25,14 +27,16 @@ class SessionsController < ApplicationController
             if ENV['DEFAULT_PROVIDER'] == "customurl"
               @idplogouturl = ENV['IDP_UCSF_LOGOUT']
             end
-
+            puts "signout_revoke 1 --------------- signed_in? = '#{signed_in?}' "
             #Revoke refresh token
             if signed_in?
+              puts "signout_revoke 2 --------------- signed_in? = '#{signed_in?}' "
                 result = HTTParty.post("#{params[:orgurl]}/services/oauth2/revoke",:body => "token= #{session[:auth_hash][:refresh_token]}")
                 puts "Revoke post response = "+result.inspect
             end
         end
 
+        puts "signout_revoke --------------- params[:sm] = '#{params[:sm]}' "
         if params[:sm] == '1'
             store_location
         end

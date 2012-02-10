@@ -10,7 +10,11 @@ require 'omniauth-oauth2'
       puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb sign_out ^^^^^^^^^^^^^^^^^^^^"
       instURL = ''
       if signed_in?
+        puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb sign_out , signedin ^^^^^^^^^^^^^^^^^^^^"
         instURL = session[:auth_hash][:instance_url]
+      else
+        puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb sign_out , NOT signedin ^^^^^^^^^^^^^^^^^^^^"
+        instURL = session[:orgurl]
       end
       
       redirect_to signoutsf_path(:orgurl => instURL,:sm => sm)
@@ -49,10 +53,19 @@ require 'omniauth-oauth2'
         unless @time_left > 0
           puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb authenticate unless ^^^^^^^^^^^^^^^^^^^^"
           #session[:expires_at] = expire_time
+          @orgurl = session[:auth_hash][:instance_url]
           reset_session
           store_location
+          session[:orgurl] = @orgurl 
           signout_exp
+          return
         end
+        #renew session timeout
+        puts "-----------renew session timeout, session = '#{session[:expires_at]}' "
+        puts "-----------renew session timeout, now = '#{expire_time}' "
+        puts "-----------renew session timeout, now = '#{expire_time}' "
+        puts "-----------renew session timeout, now = '#{expire_time}' "
+        session[:expires_at] = expire_time
       end
     else
       deny_access
