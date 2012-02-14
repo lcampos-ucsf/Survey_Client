@@ -2,8 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
 
-#gem 'sqlite3', '1.3.4'
-#this is for fedora purposes
+#this is for linux purposes
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem 'gravatar_image_tag', '1.0.0.pre2'
@@ -36,11 +35,10 @@ gem 'sanitize', '2.0.3'
 #heroku dependency
 group :production do
 	#this is commented for fedora purposes
-	#gem 'pg', '0.12.0'
+	gem 'pg', '0.12.0'
 end
 
 group :development do
-	#gem 'rspec'
   	gem 'rspec-rails'
   	gem 'annotate', '2.4.0'
 	gem 'faker', '0.3.1'

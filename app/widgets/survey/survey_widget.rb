@@ -68,8 +68,6 @@ responds_to_event :submit, :with => :update_multiple
 
 	def displaylogic(conditional, inviteid)
 		#display logic should go here
-		#puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! displaylogic, conditional = '#{conditional}'  "
-	
 		if conditional.Display_Logic__c != nil
 			@string = conditional.Display_Logic__c 
 			@expressions = @string.split(/\s/)
@@ -90,24 +88,24 @@ responds_to_event :submit, :with => :update_multiple
 	            @rdata.each { |r| @h_rq[r.Line_Item_Resource__c] ? @h_rq[r.Line_Item_Resource__c] << r : @h_rq[r.Line_Item_Resource__c] = [r] }
 	        end
 
+	        #adding response values to conditional formula
 	        @expressions.each do |e|
 	        	if e.include? '@' 
 	        		question = e.match(/@[a-zA-Z0-9_\-]+/)
 	        		#add no response validation
 	        		qv = '0'
+
 	        		if @h_rq.has_key?("#{question}")
 		        		if @h_rq["#{question}"][0].Response_Type__c == 'Integer' || @h_rq["#{question}"][0].Response_Type__c == 'Calculation'
-		        			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Integer Response = '#{@h_rq["#{question}"][0].Integer_Response__c }' "
-		        			qv =  @h_rq["#{question}"][0].Integer_Response__c.to_s 
-		        			puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! qv = '#{qv}' "
-
+		        			#puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Integer Response = '#{@h_rq["#{question}"][0].Integer_Response__c }' "
+		        			qv =  (@h_rq["#{question}"][0].Integer_Response__c == '' || @h_rq["#{question}"][0].Integer_Response__c == nil ) ? '0' : @h_rq["#{question}"][0].Integer_Response__c.to_s 
 		        		elsif @h_rq["#{question}"][0].Response_Type__c == 'Date' 
-		        			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Date Response = '#{@h_rq["#{question}"][0].Date_Response__c }' "
-		        			qv =  @h_rq["#{question}"][0].Text_Long_Response__c
-		        			puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! qv = '#{qv}' "
-		        			
+		        			#puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Date Response = '#{@h_rq["#{question}"][0].Date_Response__c }' "
+		        			qv =  (@h_rq["#{question}"][0].Text_Long_Response__c == '' || @h_rq["#{question}"][0].Text_Long_Response__c == nil ) ? '0' : @h_rq["#{question}"][0].Text_Long_Response__c
 		        		else
-		        			qv = "'" + @h_rq["#{question}"][0].Text_Long_Response__c + "'"
+		        			#puts "----------------- response = '#{@h_rq["#{question}"][0].Text_Long_Response__c}' " 
+		        			a = (@h_rq["#{question}"][0].Text_Long_Response__c == ''|| @h_rq["#{question}"][0].Text_Long_Response__c == nil ) ? '' : @h_rq["#{question}"][0].Text_Long_Response__c
+		        			qv = "'" + a + "'"
 		        		end
 		        	end
 	        		e["#{question}"] = qv
@@ -120,12 +118,45 @@ responds_to_event :submit, :with => :update_multiple
 	        end
 
 			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! expressions = '#{@expressions}' "
-			#puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! eval 12/01/2011 > 01/01/2012 = '#{eval(12/01/2011 > 01/01/2012)}' "
-			
 			@evalstring = @expressions * ""
-			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' "
-			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' , eval = '#{eval(@evalstring)}' "
 
+			#date evaluations for conditional formula
+			b = @evalstring.scan(/[0][\<\>\=]+\d{2}\/\d{2}\/\d{4}|\d{2}\/\d{2}\/\d{4}[\<\>\=]+\d{2}\/\d{2}\/\d{4}/)
+			puts "-----------b.scan = '#{b}' "
+			if !b.empty?
+				b.each do |g|
+					ee = g.split(/[\<\>\=]+/)
+					sign = g.scan(/[\<\>\=]+/)
+
+					puts "ee = '#{ee}', sign = '#{sign}' "
+
+					if ee[0] == '0' || ee[1] == '0'
+						@evalstring = @evalstring.gsub(g,'false')
+					else
+						fval = Date.strptime(ee[0], '%m/%d/%Y')
+						lval = Date.strptime(ee[1], '%m/%d/%Y')
+						if sign[0] == '>'
+							evalv = (fval > lval) ? 'true' : 'false'
+							@evalstring = @evalstring.gsub(g,evalv)
+						elsif sign[0] == '<'
+							evalv = (fval < lval) ? 'true' : 'false'
+							@evalstring = @evalstring.gsub(g,evalv)
+						elsif sign[0] == '=='
+							evalv = (fval == lval) ? 'true' : 'false'
+							@evalstring = @evalstring.gsub(g,evalv)
+						elsif sign[0] == '>='
+							evalv = (fval >= lval) ? 'true' : 'false'
+							@evalstring = @evalstring.gsub(g,evalv)
+						elsif sign[0] == '<='
+							evalv = (fval <= lval) ? 'true' : 'false'
+							@evalstring = @evalstring.gsub(g,evalv)
+						end
+					end
+				end
+			end
+
+			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' , eval = '#{eval(@evalstring)}' "
+			#all evaluations for conditional formula
 			return eval(@evalstring)
 			
 		end
