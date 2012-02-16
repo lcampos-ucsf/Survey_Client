@@ -70,18 +70,34 @@ class InviteController < ApplicationController
   end
 
   def all
-    @invites_new = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'New' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
+    #@invites_new = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'New' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
     #@invites_inprogress = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'In Progress' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
     #@invites_complete = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'Completed' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
     
+    @invites_query = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'New' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
+  
+    #security enhancement
+    @pageno = (params[:page]!= nil) ? ( params[:page].match(/^[0-9]*$/) == nil ? 1 : Sanitize.clean(params[:page]).to_i ) : 1
+    @invites_new = Kaminari.paginate_array(@invites_query).page(@pageno).per(10) # Paginates the array
+
   end
 
   def all_inprogress
-    @invites_inprogress = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'In Progress' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
+    @invites_query = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'In Progress' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
+  
+    #security enhancement
+    @pageno = (params[:page]!= nil) ? ( params[:page].match(/^[0-9]*$/) == nil ? 1 : Sanitize.clean(params[:page]).to_i ) : 1
+    @invites_inprogress = Kaminari.paginate_array(@invites_query).page(@pageno).per(10) # Paginates the array
+
   end
 
   def all_complete
-    @invites_complete = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'Completed' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
+    @invites_query = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'Completed' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
+    
+    #security enhancement
+    @pageno = (params[:page]!= nil) ? ( params[:page].match(/^[0-9]*$/) == nil ? 1 : Sanitize.clean(params[:page]).to_i ) : 1
+    @invites_complete = Kaminari.paginate_array(@invites_query).page(@pageno).per(10) # Paginates the array
+
   end
 
   protected
