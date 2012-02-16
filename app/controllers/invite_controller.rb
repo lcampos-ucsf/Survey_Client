@@ -71,9 +71,17 @@ class InviteController < ApplicationController
 
   def all
     @invites_new = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'New' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
-    @invites_inprogress = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'In Progress' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
-    @invites_complete = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'Completed' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
+    #@invites_inprogress = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'In Progress' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
+    #@invites_complete = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'Completed' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
     
+  end
+
+  def all_inprogress
+    @invites_inprogress = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'In Progress' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
+  end
+
+  def all_complete
+    @invites_complete = session[:client].query("select Id, Name, User__c, User__r.Name, Status__c, Start_Date__c, End_Date__c, Survey_Name__c, Survey__c, Progress_Save__c, Survey_Subject__c, Survey_Subject__r.Name, LastModifiedDate, Invitation_Subject__c, Is_Preview__c from Invitation__c where Is_Preview__c = false and Status__c = 'Completed' order by Survey_Name__c, Status__c, LastModifiedDate desc  ")
   end
 
   protected
