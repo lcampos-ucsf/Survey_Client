@@ -338,7 +338,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			},
 			error: function(data, textStatus){
 				autosaveOn = false;
-
+				hidemodaltransition();
 				var arr = eval(data.responseText);
 				
 				if ( !j$.isEmptyObject(arr[0]) ){
@@ -372,7 +372,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 		});
 
-		hidemodaltransition();
+		
 	}
 
 	function ajaxautosave(){

@@ -111,7 +111,7 @@ responds_to_event :submit, :with => :update_multiple
 	        		e["#{question}"] = qv
 
 	        	elsif e.include? '#' 
-	        		answer = e.match(/#[a-zA-Z0-9_\-]+/)
+	        		answer = e.match(/#[a-zA-Z0-9_\-:]+/)
 	        		m_ans = "'" + answer.to_s + "'"
 	        		e["#{answer}"] = m_ans
 	        	end
