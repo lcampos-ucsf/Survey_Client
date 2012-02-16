@@ -223,8 +223,12 @@ module SurveysHelper
 
 	def current_survey
 	    puts "^^^^^^^^^^^^^^^^^^^^ surveys_helper.rb current_survey ^^^^^^^^^^^^^^^^^^^^"
-	    @@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Survey_Subject__c, Survey__r.Description__c from Invitation__c where Id = '#{Sanitize.clean(params[:id])}' and User__c = '#{session[:user_id]}' ")
-		
+	    if session[:user_profile] == 'Admin'
+	    	@@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Survey_Subject__c, Survey__r.Description__c from Invitation__c where Id = '#{Sanitize.clean(params[:id])}' ")
+		else
+			@@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Survey_Subject__c, Survey__r.Description__c from Invitation__c where Id = '#{Sanitize.clean(params[:id])}' and User__c = '#{session[:user_id]}' ")
+		end
+
 		if @@current_survey.to_s == '[]'
 			raise Exceptions::SurveyNotAvailable.new("The survey you are looking for is currently not available.")
 		else
