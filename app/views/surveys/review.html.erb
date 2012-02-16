@@ -11,8 +11,9 @@
 	<% @responses.each do |r| %>
 		<div class="rev_q_wrap" >
 			
-			<h4><%= h r.Original_Question_Text__c %></h4>
-
+			<% if r.Response_Type__c != 'Grid' || r.Response_Type__c != 'GridSubQuestion' %>
+				<h4><%= h r.Original_Question_Text__c %></h4>
+			<% end %>
 			<% if r.Response_Type__c == 'Text' ||  r.Response_Type__c == 'Date' || r.Response_Type__c == 'Datetime' || r.Response_Type__c == 'Integer' || r.Response_Type__c == 'Calculation'%>
 				<% if !r.Text_Long_Response__c.blank? %>
 				<span class="a_text"><%= h r.Text_Long_Response__c %> </span>
@@ -26,6 +27,10 @@
 					<% end 
 					end %>
 					</ul>
+			<!-- % elsif r.Response_Type__c == 'GridSubQuestion' % >
+					<table>
+					<tr><td><h4>< % = h r.Original_Question_Text__c % ></h4> Grid</td></tr>
+					</table -->
 			<% else %>
 				<% if !r.Label_Long_Response__c.blank? %>
 					<span> <input type="radio" checked disabled /> 

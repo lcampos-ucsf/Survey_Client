@@ -7,6 +7,7 @@ class Survey::LineItemWidget < Apotomo::Widget
     @surveyid = options[:surveyid]
     @responserecord = options[:li_resp]
     @answerlabels = options[:ans]
+    @gridsubquestions = options[:gridsq]
     @respId = ''
     @respVal = ''
     @resphash = {}
@@ -72,6 +73,27 @@ class Survey::LineItemWidget < Apotomo::Widget
                 @respVal = @responserecord[0].Text_Long_Response__c
                 @respId = @responserecord[0].Id
             end
+
+        ## Grid Question
+        elsif @line_item.Question_Type__c == 'Grid'
+            if @responserecord != nil
+                @respVal = @responserecord[0].Text_Long_Response__c
+                @respId = @responserecord[0].Id
+
+                @responserecord.each do |r|
+                    puts "----------------- r.Current_Question_Text__c = '#{r.Current_Question_Text__c}' "
+                    puts "----------------- r.Current_Question_Text__c = '#{r.Current_Question_Text__c}' "
+                    puts "----------------- r.Current_Question_Text__c = '#{r.Current_Question_Text__c}' "
+                    puts "----------------- r.Current_Question_Text__c = '#{r.Current_Question_Text__c}' "
+                    puts "----------------- r.Current_Question_Text__c = '#{r.Current_Question_Text__c}' "
+                    puts "----------------- r.Current_Question_Text__c = '#{r.Current_Question_Text__c}' "
+                    @resphash[r.Line_Item__c] = r
+                    puts "----------------- hash key = '#{r.Line_Item__c}', hash value = '#{@resphash[r.Id]}' "
+                end
+
+            end
+
+
 
         end
 

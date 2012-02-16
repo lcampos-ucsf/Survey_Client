@@ -131,7 +131,7 @@ module SurveysHelper
 		@li_eid_list = "("+@li_eid_list+")"
 
 		#query values for response and validations
-		@li_details = session[:client].query("select Id, Name, Decimals__c, External_ID__c, Length__c, Max_Value__c, Min_Value__c, Required__c, Sort_Order__c from Line_Item__c where Id in #{@li_eid_list} order by Sort_Order__c asc  ")
+		@li_details = session[:client].query("select Id, Name, Decimals__c, External_ID__c, Length__c, Max_Value__c, Min_Value__c, Required__c, Sort_Order__c, Question_Description__c from Line_Item__c where Id in #{@li_eid_list} order by Sort_Order__c asc  ")
 
 		@h_li = {}
 		if !@li_details.empty?
@@ -144,6 +144,11 @@ module SurveysHelper
 				if key.index('qq') >= 0
 					@array = key.split('_')
 					@qid = @array[1]
+
+					puts "---------- key = '#{key}' "
+					puts "---------- question = '#{@qid}' "
+					puts "---------- question text = '#{params[@qid]}' "
+					puts "---------- value = '#{value}' "
 
 					if @array[2] == 'multi'
 						@v = ''
@@ -162,6 +167,9 @@ module SurveysHelper
 						#(sid, inviteId, qid, qtxt, value, type, rid, label, htmlid, uid, vlength, decimals, maxval, minval, isrequired)
 						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], @v, key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c )
 						#@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], @v, key, session[:user_id])
+					elsif @array[2] == 'grid'
+						@robj = Response.new(@survey_id, @invite_id, @array[1], @h_li[@qid][0].Question_Description__c, value, @array[2], @array[3], params[value], key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c )
+					
 					else
 						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], params[value], key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c )
 						#@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], params[value], key, session[:user_id])
