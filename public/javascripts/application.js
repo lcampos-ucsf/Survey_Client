@@ -181,16 +181,22 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				var txt = j$('#'+aId).val().toLowerCase();
 		        j$.ajax({
 		            url: url,
-		            data: "{}",
+		            //data: "{}",
 		            dataType: "json",
-		            headers: {'X-CSRF-Token': AUTH_TOKEN },
-		            type: "POST",
-		            contentType: "application/json; charset=utf-8",
+		            //headers: {'X-CSRF-Token': AUTH_TOKEN },
+		            //type: "POST",
+		            type: "GET",
+		            //contentType: "application/json; charset=utf-8",
 		            success: function(data) {
-		               	response(j$.map(data, function(item) {
-		               		var n = item.Name.toLowerCase();
-		                    if (n.indexOf(txt) != -1)
-		                    	return { value: item.Name }
+		            	//response(j$.map(data, function(item) {
+		               	response(j$.map(data.items, function(item) {
+		               		//var n = item.Name;
+		               		var n = item.display_name.toLowerCase();
+		                    if (n.indexOf(txt) != -1){
+		                    	//v = item[0].Name;
+		                    	v = item.display_name;
+		                    	return { value: item.display_name }
+		                    }
 		                    else 
 		                    	return
 		                }))
