@@ -315,7 +315,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			url: "/surveys/update_multiple",
 			type: "POST",
 			data: dt,
-			async: false,
+			async: true,
 			headers: {'X-CSRF-Token': AUTH_TOKEN },
 			dataType: "script",
 			success: function(data){

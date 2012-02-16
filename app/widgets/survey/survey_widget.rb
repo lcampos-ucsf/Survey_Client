@@ -11,7 +11,7 @@ responds_to_event :submit, :with => :update_multiple
 		puts "^^^^^^^^^^^^^^^^^^^^ survey_widget.rb Kaminari execution ^^^^^^^^^^^^^^^^^^^^"
 		
 		#security enhancement
-		@pageno = (params[:page]!= nil) ? ( params[:page].match(/^[0-9]*$/) == nil ? '1' : Sanitize.clean(params[:page]).to_i ) : '1'
+		@pageno = (params[:page]!= nil) ? ( params[:page].match(/^[0-9]*$/) == nil ? 1 : Sanitize.clean(params[:page]).to_i ) : 1
 
 		puts "-------------------- after sanitize, pageno = '#{@pageno}' "
 		@lines_query = session[:client].query("select Id, Name, Description__c, Display_Logic__c, Sort_Order__c, Survey__c from Line__c where Survey__c = '#{@survey[0].Survey__c}' order by Sort_Order__c asc")
@@ -47,6 +47,7 @@ responds_to_event :submit, :with => :update_multiple
 					@pageno -= 1
 					params[:page] = @pageno
 				else
+					puts "------------------- pageno = '#{@pageno}' "
 					@pageno += 1
 					params[:page] = @pageno
 				end
