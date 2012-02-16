@@ -17,16 +17,16 @@
 		<div class="text" ><%= @progressbar.to_i %> %</div>
 	</div>
 
-	<div id="my-modal-loading" class="modal hide fade" style="display: none; height:80px !important; width:90px !important; left:67% !important; top:80% !important;" data-keyboard="true" data-backdrop="true" data-controls-modal="modal-from-dom">
+	<div id="my-modal-loading" class="savingmodal hide fade" style="display: none;" data-keyboard="true" data-backdrop="true" data-controls-modal="modal-from-dom">
 		
-        <div class="modal-body file-mbody">
+        <div class="modal-body ">
 			<img src="/images/loading.gif" class="loading_gif" />
 			<p class="loading_txt" >Saving ...</p>
 		</div>
 
 	</div>
 
-	<!-- a class="btn" data-controls-modal="my-modal-loading" data-backdrop="static" >Load</a -->
+	<a class="btn" data-controls-modal="my-modal-loading" data-backdrop="static" >Load</a>
 
 	<div id="autosaved" > </div>
 	
