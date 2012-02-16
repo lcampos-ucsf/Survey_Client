@@ -2,7 +2,8 @@
 
 	<% if @line_item.Line_Item_Type__c == 'Question' %>
 
-		<% if !@line_item.Question_Type__c == 'Grid' || !@line_item.Question_Type__c == 'GridSubQuestion' %>
+		<% if @line_item.Question_Type__c == 'Grid' || @line_item.Question_Type__c == 'GridSubQuestion' %>
+		<% else %>
 			<label class="q_text" >
 				<% if @line_item.Help_Text__c != nil %>
 						<a data-placement="right" class="label notice helptext" data-content="<%= @line_item.Help_Text__c %>" rel="popover" href="#" data-original-title="" >?</a>
