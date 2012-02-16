@@ -294,7 +294,12 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 
 .loading_gif{
 	display: block;
-    margin: 9px auto 0 auto;
+    margin: 3px auto 0 auto;
+}
+
+.loading_txt{
+	text-align:center;
+	margin-top:4px;
 }
 
 /*----- Autocomplete Component Styles
