@@ -189,8 +189,10 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		            success: function(data) {
 		               	response(j$.map(data, function(item) {
 		               		var n = item.Name.toLowerCase();
-		                    if (n.indexOf(txt) != -1)
+		                    if (n.indexOf(txt) != -1){
+		                    	v = item.Name || item.display_name;
 		                    	return { value: item.Name }
+		                    }
 		                    else 
 		                    	return
 		                }))
