@@ -450,4 +450,9 @@ a .remove{
   background-clip: padding-box;
 }
 
+.grid_cnt{
+	text-align:center;
+}
+
+
 
