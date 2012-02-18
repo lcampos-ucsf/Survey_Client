@@ -14,7 +14,12 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
   	//Add datepicker calendar to inputs
   	if ( j$('form .datepicker')[0] ) { //do something 
 	  	j$('form .datepicker').each(function(){
-			j$(this).datepicker({ dateFormat: 'mm/dd/yy' });
+			j$(this).datepicker({ 
+				dateFormat: 'mm/dd/yy',
+				changeMonth: true, 
+				yearRange: 'c-10:c+10',
+				changeYear: true
+			 });
 			j$(this).live('click',  function(){
 				var h = j$(this).height();  
 				var st = j$(this).offset();  
@@ -365,6 +370,9 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 						 	}else if(el[2] == 'text'){
 						 		var type = j$('#' + s.id).attr('text-type');
 						 		p_error = (type == 'autocomplete') ? j$('#' + s.id).prev().prev('p') : j$('#' + s.id).prev('p')
+						 	
+						 	}else if(el[2] == 'grid'){
+						 		p_error = j$('#' + s.id).parent().siblings(':first').children('p');
 						 	}else{
 								p_error = j$('#' + s.id).prev('p');
 							}
@@ -454,6 +462,8 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			p_error = j$('#' + eId).parent().parent().prev('p');
 		else if(eAr[2] == 'multi'){
 			p_error = j$('#' + eId).parent().prev('p');
+		}else if(eAr[2] == 'grid'){
+			p_error = j$('#' + eId).parent().siblings(':first').children('p');
 		}else{
 			p_error = j$('#' + eId).prev('p');
 		}

@@ -26,6 +26,16 @@
     display: block;
 }
 
+.question_wrap label.q_text_grid{
+	width: 100%;
+	text-align:center;
+	line-height: 150%;
+	color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+}
+
 .question_wrap input[type=text]{
 	color: #666666;
     font-size: 14px;
@@ -454,5 +464,21 @@ a .remove{
 	text-align:center;
 }
 
+.grid_table{
+	margin-top:20px;
+}
 
+p.error{
+	color:red;
+	line-height: 2px;
+    margin-bottom: 2px;
+}
 
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+    display: block;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -4px !important;
+    position: absolute;
+    top: 50%;
+}

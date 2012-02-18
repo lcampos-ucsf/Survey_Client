@@ -130,9 +130,11 @@ module SurveysHelper
 		end
 		@li_eid_list = "("+@li_eid_list+")"
 
-		#query values for response and validations
-		@li_details = session[:client].query("select Id, Name, Decimals__c, External_ID__c, Length__c, Max_Value__c, Min_Value__c, Required__c, Sort_Order__c, Question_Description__c from Line_Item__c where Id in #{@li_eid_list} order by Sort_Order__c asc  ")
-
+		puts "------------ li_eid_list = '#{@li_eid_list}' "
+		if @li_eid_list != '()'
+			#query values for response and validations
+			@li_details = session[:client].query("select Id, Name, Decimals__c, External_ID__c, Length__c, Max_Value__c, Min_Value__c, Required__c, Sort_Order__c, Question_Description__c from Line_Item__c where Id in #{@li_eid_list} order by Sort_Order__c asc  ")
+		end
 		@h_li = {}
 		if !@li_details.empty?
             @li_details.each { |r| @h_li[r.Id] ? @h_li[r.Id] << r : @h_li[r.Id] = [r] }
@@ -195,6 +197,7 @@ module SurveysHelper
 			end
 		end
 
+		puts "------------------ validation errors = '#{@error}' "
 		#this updates invitation
 		puts "------------------ update_multiple, update invitation status ------------------"
 		session[:client].upsert('Invitation__c','Id', @invite_id, { 'Progress_Save__c' => @current_page, 'Status__c' => 'In Progress' })

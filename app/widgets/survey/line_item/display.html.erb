@@ -115,40 +115,43 @@
 		<!-- Grid Question -->
 		<% elsif @line_item.Question_Type__c == 'Grid' %>
 
-			<table>
-			<tr>
-			<td>
-				<label class="q_text" >
-					<% if @line_item.Help_Text__c != nil %>
-							<a data-placement="right" class="label notice helptext" data-content="<%= @line_item.Help_Text__c %>" rel="popover" href="#" data-original-title="" >?</a>
-					<% end %>
-					<%= @line_item.Question_Description__c %> : 
-				</label>
-
-				<p style="display:none; color:red;" class="error"></p>
-			</td>
-			<!-- %= @gridsubquestions % -->
-			<% @answerlabels.each do |al| %>
-				<td> 
-					<label class="q_text" > <%= al.Answer_Text__c %> </label> 
-					<input type="hidden" name="<%= al.Resource_Name__c%>" value="<%= al.Answer_Text__c %>"/>
-				</td>
-			<% end %>
-			</tr>
-			<% @gridsubquestions.each do |gq| %>
-			
+			<table class="grid_table" >
+			<thead>
 				<tr>
-					<td> <%= gq.Question_Description__c %> </td>
+				<td>
+					<label class="q_text" >
+						<% if @line_item.Help_Text__c != nil %>
+								<a data-placement="right" class="label notice helptext" data-content="<%= @line_item.Help_Text__c %>" rel="popover" href="#" data-original-title="" >?</a>
+						<% end %>
+						<%= @line_item.Question_Description__c %> : 
+					</label>
+				</td>
+				<% @answerlabels.each do |al| %>
+					<td > 
+						<label class="q_text_grid" > <%= al.Answer_Text__c %> </label> 
+						<input type="hidden" name="<%= al.Resource_Name__c%>" value="<%= al.Answer_Text__c %>"/>
+					</td>
+				<% end %>
+				</tr>
+			</thead>
+			<tbody>
+			<% @gridsubquestions.each do |gq| %>
+				<% 
+					@resource = ''
+					@rId = ''
+					if  @resphash.has_key?(gq.Id) 
+						@resource = @resphash[gq.Id].Text_Long_Response__c
+						@rId = @resphash[gq.Id].Id
+					end
+				%>
+				<tr>
+					<td> 
+						<p style="display:none;" class="error"></p>
+						<label class="q_text" ><%= gq.Question_Description__c %> </label>
+						<input type="hidden" name="qq_<%= gq.Id%>_grid_<%= @rId  %>" class="<%= gq.Id%>" value="" />
+					</td>
 					<% @answerlabels.each do |al| %>
-					<td>
-						<% 
-							@resource = ''
-							@rId = ''
-							if  @resphash.has_key?(gq.Id) 
-								@resource = @resphash[gq.Id].Text_Long_Response__c
-								@rId = @resphash[gq.Id].Id
-							end
-						%>
+					<td class="grid_cnt" >
 						<% if @resource == al.Resource_Name__c %>
 							<input type="radio" name="qq_<%= gq.Id%>_grid_<%= @rId  %>" id="qq_<%= gq.Id%>_grid_<%= @rId  %>" class="edit_form_field" value="<%= al.Resource_Name__c%>" onclick="ff('<%= gq.Id %>', this.value, this.id, 'radio');" checked />
 						<% else %>
@@ -156,10 +159,9 @@
 						<% end %>
 					</td>
 					<% end %>
-
-			
 				</tr>
 			<% end %>
+			</tbody>
 			</table>
 
 		<% end %>
