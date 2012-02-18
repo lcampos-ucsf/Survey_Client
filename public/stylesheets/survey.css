@@ -470,6 +470,8 @@ a .remove{
 
 p.error{
 	color:red;
+}
+.grid_error_msg{
 	line-height: 2px;
     margin-bottom: 2px;
 }
