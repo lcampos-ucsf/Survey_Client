@@ -81,14 +81,7 @@ class Survey::LineItemWidget < Apotomo::Widget
                 @respId = @responserecord[0].Id
 
                 @responserecord.each do |r|
-                    puts "----------------- r.Current_Question_Text__c = '#{r.Current_Question_Text__c}' "
-                    puts "----------------- r.Current_Question_Text__c = '#{r.Current_Question_Text__c}' "
-                    puts "----------------- r.Current_Question_Text__c = '#{r.Current_Question_Text__c}' "
-                    puts "----------------- r.Current_Question_Text__c = '#{r.Current_Question_Text__c}' "
-                    puts "----------------- r.Current_Question_Text__c = '#{r.Current_Question_Text__c}' "
-                    puts "----------------- r.Current_Question_Text__c = '#{r.Current_Question_Text__c}' "
                     @resphash[r.Line_Item__c] = r
-                    puts "----------------- hash key = '#{r.Line_Item__c}', hash value = '#{@resphash[r.Id]}' "
                 end
 
             end

@@ -51,11 +51,7 @@ class SurveysController < ApplicationController
 
     end
 
-    #@GridIds = '' 
     @GridAnsSeqIds = ''
-    #get grid ids
-    #@h_gridHeader.keys.each{|hg| @GridIds = (@GridIds == '') ? "\'#{hg}\'" : ", \'#{hg}\'" }
-    #@GridIds = "("+@GridIds+")"
 
     #get grid answer sequence ids
     @h_gridHeader.values.each{|ha| @GridAnsSeqIds = (@GridAnsSeqIds == '') ? "\'#{ha}\'" : ", \'#{ha}\'" }
@@ -67,6 +63,7 @@ class SurveysController < ApplicationController
       @answerlabels.each { |a| @h_answers[a.Answer_Sequence__c] ? @h_answers[a.Answer_Sequence__c] << a : @h_answers[a.Answer_Sequence__c] = [a] }
     end
 
+    #cleans response array from subgrid questions
     @respN = @responses
     @respN.delete_if{|x| @gsq.has_key?(x.Id) }
   end

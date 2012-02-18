@@ -107,7 +107,7 @@ module SurveysHelper
 
 	def update_multiple
 		puts "^^^^^^^^^^^^^^^^^^^^ survey_helper.rb update_multiple ^^^^^^^^^^^^^^^^^^^^"
-		puts "^^^^^^^^^^^^^^^^^^^^ params = '#{params.inspect}' "
+		#puts "^^^^^^^^^^^^^^^^^^^^ params = '#{params.inspect}' "
 		@hash_response = {}
 		@invite_id = Sanitize.clean(params[:id])
 		@survey_id = current_survey[0].Survey__c
@@ -130,7 +130,7 @@ module SurveysHelper
 		end
 		@li_eid_list = "("+@li_eid_list+")"
 
-		puts "------------ li_eid_list = '#{@li_eid_list}' "
+		#puts "------------ li_eid_list = '#{@li_eid_list}' "
 		if @li_eid_list != '()'
 			#query values for response and validations
 			@li_details = session[:client].query("select Id, Name, Decimals__c, External_ID__c, Length__c, Max_Value__c, Min_Value__c, Required__c, Sort_Order__c, Question_Description__c from Line_Item__c where Id in #{@li_eid_list} order by Sort_Order__c asc  ")
@@ -147,16 +147,11 @@ module SurveysHelper
 					@array = key.split('_')
 					@qid = @array[1]
 
-					puts "---------- key = '#{key}' "
-					puts "---------- question = '#{@qid}' "
-					puts "---------- question text = '#{params[@qid]}' "
-					puts "---------- value = '#{value}' "
-
 					if @array[2] == 'multi'
 						@v = ''
-						puts "(((((((((((((( multi string = '#{value}', array = '#{value}', key = '#{key}' "
+						#puts "(((((((((((((( multi string = '#{value}', array = '#{value}', key = '#{key}' "
 						value.delete_at(0)
-						puts " multi array = '#{value}' " 
+						#puts " multi array = '#{value}' " 
 						if value != ''|| value != nil
 							value.each do |id|
 								puts "multi validations, params[id] = '#{params[id]}', @v = '#{@v}' "
@@ -190,7 +185,7 @@ module SurveysHelper
 				if @vr != nil
 					@error << @vr
 				else
-					puts "******************* obj = '#{o}' "
+					#puts "******************* obj = '#{o}' "
 					@sr = save_response(o)
 					@wt << @sr
 				end
@@ -250,7 +245,7 @@ module SurveysHelper
 		end
 
 		if @id
-			puts "---------- save response, respObj.resp_a = '#{respObj.resp_a}' "
+			#puts "---------- save response, respObj.resp_a = '#{respObj.resp_a}' "
 			session[:client].upsert('Response__c','Id', respObj.rid, respObj.resp_a)
 		else
 			q = session[:client].query("select Id, Name, Invitation__c, Line_Item__c from Response__c where Invitation__c = '#{respObj.inviteid}' and Line_Item__c = '#{respObj.qid}' ")
