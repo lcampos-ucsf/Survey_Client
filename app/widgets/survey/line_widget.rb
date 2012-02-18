@@ -9,6 +9,8 @@ class Survey::LineWidget < Apotomo::Widget
 		@li_list = ''
 		@li_as_list = ''
 		@h_grid = {}
+		@gsq = {} #controls grid views
+
 		@line_items.each_with_index do |li, i|
 			#line item ids
 			if @li_list == ''
@@ -25,9 +27,11 @@ class Survey::LineWidget < Apotomo::Widget
 			end
 
 			if li.Question_Type__c == 'GridSubQuestion'
+				#sets hash for cleaning subquestions
+				if @h_grid.has_key?(li.Parent_Line_Item__c)
+			    	@gsq[li.Id] = li
+			    end
 				#logic to add child to parent grid on hash
-				puts "-------------- GridSubQuestion Question: id = '#{li.Id}', Question = '#{li.Question_Description__c}' "
-				puts "-------------- GridSubQuestion Question: id = '#{li.Id}', Question = '#{li.Question_Description__c}' "
 				@h_grid[li.Parent_Line_Item__c] ? @h_grid[li.Parent_Line_Item__c] << li : @h_grid[li.Parent_Line_Item__c] = [li]
 			end
 
@@ -53,6 +57,10 @@ class Survey::LineWidget < Apotomo::Widget
 		if !@answerlabels.empty?
             @answerlabels.each { |a| @h_answers[a.Answer_Sequence__c] ? @h_answers[a.Answer_Sequence__c] << a : @h_answers[a.Answer_Sequence__c] = [a] }
         end
+
+        #cleans line items array from subgrid questions
+        @respN = @line_items
+    	@respN.delete_if{|x| @gsq.has_key?(x.Id) }
 
         tmp_count = 0
 		@line_items.each_with_index do |t, i|
