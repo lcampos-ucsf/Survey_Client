@@ -104,7 +104,7 @@ responds_to_event :submit, :with => :update_multiple
 		        			#puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Date Response = '#{@h_rq["#{question}"][0].Date_Response__c }' "
 		        			qv =  (@h_rq["#{question}"][0].Text_Long_Response__c == '' || @h_rq["#{question}"][0].Text_Long_Response__c == nil ) ? '0' : @h_rq["#{question}"][0].Text_Long_Response__c
 		        		else
-		        			#puts "----------------- response = '#{@h_rq["#{question}"][0].Text_Long_Response__c}' " 
+		        			puts "----------------- response = '#{@h_rq["#{question}"][0].Text_Long_Response__c}' " 
 		        			a = (@h_rq["#{question}"][0].Text_Long_Response__c == ''|| @h_rq["#{question}"][0].Text_Long_Response__c == nil ) ? '' : @h_rq["#{question}"][0].Text_Long_Response__c
 		        			qv = "'" + a + "'"
 		        		end
@@ -123,6 +123,13 @@ responds_to_event :submit, :with => :update_multiple
 
 			#date evaluations for conditional formula
 			b = @evalstring.scan(/[0][\<\>\=]+\d{2}\/\d{2}\/\d{4}|\d{2}\/\d{2}\/\d{4}[\<\>\=]+\d{2}\/\d{2}\/\d{4}/)
+=begin			
+			puts "--------- evalstring = '#{@evalstring}' "
+			c = @evalstring.scan(/[(\#\w+\;)]*/)
+			d= @evalstring.scan(/\w{^\#.\;$}/)
+			puts "-----------c.scan = '#{c}' "
+			puts "-----------d.scan = '#{d}' "
+=end
 			puts "-----------b.scan = '#{b}' "
 			if !b.empty?
 				b.each do |g|
@@ -156,6 +163,17 @@ responds_to_event :submit, :with => :update_multiple
 				end
 			end
 
+			
+=begin
+			if !c.empty?
+				@m_ans = c[0].split(/\;/)
+				puts "--------------- '#{@m_ans}' "
+				@m_ans.each do |mm|
+					puts "--------------- '#{mm}'"
+
+				end
+			end
+=end
 			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' , eval = '#{eval(@evalstring)}' "
 			#all evaluations for conditional formula
 			return eval(@evalstring)

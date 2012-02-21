@@ -377,9 +377,17 @@ module SurveysHelper
 	def autocompletequery
 		puts "&&&&&&&&&&&&&&&&&&&&&&&&& autocompletequery"
 		p = session[:client].query("select Id, Name from Master_Patient__c ")
+		@json = Array.new
+		@json << { :display_name => 'Luis Campos', :Id => 'Luis' } 
+		p.each do |n|
+			@json<< {:display_name => n.Name, :Id => n.Id}
+		end
+
+		puts "------ json response = '#{@json}' "
 
 		respond_to do |format|
-			format.json { render :json => p.to_json }		
+			#format.json { render :json => p.to_json }		
+			format.json { render :json => {:items => @json} }
 		end
 			
 	end

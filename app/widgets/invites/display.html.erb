@@ -43,6 +43,24 @@
 </table>
 
 
+	<%
+		@pg = ( params[:page] == nil || params[:page] == '' ) ? 1 : params[:page]
+		if @pg == 1
+			@sf = @pg
+		else
+			@sf = ( @invites.count.to_i < 2 ) ? @invites_query.count : ( ( @pg.to_i - 1 ) * @invites.count.to_i ) + 1 
+		end
+    	@ff = ( @invites.count.to_i < @paginate ) ? @invites_query.count : ( @pg.to_i * @invites.count.to_i )
+	%>
+
+<p> <%= @sf %> - <%= @ff %> of <%= @invites_query.count %> </p>
+
 <%= paginate @invites %>
 
 <% end %>
+
+
+
+
+
+

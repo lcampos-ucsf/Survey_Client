@@ -470,8 +470,8 @@ a .remove{
 
 p.error{
 	color:red;
-	line-height: 2px;
-    margin-bottom: 2px;
+	/* line-height: 2px;
+    margin-bottom: 2px; */
 }
 
 .ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {

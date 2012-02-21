@@ -100,6 +100,10 @@ class InviteController < ApplicationController
 
   end
 
+  def stats
+    
+  end
+
   protected
 
   def custom_error(exception)
