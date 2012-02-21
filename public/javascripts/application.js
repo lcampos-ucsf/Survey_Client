@@ -185,16 +185,18 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			source: function(request, response) {
 				var txt = j$('#'+aId).val().toLowerCase();
 		        j$.ajax({
-		            url: url,
-		            //data: "{}",
+		        	url: url,
+		            //data: {},
 		            dataType: "json",
 		            //headers: {'X-CSRF-Token': AUTH_TOKEN },
 		            //type: "POST",
 		            type: "GET",
 		            //contentType: "application/json; charset=utf-8",
 		            success: function(data) {
+		            	//alert('data = '+data);
 		            	//response(j$.map(data, function(item) {
 		               	response(j$.map(data.items, function(item) {
+		               		//alert('item = '+item);
 		               		//var n = item.Name;
 		               		var n = item.display_name.toLowerCase();
 		                    if (n.indexOf(txt) != -1){
