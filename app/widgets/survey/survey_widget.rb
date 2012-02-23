@@ -184,9 +184,10 @@ responds_to_event :submit, :with => :update_multiple
 			end
 
 
-			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' , eval = '#{eval(@evalstring)}' "
 			#all evaluations for conditional formula
-			return eval(@evalstring)
+			@evaluation = eval(@evalstring)
+			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' , @evaluation = '#{@evaluation}' "
+			return @evaluation
 			
 		end
 	end
