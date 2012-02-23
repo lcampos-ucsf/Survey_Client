@@ -484,3 +484,13 @@ p.error{
     position: absolute;
     top: 50%;
 }
+
+.nav .divider-vertical {
+    /*background-color: #222222;*/
+    border-right: 1px solid #333333;
+    height: 41px;
+    margin: 0 9px;
+    overflow: hidden;
+    width: 1px;
+}
+

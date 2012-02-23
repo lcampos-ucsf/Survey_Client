@@ -121,23 +121,43 @@ responds_to_event :submit, :with => :update_multiple
 			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! expressions = '#{@expressions}' "
 			@evalstring = @expressions * ""
 
-			#date evaluations for conditional formula
-			b = @evalstring.scan(/[0][\<\>\=]+\d{2}\/\d{2}\/\d{4}|\d{2}\/\d{2}\/\d{4}[\<\>\=]+\d{2}\/\d{2}\/\d{4}/)
-=begin			
 			puts "--------- evalstring = '#{@evalstring}' "
-			c = @evalstring.scan(/[(\#\w+\;)]*/)
-			d= @evalstring.scan(/\w{^\#.\;$}/)
-			puts "-----------c.scan = '#{c}' "
-			puts "-----------d.scan = '#{d}' "
-=end
-			puts "-----------b.scan = '#{b}' "
-			if !b.empty?
-				b.each do |g|
+
+			#multiple select evaluations for conditional formula
+			orig_multicondition = @evalstring.scan(/[\'\#\;0-9a-zA-Z\_\-]+[\<\>\=]+[\'\#0-9a-zA-Z\_\-]+/)
+			puts "-----------orig_multicondition.scan = '#{orig_multicondition}' "
+
+			if !orig_multicondition.empty?
+				orig_multicondition.each do |omc|
+					#this is the multiselect string that we need to reposition on conditional formula
+					#@logic_p1 = omc.scan(/[\#\;0-9a-zA-Z\_\-]+\;/)
+					#this is the last part of the multiselect formula we need to copy
+					@logic_p2 = omc.scan(/[\<\>\=]+[\'\#0-9a-zA-Z\_\-]+/)
+					
+					#this breaks logic p1 into pieces
+					@logic_p1 = omc.scan(/\#\w+\;/)
+
+					@nlogic = ''
+					@logic_p1.each_with_index do |el, i|
+						el = el.gsub(';','')
+						@nlogic = (@nlogic == '' || @nlogic == nil ) ? "('#{el}'#{@logic_p2[0]})" : @nlogic + " || ('#{el}'#{@logic_p2[0]})"
+					end
+
+					#substitute the omc for the new conditional formula
+					@evalstring = @evalstring.gsub(omc,@nlogic)
+				end
+			end
+
+			
+			#date evaluations for conditional formula
+			orig_datecondition = @evalstring.scan(/[0][\<\>\=]+\d{2}\/\d{2}\/\d{4}|\d{2}\/\d{2}\/\d{4}[\<\>\=]+\d{2}\/\d{2}\/\d{4}/)
+			puts "-----------orig_datecondition.scan = '#{orig_datecondition}' "
+
+			if !orig_datecondition.empty?
+				orig_datecondition.each do |g|
 					ee = g.split(/[\<\>\=]+/)
 					sign = g.scan(/[\<\>\=]+/)
-
-					puts "ee = '#{ee}', sign = '#{sign}' "
-
+					
 					if ee[0] == '0' || ee[1] == '0'
 						@evalstring = @evalstring.gsub(g,'false')
 					else
@@ -163,17 +183,7 @@ responds_to_event :submit, :with => :update_multiple
 				end
 			end
 
-			
-=begin
-			if !c.empty?
-				@m_ans = c[0].split(/\;/)
-				puts "--------------- '#{@m_ans}' "
-				@m_ans.each do |mm|
-					puts "--------------- '#{mm}'"
 
-				end
-			end
-=end
 			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' , eval = '#{eval(@evalstring)}' "
 			#all evaluations for conditional formula
 			return eval(@evalstring)

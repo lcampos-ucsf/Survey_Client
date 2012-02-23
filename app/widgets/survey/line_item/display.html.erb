@@ -147,7 +147,12 @@
 				<tr>
 					<td> 
 						<p style="display:none;" class="error grid_error_msg"></p>
-						<label class="q_text" ><%= gq.Question_Description__c %> </label>
+						<label class="q_text" >
+							<% if gq.Help_Text__c != nil %>
+									<a data-placement="right" class="label notice helptext" data-content="<%= gq.Help_Text__c %>" rel="popover" href="#" data-original-title="" >?</a>
+							<% end %>
+							<%= gq.Question_Description__c %> 
+						</label>
 						<input type="hidden" name="qq_<%= gq.Id%>_grid_<%= @rId  %>" class="<%= gq.Id%>" value="" />
 					</td>
 					<% @answerlabels.each do |al| %>
