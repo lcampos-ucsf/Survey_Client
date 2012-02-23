@@ -122,32 +122,36 @@ responds_to_event :submit, :with => :update_multiple
 			@evalstring = @expressions * ""
 
 			puts "--------- evalstring = '#{@evalstring}' "
+			
+			@m_log = @evalstring.index(/\;/)
+			if @m_log != nil
+				puts "+++++++++ m_log = '#{@m_log}' "
+			
+				#multiple select evaluations for conditional formula
+				orig_multicondition = @evalstring.scan(/[\'\#\;0-9a-zA-Z\_\-]+[\<\>\=]+[\'\#0-9a-zA-Z\_\-]+/)
+				puts "-----------orig_multicondition.scan = '#{orig_multicondition}' "
 
-			#multiple select evaluations for conditional formula
-			orig_multicondition = @evalstring.scan(/[\'\#\;0-9a-zA-Z\_\-]+[\<\>\=]+[\'\#0-9a-zA-Z\_\-]+/)
-			puts "-----------orig_multicondition.scan = '#{orig_multicondition}' "
+				if !orig_multicondition.empty?
+					orig_multicondition.each do |omc|
+						#this is the multiselect string that we need to reposition on conditional formula
+						#@logic_p1 = omc.scan(/[\#\;0-9a-zA-Z\_\-]+\;/)
+						#this is the last part of the multiselect formula we need to copy
+						@logic_p2 = omc.scan(/[\<\>\=]+[\'\#0-9a-zA-Z\_\-]+/)
+						
+						#this breaks logic p1 into pieces
+						@logic_p1 = omc.scan(/\#\w+\;/)
 
-			if !orig_multicondition.empty?
-				orig_multicondition.each do |omc|
-					#this is the multiselect string that we need to reposition on conditional formula
-					#@logic_p1 = omc.scan(/[\#\;0-9a-zA-Z\_\-]+\;/)
-					#this is the last part of the multiselect formula we need to copy
-					@logic_p2 = omc.scan(/[\<\>\=]+[\'\#0-9a-zA-Z\_\-]+/)
-					
-					#this breaks logic p1 into pieces
-					@logic_p1 = omc.scan(/\#\w+\;/)
+						@nlogic = ''
+						@logic_p1.each_with_index do |el, i|
+							el = el.gsub(';','')
+							@nlogic = (@nlogic == '' || @nlogic == nil ) ? "('#{el}'#{@logic_p2[0]})" : @nlogic + " || ('#{el}'#{@logic_p2[0]})"
+						end
 
-					@nlogic = ''
-					@logic_p1.each_with_index do |el, i|
-						el = el.gsub(';','')
-						@nlogic = (@nlogic == '' || @nlogic == nil ) ? "('#{el}'#{@logic_p2[0]})" : @nlogic + " || ('#{el}'#{@logic_p2[0]})"
+						#substitute the omc for the new conditional formula
+						@evalstring = @evalstring.gsub(omc,@nlogic)
 					end
-
-					#substitute the omc for the new conditional formula
-					@evalstring = @evalstring.gsub(omc,@nlogic)
 				end
 			end
-
 			
 			#date evaluations for conditional formula
 			orig_datecondition = @evalstring.scan(/[0][\<\>\=]+\d{2}\/\d{2}\/\d{4}|\d{2}\/\d{2}\/\d{4}[\<\>\=]+\d{2}\/\d{2}\/\d{4}/)
@@ -183,7 +187,7 @@ responds_to_event :submit, :with => :update_multiple
 				end
 			end
 
-
+			puts "@evalstring = '#{@evalstring}'" 
 			#all evaluations for conditional formula
 			@evaluation = eval(@evalstring)
 			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! regex for evalstring = '#{@evalstring}' , @evaluation = '#{@evaluation}' "
