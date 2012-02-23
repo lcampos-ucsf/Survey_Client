@@ -54,7 +54,7 @@ class SurveysController < ApplicationController
     @GridAnsSeqIds = ''
 
     #get grid answer sequence ids
-    @h_gridHeader.values.each{|ha| @GridAnsSeqIds = (@GridAnsSeqIds == '') ? "\'#{ha}\'" : ", \'#{ha}\'" }
+    @h_gridHeader.values.each{|ha| @GridAnsSeqIds = (@GridAnsSeqIds == '' || @GridAnsSeqIds == nil) ? "\'#{ha}\'" : @GridAnsSeqIds + ", \'#{ha}\'" }
     @GridAnsSeqIds = "("+@GridAnsSeqIds+")"
 
     @answerlabels = session[:client].query("select Id, Name, Answer_Sequence__c, Answer_Text__c, Resource__c, Resource_Name__c, Sort_Order__c from Answer_Label__c where Answer_Sequence__c in #{@GridAnsSeqIds} order by Sort_Order__c asc")
