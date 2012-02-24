@@ -128,7 +128,6 @@ module SurveysHelper
 		@invite_id = Sanitize.clean(params[:id])
 		@survey_id = current_survey[0].Survey__c
 
-		#@current_page = params[:page].match(/\A([1-9])\Z/) == nil ? '1' : params[:page]
 		#security enhancement
 		@current_page = (params[:page]!= nil) ? ( params[:page].match(/^[0-9]*$/) == nil ? '1' : Sanitize.clean(params[:page]).to_i ) : '1'
 		@autosave = params[:as] ? params[:as] : false
@@ -146,7 +145,6 @@ module SurveysHelper
 		end
 		@li_eid_list = "("+@li_eid_list+")"
 
-		#puts "------------ li_eid_list = '#{@li_eid_list}' "
 		if @li_eid_list != '()'
 			#query values for response and validations
 			@li_details = session[:client].query("select Id, Name, Decimals__c, External_ID__c, Length__c, Max_Value__c, Min_Value__c, Required__c, Sort_Order__c, Question_Description__c from Line_Item__c where Id in #{@li_eid_list} order by Sort_Order__c asc  ")
@@ -165,9 +163,7 @@ module SurveysHelper
 
 					if @array[2] == 'multi'
 						@v = ''
-						#puts "(((((((((((((( multi string = '#{value}', array = '#{value}', key = '#{key}' "
 						value.delete_at(0)
-						#puts " multi array = '#{value}' " 
 						if value != ''|| value != nil
 							value.each do |id|
 								puts "multi validations, params[id] = '#{params[id]}', @v = '#{@v}' "
@@ -211,7 +207,6 @@ module SurveysHelper
 		end
 
 		#post to apex class
-		#puts "---------- @responsearrray.to_json = '#{@responsearray.to_json}' "
 		results = session[:client].http_post('/services/apexrest/v1/Response/',@responsearray.to_json)
 		puts "---------- results = '#{results}' "
 		#post to apex class
