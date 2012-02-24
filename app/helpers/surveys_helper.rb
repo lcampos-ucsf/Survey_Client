@@ -34,6 +34,21 @@ module SurveysHelper
 							'Integer_Response__c' => (@resp_type == 'integer' || @resp_type == 'calculation' ) ? value.to_i : nil }
 		end
 
+		def resp_json
+
+			return { :Survey__c => sid, 
+					:Invitation__c => inviteid,
+					:Line_Item__c => qid,
+					:OwnerId => @uid,
+					:Original_Question_Text__c => question,
+					:Text_Long_Response__c => (value != nil || value != '') ? value : nil,
+					:Label_Long_Response__c => (@resp_type == 'text') ? nil : label, 
+					:Date_Response__c => (@resp_type == 'date') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
+					:DateTime_Response__c => (@resp_type == 'datetime') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
+					:Integer_Response__c => (@resp_type == 'integer' || @resp_type == 'calculation' ) ? value.to_i : nil }
+
+		end
+
 		def sid
 			Sanitize.clean(@resp_sid)
 		end
@@ -179,18 +194,29 @@ module SurveysHelper
 
 		@error = Array.new
 		@wt = Array.new
+		@responsearray = Array.new
+
 		@hash_response.each_pair do |key, val|
 			val.each do |o|
 				@vr = validate_response(o)
 				if @vr != nil
 					@error << @vr
 				else
-					#puts "******************* obj = '#{o}' "
-					@sr = save_response(o)
-					@wt << @sr
+					puts "******************* obj = '#{o}' "
+					puts "******************* obj. JSON response = '#{o.resp_json}' "
+					puts "******************* obj. JSON response to json = '#{o.resp_json.to_json}' "
+					@responsearray << o.resp_json
+					#@sr = save_response(o)
+					#@wt << @sr
 				end
 			end
 		end
+
+		#post to apex class
+		puts "---------- @responsearrray.to_json = '#{@responsearray.to_json}' "
+		results = session[:client].http_post('/services/apexrest/v1/Response/',@responsearray.to_json)
+		puts "---------- results = '#{results}' "
+		#post to apex class
 
 		puts "------------------ validation errors = '#{@error}' "
 		#this updates invitation
