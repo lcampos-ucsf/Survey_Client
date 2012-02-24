@@ -36,7 +36,8 @@ module SurveysHelper
 
 		def resp_json
 
-			return { :Survey__c => sid, 
+			return { :Id => rid,
+					:Survey__c => sid, 
 					:Invitation__c => inviteid,
 					:Line_Item__c => qid,
 					:OwnerId => @uid,
@@ -202,9 +203,6 @@ module SurveysHelper
 				if @vr != nil
 					@error << @vr
 				else
-					puts "******************* obj = '#{o}' "
-					puts "******************* obj. JSON response = '#{o.resp_json}' "
-					puts "******************* obj. JSON response to json = '#{o.resp_json.to_json}' "
 					@responsearray << o.resp_json
 					#@sr = save_response(o)
 					#@wt << @sr
@@ -213,7 +211,7 @@ module SurveysHelper
 		end
 
 		#post to apex class
-		puts "---------- @responsearrray.to_json = '#{@responsearray.to_json}' "
+		#puts "---------- @responsearrray.to_json = '#{@responsearray.to_json}' "
 		results = session[:client].http_post('/services/apexrest/v1/Response/',@responsearray.to_json)
 		puts "---------- results = '#{results}' "
 		#post to apex class
