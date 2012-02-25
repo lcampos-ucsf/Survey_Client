@@ -20,7 +20,7 @@ module SurveysHelper
 			@decimals = decimals
 			@isrequired = isrequired
 		end
-
+=begin
 		def resp_a
 			@respArray = {'Survey__c' => sid, 
 							'Invitation__c' => inviteid, 
@@ -33,7 +33,7 @@ module SurveysHelper
 							'DateTime_Response__c' => (@resp_type == 'datetime') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
 							'Integer_Response__c' => (@resp_type == 'integer' || @resp_type == 'calculation' ) ? value.to_i : nil }
 		end
-
+=end
 		def resp_json
 
 			return { :Id => rid,
@@ -206,23 +206,43 @@ module SurveysHelper
 			end
 		end
 
-		#post to apex class
-		results = session[:client].http_post('/services/apexrest/v1/Response/',@responsearray.to_json)
-		puts "---------- results = '#{results}' "
-		#post to apex class
+		@save_error = false
+		@e_msg = nil
+		begin
+			results = session[:client].http_post('/services/apexrest/v1/Response/',@responsearray.to_json)
+			puts "---------- results = '#{results}' "
+		rescue Exception => e
+			#this catches any salesforce error
+  			logger.error e.message
+  			@e_msg = e.message
+		ensure
+			#turn error flags and save error message
+			if(@e_msg != nil)
+				puts "^^^^^^^^&&&&&&&&&&%%%%%%%%%%%%%%% ERROR in SFDC, '#{e.message}' "
+				@save_error = true
+				flash[:notice] = "#{e.message}"
+				@sfdc_error = { :msg => e.message, :id => 'wuu' }
+			end
 
-		puts "------------------ validation errors = '#{@error}' "
-		#this updates invitation
-		puts "------------------ update_multiple, update invitation status ------------------"
-		session[:client].upsert('Invitation__c','Id', @invite_id, { 'Progress_Save__c' => @current_page, 'Status__c' => 'In Progress' })
+			#add error logic sent by apex save
 
-		respond_to do |format|
-			if @error.empty? || @autosave
-				format.json { render :json => @wt.to_json }		
-			else
-				format.json { render :json => @error.to_json, :status => :unprocessable_entity }
+			#this updates invitation
+			puts "------------------ update_multiple, update invitation status ------------------"
+			session[:client].upsert('Invitation__c','Id', @invite_id, { 'Progress_Save__c' => @current_page, 'Status__c' => 'In Progress' })
+
+
+
+			respond_to do |format|
+				if @save_error #this catches any salesforce error
+					format.json { render :json => @sfdc_error.to_json, :status => :unprocessable_entity }
+				elsif @error.empty? || @autosave
+					format.json { render :json => @wt.to_json }		
+				else
+					format.json { render :json => @error.to_json, :status => :unprocessable_entity }
+				end
 			end
 		end
+		
 
 
 	end
@@ -253,6 +273,7 @@ module SurveysHelper
 		end
 	end
 
+=begin
 	def save_response(respObj)
 		puts "---------------- save_response -------------------"
 		
@@ -280,6 +301,7 @@ module SurveysHelper
 
 		return
 	end
+=end
 
 	def validate_response(rObj)
 		puts "validate response = '#{rObj.type}', value = '#{rObj.value}' "
