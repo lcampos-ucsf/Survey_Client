@@ -1,11 +1,11 @@
 set :application, "RailsForce_AppTemplate"
 set :repository,  "git@github.com:lcampos/RailsForce_AppTemplate.git"
 set :deploy_to, "/rails_apps/RailsForce_AppTemplate"
-set :user, "webapp"
-set :scm_passphrase, ""
+set :user, "luis"
+set :scm_passphrase, "9x2cKL&re4"
 set :branch, "master"
 set :git_enable_submodules, 1
-ssh_options[:forward_agent] = true
+set :ssh_options,{:forward_agent => true}
 
 set :deploy_via, :remote_cache
 set :use_sudo, false
@@ -14,8 +14,8 @@ set :use_sudo, false
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-role :web, "64.54.246.168:443"                          # Your HTTP server, Apache/etc
-role :app, "64.54.246.168:443"                          # This may be the same as your `Web` server
+role :web, "64.54.142.34"                          # Your HTTP server, Apache/etc
+role :app, "64.54.142.34"                          # This may be the same as your `Web` server
 #role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
