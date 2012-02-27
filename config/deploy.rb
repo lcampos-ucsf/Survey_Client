@@ -1,6 +1,6 @@
 set :application, "RailsForce_AppTemplate"
 set :repository,  "git@github.com:lcampos/RailsForce_AppTemplate.git"
-set :deploy_to, "/rails_apps/RailsForce_AppTemplate"
+set :deploy_to, "/home/luis/rails_apps/RailsForce_AppTemplate"
 set :user, "luis"
 set :scm_passphrase, "9x2cKL&re4"
 set :branch, "master"
@@ -19,14 +19,20 @@ role :app, "64.54.142.34"                          # This may be the same as you
 #role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
-
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
 	task :start do ; end
 	task :stop do ; end
 	task :restart, :roles => :app, :except => { :no_release => true } do
 	 run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-end
+	end
+	desc "Installs required gems"  
+	task :gems, :roles => :app do  
+	 run "cd #{current_path} && sudo rake gems:install RAILS_ENV=production"  
+	end  
+	after "deploy:setup", "deploy:gems"     
+
+	#this puts a maintenance page on the app while deployment takes place
+	#before "deploy", "deploy:web:disable"  
+	#after "deploy", "deploy:web:enable"  
 end
