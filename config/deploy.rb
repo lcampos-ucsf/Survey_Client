@@ -1,6 +1,6 @@
 set :application, "RailsForce_AppTemplate"
 set :repository,  "git@github.com:lcampos/RailsForce_AppTemplate.git"
-set :deploy_to, "/home/luis/rails_apps/RailsForce_AppTemplate"
+set :deploy_to, "/var/www/webapps/RailsForce_AppTemplate"
 set :user, "luis"
 set :scm_passphrase, "9x2cKL&re4"
 set :branch, "master"
