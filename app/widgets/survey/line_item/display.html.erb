@@ -118,7 +118,7 @@
 			<table class="grid_table" >
 			<thead>
 				<tr>
-				<td>
+				<td class="grid_tb_q_td" >
 					<label class="q_text" >
 						<% if @line_item.Help_Text__c != nil %>
 								<a data-placement="right" class="label notice helptext" data-content="<%= @line_item.Help_Text__c %>" rel="popover" href="#" data-original-title="" >?</a>
@@ -127,8 +127,8 @@
 					</label>
 				</td>
 				<% @answerlabels.each do |al| %>
-					<td > 
-						<label class="q_text_grid" > <%= al.Answer_Text__c %> </label> 
+					<td class="grid_tb_ans_td grid_cnt" > 
+						<h4> <%= al.Answer_Text__c %> </h4> 
 						<input type="hidden" name="<%= al.Resource_Name__c%>" value="<%= al.Answer_Text__c %>"/>
 					</td>
 				<% end %>

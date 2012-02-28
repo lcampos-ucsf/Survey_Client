@@ -8,12 +8,14 @@ responds_to_event :submit, :with => :update_multiple
 
 	has_widgets do
 		@survey = options[:survey]
+		@inviteid = params[:id]
+		@surveyid = @survey[0].Survey__c
 		puts "^^^^^^^^^^^^^^^^^^^^ survey_widget.rb Kaminari execution ^^^^^^^^^^^^^^^^^^^^"
 		
 		#security enhancement
 		@pageno = (params[:page]!= nil) ? ( params[:page].match(/^[0-9]*$/) == nil ? 1 : Sanitize.clean(params[:page]).to_i ) : 1
 
-		puts "-------------------- after sanitize, pageno = '#{@pageno}' "
+		puts "-------------------- survey_widget.rb after sanitize, pageno = '#{@pageno}' "
 		@lines_query = session[:client].query("select Id, Name, Description__c, Display_Logic__c, Sort_Order__c, Survey__c from Line__c where Survey__c = '#{@survey[0].Survey__c}' order by Sort_Order__c asc")
 		
 		@liq_array = []
@@ -24,24 +26,67 @@ responds_to_event :submit, :with => :update_multiple
 
 		@showsections = []
 		@it_stop = 0
+		#loop while showsections array is empty and it_stop is less than 100, this prevents infinite loop
 		while @showsections.empty? && @it_stop < 100
+			puts "-------------------- survey_widget.rb showsections while start"
+
 			@lines = Kaminari.paginate_array(@liq_array).page(@pageno).per(1) # Paginates the array
+
+			#calculations needed for progress bar
 			@currentpg = @lines.current_page.to_f - 1
 			@totalpg = @lines.num_pages.to_f
 			@it_stop = @it_stop + 1
 			@progressbar = (@currentpg  / @totalpg) * 100
+
+			@ls = @lines.current_page.to_f
+
+			puts "-------------------- survey_widget.rb current page = '#{@currentpg.to_i}' "
+
+			#evaluate display logic on lines
 			@lines.each do |l|
+				puts "-------------------- survey_widget.rb lines for"
 				if l.Display_Logic__c != nil
+					puts "-------------------- survey_widget.rb display logic present"
 					eval_dl = displaylogic(l, params[:id])
-					
-					if eval_dl #display logic is true
+					puts "-------------------- survey_widget.rb eval_dl = '#{eval_dl}' "
+					if eval_dl #display logic is true, add data to showsections array
 						@showsections << l
+					else
+
+						puts "@ls = #{@ls}"
+						#if display logic is not met, we need to check for responses in this section that need to be erased
+						@response = session[:client].query("select Id, Name, Date_Response__c, DateTime_Response__c, Integer_Response__c, Line_Item__c, Text_Long_Response__c, Text_Response__c, Line_Sort_Order__c, Survey__c, Invitation__c from Response__c where Survey__c = '#{@surveyid}' and Invitation__c = '#{@inviteid}' and Line_Sort_Order__c = #{@ls} ")
+						
+						@responseDel_array = Array.new
+						if !@response.empty?
+							
+							@response.each do |r|
+
+								@responseDel_array << { :Id => r.Id,
+												:Survey__c => r.Survey__c, 
+												:Invitation__c => r.Invitation__c,
+												:Line_Item__c => r.Line_Item__c,
+												:Text_Long_Response__c => '',
+												:Label_Long_Response__c => '', 
+												:Date_Response__c => nil,
+												:DateTime_Response__c => nil,
+												:Integer_Response__c => nil }
+							end
+
+							puts "--------------- responseDel_array = #{@responseDel_array} "
+							results = session[:client].http_post('/services/apexrest/v1/Response/',@responseDel_array.to_json)
+							puts "---------- results = '#{results}' "
+
+						end
+
 					end
 				else
+					puts "-------------------- survey_widget.rb NO display logic present"
 					@showsections << l
 				end
 			end
 
+			#check the sections array needed to render the survey section
 			if @showsections.empty?
 				if params[:dir] == '0'
 					@pageno -= 1
@@ -62,7 +107,7 @@ responds_to_event :submit, :with => :update_multiple
 			@showsections.each_with_index do |t, i|
 				child_id = "line_'#{i}'"
 		       	next if self[child_id]  # we already added it.
-		        self << widget("survey/line", child_id, :line_data => t, :surveyid => @survey[0].Survey__c, :inviteid => params[:id])
+		        self << widget("survey/line", child_id, :line_data => t, :surveyid => @survey[0].Survey__c, :inviteid => @inviteid)
 			end 
 		end
 	end

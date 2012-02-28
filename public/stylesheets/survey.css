@@ -31,7 +31,7 @@
 	text-align:center;
 	line-height: 150%;
 	color: #333333;
-    font-size: 14px;
+    font-size: 100%;
     font-weight: bold;
     display: block;
 }
@@ -72,8 +72,9 @@ ul.a_list{
 	margin-left:0px;
 }
 
-#survey_review h4 {
+#survey_review h4, .grid_table h4 {
 	font-size:110%;
+	line-height: 18px;
 }
 
 .rev_q_wrap {
@@ -462,6 +463,7 @@ a .remove{
 
 .grid_cnt{
 	text-align:center;
+	font-size: 90% !important;
 }
 
 .grid_table{
@@ -493,4 +495,13 @@ p.error{
     overflow: hidden;
     width: 1px;
 }
+
+.grid_tb_q_td{
+	width:35%;
+}
+
+.grid_tb_ans_td {
+	width:10%;
+}
+
 

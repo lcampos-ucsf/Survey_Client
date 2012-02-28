@@ -12,9 +12,15 @@
 		<div class="rev_q_wrap" >
 			
 			<% if r.Response_Type__c == 'Grid' || r.Response_Type__c == 'GridSubQuestion' %>
+				<!-- Code might be pending here -->
 			<% else %>
-				<h4><%= h r.Original_Question_Text__c %></h4>
+				<% if (r.Response_Type__c == 'Text' ||  r.Response_Type__c == 'Date' || r.Response_Type__c == 'Datetime' || r.Response_Type__c == 'Integer' || r.Response_Type__c == 'Calculation') && !r.Text_Long_Response__c.blank? %>
+					<h4><%= h r.Original_Question_Text__c %></h4>
+				<% elsif !r.Label_Long_Response__c.blank? %>
+					<h4><%= h r.Original_Question_Text__c %></h4>
+				<% end %>
 			<% end %>
+
 			<% if r.Response_Type__c == 'Text' ||  r.Response_Type__c == 'Date' || r.Response_Type__c == 'Datetime' || r.Response_Type__c == 'Integer' || r.Response_Type__c == 'Calculation'%>
 				<% if !r.Text_Long_Response__c.blank? %>
 				<span class="a_text"><%= h r.Text_Long_Response__c %> </span>
@@ -32,10 +38,10 @@
 
 					<table class="grid_table" >
 					<tr>
-						<td> <h4><%= r.Line_Item__r.Parent_Line_Item__r.Question_Description__c%></h4> </td>
+						<td class="grid_tb_q_td"> <h4><%= r.Line_Item__r.Parent_Line_Item__r.Question_Description__c%></h4> </td>
 
 						<% @h_answers[@h_gridHeader[r.Line_Item__r.Parent_Line_Item__c] ].each do |aa| %>
-							<td class="grid_cnt"> <h4><%= aa.Answer_Text__c %></h4> </td>
+							<td class="grid_tb_ans_td grid_cnt"> <h4><%= aa.Answer_Text__c %></h4> </td>
 						<% end %>
 					</tr>
 
@@ -55,6 +61,7 @@
 					<% end %>
 					
 					</table>
+
 
 			<% else %>
 				<% if !r.Label_Long_Response__c.blank? %>
