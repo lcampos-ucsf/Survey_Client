@@ -350,7 +350,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				
 			},
 			error: function(data, textStatus){
-				alert('error on formsubmit');
+				//alert('error on formsubmit');
 				autosaveOn = false;
 				hidemodaltransition();
 				var arr = eval(data.responseText);
@@ -362,9 +362,9 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 						var s = arr[x];
 						if(s != null){
 						 	
-						 	alert('s.id = '+s.id);
-						 	alert('s.msg = '+s.msg);
-						 	alert('s = '+s);
+						 	//alert('s.id = '+s.id);
+						 	//alert('s.msg = '+s.msg);
+						 	//alert('s = '+s);
 						 	var el = s.id.split('_');
 						 	var p_error;
 						 	if(el[2] == 'radio')
