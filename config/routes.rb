@@ -5,6 +5,7 @@ SampleApp::Application.routes.draw do
   get "invite/all"
   get "invite/all_inprogress"
   get "invite/all_complete"
+  get "invite/stats"
 
   match "invite/create", :to => "invite#create"
   match "invite/:id/edit", :to => "invite#edit"

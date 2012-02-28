@@ -101,7 +101,9 @@ class InviteController < ApplicationController
   end
 
   def stats
-    
+    @invites = session[:client].query("select Status__c, Survey__c, Is_Preview__c from Invitation__c Group by Survey__c, Status__c,Is_Preview__c  ")
+    @surveys = session[:client].query("select Id, Name from Survey__c")
+    puts "-------------stats = #{@invites}"
   end
 
   protected
