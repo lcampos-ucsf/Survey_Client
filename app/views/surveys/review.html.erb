@@ -78,7 +78,7 @@
 
 	<div class="submit_block" >
 		<a href="submitsurvey" class="btn primary medium" > Submit ›</a>
-        <a href="/surveys/<%= params[:id] %>/show?page=<%= @responses[0].Invitation__r.Progress_Save__c.to_i %>" class="btn secondary " >Back</a>
+        <a href="/surveys/<%= params[:id] %>/show?page=<%= @responses[0].Invitation__r.Progress_Save__c.to_i unless @responses[0].nil?%>" class="btn secondary " >Back</a>
 	</div>
 
 </div>

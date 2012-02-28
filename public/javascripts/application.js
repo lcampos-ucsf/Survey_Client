@@ -328,6 +328,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			url: "/surveys/update_multiple",
 			type: "POST",
 			data: dt,
+			dataType: "json",
 			async: true,
 			headers: {'X-CSRF-Token': AUTH_TOKEN },
 			dataType: "script",
@@ -355,38 +356,38 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				hidemodaltransition();
 				var arr = eval(data.responseText);
 				
-				//alert('arr = '+arr);
-
 				if ( !j$.isEmptyObject(arr[0]) ){
 					for (var x = 0; x< arr.length; x++){  
 						var s = arr[x];
 						if(s != null){
-						 	
-						 	//alert('s.id = '+s.id);
-						 	//alert('s.msg = '+s.msg);
-						 	//alert('s = '+s);
-						 	var el = s.id.split('_');
-						 	var p_error;
-						 	if(el[2] == 'radio')
-						 		p_error = j$('#' + s.id).parent().parent().prev('p');
-						 	else if(el[2] == 'multi'){
-						 		p_error = j$('#' + s.id).parent().prev('p');
-						 		j$('#' + s.id).css('display','block');
-						 	}else if(el[2] == 'calculation'){
-						 		p_error = j$('#' + s.id).prev().prev('p');
-						 		j$('#' + s.id).prev().addClass('errorhighlight');
-						 	}else if(el[2] == 'text'){
-						 		var type = j$('#' + s.id).attr('text-type');
-						 		p_error = (type == 'autocomplete') ? j$('#' + s.id).prev().prev('p') : j$('#' + s.id).prev('p')
-						 	
-						 	}else if(el[2] == 'grid'){
-						 		p_error = j$('#' + s.id).parent().siblings(':first').children('p');
+						 	if(s.sf_error){
+						 		var f_error = j$('.alert-message.notice.error');
+						 		j$('.span16').find(f_error).remove();
+						 		j$('.span16').prepend("<div class='alert-message notice error'>"+s.msg+"</div>");
 						 	}else{
-								p_error = j$('#' + s.id).prev('p');
+							 	var el = s.id.split('_');
+							 	var p_error;
+							 	if(el[2] == 'radio')
+							 		p_error = j$('#' + s.id).parent().parent().prev('p');
+							 	else if(el[2] == 'multi'){
+							 		p_error = j$('#' + s.id).parent().prev('p');
+							 		j$('#' + s.id).css('display','block');
+							 	}else if(el[2] == 'calculation'){
+							 		p_error = j$('#' + s.id).prev().prev('p');
+							 		j$('#' + s.id).prev().addClass('errorhighlight');
+							 	}else if(el[2] == 'text'){
+							 		var type = j$('#' + s.id).attr('text-type');
+							 		p_error = (type == 'autocomplete') ? j$('#' + s.id).prev().prev('p') : j$('#' + s.id).prev('p')
+							 	
+							 	}else if(el[2] == 'grid'){
+							 		p_error = j$('#' + s.id).parent().siblings(':first').children('p');
+							 	}else{
+									p_error = j$('#' + s.id).prev('p');
+								}
+								p_error.text(s.msg);
+								p_error.css('display','block');
+								j$('#' + s.id).addClass('errorhighlight');
 							}
-							p_error.text(s.msg);
-							p_error.css('display','block');
-							j$('#' + s.id).addClass('errorhighlight');
 						}
 					}
 				}

@@ -62,7 +62,7 @@ class SurveysController < ApplicationController
     end
 
     @h_answers = {}
-    if !@answerlabels.empty?
+    if !@answerlabels.blank?
       @answerlabels.each { |a| @h_answers[a.Answer_Sequence__c] ? @h_answers[a.Answer_Sequence__c] << a : @h_answers[a.Answer_Sequence__c] = [a] }
     end
 

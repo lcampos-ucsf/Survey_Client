@@ -206,8 +206,10 @@ module SurveysHelper
 			end
 		end
 
+		puts "----------- responsearray = #{@responsearray.to_json}"
 		@save_error = false
 		@e_msg = nil
+		@sfdc_error = Array.new
 		begin
 			results = session[:client].http_post('/services/apexrest/v1/Response/',@responsearray.to_json)
 			puts "---------- results = '#{results}' "
@@ -218,10 +220,9 @@ module SurveysHelper
 		ensure
 			#turn error flags and save error message
 			if(@e_msg != nil)
-				puts "^^^^^^^^&&&&&&&&&&%%%%%%%%%%%%%%% ERROR in SFDC, '#{e.message}' "
+				puts "^^^^^^^^&&&&&&&&&&%%%%%%%%%%%%%%% ERROR in SFDC, '#{e}' "
 				@save_error = true
-				flash[:notice] = "#{e.message}"
-				@sfdc_error = { :msg => e.message, :id => 'wuu' }
+				@sfdc_error << { :msg => e.message, :id => 'wuu', :sf_error => true}
 			end
 
 			#add error logic sent by apex save
@@ -233,7 +234,7 @@ module SurveysHelper
 
 
 			respond_to do |format|
-				if @save_error #this catches any salesforce error
+				if @save_error && !@sfdc_error.empty? #this catches any salesforce error
 					format.json { render :json => @sfdc_error.to_json, :status => :unprocessable_entity }
 				elsif @error.empty? || @autosave
 					format.json { render :json => @wt.to_json }		
