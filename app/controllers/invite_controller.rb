@@ -6,7 +6,7 @@ class InviteController < ApplicationController
 
   rescue_from Exceptions::InsufficientPriviledges, :with => :custom_error
 
-  
+  include InviteHelper
 
 	has_widgets do |root|
 		root << widget(:invites)
@@ -101,7 +101,9 @@ class InviteController < ApplicationController
   end
 
   def stats
-    
+    @invites = session[:client].query("select Status__c, Survey__c, Is_Preview__c from Invitation__c Group by Survey__c, Status__c,Is_Preview__c  ")
+    @surveys = session[:client].query("select Id, Name from Survey__c")
+    puts "-------------stats = #{@invites}"
   end
 
   protected
@@ -132,9 +134,6 @@ class InviteController < ApplicationController
       'Invite_Sent__c' => false, 
       'Completed__c' => false,
       'Text_Survey_Subject__c' => rdata[:Text_Survey_Subject__c] != '' ? Sanitize.clean(rdata[:Text_Survey_Subject__c]) : ''  })
-
-    
-    
   end
 
 end

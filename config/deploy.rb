@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+
 set :application, "RailsForce_AppTemplate"
 set :repository,  "git@github.com:lcampos/RailsForce_AppTemplate.git"
 set :deploy_to, "/var/www/webapps/RailsForce_AppTemplate"

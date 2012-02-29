@@ -3,7 +3,7 @@
 <ul>
 <% @surveys.each do |i| %>
 
-	<li><a onclick="getstats(<%= i.Id %>)"><%= i.Name %></a>
+	<li><a onclick="getstats(this,'<%= i.Id %>')"><%= i.Name %></a>
 
 <% end %>
 </ul>
