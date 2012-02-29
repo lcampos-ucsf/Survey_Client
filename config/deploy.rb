@@ -9,8 +9,8 @@ set :branch, "master"
 set :git_enable_submodules, 1
 set :ssh_options,{:forward_agent => true}
 
-set :deploy_via, :remote_cache
-set :use_sudo, false
+#set :deploy_via, :remote_cache
+set :use_sudo, true
 
 
 set :scm, :git
