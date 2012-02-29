@@ -10,6 +10,7 @@ SampleApp::Application.routes.draw do
   match "invite/create", :to => "invite#create"
   match "invite/:id/edit", :to => "invite#edit"
   match "invite/update", :to => "invite#update"
+  match "invite/stats_data", :to => "invite#stats_data"
 
   #resources :surveys
 

@@ -605,8 +605,22 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	}
 
 	//get stats per survey
-	function getstats(){
+	function getstats(t, val){
+		alert('got value = '+val);
+		j$(t).append('<div>teeeeeeeeest</div>')
 
+		j$.ajax({
+				url: "/invite/stats_data",
+				type: "GET",
+				data: 'id='+val,
+				async: true,
+				headers: {'X-CSRF-Token': AUTH_TOKEN },
+				success: function(data){
+				},
+				error: function(data, textStatus){
+				}
+
+			});
 	}
 
 

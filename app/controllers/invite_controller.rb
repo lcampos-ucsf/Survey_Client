@@ -6,7 +6,7 @@ class InviteController < ApplicationController
 
   rescue_from Exceptions::InsufficientPriviledges, :with => :custom_error
 
-  
+  include InviteHelper
 
 	has_widgets do |root|
 		root << widget(:invites)
@@ -134,9 +134,6 @@ class InviteController < ApplicationController
       'Invite_Sent__c' => false, 
       'Completed__c' => false,
       'Text_Survey_Subject__c' => rdata[:Text_Survey_Subject__c] != '' ? Sanitize.clean(rdata[:Text_Survey_Subject__c]) : ''  })
-
-    
-    
   end
 
 end
