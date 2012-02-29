@@ -1,4 +1,14 @@
-require "bundler/capistrano"
+# Add RVM's lib directory to the load path.
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+
+#run the bundle install 
+require 'bundler/capistrano'
+
+# Load RVM's capistrano plugin. 
+require 'rvm/capistrano'
+
+#fixes no tty present and no askpass program specified error
+default_run_options[:pty] = true
 
 set :application, "RailsForce_AppTemplate"
 set :repository,  "git@github.com:lcampos/RailsForce_AppTemplate.git"
@@ -7,10 +17,19 @@ set :user, "luis"
 set :scm_passphrase, "9x2cKL&re4"
 set :branch, "master"
 set :git_enable_submodules, 1
+
+#uses github local keys instead of keys on the server
 set :ssh_options,{:forward_agent => true}
 
-#set :deploy_via, :remote_cache
+# Or whatever env you want it to run in.
+#set :rvm_ruby_string, 'ree@rails3'
+
+#user looks for rvm in $HOME/.rvm where as system uses the /usr/local as set for system wide installs
+#set :rvm_type, :system 
+
+set :deploy_via, :copy
 set :use_sudo, true
+
 
 
 set :scm, :git
@@ -38,3 +57,21 @@ namespace :deploy do
 	#before "deploy", "deploy:web:disable"  
 	#after "deploy", "deploy:web:enable"  
 end
+
+#set :default_environment, {
+#  'PATH' => "/path/to/.rvm/gems/ree/1.8.7/bin:/path/to/.rvm/bin:/path/to/.rvm/ree-1.8.7-2009.10/bin:$PATH",
+#  'RUBY_VERSION' => 'ruby 1.8.7',
+#  'GEM_HOME'     => '/path/to/.rvm/gems/ree-1.8.7-2010.01',
+#  'GEM_PATH'     => '/path/to/.rvm/gems/ree-1.8.7-2010.01',
+#  'BUNDLE_PATH'  => '/path/to/.rvm/gems/ree-1.8.7-2010.01'  # If you are using bundler.
+#}
+
+#namespace :rvm do
+#  task :trust_rvmrc do
+#    run \"rvm rvmrc trust \#\{release_path\}\"
+#  end
+#end
+
+#after "deploy", "rvm:trust_rvmrc"
+
+
