@@ -1,0 +1,9 @@
+<h1>Stats</h1>
+
+<ul>
+<% @surveys.each do |i| %>
+
+	<li><a onclick="getstats(<%= i.Id %>)"><%= i.Name %></a>
+
+<% end %>
+</ul>
