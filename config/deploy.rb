@@ -22,7 +22,8 @@ set :git_enable_submodules, 1
 set :ssh_options,{:forward_agent => true}
 
 # Or whatever gemset you want it to run in.
-set :rvm_ruby_string, 'ruby1.9.3-p125@npirails'
+set :rvm_ruby_string, 'ruby-1.9.3-p125@npirails'
+set :rvm_gemsetname, 'npirails'
 
 #user looks for rvm in $HOME/.rvm where as system uses the /usr/local as set for system wide installs
 #set :rvm_type, :system 
@@ -56,7 +57,15 @@ namespace :deploy do
 
 	desc "Create the gemset"
 	task :create_gemset do
-	 run "rvm #{rvm_ruby_string} --create"
+	 #run "rvm use #{rvm_ruby_string} --create "
+	 run "rvm gemset create #{rvm_gemsetname}"
+	 #run "rvm gemset use #{rvm_ruby_string}"
+	end
+
+	desc "Use the gemset"
+	task :use_gemset do
+	 run "rvm #{rvm_ruby_string}"
+	 #run "rvm gemset use #{rvm_ruby_string}"
 	end
 
 	desc "Install the bundle"
@@ -73,6 +82,7 @@ end
 #when deploying, the first thing capistrano will do is create the gemset 
 #then bundle will install all required gems into the application's gemset
 before "deploy", "deploy:create_gemset"
+before "deploy", "deploy:use_gemset"
 after "deploy:finalize_update", "deploy:bundle"
 
 #set :default_environment, {
