@@ -41,8 +41,6 @@ SampleApp::Application.configure do
   ENV['DEFAULT_PROVIDER'] = "customurl"
   ENV['sfdc_api_version'] = '23.0'
   ENV['app_timeout'] = '3600' #(15 mins) time in seconds
-
-  ENV['MY_RUBY_HOME'] = ''
   
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests

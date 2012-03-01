@@ -22,7 +22,7 @@ set :git_enable_submodules, 1
 set :ssh_options,{:forward_agent => true}
 
 # Or whatever gemset you want it to run in.
-set :rvm_ruby_string, 'ruby1.9.3@rails313'
+set :rvm_ruby_string, 'ruby1.9.3-p125@npirails'
 
 #user looks for rvm in $HOME/.rvm where as system uses the /usr/local as set for system wide installs
 #set :rvm_type, :system 
@@ -47,7 +47,7 @@ namespace :deploy do
 	task :restart, :roles => :app, :except => { :no_release => true } do
 	 run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
 	end
-	
+
 	desc "Installs required gems"  
 	task :gems, :roles => :app do  
 	 run "cd #{current_path} && sudo rake gems:install RAILS_ENV=production"  
