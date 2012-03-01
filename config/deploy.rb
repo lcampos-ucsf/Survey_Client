@@ -21,8 +21,8 @@ set :git_enable_submodules, 1
 #uses github local keys instead of keys on the server
 set :ssh_options,{:forward_agent => true}
 
-# Or whatever env you want it to run in.
-#set :rvm_ruby_string, 'ree@rails3'
+# Or whatever gemset you want it to run in.
+set :rvm_ruby_string, 'ruby1.9.3@rails313'
 
 #user looks for rvm in $HOME/.rvm where as system uses the /usr/local as set for system wide installs
 #set :rvm_type, :system 
@@ -47,16 +47,33 @@ namespace :deploy do
 	task :restart, :roles => :app, :except => { :no_release => true } do
 	 run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
 	end
+	
 	desc "Installs required gems"  
 	task :gems, :roles => :app do  
 	 run "cd #{current_path} && sudo rake gems:install RAILS_ENV=production"  
 	end  
 	after "deploy:setup", "deploy:gems"     
 
+	desc "Create the gemset"
+	task :create_gemset do
+	 run "rvm #{rvm_ruby_string} --create"
+	end
+
+	desc "Install the bundle"
+	task :bundle do
+	 run "bundle install --gemfile #{release_path}/Gemfile --without development test"
+	end
+
 	#this puts a maintenance page on the app while deployment takes place
 	#before "deploy", "deploy:web:disable"  
 	#after "deploy", "deploy:web:enable"  
+
 end
+
+#when deploying, the first thing capistrano will do is create the gemset 
+#then bundle will install all required gems into the application's gemset
+before "deploy", "deploy:create_gemset"
+after "deploy:finalize_update", "deploy:bundle"
 
 #set :default_environment, {
 #  'PATH' => "/path/to/.rvm/gems/ree/1.8.7/bin:/path/to/.rvm/bin:/path/to/.rvm/ree-1.8.7-2009.10/bin:$PATH",

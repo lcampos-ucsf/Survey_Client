@@ -43,10 +43,10 @@ module SurveysHelper
 					:OwnerId => @uid,
 					:Original_Question_Text__c => question,
 					:Text_Long_Response__c => (value != nil || value != '') ? value : nil,
-					:Label_Long_Response__c => (@resp_type == 'text') ? nil : label, 
-					:Date_Response__c => (@resp_type == 'date') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
-					:DateTime_Response__c => (@resp_type == 'datetime') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
-					:Integer_Response__c => (@resp_type == 'integer' || @resp_type == 'calculation' ) ? value.to_i : nil }
+					:Label_Long_Response__c => (@resp_type == 'text') ? nil : label} 
+					#:Date_Response__c => (@resp_type == 'date') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
+					#:DateTime_Response__c => (@resp_type == 'datetime') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
+					#:Integer_Response__c => (@resp_type == 'integer' || @resp_type == 'calculation' ) ? value.to_i : nil }
 
 		end
 

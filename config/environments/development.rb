@@ -62,6 +62,8 @@ SampleApp::Application.configure do
   ENV['sfdc_api_version'] = '23.0'
   ENV['app_timeout'] = '900' #(15 mins)time in seconds
 
+  ENV['MY_RUBY_HOME'] = ''
+
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
