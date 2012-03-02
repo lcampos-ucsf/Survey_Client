@@ -85,6 +85,17 @@ before "deploy", "deploy:create_gemset"
 before "deploy", "deploy:use_gemset"
 after "deploy:finalize_update", "deploy:bundle"
 
+#this method should resolve the trust issues
+namespace :rvm do
+  desc 'Trust rvmrc file'
+  task :trust_rvmrc do
+    run "rvm rvmrc trust #{current_release}"
+  end
+end
+
+after "deploy:update_code", "rvm:trust_rvmrc"
+
+
 #set :default_environment, {
 #  'PATH' => "/path/to/.rvm/gems/ree/1.8.7/bin:/path/to/.rvm/bin:/path/to/.rvm/ree-1.8.7-2009.10/bin:$PATH",
 #  'RUBY_VERSION' => 'ruby 1.8.7',
