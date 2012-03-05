@@ -1,8 +1,8 @@
 SampleApp::Application.configure do
   
   # Settings specified here will take precedence over those in config/application.rb
-
-  #NPI-DEV
+=begin
+  #NPI-DEV Heroku
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
   ENV['SALESFORCE_SANDBOX_KEY'] = "3MVG9GiqKapCZBwGKWN18VcBTA1KmaZj2YV7uCR9OHjJefgNd6buWczB6y1MxYKYAr_isA1D8hizunIxddixO"
@@ -19,7 +19,7 @@ SampleApp::Application.configure do
   ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-dev.heroku.com/index"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://npi-dev.heroku.com'
  
-=begin
+
   #NPI-QA
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -37,6 +37,24 @@ SampleApp::Application.configure do
   ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-qa.heroku.com/index"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://npi-qa.heroku.com'
 =end
+
+  #NPI-DEV ISU Servers
+  ENV['SALESFORCE_KEY'] = ""
+  ENV['SALESFORCE_SECRET'] = ""
+  ENV['SALESFORCE_SANDBOX_KEY'] = "3MVG9GiqKapCZBwGKWN18VcBTA1KmaZj2YV7uCR9OHjJefgNd6buWczB6y1MxYKYAr_isA1D8hizunIxddixO"
+  ENV['SALESFORCE_SANDBOX_SECRET'] = "6626264033670450966"
+  ENV['SALESFORCE_PRERELEASE_KEY'] = ""
+  ENV['SALESFORCE_PRERELEASE_SECRET'] = ""
+  ENV['DATABASE_DOT_COM_KEY'] = ""
+  ENV['DATABASE_DOT_COM_SECRET'] = ""
+  ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwGKWN18VcBTA3T0nHbEaemNTDZ4PJiDw3nzc2cl5nO4YWgaN8vDhN7vg4D5Gmc6jreZlTUB"
+  ENV['SALESFORCE_CUSTOM_SECRET'] = "670383953998234966"
+
+  ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npidev.cs11.my.salesforce.com"
+  ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
+  ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-dev.heroku.com/index"  
+  ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://npi-dev.heroku.com'
+
   
   ENV['DEFAULT_PROVIDER'] = "customurl"
   ENV['sfdc_api_version'] = '23.0'
