@@ -41,7 +41,7 @@ module SampleApp
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     #only https-ssl
-    #config.force_ssl = true
+    config.force_ssl = true
 
     #paranoid countermeasures against mass assignment
     config.active_record.whitelist_attributes = true
