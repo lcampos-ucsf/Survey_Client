@@ -93,7 +93,8 @@ namespace :rvm do
   end
 end
 
-after "deploy:update_code", "rvm:trust_rvmrc"
+#after "deploy:update_code", "rvm:trust_rvmrc"
+after "deploy", "rvm:trust_rvmrc"
 
 
 #set :default_environment, {
