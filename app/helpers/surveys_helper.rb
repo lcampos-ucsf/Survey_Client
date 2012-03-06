@@ -85,6 +85,7 @@ module SurveysHelper
 
 		def rid
 			Sanitize.clean(@resp_id)
+=begin			
 			q = session[:client].query("select Id, Name, Invitation__c, Line_Item__c from Response__c where Invitation__c = '#{inviteid}' and Line_Item__c = '#{qid}' ")
 			if q.empty?
 				#o = session[:client].create('Response__c',respObj.resp_a)
@@ -94,7 +95,7 @@ module SurveysHelper
 				#session[:client].upsert('Response__c', 'Id', q[0].Id, respObj.resp_a)
 				return q[0].Id
 			end
-
+=end
 		end
 
 		def label
