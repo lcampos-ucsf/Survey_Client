@@ -199,13 +199,13 @@ responds_to_event :submit, :with => :update_multiple
 			end
 			
 			#date evaluations for conditional formula
-			orig_datecondition = @evalstring.scan(/[0][\<\>\=]+\d{2}\/\d{2}\/\d{4}|\d{2}\/\d{2}\/\d{4}[\<\>\=]+\d{2}\/\d{2}\/\d{4}/)
+			orig_datecondition = @evalstring.scan(/[0][\<\>\=\!]+\d{2}\/\d{2}\/\d{4}|\d{2}\/\d{2}\/\d{4}[\<\>\=\!]+\d{2}\/\d{2}\/\d{4}/)
 			puts "-----------orig_datecondition.scan = '#{orig_datecondition}' "
 
 			if !orig_datecondition.empty?
 				orig_datecondition.each do |g|
-					ee = g.split(/[\<\>\=]+/)
-					sign = g.scan(/[\<\>\=]+/)
+					ee = g.split(/[\<\>\=\!]+/)
+					sign = g.scan(/[\<\>\=\!]+/)
 					
 					if ee[0] == '0' || ee[1] == '0'
 						@evalstring = @evalstring.gsub(g,'false')
@@ -226,6 +226,9 @@ responds_to_event :submit, :with => :update_multiple
 							@evalstring = @evalstring.gsub(g,evalv)
 						elsif sign[0] == '<='
 							evalv = (fval <= lval) ? 'true' : 'false'
+							@evalstring = @evalstring.gsub(g,evalv)
+						elsif sign[0] == '!='
+							evalv = (fval != lval) ? 'true' : 'false'
 							@evalstring = @evalstring.gsub(g,evalv)
 						end
 					end

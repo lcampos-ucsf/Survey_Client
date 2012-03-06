@@ -3,7 +3,7 @@ module SurveysHelper
 	class Response
 		attr_reader :sid, :qid, :value, :type, :update_val
 
-		def initialize(sid, inviteId, qid, qtxt, value, type, rid, label, htmlid, uid, vlength, decimals, maxval, minval, isrequired)
+		def initialize(sid, inviteId, qid, qtxt, value, type, rid, label, htmlid, uid, vlength, decimals, maxval, minval, isrequired, sclient)
 			@resp_sid = sid
 			@resp_qid = qid
 			@resp_value = value
@@ -19,6 +19,7 @@ module SurveysHelper
 			@minval = minval
 			@decimals = decimals
 			@isrequired = isrequired
+			@sclient = sclient
 		end
 =begin
 		def resp_a
@@ -85,8 +86,8 @@ module SurveysHelper
 
 		def rid
 			Sanitize.clean(@resp_id)
-=begin			
-			q = session[:client].query("select Id, Name, Invitation__c, Line_Item__c from Response__c where Invitation__c = '#{inviteid}' and Line_Item__c = '#{qid}' ")
+
+			q = @sclient.query("select Id, Name, Invitation__c, Line_Item__c from Response__c where Invitation__c = '#{inviteid}' and Line_Item__c = '#{qid}' ")
 			if q.empty?
 				#o = session[:client].create('Response__c',respObj.resp_a)
 				#return { :key => respObj.key, :id => o.Id }
@@ -95,7 +96,7 @@ module SurveysHelper
 				#session[:client].upsert('Response__c', 'Id', q[0].Id, respObj.resp_a)
 				return q[0].Id
 			end
-=end
+
 		end
 
 		def label
@@ -185,13 +186,13 @@ module SurveysHelper
 						end
 
 						#(sid, inviteId, qid, qtxt, value, type, rid, label, htmlid, uid, vlength, decimals, maxval, minval, isrequired)
-						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], @v, key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c )
+						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], @v, key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c, session[:client] )
 						#@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], @v, key, session[:user_id])
 					elsif @array[2] == 'grid'
-						@robj = Response.new(@survey_id, @invite_id, @array[1], @h_li[@qid][0].Question_Description__c, value, @array[2], @array[3], params[value], key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c )
+						@robj = Response.new(@survey_id, @invite_id, @array[1], @h_li[@qid][0].Question_Description__c, value, @array[2], @array[3], params[value], key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c, session[:client] )
 					
 					else
-						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], params[value], key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c )
+						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], params[value], key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c, session[:client] )
 						#@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], params[value], key, session[:user_id])
 					end
 
