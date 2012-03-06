@@ -39,7 +39,7 @@ class Survey::LineWidget < Apotomo::Widget
 		end
 		@li_list = "("+@li_list+")"
 		@li_as_list = "("+@li_as_list+")"
-		@response = session[:client].query("select Id, Name, Date_Response__c, DateTime_Response__c, Integer_Response__c, Invitation__c, Label_Response__c, Line_Item__c, Line_Item__r.Parent_Line_Item__c, Line_Item_Resource__c, Line_Item_Resource_Name__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Response_Type__c, Survey__c, Survey_Subject__c, Text_Long_Response__c, Text_Response__c, Current_Question_Text__c from Response__c where Survey__c = '#{@surveyid}' and Invitation__c = '#{@inviteid}' and Line_Item__c in #{@li_list} order by Line_Item_Sort_Order__c asc ")
+		@response = session[:client].query("select Id, Name, Date_Response__c, DateTime_Response__c, Integer_Response__c, Invitation__c, Label_Response__c, Line_Item__c, Line_Item__r.Parent_Line_Item__c, Line_Item_Resource_Name__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Response_Type__c, Survey__c, Survey_Subject__c, Text_Long_Response__c, Text_Response__c, Current_Question_Text__c from Response__c where Survey__c = '#{@surveyid}' and Invitation__c = '#{@inviteid}' and Line_Item__c in #{@li_list} order by Line_Item_Sort_Order__c asc ")
 		@answerlabels = session[:client].query("select Id, Name, Answer_Sequence__c, Answer_Text__c, Resource__c, Resource_Name__c, Sort_Order__c from Answer_Label__c where Answer_Sequence__c in #{@li_as_list} order by Sort_Order__c asc")
 
 		@h_response = {}

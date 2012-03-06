@@ -127,11 +127,11 @@ responds_to_event :submit, :with => :update_multiple
 			end
 
 			@qstring = "("+@qstring+")"
-			@rdata = session[:client].query("select Id, Name, Invitation__c, Label_Response__c, Line_Item__c, Line_Item_Resource__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Response_Type__c, Survey__c, Text_Long_Response__c, Text_Response__c, Integer_Response__c, Date_Response__c from Response__c where Line_Item_Resource__c in #{@qstring} and Invitation__c = '#{inviteid}' ")
+			@rdata = session[:client].query("select Id, Name, Invitation__c, Label_Response__c, Line_Item__c, Line_Item_Resource_Name__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Response_Type__c, Survey__c, Text_Long_Response__c, Text_Response__c, Integer_Response__c, Date_Response__c from Response__c where Line_Item_Resource_Name__c in #{@qstring} and Invitation__c = '#{inviteid}' ")
 
 			@h_rq = {}
 			if !@rdata.empty?
-	            @rdata.each { |r| @h_rq[r.Line_Item_Resource__c] ? @h_rq[r.Line_Item_Resource__c] << r : @h_rq[r.Line_Item_Resource__c] = [r] }
+	            @rdata.each { |r| @h_rq[r.Line_Item_Resource_Name__c] ? @h_rq[r.Line_Item_Resource_Name__c] << r : @h_rq[r.Line_Item_Resource_Name__c] = [r] }
 	        end
 
 	        #adding response values to conditional formula
