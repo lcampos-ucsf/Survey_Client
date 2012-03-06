@@ -43,6 +43,8 @@ module SampleApp
     #only https-ssl
     config.force_ssl = true
 
+    #config.action_controller.relative_url_root = 'client'
+
     #paranoid countermeasures against mass assignment
     config.active_record.whitelist_attributes = true
   end

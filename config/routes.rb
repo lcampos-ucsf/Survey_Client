@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do 
 
+scope 'client' do
+
   get "invite/index"
   get "invite/new"
   get "invite/all"
@@ -46,6 +48,8 @@ SampleApp::Application.routes.draw do
   match '/auth/failure', :to => 'sessions#fail'
   
   root :to => 'pages#home'
-  
-  
+end
+
+  match '/auth/:provider/callback', :to => 'sessions#create'
+
 end
