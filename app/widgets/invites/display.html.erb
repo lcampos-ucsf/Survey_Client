@@ -44,9 +44,9 @@
 
 
 	<%
-		@pg = ( params[:page] == nil || params[:page] == '' ) ? 1 : params[:page]
+		@pg = (params[:page] == nil || params[:page] == '') ? 1 : params[:page]
 		if @pg == 1
-			@sf = @pg
+			@sf = (@invites_query.count > 0) ? @pg : 0
 		else
 			@sf = ( @invites.count.to_i < 2 ) ? @invites_query.count : (((@pg.to_i - 1) * @paginate) + 1)
 		end

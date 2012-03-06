@@ -114,6 +114,11 @@ responds_to_event :submit, :with => :update_multiple
 
 	def displaylogic(conditional, inviteid)
 		#display logic should go here
+		puts "///////////////// display logic /////////////////////"
+		puts "///////////////// display logic /////////////////////"
+		puts "///////////////// display logic /////////////////////"
+		puts "///////////////// display logic /////////////////////"
+		puts "///////////////// display logic /////////////////////"
 		if conditional.Display_Logic__c != nil
 			@string = conditional.Display_Logic__c 
 			@expressions = @string.split(/\s/)
@@ -143,10 +148,10 @@ responds_to_event :submit, :with => :update_multiple
 
 	        		if @h_rq.has_key?("#{question}")
 		        		if @h_rq["#{question}"][0].Response_Type__c == 'Integer' || @h_rq["#{question}"][0].Response_Type__c == 'Calculation'
-		        			#puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Integer Response = '#{@h_rq["#{question}"][0].Integer_Response__c }' "
+		        			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Integer Response = '#{@h_rq["#{question}"][0].Integer_Response__c }' "
 		        			qv =  (@h_rq["#{question}"][0].Integer_Response__c == '' || @h_rq["#{question}"][0].Integer_Response__c == nil ) ? '0' : @h_rq["#{question}"][0].Integer_Response__c.to_s 
 		        		elsif @h_rq["#{question}"][0].Response_Type__c == 'Date' 
-		        			#puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Date Response = '#{@h_rq["#{question}"][0].Date_Response__c }' "
+		        			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Date Response = '#{@h_rq["#{question}"][0].Date_Response__c }' "
 		        			qv =  (@h_rq["#{question}"][0].Text_Long_Response__c == '' || @h_rq["#{question}"][0].Text_Long_Response__c == nil ) ? '0' : @h_rq["#{question}"][0].Text_Long_Response__c
 		        		else
 		        			puts "----------------- response = '#{@h_rq["#{question}"][0].Text_Long_Response__c}' " 
@@ -232,6 +237,15 @@ responds_to_event :submit, :with => :update_multiple
 							@evalstring = @evalstring.gsub(g,evalv)
 						end
 					end
+				end
+			end
+
+			#remove #int for calculation to take place
+			@calc = @evalstring.scan(/\'\#int[0-9]+\'/)
+			if !@calc.empty?
+				@calc.each do |k|
+					@num = k.scan(/[0-9]+/)
+					@evalstring = @evalstring.gsub(k,@num[0])
 				end
 			end
 

@@ -274,10 +274,12 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			j$('#'+inputs_ids[this]).change(function(){
 				var dict = {};
 				var logic2 = logic;
+
 				//get values for logic	
 				for(var i = 0; i < l_arr.length; i++){
 					var val = j$('#'+inputs_ids[l_arr[i]]).val();
-					dict[l_arr[i]] = val ? val : 0 ;
+					dict[l_arr[i]] = val ? val : ( l_arr[i].match(/\#int/gi) ? l_arr[i].replace(/\#int/gi,'') : 0 );
+					//dict[l_arr[i]] = val ? val : 0;
 				}
 				//replace values on logic string
 				for(var j=0; j<l_arr.length; j++){
