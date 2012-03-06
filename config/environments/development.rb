@@ -1,7 +1,7 @@
 SampleApp::Application.configure do
 
   # Settings specified here will take precedence over those in config/application.rb
-
+=begin
   #NPI-DEV Heroku
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -19,7 +19,7 @@ SampleApp::Application.configure do
   ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-dev.heroku.com/index"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://npi-dev.heroku.com'
 
-=begin
+
   #NPI-DEV Linux Internal Server
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -37,7 +37,7 @@ SampleApp::Application.configure do
   ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-dev.heroku.com/index"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://npi-dev.heroku.com'
 =end 
-=begin
+
   #NPI-QA
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -54,8 +54,6 @@ SampleApp::Application.configure do
   ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
   ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-qa.heroku.com/index" 
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://npi-qa.heroku.com'
-=end  
-
 
   
   ENV['DEFAULT_PROVIDER'] = "customurl" #'salesforcesandbox'
