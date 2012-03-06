@@ -1,9 +1,8 @@
 <h1>Stats</h1>
-
-<ul>
+<div style="display:table;">
+<ul class="nav nav-tabs nav-stacked" >
 <% @surveys.each do |i| %>
-
-	<li><a onclick="getstats(this,'<%= i.Id %>')"><%= i.Name %></a>
-
+	<li><a onclick="getstats(this,'<%= i.Id %>')"><%= i.Name %></a></li>
 <% end %>
 </ul>
+</div>

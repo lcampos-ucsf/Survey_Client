@@ -608,7 +608,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 	//get stats per survey
 	function getstats(t, val){
-		alert('got value = '+val);
+		//alert('got value = '+val);
 		//j$(t).append('<div>teeeeeeeeest</div>')
 
 		j$.ajax({
@@ -624,7 +624,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 					//alert('data[0].complete = '+data[0].complete_i);
 					
 					if ( !j$.isEmptyObject(data[0]) ){
-						var cnt = '<ul><li>Completed = '+data[0].complete_i+'</li><li>New = '+data[0].new_i+'</li><li>In Progress = '+data[0].inprogress+'</li><li>Cancelled = '+data[0].cancelled_i+'</li></ul>';
+						var cnt = '<ul class="survey-data-stats"><li>New = '+data[0].new_i+'</li><li>Completed = '+data[0].complete_i+'</li><li>In Progress = '+data[0].inprogress+'</li><li>Cancelled = '+data[0].cancelled_i+'</li></ul>';
 						j$(t).append(cnt);
 					}
 
