@@ -14,14 +14,17 @@
     <%= javascript_include_tag 'jquery.idletimeout.js' %>
     <%= javascript_include_tag 'bootstrap-twipsy.js' %>
     <%= javascript_include_tag 'bootstrap-popover.js' %>
+    <%= javascript_include_tag 'bootstrap-dropdown.js' %>
+    <%= javascript_include_tag 'bootstrap-alerts.js' %>
+    <%= javascript_include_tag 'bootstrap-modal.js' %>
 
-    <script type="text/javascript">
+    <!-- script type="text/javascript">
       // load the my-script-file.js and display an alert dialog once the script has been loaded
       loadScript('/javascripts/bootstrap-dropdown.js');
       loadScript('/javascripts/bootstrap-alerts.js');
       loadScript('/javascripts/bootstrap-modal.js');
       
-    </script>
+    </script -->
     <!-- Security Update-->
     <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
