@@ -36,7 +36,6 @@ SampleApp::Application.configure do
   ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
   ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-qa.heroku.com/index"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://npi-qa.heroku.com'
-=end
 
   #NPI-DEV ISU Servers Dev
   ENV['SALESFORCE_KEY'] = ""
@@ -55,6 +54,25 @@ SampleApp::Application.configure do
   ENV['SURVEY_BUILDER_URL'] = "https://devsurveytool.ucsfmedicalcenter.org/builder"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://devsurveytool.ucsfmedicalcenter.org/client'
   
+=end
+
+  #NPI ISU Servers Production, NPI ISU Server Client
+  ENV['SALESFORCE_KEY'] = ""
+  ENV['SALESFORCE_SECRET'] = ""
+  ENV['SALESFORCE_SANDBOX_KEY'] = ""
+  ENV['SALESFORCE_SANDBOX_SECRET'] = ""
+  ENV['SALESFORCE_PRERELEASE_KEY'] = ""
+  ENV['SALESFORCE_PRERELEASE_SECRET'] = ""
+  ENV['DATABASE_DOT_COM_KEY'] = ""
+  ENV['DATABASE_DOT_COM_SECRET'] = ""
+  ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9yZ.WNe6byQAal8reDHCTHT8Dz1NzoPBwuvxMDbQOTMik6ByTZpzO7QfqllPxlikBYRUuT1gfXOCXCv0D"
+  ENV['SALESFORCE_CUSTOM_SECRET'] = "5366273287216507894"
+
+  ENV['DEFAULT_CUSTOM_URL'] = "https://medctr-ucsf.my.salesforce.com"
+  ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
+  ENV['SURVEY_BUILDER_URL'] = "https://surveytool.ucsfmedicalcenter.org/builder"  
+  ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://surveytool.ucsfmedicalcenter.org/client'
+
   ENV['DEFAULT_PROVIDER'] = "customurl"
   ENV['sfdc_api_version'] = '23.0'
   ENV['app_timeout'] = '3600' #(15 mins) time in seconds
