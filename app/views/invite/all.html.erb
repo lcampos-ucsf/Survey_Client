@@ -26,13 +26,13 @@
 	<tbody>
 	<% for invite in @invites_new do %>
 			<tr>
-				<td> <a href="/invite/<%= invite.Id%>/edit" >Edit</a> </td>
+				<td> <a href="/client/invite/<%= invite.Id%>/edit" >Edit</a> </td>
 				<td>
 					<% if invite.Status__c != 'Completed'
 						if invite.Progress_Save__c != nil %>
-							<a href="/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn success small btnfixedsize" > Resume </a>
+							<a href="/client/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn success small btnfixedsize" > Resume </a>
 						<% else %>
-							<a href="/surveys/<%= invite.Id%>/show?page=1" class="btn success small btnfixedsize" > Start </a>
+							<a href="/client/surveys/<%= invite.Id%>/show?page=1" class="btn success small btnfixedsize" > Start </a>
 						<% end
 					end %>
 				</td>
