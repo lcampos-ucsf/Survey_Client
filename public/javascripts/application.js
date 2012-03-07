@@ -327,7 +327,8 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		var dt = j$("form").serialize();
 		//dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 		j$.ajax({
-			url: "/surveys/update_multiple",
+			//url: "/surveys/update_multiple",
+			url: "/client/surveys/update_multiple",
 			type: "POST",
 			data: dt,
 			dataType: "json",
@@ -408,7 +409,8 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			dt += (dt ? "&" : "") + "as=true";
 
 			j$.ajax({
-				url: "/surveys/update_multiple",
+				//url: "/surveys/update_multiple",
+				url: "/client/surveys/update_multiple",
 				type: "POST",
 				data: dt,
 				async: true,
@@ -612,7 +614,8 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		//j$(t).append('<div>teeeeeeeeest</div>')
 
 		j$.ajax({
-				url: "/invite/stats_data",
+				//url: "/invite/stats_data",
+				url: "/client/invite/stats_data",
 				type: "GET",
 				data: 'id='+val,
 				async: true,

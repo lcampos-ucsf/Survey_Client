@@ -263,7 +263,8 @@ module SurveysHelper
 	def submitsurvey
 		puts "^^^^^^^^^^^^^^^^^^^^ survey_helper.rb submitsurvey ^^^^^^^^^^^^^^^^^^^^"
 		session[:client].upsert('Invitation__c','Id', Sanitize.clean(params[:id]), { 'Status__c' => 'Completed'})
-		redirect_to "/invite/index", :notice => "Your survey was submitted successfully."
+		#redirect_to "/invite/index", :notice => "Your survey was submitted successfully."
+		redirect_to invite_index_path, :notice => "Your survey was submitted successfully."
 	end
 
 	def surveyerrors
