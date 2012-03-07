@@ -110,7 +110,8 @@ class InviteController < ApplicationController
 
   def custom_error(exception)
     puts "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invite_controller.rb, custom_error exception = '#{exception}' "
-    redirect_to "/invite/index", :alert => exception.message    
+    #redirect_to "/invite/index", :alert => exception.message   
+    redirect_to invite_index_path, :alert => exception.message
   end
 
   def setinviteformvalues

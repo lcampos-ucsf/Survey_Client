@@ -75,12 +75,14 @@ class SurveysController < ApplicationController
 
   def survey_error(exception)
       puts "waaaaaaaaahhhhhhhhhhhjjjjjjjjjjjjjjjjsadDDsasa^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ exception = '#{exception}' "
-      redirect_to "/invite/index", :alert => exception.message
+      #redirect_to "/invite/index", :alert => exception.message
+      redirect_to invite_index_path, :alert => exception.message
   end
 
   def survey_error_review(exception)
     puts "Build error on survey, sent user to review page"
-    redirect_to "/surveys/#{params[:id]}/review"
+    #redirect_to "/surveys/#{params[:id]}/review"
+    redirect_to "/client/surveys/#{params[:id]}/review"
   end
 
 end
