@@ -1,22 +1,5 @@
 SampleApp::Application.routes.draw do 
 
-
-#  get "invite/index"
-#  get "invite/new"
-#  get "invite/all"
-#  get "invite/all_inprogress"
-#  get "invite/all_complete"
-#  get "invite/stats"
-
-#  match "invite/create", :to => "invite#create"
-#  match "invite/:id/edit", :to => "invite#edit"
-#  match "invite/update", :to => "invite#update"
-#  match "invite/stats_data", :to => "invite#stats_data"
-#  match "invite/survey_search", :to => "invite#survey_search"
-
-
-  #get "sessions/new"
-
   #namespace :client do
   resources :surveys do
     get :show
