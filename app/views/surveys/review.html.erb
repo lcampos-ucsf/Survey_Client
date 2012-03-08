@@ -11,24 +11,23 @@
 	<% @responses.each do |r| %>
 		<div class="rev_q_wrap" >
 			
-			<% if r.Response_Type__c == 'Grid' || r.Response_Type__c == 'GridSubQuestion' %>
-				<!-- Code might be pending here -->
-			<% else %>
+			<% if not (r.Response_Type__c == 'Grid' || r.Response_Type__c == 'GridSubQuestion') %>
+
 				<% if (r.Response_Type__c == 'Text' ||  r.Response_Type__c == 'Date' || r.Response_Type__c == 'Datetime' || r.Response_Type__c == 'Integer' || r.Response_Type__c == 'Calculation') && !r.Text_Long_Response__c.blank? %>
 					<h4><%= h r.Original_Question_Text__c %></h4>
-				<% elsif !r.Label_Long_Response__c.blank? %>
+				<% elsif not r.Label_Long_Response__c.blank? %>
 					<h4><%= h r.Original_Question_Text__c %></h4>
 				<% end %>
 			<% end %>
 
 			<% if r.Response_Type__c == 'Text' ||  r.Response_Type__c == 'Date' || r.Response_Type__c == 'Datetime' || r.Response_Type__c == 'Integer' || r.Response_Type__c == 'Calculation'%>
-				<% if !r.Text_Long_Response__c.blank? %>
+				<% if not r.Text_Long_Response__c.blank? %>
 				<span class="a_text"><%= h r.Text_Long_Response__c %> </span>
 				<% end %>
 
 			<% elsif r.Response_Type__c == 'SelectMultipleQuestions' %>
 					<ul>
-					<% if !r.Label_Long_Response__c.blank?
+					<% if not r.Label_Long_Response__c.blank?
 						r.Label_Long_Response__c.split(';').each do |rr| %>
 						<li> <input type="checkbox" checked disabled /> <%= h rr %> </li>
 					<% end 
@@ -64,7 +63,7 @@
 
 
 			<% else %>
-				<% if !r.Label_Long_Response__c.blank? %>
+				<% if not r.Label_Long_Response__c.blank? %>
 					<span> <input type="radio" checked disabled /> 
 						<%= h r.Label_Long_Response__c %> 
 					</span>
@@ -77,8 +76,14 @@
 	<% end %>
 
 	<div class="submit_block" >
+		
+		<% if @responses[0].nil? %>
+			<%= link_to( 'Back', survey_show_path(params[:id]||params[:survey_id]), :class => 'btn secondary' ) %>
+		<% else %>
+			<%= link_to( 'Back', survey_show_path(params[:id]||params[:survey_id])+'?page='+@responses[0].Invitation__r.Progress_Save__c.to_i.to_s, :class => 'btn secondary' ) %>
+		<% end %>
+
 		<a href="submitsurvey" class="btn primary medium" > Submit ›</a>
-        <a href="/client/surveys/<%= params[:id] %>/show?page=<%= @responses[0].Invitation__r.Progress_Save__c.to_i unless @responses[0].nil?%>" class="btn secondary " >Back</a>
 	</div>
 
 </div>

@@ -1,38 +1,40 @@
 SampleApp::Application.routes.draw do 
 
-  get "invite/index"
-  get "invite/new"
-  get "invite/all"
-  get "invite/all_inprogress"
-  get "invite/all_complete"
-  get "invite/stats"
 
-  match "invite/create", :to => "invite#create"
-  match "invite/:id/edit", :to => "invite#edit"
-  match "invite/update", :to => "invite#update"
-  match "invite/stats_data", :to => "invite#stats_data"
-  match "invite/survey_search", :to => "invite#survey_search"
+#  get "invite/index"
+#  get "invite/new"
+#  get "invite/all"
+#  get "invite/all_inprogress"
+#  get "invite/all_complete"
+#  get "invite/stats"
 
-  #resources :surveys
-
-  #get "surveys/index"
-
-  get "surveys/new"
-
-  get "surveys/create"
-
-  get "sessions/new"
-
-  #match "surveys/index", :to => "surveys#index"
+#  match "invite/create", :to => "invite#create"
+#  match "invite/:id/edit", :to => "invite#edit"
+#  match "invite/update", :to => "invite#update"
+#  match "invite/stats_data", :to => "invite#stats_data"
+#  match "invite/survey_search", :to => "invite#survey_search"
 
 
-  match "surveys/:id/show", :to => "surveys#show"
-  match "surveys/:id/print", :to => "surveys#print"
-  match "surveys/:id/review", :to => "surveys#review"
-  match "surveys/update_multiple", :to => "surveys#update_multiple"
-  match "surveys/autocompletequery", :to => "surveys#autocompletequery"
-  match "surveys/:id/submitsurvey", :to => "surveys#submitsurvey"
+  #get "sessions/new"
 
+  #namespace :client do
+  resources :surveys do
+    get :show
+    get :review
+    put :update_multiple, :on => :collection
+    get :print
+  end
+  #end
+
+  resources :invite, :except => [:show, :update, :destroy] do
+    put :update, :on => :collection
+    get :all, :on => :collection
+    get :all_complete, :on => :collection
+    get :all_inprogress, :on => :collection
+    get :stats, :on => :collection
+    get :survey_search, :on => :collection
+    get :stats_data, :on => :collection
+  end
 
   resources :sessions, :only => [:new,:create,:destroy]
 

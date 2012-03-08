@@ -7,9 +7,6 @@
 	<h2><%= lines.Name %></h2>
 	<div class="line-wrap" >
 		
-		<!-- %= lines.Description__c %>
-		< %= lines.Sort_Order__c % -->
-
 		<% if @h_li.has_key?(lines.Id)
 			@h_li[lines.Id].each do |o|
 		%>

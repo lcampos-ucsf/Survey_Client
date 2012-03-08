@@ -3,12 +3,11 @@
 <h1>In Progress Surveys</h1>
 
 <ul class="nav nav-pills">
-	<li><%= link_to "New", invite_all_path %></li>
-	<li class="active" ><%= link_to "In Progress", invite_all_inprogress_path %></li>
-	<li><%= link_to "Complete", invite_all_complete_path %></li>
+	<li><%= link_to "New", all_invite_index_path %></li>
+	<li class="active" ><%= link_to "In Progress", all_inprogress_invite_index_path %></li>
+	<li><%= link_to "Complete", all_complete_invite_index_path %></li>
 </ul>
 
-<!-- h2 class="h2_subtitle" >New</h2 -->
 <br/>
 <br/>
 <table class="tablesorter inviteall_tb" >
@@ -26,15 +25,13 @@
 	<tbody>
 	<% for invite in @invites_inprogress do %>
 			<tr>
-				<td> <a href="/client/invite/<%= invite.Id%>/edit" >Edit</a> </td>
+				<td> <%= link_to 'Edit', edit_invite_path(invite.Id) %> </td>
 				<td>
-					<% if invite.Status__c != 'Completed'
-						if invite.Progress_Save__c != nil %>
-							<a href="/client/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn orange small btnfixedsize" > Resume </a>
-						<% else %>
-							<a href="/client/surveys/<%= invite.Id%>/show?page=1" class="btn orange small btnfixedsize" > Resume </a>
-						<% end
-					end %>
+					<% if invite.Progress_Save__c != nil %>
+						<%= link_to('Resume', survey_show_path(invite.Id)+'?page='+invite.Progress_Save__c.to_i.to_s, :class => 'btn orange small btnfixedsize') %>
+					<% else %>
+						<%= link_to('Resume', survey_show_path(invite.Id)+'?page=1', :class => 'btn orange small btnfixedsize') %>
+					<% end%>
 				</td>
 				<td> <%= invite.Survey_Name__c %> </td>
 				<td> <%= invite.User__r.Name unless invite.User__c.nil? %> </td>

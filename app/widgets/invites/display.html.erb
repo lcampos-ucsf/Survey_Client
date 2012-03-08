@@ -16,16 +16,14 @@
 <tbody>
 	<% for invite in @invites do %>
 			<tr>
-				<td> <!-- a href="/invite/<%= invite.Id%>/edit" >Edit</a --> 
-					<a href="/builder/invite/<%= invite.Id%>/edit" >Edit</a>
+				<td>
+					<%= link_to 'Edit', edit_invite_path(invite.Id) %>
 				</td>
 				<td>
 					<% if invite.Progress_Save__c != nil %>
-						<a href="/client/surveys/<%= invite.Id%>/show?page=<%= invite.Progress_Save__c.to_i %>" class="btn orange small btnfixedsize" > Resume </a>
-						<!--a href="/surveys/< %= invite.Id% >/show?page=< %= invite.Progress_Save__c.to_i % >" class="btn orange small btnfixedsize" > Resume </a-->
+						<%= link_to( 'Resume', survey_show_path(invite.Id)+'?page='+invite.Progress_Save__c.to_i.to_s, :class => 'btn orange small btnfixedsize' ) %>
 					<% else %>
-						<!--a href="/surveys/< %= invite.Id% >/show?page=1" class="btn success small btnfixedsize" > Start </a-->
-						<a href="/client/surveys/<%= invite.Id%>/show?page=1" class="btn success small btnfixedsize" > Start </a>
+						<%= link_to( 'Start', survey_show_path(invite.Id)+'?page=1', :class => 'btn success small btnfixedsize' ) %>
 					<% end %>
 				</td>
 				<td> <%= invite.Survey_Name__c %> </td>

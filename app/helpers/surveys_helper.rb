@@ -137,7 +137,7 @@ module SurveysHelper
 		puts "^^^^^^^^^^^^^^^^^^^^ survey_helper.rb update_multiple ^^^^^^^^^^^^^^^^^^^^"
 		#puts "^^^^^^^^^^^^^^^^^^^^ params = '#{params.inspect}' "
 		@hash_response = {}
-		@invite_id = Sanitize.clean(params[:id])
+		@invite_id = Sanitize.clean(params[:id] || params[:survey_id])
 		@survey_id = current_survey[0].Survey__c
 
 		#security enhancement
@@ -262,7 +262,7 @@ module SurveysHelper
 
 	def submitsurvey
 		puts "^^^^^^^^^^^^^^^^^^^^ survey_helper.rb submitsurvey ^^^^^^^^^^^^^^^^^^^^"
-		session[:client].upsert('Invitation__c','Id', Sanitize.clean(params[:id]), { 'Status__c' => 'Completed'})
+		session[:client].upsert('Invitation__c','Id', Sanitize.clean(params[:id] || params[:survey_id]), { 'Status__c' => 'Completed'})
 		#redirect_to "/invite/index", :notice => "Your survey was submitted successfully."
 		redirect_to invite_index_path, :notice => "Your survey was submitted successfully."
 	end
@@ -273,11 +273,12 @@ module SurveysHelper
 	end
 
 	def current_survey
-	    puts "^^^^^^^^^^^^^^^^^^^^ surveys_helper.rb current_survey ^^^^^^^^^^^^^^^^^^^^"
+	    puts "^^^^^^^^^^^^^^^^^^^^ surveys_helper.rb current_survey , survey_id = #{params[:survey_id]}, id = #{params[:id]} ^^^^^^^^^^^^^^^^^^^^"
+	    @inviteid = Sanitize.clean(params[:id] || params[:survey_id])
 	    if session[:user_profile] == 'Admin'
-	    	@@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Survey_Subject__c, Survey__r.Description__c from Invitation__c where Id = '#{Sanitize.clean(params[:id])}' ")
+	    	@@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Survey_Subject__c, Survey__r.Description__c from Invitation__c where Id = '#{@inviteid}' ")
 		else
-			@@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Survey_Subject__c, Survey__r.Description__c from Invitation__c where Id = '#{Sanitize.clean(params[:id])}' and User__c = '#{session[:user_id]}' ")
+			@@current_survey =  session[:client].query("select Id, Name, User__c, Survey__c, Survey_Name__c, Start_Date__c, End_Date__c, Survey_Subject__c, Survey__r.Description__c from Invitation__c where Id = '#{@inviteid}' and User__c = '#{session[:user_id]}' ")
 		end
 
 		if @@current_survey.to_s == '[]'

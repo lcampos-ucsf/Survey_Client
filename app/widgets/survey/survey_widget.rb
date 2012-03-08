@@ -8,7 +8,7 @@ responds_to_event :submit, :with => :update_multiple
 
 	has_widgets do
 		@survey = options[:survey]
-		@inviteid = params[:id]
+		@inviteid = params[:id] || params[:survey_id]
 		@surveyid = @survey[0].Survey__c
 		puts "^^^^^^^^^^^^^^^^^^^^ survey_widget.rb Kaminari execution ^^^^^^^^^^^^^^^^^^^^"
 		
@@ -47,7 +47,7 @@ responds_to_event :submit, :with => :update_multiple
 				puts "-------------------- survey_widget.rb lines for"
 				if l.Display_Logic__c != nil
 					puts "-------------------- survey_widget.rb display logic present"
-					eval_dl = displaylogic(l, params[:id])
+					eval_dl = displaylogic(l, @inviteid )
 					puts "-------------------- survey_widget.rb eval_dl = '#{eval_dl}' "
 					if eval_dl #display logic is true, add data to showsections array
 						@showsections << l
@@ -114,7 +114,7 @@ responds_to_event :submit, :with => :update_multiple
 
 	def displaylogic(conditional, inviteid)
 		#display logic should go here
-		puts "///////////////// display logic /////////////////////"
+		puts "///////////////// display logic ///////////////////// id = #{inviteid}"
 		puts "///////////////// display logic /////////////////////"
 		puts "///////////////// display logic /////////////////////"
 		puts "///////////////// display logic /////////////////////"

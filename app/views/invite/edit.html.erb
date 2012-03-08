@@ -6,6 +6,6 @@
     <div class="actions">
     	<%= f.submit "Save", :class => 'btn primary customform', :id => 'commitinvite', :style =>"display:none;" %>
         <a onclick="validateinvite();" class="btn primary customform" >Save</a>
-        <a href="<%= invite_index_path %>" class="btn secondary " >Cancel</a>
+        <%= link_to 'Cancel', invite_index_path, :class => 'btn secondary' %>
     </div>
 <% end %>

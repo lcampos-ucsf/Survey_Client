@@ -23,12 +23,19 @@ class SurveysController < ApplicationController
   end
 
   def show
+    puts "show_action" 
+    puts "show_action" 
+    puts "show_action" 
+    puts "show_action" 
+    puts "show_action" 
+    render :show
   end
 
   def review
     @s = current_survey
     @surveyid = @s[0].Survey__c
-    @responses = session[:client].query("select Id, Name, Date_Response__c, DateTime_Response__c, Integer_Response__c, Invitation__c, Label_Long_Response__c, Label_Response__c, Line_Item__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Original_Question_Text__c, Response_Type__c, Survey__c, Survey_Subject__c, Text_Long_Response__c, Text_Response__c, Invitation__r.Progress_Save__c, Line_Item__r.Parent_Line_Item__c, Line_Item__r.Parent_Line_Item__r.Answer_Sequence__c, Line_Item__r.Parent_Line_Item__r.Question_Description__c from Response__c where Survey__c = '#{@surveyid}' and Invitation__c = '#{params[:id]}' order by Line_Sort_Order__c, Line_Item_Sort_Order__c " )
+    @inviteid = params[:id] || params[:survey_id]
+    @responses = session[:client].query("select Id, Name, Date_Response__c, DateTime_Response__c, Integer_Response__c, Invitation__c, Label_Long_Response__c, Label_Response__c, Line_Item__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Original_Question_Text__c, Response_Type__c, Survey__c, Survey_Subject__c, Text_Long_Response__c, Text_Response__c, Invitation__r.Progress_Save__c, Line_Item__r.Parent_Line_Item__c, Line_Item__r.Parent_Line_Item__r.Answer_Sequence__c, Line_Item__r.Parent_Line_Item__r.Question_Description__c from Response__c where Survey__c = '#{@surveyid}' and Invitation__c = '#{@inviteid }' order by Line_Sort_Order__c, Line_Item_Sort_Order__c " )
     
     @h_grid = {}
     @h_gridHeader = {}
@@ -72,7 +79,8 @@ class SurveysController < ApplicationController
   end
 
   def print
-    @invite = session[:client].query("select Id, Name, Survey__c, Survey__r.Name, Survey__r.Description__c from Invitation__c where Id = '#{params[:id]}'")
+    @inviteid = params[:survey_id]
+    @invite = session[:client].query("select Id, Name, Survey__c, Survey__r.Name, Survey__r.Description__c from Invitation__c where Id = '#{@inviteid}'")
     @lines_query = session[:client].query("select Id, Name, Description__c, Sort_Order__c, Survey__c from Line__c where Survey__c = '#{@invite[0].Survey__c}' order by Sort_Order__c asc")
 
 
@@ -127,8 +135,8 @@ class SurveysController < ApplicationController
 
   def survey_error_review(exception)
     puts "Build error on survey, sent user to review page"
-    #redirect_to "/surveys/#{params[:id]}/review"
-    redirect_to "/client/surveys/#{params[:id]}/review"
+    @survey_id = params[:id] || params[:survey_id]
+    redirect_to survey_review_path(@survey_id)
   end
 
 end
