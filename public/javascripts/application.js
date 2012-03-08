@@ -695,6 +695,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				success: function(data){
 					if ( !j$.isEmptyObject(data[0]) ){
 						var cnt = '<ul class="survey-data-stats"><li>New = '+data[0].new_i+'</li><li>Completed = '+data[0].complete_i+'</li><li>In Progress = '+data[0].inprogress+'</li><li>Cancelled = '+data[0].cancelled_i+'</li></ul>';
+						j$(t).empty();
 						j$(t).append(cnt);
 						j$('#stats_results_header').css('display','block');
 					}

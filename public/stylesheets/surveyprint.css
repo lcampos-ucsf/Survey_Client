@@ -41,7 +41,6 @@
 	  font-weight: normal;
 	  line-height: 18px;
 	  width:700px;
-	  border:2px solid red;
 	}
 
 	.grid_cnt{
@@ -86,7 +85,7 @@
 
 	.question_wrap input[type=text]{
 		color: #666666;
-	  font-size: 14px;
+		font-size: 14px;
 	    /* width: 400px; */
 	}
 
@@ -107,15 +106,16 @@
 	}
 
 	input, textarea {
-    -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+	    -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+	    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
 	}
 
-	input, textarea, select, .uneditable-input {
-    border: 1px solid #CCCCCC;
-    border-radius: 3px 3px 3px 3px;
-    color: #808080;
-    display: inline-block;
+	input, input[type=checkbox], textarea, select, .uneditable-input {
+	    /*border: 1px solid #CCCCCC;*/
+	    border: 1px solid #000 !important;
+	    border-radius: 3px 3px 3px 3px;
+	    color: #808080;
+	    display: inline-block;
 	}
 
 
