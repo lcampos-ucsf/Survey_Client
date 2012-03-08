@@ -15,7 +15,7 @@ set :repository,  "git@github.com:lcampos/RailsForce_AppTemplate.git"
 set :deploy_to, "/var/www/webapps/RailsForce_AppTemplate"
 set :user, "luis"
 set :scm_passphrase, "9x2cKL&re4"
-set :branch, "master"
+set :branch, "wfx"
 set :git_enable_submodules, 1
 
 #uses github local keys instead of keys on the server
