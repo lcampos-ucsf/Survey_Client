@@ -14,7 +14,7 @@ set :application, "RailsForce_AppTemplate"
 set :repository,  "git@github.com:lcampos/RailsForce_AppTemplate.git"
 set :deploy_to, "/var/www/webapps/RailsForce_AppTemplate"
 set :user, "luis"
-set :scm_passphrase, "9x2cKL&re4"
+#set :scm_passphrase, "9x2cKL&re4"
 set :branch, "wfx"
 set :git_enable_submodules, 1
 
@@ -31,13 +31,18 @@ set :rvm_gemsetname, 'npirails'
 set :deploy_via, :copy
 set :use_sudo, true
 
-
-
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-role :web, "64.54.142.34"                          # Your HTTP server, Apache/etc
-role :app, "64.54.142.34"                          # This may be the same as your `Web` server
+#devbox config
+#role :web, "64.54.142.34"                          # Your HTTP server, Apache/etc
+#role :app, "64.54.142.34"                          # This may be the same as your `Web` server
+
+#productionbox config
+role :web, "64.54.142.36"                          # Your HTTP server, Apache/etc
+role :app, "64.54.142.36"                          # This may be the same as your `Web` server
+
+
 #role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
@@ -96,21 +101,5 @@ end
 #after "deploy:update_code", "rvm:trust_rvmrc"
 after "deploy", "rvm:trust_rvmrc"
 
-
-#set :default_environment, {
-#  'PATH' => "/path/to/.rvm/gems/ree/1.8.7/bin:/path/to/.rvm/bin:/path/to/.rvm/ree-1.8.7-2009.10/bin:$PATH",
-#  'RUBY_VERSION' => 'ruby 1.8.7',
-#  'GEM_HOME'     => '/path/to/.rvm/gems/ree-1.8.7-2010.01',
-#  'GEM_PATH'     => '/path/to/.rvm/gems/ree-1.8.7-2010.01',
-#  'BUNDLE_PATH'  => '/path/to/.rvm/gems/ree-1.8.7-2010.01'  # If you are using bundler.
-#}
-
-#namespace :rvm do
-#  task :trust_rvmrc do
-#    run \"rvm rvmrc trust \#\{release_path\}\"
-#  end
-#end
-
-#after "deploy", "rvm:trust_rvmrc"
 
 

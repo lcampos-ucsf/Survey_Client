@@ -70,7 +70,7 @@ SampleApp::Application.configure do
 
   ENV['DEFAULT_CUSTOM_URL'] = "https://medctr-ucsf.my.salesforce.com"
   ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
-  ENV['SURVEY_BUILDER_URL'] = "https://somvs099/builder"  
+  ENV['SURVEY_BUILDER_URL'] = "https://surveytool.ucsfmedicalcenter.org/builder"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://surveytool.ucsfmedicalcenter.org/client'
 
 
