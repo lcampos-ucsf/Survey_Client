@@ -70,6 +70,52 @@ class SurveysController < ApplicationController
     @respN = @responses
     @respN.delete_if{|x| @gsq.has_key?(x.Id) }
   end
+
+  def print
+    @invite = session[:client].query("select Id, Name, Survey__c, Survey__r.Name, Survey__r.Description__c from Invitation__c where Id = '#{params[:id]}'")
+    @lines_query = session[:client].query("select Id, Name, Description__c, Sort_Order__c, Survey__c from Line__c where Survey__c = '#{@invite[0].Survey__c}' order by Sort_Order__c asc")
+
+
+    
+    @lines_list = ''
+    @li_list = ''
+    @h_grid = {}
+    @gsq = {} #controls grid views
+
+    #@larray = Array.new
+
+    @lines_query.each do |li|
+     # @larray << li
+      @lines_list = (@lines_list == '') ? ( @lines_list + "\'#{li.Id}\'" ) : ( @lines_list + ", \'#{li.Id}\'" )
+    end
+    @lines_list = "("+@lines_list+")"
+    @line_items = session[:client].query( "select Id, Name, Answer_Sequence__c, Content_Description__c, Display_Format__c, Line__c, Line_Item_Type__c, Question_Description__c, Question_Type__c, Resource__c, Resource__r.Name, Resource_Name__c, Sort_Order__c, URL__c, Content_Type__c, Enable_Autocomplete__c, Help_Text__c, Calculation_Logic__c, Length__c, Max_Value__c, Min_Value__c, Required__c, Parent_Line_Item__c from Line_Item__c where Line__c in #{@lines_list} order by Sort_Order__c asc")
+
+    @h_li = {}
+    @aseq = ''
+    if !@line_items.empty?
+        @line_items.each { |a| 
+          
+          if a.Question_Type__c == 'GridSubQuestion'
+            #logic to add child to parent grid on hash
+            @h_grid[a.Parent_Line_Item__c] ? @h_grid[a.Parent_Line_Item__c] << a : @h_grid[a.Parent_Line_Item__c] = [a]
+          else
+            @h_li[a.Line__c] ? @h_li[a.Line__c] << a : @h_li[a.Line__c] = [a] 
+          end
+
+          @aseq = (@aseq == '') ? ( @aseq + "\'#{a.Answer_Sequence__c}\'" ) : ( @aseq + ", \'#{a.Answer_Sequence__c}\'" )
+        }
+    end
+    @aseq = "("+@aseq+")"
+
+    @answerlabels = session[:client].query("select Id, Name, Answer_Sequence__c, Answer_Text__c, Resource__c, Resource_Name__c, Sort_Order__c from Answer_Label__c where Answer_Sequence__c in #{@aseq} order by Sort_Order__c asc")
+
+    @h_aseq = {}
+    if !@answerlabels.empty?
+        @answerlabels.each { |a| @h_aseq[a.Answer_Sequence__c] ? @h_aseq[a.Answer_Sequence__c] << a : @h_aseq[a.Answer_Sequence__c] = [a] }
+    end
+
+  end
   
   private
 

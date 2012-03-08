@@ -119,8 +119,8 @@ require 'omniauth-oauth2'
     
     puts "pre redirect, #{request.fullpath}"
     puts "pre redirect = /auth/#{provider}?#{auth_params} "
-    #redirect_to "/auth/#{provider}?#{auth_params}"
-    redirect_to "/client/auth/#{provider}?#{auth_params}"
+    redirect_to "/auth/#{provider}?#{auth_params}"
+    #redirect_to "/client/auth/#{provider}?#{auth_params}"
   end
 
   def deny_access

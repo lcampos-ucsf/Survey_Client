@@ -1,0 +1,75 @@
+
+<h1 class="main_title"><%= @invite[0].Survey__r.Name %></h1>
+
+<p><span>Description:</span> <%= @invite[0].Survey__r.Description__c %></p>
+
+<% @lines_query.each do |lines| %>
+	<h2><%= lines.Name %></h2>
+	<div class="line-wrap" >
+		
+		<!-- %= lines.Description__c %>
+		< %= lines.Sort_Order__c % -->
+
+		<% if @h_li.has_key?(lines.Id)
+			@h_li[lines.Id].each do |o|
+		%>
+			<div class="question_wrap" >
+				
+				<% 	if (o.Question_Type__c == 'Text' || o.Question_Type__c == 'Integer' || o.Question_Type__c == 'Calculation' || o.Question_Type__c == 'Date' || o.Question_Type__c == 'Datetime' ) %>
+					<label class="q_text"><%= o.Question_Description__c%> </label>
+					<i style="display:table-row;" ><%= o.Help_Text__c %></i>
+					<input type="text"/>
+
+				<% elsif o.Question_Type__c == 'SelectMultipleQuestions' %>
+					<label class="q_text"><%= o.Question_Description__c%> </label>
+					<i style="display:table-row;" ><%= o.Help_Text__c %></i>
+					<ul style="list-style:none;">
+						<% @h_aseq[o.Answer_Sequence__c].each do |ans|%>
+							<li> <input type="checkbox" disabled /> <%= ans.Answer_Text__c %> </li>
+						<% end %>
+					</ul>
+				<% elsif o.Question_Type__c == 'SelectOneQuestion' %>
+					<label class="q_text"><%= o.Question_Description__c%> </label>
+					<i style="display:table-row;" ><%= o.Help_Text__c %></i>
+					<ul style="list-style:none;">
+						<% @h_aseq[o.Answer_Sequence__c].each do |ans|%>
+							<li> <input type="radio" disabled /> <%= ans.Answer_Text__c %> </li>
+						<% end %>
+					</ul>
+				<% elsif o.Question_Type__c == 'Grid' %>
+
+					<table class="grid_table" >
+						<tr>
+							<td class="grid_tb_q_td" > 
+								<label class="q_text" ><%= o.Question_Description__c%> </label> 
+								<i style="display:table-row;" ><%= o.Help_Text__c %></i>
+							</td>
+							<% @h_aseq[o.Answer_Sequence__c].each do |ans|%>
+								<td class="grid_tb_ans_td grid_cnt"> <h4/> <%= ans.Answer_Text__c %> </h4> </td>
+							<% end %>
+						</tr>
+
+						<% @h_grid[o.Id].each do |gsub| %>
+							<tr>
+								<td>
+									<label class="q_text" ><%= gsub.Question_Description__c %></label>
+									<i style="display:table-row;" ><%= gsub.Help_Text__c %></i>
+								</td>
+								<% @h_aseq[o.Answer_Sequence__c].each do |ans|%>
+									<td class="grid_cnt" > <input type="radio" disabled/> </td>
+								<% end %>
+							</tr>
+						<% end %>
+					</table>
+				<% end %>
+			</div>
+			<% end %>
+			
+		<% end %>
+	</div>
+	<% if @lines_query.last.Id != lines.Id %>
+		<div class="page-break"></div>
+	<% end %>
+<% end %>
+
+

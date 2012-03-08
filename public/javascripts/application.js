@@ -303,6 +303,81 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		
 	});
 
+	//simple autocomplete functionality
+	if( j$('.simple_autocomplete_comp')[0] ){
+
+		j$('.simple_autocomplete_comp').each(function (i) {
+			var url = j$(this).attr('data-url');
+			var ac_type = j$(this).attr('data-ac-type');
+			var aId = j$(this).attr('id');
+			var divparent = j$(this).parent();
+
+			j$(this).autocomplete({
+			source: function(request, response) {
+				var txt = j$('#'+aId).val().toLowerCase();
+				//alert('txt = '+txt);
+		        j$.ajax({
+		        	url: url,
+		            data: 'vsearch='+txt,
+		            dataType: "json",
+		            //headers: {'X-CSRF-Token': AUTH_TOKEN },
+		            //type: "POST",
+		            type: "GET",
+		            //contentType: "application/json; charset=utf-8",
+		            success: function(data) {
+		            	//alert('data = '+data);
+		            	//response(j$.map(data, function(item) {
+		               	response(j$.map(data.items, function(item) {
+		               		var n = item.display_name.toLowerCase();
+		                    if (n.indexOf(txt) != -1){
+		                    	//v = item[0].Name;
+		                    	v = item.display_name;
+		                    	return { value: item.display_name, id: item.Id }
+		                    }
+		                    else 
+		                    	return
+		                }))
+		            },
+		            error: function(XMLHttpRequest, textStatus, errorThrown) {
+		               // alert(errorTrown);
+		            }
+		        });
+    		},
+    		select: function(e, ui) {
+				//create formatted friend
+				var val = ui.item.value,
+				id = ui.item.id,
+				span = j$("<span>").addClass('label notice').text(val+id),
+				a = j$("<a>").addClass("remove").attr({
+					href: "javascript:",
+					title: "Remove " + val
+				}).text(" x").appendTo(span);
+
+				//add friend to friend div
+				j$('#'+aId).val(val);
+				j$('#sac_data').val(id);
+
+				if( ac_type == 'multiple'){
+					span.insertBefore('#'+aId);
+					updateInputValue(aId);
+					ui.item.value = '';
+				}
+			}
+
+		});
+	});
+
+		//add live handler for clicks on remove links
+		j$(".remove", document.getElementById("ac_comp") ).live("click", function(){
+			//remove current friend
+			var iId = j$(this).parent().parent().find('input').attr('id')
+			j$(this).parent().parent().find('input').focus();
+			j$(this).parent().remove();
+			
+			updateInputValue(iId);
+		});
+	}
+
   });//end ready function
 
   	function ff(elemId, value, id, type){
@@ -322,13 +397,13 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		}
 	}
 
-	function formsubmit(url, dir){
+	function formsubmit(url, dir, a_url){
 		showmodaltransition();
 		var dt = j$("form").serialize();
 		//dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 		j$.ajax({
 			//url: "/surveys/update_multiple",
-			url: "/client/surveys/update_multiple",
+			url: a_url,
 			type: "POST",
 			data: dt,
 			dataType: "json",
@@ -609,30 +684,20 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	}
 
 	//get stats per survey
-	function getstats(t, val){
-		//alert('got value = '+val);
-		//j$(t).append('<div>teeeeeeeeest</div>')
+	function getstats(t, val, url){
 
 		j$.ajax({
-				//url: "/invite/stats_data",
-				url: "/client/invite/stats_data",
+				url: url,
 				type: "GET",
 				data: 'id='+val,
 				async: true,
 				headers: {'X-CSRF-Token': AUTH_TOKEN },
 				success: function(data){
-					//alert('data = '+data);
-					//var arr = eval(data.responseText);
-					//alert('data[0] = '+data[0]);
-					//alert('data[0].complete = '+data[0].complete_i);
-					
 					if ( !j$.isEmptyObject(data[0]) ){
 						var cnt = '<ul class="survey-data-stats"><li>New = '+data[0].new_i+'</li><li>Completed = '+data[0].complete_i+'</li><li>In Progress = '+data[0].inprogress+'</li><li>Cancelled = '+data[0].cancelled_i+'</li></ul>';
 						j$(t).append(cnt);
+						j$('#stats_results_header').css('display','block');
 					}
-
-
-
 				},
 				error: function(data, textStatus){
 				}

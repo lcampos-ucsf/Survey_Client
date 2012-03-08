@@ -1,7 +1,5 @@
 SampleApp::Application.routes.draw do 
 
-#scope 'client' do
-
   get "invite/index"
   get "invite/new"
   get "invite/all"
@@ -13,6 +11,7 @@ SampleApp::Application.routes.draw do
   match "invite/:id/edit", :to => "invite#edit"
   match "invite/update", :to => "invite#update"
   match "invite/stats_data", :to => "invite#stats_data"
+  match "invite/survey_search", :to => "invite#survey_search"
 
   #resources :surveys
 
@@ -26,7 +25,9 @@ SampleApp::Application.routes.draw do
 
   #match "surveys/index", :to => "surveys#index"
 
+
   match "surveys/:id/show", :to => "surveys#show"
+  match "surveys/:id/print", :to => "surveys#print"
   match "surveys/:id/review", :to => "surveys#review"
   match "surveys/update_multiple", :to => "surveys#update_multiple"
   match "surveys/autocompletequery", :to => "surveys#autocompletequery"
@@ -48,8 +49,5 @@ SampleApp::Application.routes.draw do
   match '/auth/failure', :to => 'sessions#fail'
   
   root :to => 'pages#home'
-#end
-
- # match '/auth/:provider/callback', :to => 'sessions#create'
 
 end

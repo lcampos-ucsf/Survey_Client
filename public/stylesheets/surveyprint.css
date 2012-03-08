@@ -1,0 +1,126 @@
+
+@media print
+{
+	.page-break { 
+		display:block; 
+		page-break-before:always; }
+
+	.line-wrap{
+		page-break-inside:avoid;
+	}
+
+	.question_wrap label.q_text {
+		color: #333333;
+		display: block;
+		font-size: 14px;
+		font-weight: bold;
+		line-height: 150%;
+		text-align: left;
+		width: 100%;}
+
+	.question_wrap input[type="text"] {
+		color: #666666;
+		font-size: 14px;
+		width: 600px;}
+
+	.question_wrap input {
+		padding: 5px;}
+
+	.main_title {
+		top:0px !important;
+		padding-top:0px !important;
+		margin-top:0px !important;
+	}
+
+	.topbar, #idletimeout, .debug_dump, .alert-message.warning.fade.in, .footer_msg {display:none;}
+
+	body {
+	  color: #404040;
+	  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	  font-size: 13px;
+	  font-weight: normal;
+	  line-height: 18px;
+	  width:700px;
+	  border:2px solid red;
+	}
+
+	.grid_cnt{
+		text-align:center;
+		font-size: 90% !important;
+	}
+
+	.grid_table{
+		margin-top:20px;
+	}
+
+	.grid_table h4 {
+		font-size:110%;
+		line-height: 18px;
+	}
+
+	.question_wrap, .scontrol_wrap {
+		padding: 15px; 
+		display:block; 
+		color:#1E1E1E;
+	}
+
+	.question_wrap label.q_text{
+		width: 100%;
+		text-align:left;
+		line-height: 150%;
+		color: #333333;
+	    font-size: 14px;
+	    font-weight: bold;
+	    display: block;
+	}
+
+	.question_wrap label.q_text_grid{
+		width: 100%;
+		text-align:center;
+		line-height: 150%;
+		color: #333333;
+	    font-size: 100%;
+	    font-weight: bold;
+	    display: block;
+	}
+
+	.question_wrap input[type=text]{
+		color: #666666;
+	  font-size: 14px;
+	    /* width: 400px; */
+	}
+
+	.question_wrap input {
+		padding: 5px;
+	}
+
+	.question_wrap input:focus {
+	    background: #E2F6F9;   
+	}
+
+	.grid_tb_q_td{
+		width:35%;
+	}
+
+	.grid_tb_ans_td {
+		width:10%;
+	}
+
+	input, textarea {
+    -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+	}
+
+	input, textarea, select, .uneditable-input {
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    color: #808080;
+    display: inline-block;
+	}
+
+
+
+
+
+
+}

@@ -22,7 +22,7 @@
   	<!-- %= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, :rel => 'next', :remote => remote, :id => 'nextbtn',    :onclick => 'formsubmit('+url+')' % -->
     <!-- a onclick="formsubmit('review?sid=<%= @survey[0].Survey__c %>','1');" class="btn primary medium" id="reviewbtn" >Review ›</a>
   < % else % -->
-    <a onclick="formsubmit('<%= url %>','1')" class="btn primary medium" id="nextbtn" >Next ›</a>
+    <a onclick="formsubmit('<%= url %>','1', '<%= surveys_update_multiple_path %>')" class="btn primary medium" id="nextbtn" >Next ›</a>
   <% end %>
 
 <% end %>

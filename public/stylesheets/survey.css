@@ -579,7 +579,25 @@ p.error{
   *border-right-color: #ffffff;
 }
 
-
+.survey-search-div{
+	display:block; 
+	text-align:center; 
+	padding:20px 0;
+}
 .survey-data-stats li{
 	list-style:none;
 }
+
+@media all
+{
+  .page-break  { display:none; }
+}
+
+.footer_msg {
+	width:100%;
+	text-align:center;
+	padding:5px 0;
+}
+
+
+
