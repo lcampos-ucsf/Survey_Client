@@ -6,6 +6,7 @@ SampleApp::Application.routes.draw do
     get :review
     put :update_multiple, :on => :collection
     get :print
+    get :printv, :on => :collection
   end
   #end
 

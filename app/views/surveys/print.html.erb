@@ -1,7 +1,7 @@
 
-<h1 class="main_title"><%= @invite[0].Survey__r.Name %></h1>
+<h1 class="main_title"><%= @lines_query[0].Survey__r.Name %></h1>
 
-<p><span>Description:</span> <%= @invite[0].Survey__r.Description__c %></p>
+<p><span>Description:</span> <%= @lines_query[0].Survey__r.Description__c %></p>
 
 <% @lines_query.each do |lines| %>
 	<h2><%= lines.Name %></h2>

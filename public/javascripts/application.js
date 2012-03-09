@@ -356,6 +356,9 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				//add friend to friend div
 				j$('#'+aId).val(val);
 				j$('#sac_data').val(id);
+				//this triggers all onchange hooks to this input
+				j$('#sac_data').change();
+
 
 				if( ac_type == 'multiple'){
 					span.insertBefore('#'+aId);
@@ -484,8 +487,8 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			dt += (dt ? "&" : "") + "as=true";
 
 			j$.ajax({
-				//url: "/surveys/update_multiple",
-				url: "/client/surveys/update_multiple",
+				url: "/surveys/update_multiple",
+				//url: "/client/surveys/update_multiple",
 				type: "POST",
 				data: dt,
 				async: true,
@@ -684,9 +687,9 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	}
 
 	//get stats per survey
-	function getstats(t, val, url){
-
-		j$.ajax({
+	function getstats(t, val, url, header){
+		if( val ){
+			j$.ajax({
 				url: url,
 				type: "GET",
 				data: 'id='+val,
@@ -697,13 +700,25 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 						var cnt = '<ul class="survey-data-stats"><li>New = '+data[0].new_i+'</li><li>Completed = '+data[0].complete_i+'</li><li>In Progress = '+data[0].inprogress+'</li><li>Cancelled = '+data[0].cancelled_i+'</li></ul>';
 						j$(t).empty();
 						j$(t).append(cnt);
-						j$('#stats_results_header').css('display','block');
+						j$(header).css('display','block');
 					}
 				},
 				error: function(data, textStatus){
+					var cnt = '<p style="color:red;">There was an unexpected error. Please try again.</p>'
+					j$(t).empty();
+					j$(t).append(cnt);
+					j$(header).css('display','block');
+
 				}
 
 			});
+		}else{
+			var cnt = '<p style="color:red;">There were no results for the survey you entered. Please choose an existing Survey.</p>'
+			j$(t).empty();
+			j$(t).append(cnt);
+			j$(header).css('display','block');
+
+		}
 	}
 
 

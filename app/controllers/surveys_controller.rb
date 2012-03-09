@@ -22,6 +22,9 @@ class SurveysController < ApplicationController
   def create
   end
 
+  def printv
+  end
+
   def show
     puts "show_action" 
     puts "show_action" 
@@ -80,8 +83,8 @@ class SurveysController < ApplicationController
 
   def print
     @inviteid = params[:survey_id]
-    @invite = session[:client].query("select Id, Name, Survey__c, Survey__r.Name, Survey__r.Description__c from Invitation__c where Id = '#{@inviteid}'")
-    @lines_query = session[:client].query("select Id, Name, Description__c, Sort_Order__c, Survey__c from Line__c where Survey__c = '#{@invite[0].Survey__c}' order by Sort_Order__c asc")
+    #@invite = session[:client].query("select Id, Name, Survey__c, Survey__r.Name, Survey__r.Description__c from Invitation__c where Id = '#{@inviteid}'")
+    @lines_query = session[:client].query("select Id, Name, Description__c, Sort_Order__c, Survey__c, Survey__r.Name, Survey__r.Description__c from Line__c where Survey__c = '#{@inviteid}' order by Sort_Order__c asc")
 
 
     

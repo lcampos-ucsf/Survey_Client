@@ -1,0 +1,24 @@
+<h1>Print View</h1>
+
+<div class="survey-search-div" >
+	<input type="text" id="simple_autocomplete_comp" class="simple_autocomplete_comp" data-url="<%= survey_search_invite_index_path %>" value="" data-ac-type="simple" style="width:300px;" autocomplete="off" />
+	<input type="text" id="sac_data" class="sac_data" style="display:none;" autocomplete="off" />
+
+	<a onclick="redirprint( j$('#sac_data').val() )" class="btn secondary" >Search</a>
+	<script type="text/javascript">
+		function redirprint(pid){
+			if(pid){
+				var purl = '<%= surveys_path %>/'+ pid +'/print';
+				window.location = purl;
+			}else{
+				var cnt = '<p style="color:red;">There were no results for the survey you entered. Please choose an existing Survey.</p>'
+				j$('#search_results').empty();
+				j$('#search_results').append(cnt);
+				j$('#search_results_header').css('display','block');
+			}
+		}
+	</script>
+</div>
+
+<h4 id="search_results_header" style="display:none;" >Search Results : </h4>
+<div id="search_results" style="display:table; height:200px;" ></div>

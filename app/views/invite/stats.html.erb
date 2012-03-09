@@ -4,16 +4,8 @@
 	<input type="text" id="simple_autocomplete_comp" class="simple_autocomplete_comp" data-url="<%= survey_search_invite_index_path %>" value="" data-ac-type="simple" style="width:300px;" autocomplete="off" />
 	<input type="text" id="sac_data" class="sac_data" style="display:none;" autocomplete="off" />
 
-	<a onclick="getstats(j$('#stats_results'), j$('#sac_data').val(), '<%= stats_data_invite_index_path %>')" class="btn secondary" >Search</a>
+	<a onclick="getstats(j$('#search_results'), j$('#sac_data').val(), '<%= stats_data_invite_index_path %>', '#search_results_header') " class="btn secondary" >Search</a>
 </div>
 
-<h4 id="stats_results_header" style="display:none;" >Search Results : </h4>
-<div id="stats_results" style="display:table; height:200px;" ></div>
-
-<!-- div style="display:table;">
-<ul class="nav nav-tabs nav-stacked" >
-< % @ surveys.each do |i| %>
-	<li><a onclick="getstats(this,'< % = i.Id %>')">< %= i.Name %></a></li>
-< % end %>
-</ul>
-</div -->
+<h4 id="search_results_header" style="display:none;" >Search Results : </h4>
+<div id="search_results" style="display:table; height:200px;" ></div>
