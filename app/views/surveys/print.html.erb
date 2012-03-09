@@ -15,7 +15,7 @@
 				<% 	if (o.Question_Type__c == 'Text' || o.Question_Type__c == 'Integer' || o.Question_Type__c == 'Calculation' || o.Question_Type__c == 'Date' || o.Question_Type__c == 'Datetime' ) %>
 					<label class="q_text"><%= o.Question_Description__c%> </label>
 					<i style="display:table-row;" ><%= o.Help_Text__c %></i>
-					<input type="text"/>
+					<input type="text" disabled/>
 
 				<% elsif o.Question_Type__c == 'SelectMultipleQuestions' %>
 					<label class="q_text"><%= o.Question_Description__c%> </label>

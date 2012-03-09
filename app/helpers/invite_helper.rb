@@ -31,7 +31,7 @@ module InviteHelper
   def survey_search
 	puts "&&&&&&&&&&&&&&&&&&&&&&&&& stats_survey_search, params = #{params[:vsearch]}"
 
-	s = session[:client].query("select Id, Name, Status__c from Survey__c where Name like '%#{params[:vsearch]}%' ")
+	s = session[:client].query("select Id, Name, Status__c from Survey__c where Name like '%#{params[:vsearch]}%' and Status__c='Published' ")
 	puts "////////////// surveys = #{s}"
 	@json = Array.new
 
