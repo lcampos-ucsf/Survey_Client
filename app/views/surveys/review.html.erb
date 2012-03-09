@@ -83,7 +83,7 @@
 			<%= link_to( 'Back', survey_show_path(params[:id]||params[:survey_id])+'?page='+@responses[0].Invitation__r.Progress_Save__c.to_i.to_s, :class => 'btn secondary' ) %>
 		<% end %>
 
-		<a href="submitsurvey" class="btn primary medium" > Submit ›</a>
+		<a href="<%= survey_submitsurvey_path(params[:id]||params[:survey_id]) %>" class="btn primary medium" > Submit ›</a>
 	</div>
 
 </div>

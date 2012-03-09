@@ -7,6 +7,7 @@ SampleApp::Application.routes.draw do
     put :update_multiple, :on => :collection
     get :print
     get :printv, :on => :collection
+    get :submitsurvey
   end
   #end
 
