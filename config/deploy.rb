@@ -15,7 +15,7 @@ set :repository,  "git@github.com:lcampos/RailsForce_AppTemplate.git"
 set :deploy_to, "/var/www/webapps/RailsForce_AppTemplate"
 set :user, "luis"
 #set :scm_passphrase, "9x2cKL&re4"
-set :scm_passphrase, "mh8JU9$R"
+#set :scm_passphrase, "mh8JU9$R"
 set :branch, "master"
 set :git_enable_submodules, 1
 
@@ -36,12 +36,12 @@ set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
 #devbox config
-#role :web, "64.54.142.35"                          # Your HTTP server, Apache/etc
-#role :app, "64.54.142.35"                          # This may be the same as your `Web` server
+role :web, "64.54.142.35"                          # Your HTTP server, Apache/etc
+role :app, "64.54.142.35"                          # This may be the same as your `Web` server
 
 #productionbox config
-role :web, "64.54.142.37"                          # Your HTTP server, Apache/etc
-role :app, "64.54.142.37"                          # This may be the same as your `Web` server
+#role :web, "64.54.142.37"                          # Your HTTP server, Apache/etc
+#role :app, "64.54.142.37"                          # This may be the same as your `Web` server
 
 
 #role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
