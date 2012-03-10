@@ -85,7 +85,7 @@ SampleApp::Application.configure do
   ENV['SALESFORCE_CUSTOM_KEY'] = "3MVG9GiqKapCZBwHxOJHdUt59hu10zChV829lM5eKOD4VYkYtTbCX7_ZAg.JETkSQkszomdN8SVf.alf38j1_"
   ENV['SALESFORCE_CUSTOM_SECRET'] = "8850739958259915934"
 
-  ENV['DEFAULT_CUSTOM_URL'] = "https://medctr-ucsf.my.salesforce.com"
+  ENV['DEFAULT_CUSTOM_URL'] = "https://medctr--npiqa.cs11.my.salesforce.com"
   ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
   ENV['SURVEY_BUILDER_URL'] = "https://devsurveytool.ucsfmedicalcenter.org/builder"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://devsurveytool.ucsfmedicalcenter.org/client'
