@@ -26,11 +26,6 @@ class SurveysController < ApplicationController
   end
 
   def show
-    puts "show_action" 
-    puts "show_action" 
-    puts "show_action" 
-    puts "show_action" 
-    puts "show_action" 
     render :show
   end
 
@@ -45,6 +40,10 @@ class SurveysController < ApplicationController
     @h_gridResp = {}
     @respN = @responses
     @gsq = {} #controls grid views
+    @GridAnsSeqIds = ''
+    @answerlabels = nil
+    @h_answers = {}
+    
     @responses.each_with_index do |r, i|
 
       if r.Response_Type__c == 'GridSubQuestion'
@@ -60,18 +59,16 @@ class SurveysController < ApplicationController
 
     end
 
-    @GridAnsSeqIds = ''
-
     #get grid answer sequence ids
     @h_gridHeader.values.each{|ha| @GridAnsSeqIds = (@GridAnsSeqIds == '' || @GridAnsSeqIds == nil) ? "\'#{ha}\'" : @GridAnsSeqIds + ", \'#{ha}\'" }
     @GridAnsSeqIds = "("+@GridAnsSeqIds+")"
 
-    @answerlabels = nil
+    
     if @GridAnsSeqIds != '()'
       @answerlabels = session[:client].query("select Id, Name, Answer_Sequence__c, Answer_Text__c, Resource__c, Resource_Name__c, Sort_Order__c from Answer_Label__c where Answer_Sequence__c in #{@GridAnsSeqIds} order by Sort_Order__c asc")
     end
 
-    @h_answers = {}
+    
     if !@answerlabels.blank?
       @answerlabels.each { |a| @h_answers[a.Answer_Sequence__c] ? @h_answers[a.Answer_Sequence__c] << a : @h_answers[a.Answer_Sequence__c] = [a] }
     end
@@ -85,18 +82,13 @@ class SurveysController < ApplicationController
     @inviteid = params[:survey_id]
     #@invite = session[:client].query("select Id, Name, Survey__c, Survey__r.Name, Survey__r.Description__c from Invitation__c where Id = '#{@inviteid}'")
     @lines_query = session[:client].query("select Id, Name, Description__c, Sort_Order__c, Survey__c, Survey__r.Name, Survey__r.Description__c from Line__c where Survey__c = '#{@inviteid}' order by Sort_Order__c asc")
-
-
     
     @lines_list = ''
     @li_list = ''
     @h_grid = {}
     @gsq = {} #controls grid views
 
-    #@larray = Array.new
-
     @lines_query.each do |li|
-     # @larray << li
       @lines_list = (@lines_list == '') ? ( @lines_list + "\'#{li.Id}\'" ) : ( @lines_list + ", \'#{li.Id}\'" )
     end
     @lines_list = "("+@lines_list+")"
@@ -131,13 +123,12 @@ class SurveysController < ApplicationController
   private
 
   def survey_error(exception)
-      puts "waaaaaaaaahhhhhhhhhhhjjjjjjjjjjjjjjjjsadDDsasa^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ exception = '#{exception}' "
-      #redirect_to "/invite/index", :alert => exception.message
+      puts "------------------surveys_controller.rb, survey_error exception = '#{exception}' "
       redirect_to invite_index_path, :alert => exception.message
   end
 
   def survey_error_review(exception)
-    puts "Build error on survey, sent user to review page"
+    puts "------------------surveys_controller.rb, survey_error_review Build error on survey, sent user to review page"
     @survey_id = params[:id] || params[:survey_id]
     redirect_to survey_review_path(@survey_id)
   end
