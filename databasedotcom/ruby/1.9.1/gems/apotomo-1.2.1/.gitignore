@@ -1,5 +1,0 @@
-pkg/*
-*.gem
-.bundle
-test/dummy/log/*
-test/dummy/tmp/*
