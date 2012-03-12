@@ -1,5 +1,15 @@
 <h1>Statistics</h1>
 
+<%= javascript_include_tag 'visualize.jQuery.js' %>
+<%= stylesheet_link_tag 'visualize_basic', :media => 'screen' %>
+
+<script type="text/javascript">
+	j$(function(){
+		//j$('table').visualize({type: 'pie', height: '300px', width: '420px'});
+		j$('table').visualize({type: 'line', width: '420px'});
+	});
+</script>
+
 <div class="survey-search-div" >
 	<input type="text" id="simple_autocomplete_comp" class="simple_autocomplete_comp" data-url="<%= survey_search_invite_index_path %>" value="" data-ac-type="simple" style="width:300px;" autocomplete="off" />
 	<input type="text" id="sac_data" class="sac_data" style="display:none;" autocomplete="off" />
@@ -9,3 +19,5 @@
 
 <h4 id="search_results_header" style="display:none;" >Search Results : </h4>
 <div id="search_results" style="display:table; height:200px;" ></div>
+
+

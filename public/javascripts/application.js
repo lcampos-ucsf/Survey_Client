@@ -487,8 +487,8 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			dt += (dt ? "&" : "") + "as=true";
 
 			j$.ajax({
-				//url: "/surveys/update_multiple",
-				url: "/client/surveys/update_multiple",
+				url: "/surveys/update_multiple",
+				//url: "/client/surveys/update_multiple",
 				type: "POST",
 				data: dt,
 				async: true,
@@ -696,12 +696,53 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				async: true,
 				headers: {'X-CSRF-Token': AUTH_TOKEN },
 				success: function(data){
-					if ( !j$.isEmptyObject(data[0]) ){
-						var cnt = '<ul class="survey-data-stats"><li>New = '+data[0].new_i+'</li><li>Completed = '+data[0].complete_i+'</li><li>In Progress = '+data[0].inprogress+'</li><li>Cancelled = '+data[0].cancelled_i+'</li></ul>';
+					
+					//if ( !j$.isEmptyObject(data[0]) ){
+						
+					/*	var arr = eval(data);
+						alert('arr = '+arr[0]);
+						alert( j$.isEmptyObject(arr[0]) );
+						alert( 'is plain object ? ' + j$.isArray(arr[0]) );
+						alert('arr.length= '+arr[0].length);
+						alert('arr.month= '+arr[0][0].month);
+
+						j$.each(data[0], function(){
+				            alert("Mine is " + this + " | " + this.month + " | " + this.surveyId);
+				        });*/
+
+						var cnt = '<table style="display:none;" class="s_data">'+
+								'<caption>Survey Data</caption><tr>'+
+								'<td></td>'+
+								'<th scope="col">Feb</th>'+
+								'<th scope="col">Mar</th></tr>'+
+								'<tbody>'+
+								'<tr>'+
+									'<th scope="row">New</th>'+
+									'<td>'+data[0].new_i+'</td>'+
+									'<td>'+data[0].new_i*1.1+'</td>'+
+								'</tr>'+
+								'<tr>'+
+									'<th scope="row">In Progress</th>'+
+									'<td>'+data[0].inprogress+'</td>'+
+									'<td>'+data[0].inprogress+'</td>'+
+								'</tr>'+
+								'<tr>'+
+									'<th scope="row">Completed</th>'+
+									'<td>'+data[0].complete_i+'</td>'+
+									'<td>'+data[0].complete_i*1.3+'</td>'+
+								'</tr>'+
+								'<tr>'+
+									'<th scope="row">Cancelled</th>'+
+									'<td>'+data[0].cancelled_i+'</td>'+
+									'<td>0</td>'+
+								'</tr>'+
+								'</table>';
+						//var cnt = '<ul class="survey-data-stats"><li>New = '+data[0].new_i+'</li><li>Completed = '+data[0].complete_i+'</li><li>In Progress = '+data[0].inprogress+'</li><li>Cancelled = '+data[0].cancelled_i+'</li></ul>';
 						j$(t).empty();
 						j$(t).append(cnt);
 						j$(header).css('display','block');
-					}
+						j$('.s_data').visualize({type: 'area', width: '420px'});
+					//}
 				},
 				error: function(data, textStatus){
 					var cnt = '<p style="color:red;">There was an unexpected error. Please try again.</p>'

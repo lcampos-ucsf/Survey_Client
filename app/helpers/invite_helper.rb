@@ -14,8 +14,8 @@ module InviteHelper
 
 	@total = @rcomplete.count + @rinprogress.count + @rnew.count + @rcancelled.count
 
-	results = session[:client].http_get('/services/apexrest/v1/Survey/Statistics/'+params[:id])
-	puts "---------- results = '#{results.body}' "
+	#results = session[:client].http_get('/services/apexrest/v1/Survey/Statistics/'+params[:id])
+	#puts "---------- results = '#{results.body}' "
 
 
 	@r = Array.new
