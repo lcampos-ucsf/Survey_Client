@@ -405,7 +405,8 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		var dt = j$("form").serialize();
 		//dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 		j$.ajax({
-			url: "/client/surveys/update_multiple",
+			//url: "/client/surveys/update_multiple",
+			url: "/surveys/update_multiple",
 			//url: aurl,
 			type: "POST",
 			data: dt,
