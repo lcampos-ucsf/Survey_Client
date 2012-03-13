@@ -161,6 +161,10 @@ module SurveysHelper
 			@li_details = session[:client].query("select Id, Name, Decimals__c, External_ID__c, Length__c, Max_Value__c, Min_Value__c, Required__c, Sort_Order__c, Question_Description__c from Line_Item__c where Id in #{@li_eid_list} order by Sort_Order__c asc  ")
 		end
 		@h_li = {}
+		puts "+++++++++++++ li_details = #{@li_details}"
+		puts "+++++++++++++ li_details = #{@li_details}"
+		puts "+++++++++++++ li_details = #{@li_details}"
+		puts "+++++++++++++ li_details = #{@li_details}"
 		#if !@li_details.empty?
 		if not @li_details.to_s == '[]'
             @li_details.each { |r| @h_li[r.Id] ? @h_li[r.Id] << r : @h_li[r.Id] = [r] }

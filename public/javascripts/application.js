@@ -429,7 +429,9 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 						url = url+'&dir='+dir;
 				}
 				//window.location = url;
-				if ((navigator.userAgent.indexOf('iPad') != -1)) {
+
+				alert('isiPad = '+isiPad);
+				if (isiPad) {
 				    window.location.href = url;
 				}
 				else{
