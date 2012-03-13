@@ -401,6 +401,10 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	}
 
 	function formsubmit(url, dir, a_url){
+		alert('formsubmit');
+		alert('formsubmitm url = '+url);
+		alert('formsubmitm dir = '+dir);
+		alert('formsubmitm a_url = '+a_url);
 		showmodaltransition();
 		var dt = j$("form").serialize();
 		//dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
@@ -414,7 +418,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			headers: {'X-CSRF-Token': AUTH_TOKEN },
 			dataType: "script",
 			success: function(data){
-				
+				alert('success');
 				if(url.match("review") == null){
 					if(url.match(/page/) == null ){
 						if(url.match(/dir=[0-9]+/) == null){
@@ -439,7 +443,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 				}
 			},
 			error: function(data, textStatus){
-				//alert('error on formsubmit');
+				alert('error on formsubmit');
 				autosaveOn = false;
 				hidemodaltransition();
 				var arr = eval(data.responseText);
