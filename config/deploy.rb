@@ -36,12 +36,12 @@ set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
 #devbox config
-role :web, "64.54.142.35"                          # Your HTTP server, Apache/etc
-role :app, "64.54.142.35"                          # This may be the same as your `Web` server
+#role :web, "64.54.142.35"                          # Your HTTP server, Apache/etc
+#role :app, "64.54.142.35"                          # This may be the same as your `Web` server
 
 #productionbox config
-#role :web, "64.54.142.37"                          # Your HTTP server, Apache/etc
-#role :app, "64.54.142.37"                          # This may be the same as your `Web` server
+role :web, "64.54.142.37"                          # Your HTTP server, Apache/etc
+role :app, "64.54.142.37"                          # This may be the same as your `Web` server
 
 
 #role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
