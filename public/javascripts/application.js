@@ -428,8 +428,13 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 					else
 						url = url+'&dir='+dir;
 				}
-				window.location = url;
-				
+				//window.location = url;
+				if ((navigator.userAgent.indexOf('iPad') != -1)) {
+				    window.location.href = url;
+				}
+				else{
+					window.location = url;
+				}
 			},
 			error: function(data, textStatus){
 				//alert('error on formsubmit');
@@ -703,7 +708,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 						var completecol = '<tr><th scope="row">Complete</th>';
 						var cancelledcol = '<tr><th scope="row">Cancelled</th>';
 						var ph_newcol, ph_progresscol, ph_completecol, ph_cancelledcol ='<td></td>'
-						
+
 						j$.each(arr, function(arrayID, group) {
 								header += '<th scope="col">'+group.month+'</th>';
 								ph_newcol, ph_progresscol, ph_completecol, ph_cancelledcol ='<td></td>'
