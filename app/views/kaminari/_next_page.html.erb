@@ -20,8 +20,9 @@
   else %>
   <% if !current_page.last? %>
   	<!-- %= link_to_unless current_page.last?, raw(t 'views.pagination.next'), url, :rel => 'next', :remote => remote, :id => 'nextbtn',    :onclick => 'formsubmit('+url+')' % -->
-    <!-- a onclick="formsubmit('review?sid=<%= @survey[0].Survey__c %>','1');" class="btn primary medium" id="reviewbtn" >Review ›</a>
+    <!-- a onclick="formsubmit('review?sid=< %= @survey[0].Survey__c %>','1');" class="btn primary medium" id="reviewbtn" >Review ›</a>
   < % else % -->
+    link = <%= update_multiple_surveys_path %>
     <a onclick="formsubmit('<%= url %>','1', '<%= update_multiple_surveys_path %>')" class="btn primary medium" id="nextbtn" >Next ›</a>
   <% end %>
 
