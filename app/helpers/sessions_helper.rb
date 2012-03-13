@@ -117,8 +117,8 @@ require 'omniauth-oauth2'
 
     auth_params = URI.escape(auth_params.collect{|k,v| "#{k}=#{v}"}.join('&'))    
 
-    #redirect_to "/auth/#{provider}?#{auth_params}"
-    redirect_to "/client/auth/#{provider}?#{auth_params}"
+    redirect_to "/auth/#{provider}?#{auth_params}"
+    #redirect_to "/client/auth/#{provider}?#{auth_params}"
   end
 
   def deny_access
