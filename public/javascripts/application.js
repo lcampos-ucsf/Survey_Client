@@ -400,17 +400,17 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		}
 	}
 
-	function formsubmit(url, dir, a_url){
+	function formsubmit(url, dir, aurl){
 		alert('formsubmit');
 		alert('formsubmitm url = '+url);
 		alert('formsubmitm dir = '+dir);
-		alert('formsubmitm a_url = '+a_url);
+		alert('formsubmitm aurl = '+aurl);
 		showmodaltransition();
 		var dt = j$("form").serialize();
 		//dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 		j$.ajax({
-			//url: "/surveys/update_multiple",
-			url: a_url,
+			url: "/client/surveys/update_multiple",
+			//url: aurl,
 			type: "POST",
 			data: dt,
 			dataType: "json",
@@ -432,15 +432,15 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 					else
 						url = url+'&dir='+dir;
 				}
-				//window.location = url;
+				window.location = url;
 
-				alert('isiPad = '+isiPad);
+				/*alert('isiPad = '+isiPad);
 				if (isiPad) {
 				    window.location.href = url;
 				}
 				else{
 					window.location = url;
-				}
+				}*/
 			},
 			error: function(data, textStatus){
 				alert('error on formsubmit');
