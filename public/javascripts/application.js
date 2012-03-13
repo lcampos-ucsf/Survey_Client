@@ -402,6 +402,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 	function formsubmit(url, dir, aurl){
 		showmodaltransition();
+		alert('aurl = '+aurl);
 		var dt = j$("form").serialize();
 		//dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 		j$.ajax({
