@@ -18,7 +18,7 @@ SampleApp::Application.configure do
   ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
   ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-dev.heroku.com/index"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://npi-dev.heroku.com'
-  
+
 
   #NPI-QA
   ENV['SALESFORCE_KEY'] = ""
@@ -54,7 +54,7 @@ SampleApp::Application.configure do
   ENV['SURVEY_BUILDER_URL'] = "https://devsurveytool.ucsfmedicalcenter.org/builder"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://devsurveytool.ucsfmedicalcenter.org/client'
 
-
+=end
   #NPI ISU Servers Production, NPI ISU Server Client
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -72,7 +72,7 @@ SampleApp::Application.configure do
   ENV['SURVEY_BUILDER_URL'] = "https://surveytool.ucsfmedicalcenter.org/builder"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://surveytool.ucsfmedicalcenter.org/client'
 
-=end
+=begin
   #NPI ISU Servers Development, NPI ISU Server Client
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -89,7 +89,7 @@ SampleApp::Application.configure do
   ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
   ENV['SURVEY_BUILDER_URL'] = "https://devsurveytool.ucsfmedicalcenter.org/builder"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://devsurveytool.ucsfmedicalcenter.org/client'
-
+=end
 
   ENV['DEFAULT_PROVIDER'] = "customurl"
   ENV['sfdc_api_version'] = '23.0'
