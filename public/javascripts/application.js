@@ -702,20 +702,28 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 						var progresscol = '<tr><th scope="row">In Progress</th>';
 						var completecol = '<tr><th scope="row">Complete</th>';
 						var cancelledcol = '<tr><th scope="row">Cancelled</th>';
-
+						var ph_newcol, ph_progresscol, ph_completecol, ph_cancelledcol ='<td></td>'
+						
 						j$.each(arr, function(arrayID, group) {
-								header += '<th scope="col">'+group.month+'</th>';             
+								header += '<th scope="col">'+group.month+'</th>';
+								ph_newcol, ph_progresscol, ph_completecol, ph_cancelledcol ='<td></td>'
+
 						    j$.each(group.InvitationStadistics, function(eventID,eventData) {
 						    	if(eventData.Status == 'In Progress_i')
-						    		progresscol += '<td>' + eventData.Total_Invitations + '</td>';
+						    		ph_progresscol = '<td>' + eventData.Total_Invitations + '</td>';
 						    	else if(eventData.Status == 'Completed_i')
-						    		completecol += '<td>' + eventData.Total_Invitations + '</td>';
+						    		ph_completecol = '<td>' + eventData.Total_Invitations + '</td>';
 						    	else if(eventData.Status == 'New_i')
-						    		newcol += '<td>' + eventData.Total_Invitations + '</td>';
+						    		ph_newcol = '<td>' + eventData.Total_Invitations + '</td>';
 						    	else if(eventData.Status == 'Cancelled_i')
-						    		cancelledcol += '<td>' + eventData.Total_Invitations + '</td>';
+						    		ph_cancelledcol = '<td>' + eventData.Total_Invitations + '</td>';
 						            
 						     });
+
+						    newcol += ph_newcol;
+						    progresscol += ph_progresscol;
+						    completecol += ph_completecol;
+						    cancelledcol += ph_cancelledcol;
 						});
 
 						header += '</tr>';

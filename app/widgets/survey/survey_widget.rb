@@ -142,7 +142,8 @@ responds_to_event :submit, :with => :update_multiple
 	        #adding response values to conditional formula
 	        @expressions.each do |e|
 	        	if e.include? '@' 
-	        		question = e.match(/@[a-zA-Z0-9_\-]+/)
+	        		question = e.match(/@[a-zA-Z0-9_\-\:]+/)
+	        		#question = e.match(/@[a-zA-Z0-9_\-]+/)
 	        		#add no response validation
 	        		qv = '0'
 
@@ -162,7 +163,7 @@ responds_to_event :submit, :with => :update_multiple
 	        		e["#{question}"] = qv
 
 	        	elsif e.include? '#' 
-	        		answer = e.match(/#[a-zA-Z0-9_\-:]+/)
+	        		answer = e.match(/#[a-zA-Z0-9_\-\:]+/)
 	        		m_ans = "'" + answer.to_s + "'"
 	        		e["#{answer}"] = m_ans
 	        	end
@@ -178,7 +179,7 @@ responds_to_event :submit, :with => :update_multiple
 				puts "+++++++++ m_log = '#{@m_log}' "
 			
 				#multiple select evaluations for conditional formula
-				orig_multicondition = @evalstring.scan(/[\'\#\;0-9a-zA-Z\_\-]+[\<\>\=]+[\'\#0-9a-zA-Z\_\-]+/)
+				orig_multicondition = @evalstring.scan(/[\'\#\;0-9a-zA-Z\_\-\:]+[\<\>\=]+[\'\#0-9a-zA-Z\_\-\:]+/)
 				puts "-----------orig_multicondition.scan = '#{orig_multicondition}' "
 
 				if !orig_multicondition.empty?
@@ -186,10 +187,11 @@ responds_to_event :submit, :with => :update_multiple
 						#this is the multiselect string that we need to reposition on conditional formula
 						#@logic_p1 = omc.scan(/[\#\;0-9a-zA-Z\_\-]+\;/)
 						#this is the last part of the multiselect formula we need to copy
-						@logic_p2 = omc.scan(/[\<\>\=]+[\'\#0-9a-zA-Z\_\-]+/)
+						@logic_p2 = omc.scan(/[\<\>\=]+[\'\#0-9a-zA-Z\_\-\:]+/)
 						
 						#this breaks logic p1 into pieces
-						@logic_p1 = omc.scan(/\#\w+\;/)
+						@logic_p1 = omc.scan(/\#[\w+\:]*\;/)
+						#@logic_p1 = omc.scan(/\#\w+\;/)
 
 						@nlogic = ''
 						@logic_p1.each_with_index do |el, i|
