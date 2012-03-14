@@ -9,12 +9,14 @@
 		//j$('table').visualize({type: 'pie', height: '300px', width: '420px'});
 		j$('table').visualize({type: 'line', width: '420px'});
 	});
+
 	j$(document).ready(function() {
+		//this fixes all iPad onclick issues
 		var ua = navigator.userAgent,
 	    event = (ua.match(/iPad/i)) ? "touchstart" : "click";
 
-		j$("#search_test_js").bind(event, function(e) {
-		    alert('search result obj = '); 
+		j$("#survey_search_btn").bind(event, function(e) {
+		    getstats(j$('#search_results'), j$('#sac_data').val(), '#search_results_header');
 		});
 	});
 </script>
@@ -23,9 +25,7 @@
 	<input type="text" id="simple_autocomplete_comp" class="simple_autocomplete_comp" data-url="<%= survey_search_invite_index_path %>" value="" data-ac-type="simple" style="width:300px;" autocomplete="off" />
 	<input type="text" id="sac_data" class="sac_data" style="display:none;" autocomplete="off" />
 
-	<a href="javascript:void(0);" onclick="getstats(j$('#search_results'), j$('#sac_data').val(), '#search_results_header') " class="btn secondary" >Search</a>
-
-	<a class="btn secondary" id="search_test_js" >Search test</a>
+	<a class="btn secondary" id="survey_search_btn" >Search</a>
 </div>
 
 <h4 id="search_results_header" style="display:none;" >Search Results : </h4>
