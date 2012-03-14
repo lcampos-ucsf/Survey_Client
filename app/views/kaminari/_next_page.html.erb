@@ -23,7 +23,7 @@
     <!-- a onclick="formsubmit('review?sid=< %= @survey[0].Survey__c %>','1');" class="btn primary medium" id="reviewbtn" >Review ›</a>
   < % else % -->
     <span id="next_btn_link" class="rroute"><%= update_multiple_surveys_path %></span>
-    <a href="#" onclick="javascript:formsubmit('<%= url %>','1', j$('#next_btn_link').text() )" class="btn primary medium" id="nextbtn" >Next ›</a>
+    <a href="javascript:void(0);" onclick="formsubmit('<%= url %>','1', j$('#next_btn_link').text() )" class="btn primary medium" id="nextbtn" >Next ›</a>
     <button onclick="formsubmit('<%= url %>','1','<%= update_multiple_surveys_path %>' )" class="btn primary medium" id="nextbtn" >Next ›</button>
   <% end %>
 
