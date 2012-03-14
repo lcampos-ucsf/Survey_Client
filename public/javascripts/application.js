@@ -402,7 +402,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 	function formsubmit(url, dir){
 		showmodaltransition();
-		alert('updatemultiple_path = '+updatemultiple_path);
+		//alert('updatemultiple_path = '+updatemultiple_path);
 		var dt = j$("form").serialize();
 		//dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 		j$.ajax({
@@ -486,7 +486,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 			j$.ajax({
 				//url: "/surveys/update_multiple",
-				url: "/client/surveys/update_multiple",
+				url: updatemultiple_path,
 				type: "POST",
 				data: dt,
 				async: true,
@@ -609,7 +609,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 	//validations on create invite section
 	function validateinvite(){
-		//alert('validateinvite');
+		alert('validateinvite');
 		showmodaltransition();
 
 		var errors = false;
@@ -621,13 +621,13 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			if(cl){
 				
 				if(cl == 'select' && (val == '' || val == null) ){
-					//alert('select,  cl = '+cl);
+					alert('select,  cl = '+cl);
 					errors = true;
 					j$(this).addClass('errorhighlight');
 					j$(this).prev().text('Please select an option');
 					j$(this).prev().css('display','block');
 				}else if(cl.indexOf('datepicker') != -1 ){
-					//alert('datepicker, cl = '+cl);
+					alert('datepicker, cl = '+cl);
 					if(val == '' || val == null){
 						errors = true;
 						j$(this).addClass('errorhighlight');
@@ -678,6 +678,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		});
 
 		if(!errors){
+			alert('no errors, commiting');
 			j$('#commitinvite').click();
 		}else{
 			hidemodaltransition();
@@ -685,17 +686,18 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	}
 
 	//get stats per survey
-	function getstats(t, val, url, header){
+	function getstats(t, val, header){
 		if( val ){
 			j$.ajax({
-				url: url,
+				//url: url,
+				url: searchstatspath,
 				type: "GET",
 				data: 'id='+val,
 				async: true,
 				headers: {'X-CSRF-Token': AUTH_TOKEN },
 				success: function(data){
 						var arr = eval(data);
-						var header = '';
+						var header = '<tr>';
 						var newcol = '<tr><th scope="row">New</th>';
 						var progresscol = '<tr><th scope="row">In Progress</th>';
 						var completecol = '<tr><th scope="row">Complete</th>';
@@ -704,17 +706,29 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 						j$.each(arr, function(arrayID, group) {
 								header += '<th scope="col">'+group.month+'</th>';
-								ph_newcol, ph_progresscol, ph_completecol, ph_cancelledcol ='<td></td>'
+								ph_newcol ='<td></td>';
+							 	ph_progresscol ='<td></td>'; 
+							 	ph_completecol ='<td></td>'; 
+							 	ph_cancelledcol ='<td></td>';
 
 						    j$.each(group.InvitationStadistics, function(eventID,eventData) {
-						    	if(eventData.Status == 'In Progress_i')
-						    		ph_progresscol = '<td>' + eventData.Total_Invitations + '</td>';
-						    	else if(eventData.Status == 'Completed_i')
-						    		ph_completecol = '<td>' + eventData.Total_Invitations + '</td>';
-						    	else if(eventData.Status == 'New_i')
-						    		ph_newcol = '<td>' + eventData.Total_Invitations + '</td>';
-						    	else if(eventData.Status == 'Cancelled_i')
-						    		ph_cancelledcol = '<td>' + eventData.Total_Invitations + '</td>';
+
+						    	switch (eventData.Status){
+						    		case 'In Progress_i':
+						    			ph_progresscol = '<td>' + eventData.Total_Invitations + '</td>';
+						    			break;
+						    		case 'New_i':
+						    			ph_newcol = '<td>' + eventData.Total_Invitations + '</td>';
+						    			break;
+						    		case 'Completed_i':
+						    			ph_completecol = '<td>' + eventData.Total_Invitations + '</td>';
+						    			break;
+						    		case 'Cancelled_i':
+						    			ph_cancelledcol = '<td>' + eventData.Total_Invitations + '</td>';
+						    			break;
+						    		default:
+						    			//alert('default on switch');
+						    	}
 						            
 						     });
 
@@ -722,6 +736,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 						    progresscol += ph_progresscol;
 						    completecol += ph_completecol;
 						    cancelledcol += ph_cancelledcol;
+
 						});
 
 						header += '</tr>';

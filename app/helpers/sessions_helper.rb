@@ -10,10 +10,8 @@ require 'omniauth-oauth2'
       puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb sign_out ^^^^^^^^^^^^^^^^^^^^"
       instURL = ''
       if signed_in?
-        puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb sign_out , signedin ^^^^^^^^^^^^^^^^^^^^"
         instURL = session[:auth_hash][:instance_url]
       else
-        puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb sign_out , NOT signedin ^^^^^^^^^^^^^^^^^^^^"
         instURL = session[:orgurl]
       end
       
@@ -34,7 +32,6 @@ require 'omniauth-oauth2'
     puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb authenticate, signed_in ? = '#{signed_in?}' ^^^^^^^^^^^^^^^^^^^^"
 
     #check ip
-    puts "//////////////////// session_helper.rb, check ip. session[:user_ip] = '#{session[:user_ip]}', request ip = '#{request.remote_ip}' "
     if session[:user_ip] != request.remote_ip
       deny_access
       return false

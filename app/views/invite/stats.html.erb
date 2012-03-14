@@ -4,6 +4,7 @@
 <%= stylesheet_link_tag 'visualize_basic', :media => 'screen' %>
 
 <script type="text/javascript">
+	var searchstatspath = '<%= stats_data_invite_index_path %>';
 	j$(function(){
 		//j$('table').visualize({type: 'pie', height: '300px', width: '420px'});
 		j$('table').visualize({type: 'line', width: '420px'});
@@ -14,7 +15,7 @@
 	<input type="text" id="simple_autocomplete_comp" class="simple_autocomplete_comp" data-url="<%= survey_search_invite_index_path %>" value="" data-ac-type="simple" style="width:300px;" autocomplete="off" />
 	<input type="text" id="sac_data" class="sac_data" style="display:none;" autocomplete="off" />
 
-	<a onclick="getstats(j$('#search_results'), j$('#sac_data').val(), '<%= stats_data_invite_index_path %>', '#search_results_header') " class="btn secondary" >Search</a>
+	<a onclick="getstats(j$('#search_results'), j$('#sac_data').val(), '#search_results_header') " class="btn secondary" >Search</a>
 </div>
 
 <h4 id="search_results_header" style="display:none;" >Search Results : </h4>
