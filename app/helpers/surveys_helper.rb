@@ -161,10 +161,6 @@ module SurveysHelper
 			@li_details = session[:client].query("select Id, Name, Decimals__c, External_ID__c, Length__c, Max_Value__c, Min_Value__c, Required__c, Sort_Order__c, Question_Description__c from Line_Item__c where Id in #{@li_eid_list} order by Sort_Order__c asc  ")
 		end
 		@h_li = {}
-		puts "+++++++++++++ li_details = #{@li_details}"
-		puts "+++++++++++++ li_details = #{@li_details}"
-		puts "+++++++++++++ li_details = #{@li_details}"
-		puts "+++++++++++++ li_details = #{@li_details}"
 		#if !@li_details.empty?
 		if not @li_details.to_s == '[]'
             @li_details.each { |r| @h_li[r.Id] ? @h_li[r.Id] << r : @h_li[r.Id] = [r] }
@@ -189,15 +185,12 @@ module SurveysHelper
 							end
 						end
 
-						#(sid, inviteId, qid, qtxt, value, type, rid, label, htmlid, uid, vlength, decimals, maxval, minval, isrequired)
 						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], @v, key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c, session[:client] )
-						#@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], @v, key, session[:user_id])
 					elsif @array[2] == 'grid'
 						@robj = Response.new(@survey_id, @invite_id, @array[1], @h_li[@qid][0].Question_Description__c, value, @array[2], @array[3], params[value], key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c, session[:client] )
 					
 					else
 						@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], params[value], key, session[:user_id], @h_li[@qid][0].Length__c, @h_li[@qid][0].Decimals__c, @h_li[@qid][0].Max_Value__c, @h_li[@qid][0].Min_Value__c, @h_li[@qid][0].Required__c, session[:client] )
-						#@robj = Response.new(@survey_id, @invite_id, @array[1], params[@qid], value, @array[2], @array[3], params[value], key, session[:user_id])
 					end
 
 					@hash_response[@array[1]] ? @hash_response[@array[1]] << @robj : @hash_response[@array[1]] = [@robj]
@@ -222,13 +215,13 @@ module SurveysHelper
 			end
 		end
 
-		puts "----------- responsearray = #{@responsearray.to_json}"
+		#puts "----------- responsearray = #{@responsearray.to_json}"
 		@save_error = false
 		@e_msg = nil
 		@sfdc_error = Array.new
 		begin
 			results = session[:client].http_post('/services/apexrest/v1/Response/',@responsearray.to_json)
-			puts "---------- results = '#{results}' "
+			#puts "---------- results = '#{results}' "
 		rescue Exception => e
 			#this catches any salesforce error
   			logger.error e.message
@@ -241,13 +234,9 @@ module SurveysHelper
 				@sfdc_error << { :msg => e.message, :id => 'wuu', :sf_error => true}
 			end
 
-			#add error logic sent by apex save
-
 			#this updates invitation
 			puts "------------------ update_multiple, update invitation status ------------------"
 			session[:client].upsert('Invitation__c','Id', @invite_id, { 'Progress_Save__c' => @current_page, 'Status__c' => 'In Progress' })
-
-
 
 			respond_to do |format|
 				if @save_error && !@sfdc_error.empty? #this catches any salesforce error
@@ -267,7 +256,6 @@ module SurveysHelper
 	def submitsurvey
 		puts "^^^^^^^^^^^^^^^^^^^^ survey_helper.rb submitsurvey ^^^^^^^^^^^^^^^^^^^^"
 		session[:client].upsert('Invitation__c','Id', Sanitize.clean(params[:id] || params[:survey_id]), { 'Status__c' => 'Completed'})
-		#redirect_to "/invite/index", :notice => "Your survey was submitted successfully."
 		redirect_to invite_index_path, :notice => "Your survey was submitted successfully."
 	end
 
@@ -438,15 +426,11 @@ module SurveysHelper
 		puts "&&&&&&&&&&&&&&&&&&&&&&&&& autocompletequery"
 		p = session[:client].query("select Id, Name from Master_Patient__c ")
 		@json = Array.new
-		@json << { :display_name => 'Luis Campos', :Id => 'Luis' } 
 		p.each do |n|
 			@json<< {:display_name => n.Name, :Id => n.Id}
 		end
 
-		puts "------ json response = '#{@json}' "
-
-		respond_to do |format|
-			#format.json { render :json => p.to_json }		
+		respond_to do |format|	
 			format.json { render :json => {:items => @json} }
 		end
 			

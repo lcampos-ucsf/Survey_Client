@@ -11,7 +11,7 @@
 <% if url.index('invite') %>
 	<%= link_to_unless current_page.first?, raw(t 'views.pagination.previous'), url, :rel => 'prev', :remote => remote, :class => "btn secondary medium", :onclick => "showmodaltransition()" %>
 <% else %>
-  <a onclick="formsubmit('<%= url %>','0', '<%= update_multiple_surveys_path %>');" class="btn secondary medium" id="previewbtn" >‹ Prev</a>
+  <a onclick="formsubmit('<%= url %>','0');" class="btn secondary medium" id="previewbtn" >‹ Prev</a>
 
 <% end %>
 </span>

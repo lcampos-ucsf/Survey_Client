@@ -63,8 +63,6 @@ require 'omniauth-oauth2'
         #renew session timeout
         puts "-----------renew session timeout, session = '#{session[:expires_at]}' "
         puts "-----------renew session timeout, now = '#{expire_time}' "
-        puts "-----------renew session timeout, now = '#{expire_time}' "
-        puts "-----------renew session timeout, now = '#{expire_time}' "
         session[:expires_at] = expire_time
       end
     else
@@ -73,9 +71,7 @@ require 'omniauth-oauth2'
   end
 
   def admin_only
-    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& admin_only &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& admin_only &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
-    puts "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& admin_only &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+    puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb, admin_only ^^^^^^^^^^^^^^^^^^^^"
     if session[:user_profile] != 'Admin'
       raise Exceptions::InsufficientPriviledges.new('Insufficient Privileges to access this section.')
     end

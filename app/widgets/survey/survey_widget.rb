@@ -10,12 +10,12 @@ responds_to_event :submit, :with => :update_multiple
 		@survey = options[:survey]
 		@inviteid = params[:id] || params[:survey_id]
 		@surveyid = @survey[0].Survey__c
-		puts "^^^^^^^^^^^^^^^^^^^^ survey_widget.rb Kaminari execution ^^^^^^^^^^^^^^^^^^^^"
+		puts "^^^^^^^^^^^^^^^^^^^^ survey_widget.rb, widget ^^^^^^^^^^^^^^^^^^^^"
 		
 		#security enhancement
 		@pageno = (params[:page]!= nil) ? ( params[:page].match(/^[0-9]*$/) == nil ? 1 : Sanitize.clean(params[:page]).to_i ) : 1
 
-		puts "-------------------- survey_widget.rb after sanitize, pageno = '#{@pageno}' "
+		#puts "-------------------- survey_widget.rb after sanitize, pageno = '#{@pageno}' "
 		@lines_query = session[:client].query("select Id, Name, Description__c, Display_Logic__c, Sort_Order__c, Survey__c from Line__c where Survey__c = '#{@survey[0].Survey__c}' order by Sort_Order__c asc")
 		
 		@liq_array = []
@@ -28,7 +28,7 @@ responds_to_event :submit, :with => :update_multiple
 		@it_stop = 0
 		#loop while showsections array is empty and it_stop is less than 100, this prevents infinite loop
 		while @showsections.empty? && @it_stop < 100
-			puts "-------------------- survey_widget.rb showsections while start"
+			#puts "-------------------- survey_widget.rb showsections while start"
 
 			@lines = Kaminari.paginate_array(@liq_array).page(@pageno).per(1) # Paginates the array
 
@@ -40,20 +40,20 @@ responds_to_event :submit, :with => :update_multiple
 
 			@ls = @lines.current_page.to_f
 
-			puts "-------------------- survey_widget.rb current page = '#{@currentpg.to_i}' "
+			#puts "-------------------- survey_widget.rb current page = '#{@currentpg.to_i}' "
 
 			#evaluate display logic on lines
 			@lines.each do |l|
-				puts "-------------------- survey_widget.rb lines for"
+				#puts "-------------------- survey_widget.rb lines for"
 				if l.Display_Logic__c != nil
-					puts "-------------------- survey_widget.rb display logic present"
+					#puts "-------------------- survey_widget.rb display logic present"
 					eval_dl = displaylogic(l, @inviteid )
-					puts "-------------------- survey_widget.rb eval_dl = '#{eval_dl}' "
+					#puts "-------------------- survey_widget.rb eval_dl = '#{eval_dl}' "
 					if eval_dl #display logic is true, add data to showsections array
 						@showsections << l
 					else
 
-						puts "@ls = #{@ls}"
+						#puts "@ls = #{@ls}"
 						#if display logic is not met, we need to check for responses in this section that need to be erased
 						@response = session[:client].query("select Id, Name, Date_Response__c, DateTime_Response__c, Integer_Response__c, Line_Item__c, Text_Long_Response__c, Text_Response__c, Line_Sort_Order__c, Survey__c, Invitation__c from Response__c where Survey__c = '#{@surveyid}' and Invitation__c = '#{@inviteid}' and Line_Sort_Order__c = #{@ls} ")
 						
@@ -73,15 +73,15 @@ responds_to_event :submit, :with => :update_multiple
 												:Integer_Response__c => nil }
 							end
 
-							puts "--------------- responseDel_array = #{@responseDel_array} "
+							#puts "--------------- responseDel_array = #{@responseDel_array} "
 							results = session[:client].http_post('/services/apexrest/v1/Response/',@responseDel_array.to_json)
-							puts "---------- results = '#{results}' "
+							#puts "---------- results = '#{results}' "
 
 						end
 
 					end
 				else
-					puts "-------------------- survey_widget.rb NO display logic present"
+					#puts "-------------------- survey_widget.rb NO display logic present"
 					@showsections << l
 				end
 			end
@@ -92,7 +92,7 @@ responds_to_event :submit, :with => :update_multiple
 					@pageno -= 1
 					params[:page] = @pageno
 				else
-					puts "------------------- pageno = '#{@pageno}' "
+					#puts "------------------- pageno = '#{@pageno}' "
 					@pageno += 1
 					params[:page] = @pageno
 				end
@@ -114,11 +114,7 @@ responds_to_event :submit, :with => :update_multiple
 
 	def displaylogic(conditional, inviteid)
 		#display logic should go here
-		puts "///////////////// display logic ///////////////////// id = #{inviteid}"
-		puts "///////////////// display logic /////////////////////"
-		puts "///////////////// display logic /////////////////////"
-		puts "///////////////// display logic /////////////////////"
-		puts "///////////////// display logic /////////////////////"
+		puts "^^^^^^^^^^^^^^^^^^^^ survey_widget.rb, display logic ^^^^^^^^^^^^^^^^^^^^ id = #{inviteid}"
 		if conditional.Display_Logic__c != nil
 			@string = conditional.Display_Logic__c 
 			@expressions = @string.split(/\s/)
@@ -149,13 +145,13 @@ responds_to_event :submit, :with => :update_multiple
 
 	        		if @h_rq.has_key?("#{question}")
 		        		if @h_rq["#{question}"][0].Response_Type__c == 'Integer' || @h_rq["#{question}"][0].Response_Type__c == 'Calculation'
-		        			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Integer Response = '#{@h_rq["#{question}"][0].Integer_Response__c }' "
+		        			#puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Integer Response = '#{@h_rq["#{question}"][0].Integer_Response__c }' "
 		        			qv =  (@h_rq["#{question}"][0].Integer_Response__c == '' || @h_rq["#{question}"][0].Integer_Response__c == nil ) ? '0' : @h_rq["#{question}"][0].Integer_Response__c.to_s 
 		        		elsif @h_rq["#{question}"][0].Response_Type__c == 'Date' 
-		        			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Date Response = '#{@h_rq["#{question}"][0].Date_Response__c }' "
+		        			#puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Date Response = '#{@h_rq["#{question}"][0].Date_Response__c }' "
 		        			qv =  (@h_rq["#{question}"][0].Text_Long_Response__c == '' || @h_rq["#{question}"][0].Text_Long_Response__c == nil ) ? '0' : @h_rq["#{question}"][0].Text_Long_Response__c
 		        		else
-		        			puts "----------------- response = '#{@h_rq["#{question}"][0].Text_Long_Response__c}' " 
+		        			#puts "----------------- response = '#{@h_rq["#{question}"][0].Text_Long_Response__c}' " 
 		        			a = (@h_rq["#{question}"][0].Text_Long_Response__c == ''|| @h_rq["#{question}"][0].Text_Long_Response__c == nil ) ? '' : @h_rq["#{question}"][0].Text_Long_Response__c
 		        			qv = "'" + a + "'"
 		        		end
@@ -169,18 +165,18 @@ responds_to_event :submit, :with => :update_multiple
 	        	end
 	        end
 
-			puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! expressions = '#{@expressions}' "
+			#puts " !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! expressions = '#{@expressions}' "
 			@evalstring = @expressions * ""
 
-			puts "--------- evalstring = '#{@evalstring}' "
+			#puts "--------- evalstring = '#{@evalstring}' "
 			
 			@m_log = @evalstring.index(/\;/)
 			if @m_log != nil
-				puts "+++++++++ m_log = '#{@m_log}' "
+				#puts "+++++++++ m_log = '#{@m_log}' "
 			
 				#multiple select evaluations for conditional formula
 				orig_multicondition = @evalstring.scan(/[\'\#\;0-9a-zA-Z\_\-\:]+[\<\>\=]+[\'\#0-9a-zA-Z\_\-\:]+/)
-				puts "-----------orig_multicondition.scan = '#{orig_multicondition}' "
+				#puts "-----------orig_multicondition.scan = '#{orig_multicondition}' "
 
 				if !orig_multicondition.empty?
 					orig_multicondition.each do |omc|
@@ -207,7 +203,7 @@ responds_to_event :submit, :with => :update_multiple
 			
 			#date evaluations for conditional formula
 			orig_datecondition = @evalstring.scan(/[0][\<\>\=\!]+\d{2}\/\d{2}\/\d{4}|\d{2}\/\d{2}\/\d{4}[\<\>\=\!]+\d{2}\/\d{2}\/\d{4}/)
-			puts "-----------orig_datecondition.scan = '#{orig_datecondition}' "
+			#puts "-----------orig_datecondition.scan = '#{orig_datecondition}' "
 
 			if !orig_datecondition.empty?
 				orig_datecondition.each do |g|

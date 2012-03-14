@@ -400,15 +400,14 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		}
 	}
 
-	function formsubmit(url, dir, aurl){
+	function formsubmit(url, dir){
 		showmodaltransition();
-		alert('aurl = '+aurl);
+		alert('updatemultiple_path = '+updatemultiple_path);
 		var dt = j$("form").serialize();
 		//dt += (dt ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 		j$.ajax({
 			//url: "/client/surveys/update_multiple",
-			url: "/surveys/update_multiple",
-			//url: aurl,
+			url: updatemultiple_path,
 			type: "POST",
 			data: dt,
 			dataType: "json",
