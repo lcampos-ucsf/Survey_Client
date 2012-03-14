@@ -9,6 +9,14 @@
 		//j$('table').visualize({type: 'pie', height: '300px', width: '420px'});
 		j$('table').visualize({type: 'line', width: '420px'});
 	});
+	j$(document).ready(function() {
+		var ua = navigator.userAgent,
+	    event = (ua.match(/iPad/i)) ? "touchstart" : "click";
+
+		j$("#search_test_js").bind(event, function(e) {
+		    alert('search result obj = '); 
+		}
+	});
 </script>
 
 <div class="survey-search-div" >
@@ -17,7 +25,7 @@
 
 	<a href="javascript:void(0);" onclick="getstats(j$('#search_results'), j$('#sac_data').val(), '#search_results_header') " class="btn secondary" >Search</a>
 
-	<a href="javascript:void(0);" onclick="alert('search result obj = '); " class="btn secondary" >Search test</a>
+	<a class="btn secondary" id="search_test_js" >Search test</a>
 </div>
 
 <h4 id="search_results_header" style="display:none;" >Search Results : </h4>
