@@ -4,7 +4,7 @@
 	<input type="text" id="simple_autocomplete_comp" class="simple_autocomplete_comp" data-url="<%= survey_search_invite_index_path %>" value="" data-ac-type="simple" style="width:300px;" autocomplete="off" />
 	<input type="text" id="sac_data" class="sac_data" style="display:none;" autocomplete="off" />
 
-	<a onclick="redirprint( j$('#sac_data').val() )" class="btn secondary" >Search</a>
+	<a class="btn secondary" id="search_print_btn">Search</a>
 	<script type="text/javascript">
 		function redirprint(pid){
 			if(pid){
@@ -17,6 +17,15 @@
 				j$('#search_results_header').css('display','block');
 			}
 		}
+		j$(document).ready(function() {
+	        //this fixes all iPad onclick issues
+	        var ua = navigator.userAgent,
+	        event = (ua.match(/iPad/i)) ? "touchstart" : "click";
+
+	        j$("#search_print_btn").bind(event, function(e) {
+	        	redirprint( j$('#sac_data').val() );
+	        });
+	    });
 	</script>
 </div>
 
