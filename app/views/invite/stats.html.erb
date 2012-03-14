@@ -15,9 +15,9 @@
 	<input type="text" id="simple_autocomplete_comp" class="simple_autocomplete_comp" data-url="<%= survey_search_invite_index_path %>" value="" data-ac-type="simple" style="width:300px;" autocomplete="off" />
 	<input type="text" id="sac_data" class="sac_data" style="display:none;" autocomplete="off" />
 
-	<a href="#" onclick="getstats(j$('#search_results'), j$('#sac_data').val(), '#search_results_header') " class="btn secondary" >Search</a>
+	<a href="javascript:void(0);" onclick="getstats(j$('#search_results'), j$('#sac_data').val(), '#search_results_header') " class="btn secondary" >Search</a>
 
-	<a href="#" onclick="alert('search result obj = '+j$('#search_results')', data = '+ j$('#sac_data').val() + '#search_results_header') " class="btn secondary" >Search test</a>
+	<a href="javascript:void(0);" onclick="alert('search result obj = '); " class="btn secondary" >Search test</a>
 </div>
 
 <h4 id="search_results_header" style="display:none;" >Search Results : </h4>
