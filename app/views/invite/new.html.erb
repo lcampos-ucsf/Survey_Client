@@ -19,8 +19,21 @@
     <%= render 'fields', :f => f %>
     <div class="actions">
         <%= f.submit "Save", :class => 'btn primary customform', :id => 'commitinvite', :style =>"display:none;" %>
-        <a onclick="validateinvite();" class="btn primary customform" >Save</a>
+        <a class="btn primary customform" id="invite_save_btn" >Save</a>
         <%= link_to 'Cancel',invite_index_path, :class => 'btn secondary' %>
         
     </div>
 <% end %>
+
+<script type="text/javascript">
+    j$(document).ready(function() {
+        //this fixes all iPad onclick issues
+        var ua = navigator.userAgent,
+        event = (ua.match(/iPad/i)) ? "touchstart" : "click";
+
+        j$("#invite_save_btn").bind(event, function(e) {
+            alert('test script for submit');
+            validateinvite();
+        });
+    });
+</script>

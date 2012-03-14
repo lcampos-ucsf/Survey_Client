@@ -687,7 +687,6 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 	//get stats per survey
 	function getstats(t, val, header){
-		alert('getstats, searchstatspath = '+searchstatspath);
 		if( val ){
 			j$.ajax({
 				//url: url,
