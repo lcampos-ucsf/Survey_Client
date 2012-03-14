@@ -609,7 +609,6 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 
 	//validations on create invite section
 	function validateinvite(){
-		alert('validateinvite');
 		showmodaltransition();
 
 		var errors = false;
@@ -621,13 +620,13 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 			if(cl){
 				
 				if(cl == 'select' && (val == '' || val == null) ){
-					alert('select,  cl = '+cl);
+					//alert('select,  cl = '+cl);
 					errors = true;
 					j$(this).addClass('errorhighlight');
 					j$(this).prev().text('Please select an option');
 					j$(this).prev().css('display','block');
 				}else if(cl.indexOf('datepicker') != -1 ){
-					alert('datepicker, cl = '+cl);
+					//alert('datepicker, cl = '+cl);
 					if(val == '' || val == null){
 						errors = true;
 						j$(this).addClass('errorhighlight');
@@ -678,7 +677,6 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 		});
 
 		if(!errors){
-			alert('no errors, commiting');
 			j$('#commitinvite').click();
 		}else{
 			hidemodaltransition();
