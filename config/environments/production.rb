@@ -79,6 +79,7 @@ SampleApp::Application.configure do
   ENV['app_timeout'] = '3600' #(15 mins) time in seconds
   ENV["NEW_RELIC_APP_NAME"] = 'Survey Client'
   ENV["NEW_RELIC_LICENSE_KEY"] = '9ed0a09e45c9eb252960c0210a85cffc979afea3'
+  ENV["RACK_ENV"] = 'Production'
    
 
   # The production environment is meant for finished, "live" apps.
