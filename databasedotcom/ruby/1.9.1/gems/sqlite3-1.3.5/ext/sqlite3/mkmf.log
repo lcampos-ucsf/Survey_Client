@@ -143,7 +143,7 @@ conftest.c: In function ‘t’:
 conftest.c:5: warning: implicit declaration of function ‘sqlite3_column_database_name’
 Undefined symbols:
   "_sqlite3_column_database_name", referenced from:
-      _t in cc5IpUK5.o
+      _t in ccFA0HNx.o
 ld: symbol(s) not found
 collect2: ld returned 1 exit status
 checked program was:
@@ -178,7 +178,7 @@ conftest.c: In function ‘t’:
 conftest.c:5: warning: implicit declaration of function ‘sqlite3_enable_load_extension’
 Undefined symbols:
   "_sqlite3_enable_load_extension", referenced from:
-      _t in ccrbJGcI.o
+      _t in cchQy3Yy.o
 ld: symbol(s) not found
 collect2: ld returned 1 exit status
 checked program was:
@@ -213,7 +213,7 @@ conftest.c: In function ‘t’:
 conftest.c:5: warning: implicit declaration of function ‘sqlite3_load_extension’
 Undefined symbols:
   "_sqlite3_load_extension", referenced from:
-      _t in ccB6HAW2.o
+      _t in cc7rgfyQ.o
 ld: symbol(s) not found
 collect2: ld returned 1 exit status
 checked program was:

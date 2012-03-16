@@ -35,7 +35,9 @@ gem 'sanitize', '2.0.3'
 #heroku dependency
 group :production do
 	#this is commented for fedora purposes
-	#gem 'pg', '0.12.0'
+	gem 'pg', '0.12.0'
+	#adds new relic
+	gem 'newrelic_rpm'
 end
 
 group :development do

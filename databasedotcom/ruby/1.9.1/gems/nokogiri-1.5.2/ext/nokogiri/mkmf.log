@@ -49,7 +49,7 @@ have_func: checking for iconv_open() in iconv.h... -------------------- no
 ld: warning: directory '/usr/local/lib' following -L not found
 Undefined symbols:
   "_libiconv_open", referenced from:
-      _t in ccnQznsv.o
+      _t in cctrjLHB.o
 ld: symbol(s) not found
 collect2: ld returned 1 exit status
 checked program was:

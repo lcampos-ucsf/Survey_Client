@@ -401,7 +401,7 @@ conftest.c: In function ‘t’:
 conftest.c:5: warning: implicit declaration of function ‘rb_enc_alias’
 Undefined symbols:
   "_rb_enc_alias", referenced from:
-      _t in cc48Gljl.o
+      _t in cc59iijN.o
 ld: symbol(s) not found
 collect2: ld returned 1 exit status
 checked program was:
