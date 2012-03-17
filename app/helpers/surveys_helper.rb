@@ -146,12 +146,19 @@ module SurveysHelper
 		#get line item external ids for query
 		@li_eid_list = ''
 		params.each do |key, value|
-			if key.index('qq') != nil
-				if key.index('qq') >= 0
+			#puts "----------- params key = #{key} "
+			#puts "----------- params key = #{key} "
+			@matchqs = (key.match(/^(qq)/) ) ? true : false
+			#puts "----------- params key match = #{key.match(/^(qq)/)} , value = #{@matchqs}"
+
+			if @matchqs
+			#if key.index('qq') != nil
+			#	if key.index('qq') >= 0
 					@aeid = key.split('_')
 					#line item external ids
 					@li_eid_list = (@li_eid_list == '') ? ( @li_eid_list + "\'#{@aeid[1]}\'" ) : ( @li_eid_list + ", \'#{@aeid[1]}\'" )
-				end
+			#	end
+			#end
 			end
 		end
 		@li_eid_list = "("+@li_eid_list+")"
@@ -167,9 +174,12 @@ module SurveysHelper
         end
 
 		params.each do |key, value|
-			@var = key.index('qq') 	
-			if key.index('qq') != nil
-				if key.index('qq') >= 0
+			#@var = key.index('qq') 	
+			@matchqqs = (key.match(/^(qq)/) ) ? true : false
+
+			if @matchqqs
+			#if key.index('qq') != nil
+			#	if key.index('qq') >= 0
 					@array = key.split('_')
 					@qid = @array[1]
 
@@ -194,7 +204,8 @@ module SurveysHelper
 					end
 
 					@hash_response[@array[1]] ? @hash_response[@array[1]] << @robj : @hash_response[@array[1]] = [@robj]
-				end
+			#	end
+			#end
 			end
 		end
 
