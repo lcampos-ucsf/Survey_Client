@@ -21,20 +21,7 @@ module SurveysHelper
 			@isrequired = isrequired
 			@sclient = sclient
 		end
-=begin
-		def resp_a
-			@respArray = {'Survey__c' => sid, 
-							'Invitation__c' => inviteid, 
-							'Line_Item__c' => qid, 
-							'OwnerId' => @uid,
-							'Original_Question_Text__c' => question, #.match(/^\s*([0-9a-zA-Z]*)\s*$/), 
-							'Text_Long_Response__c' => (value != nil || value != '') ? value : nil,
-							'Label_Long_Response__c' => (@resp_type == 'text') ? nil : label, 
-							'Date_Response__c' => (@resp_type == 'date') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
-							'DateTime_Response__c' => (@resp_type == 'datetime') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
-							'Integer_Response__c' => (@resp_type == 'integer' || @resp_type == 'calculation' ) ? value.to_i : nil }
-		end
-=end
+
 		def resp_json
 
 			return { :Id => rid,
@@ -45,9 +32,6 @@ module SurveysHelper
 					:Original_Question_Text__c => question,
 					:Text_Long_Response__c => (value != nil || value != '') ? value : nil,
 					:Label_Long_Response__c => (@resp_type == 'text') ? nil : label} 
-					#:Date_Response__c => (@resp_type == 'date') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
-					#:DateTime_Response__c => (@resp_type == 'datetime') ? (Date.strptime(value, "%m/%d/%Y").to_datetime() unless value == '') : nil,
-					#:Integer_Response__c => (@resp_type == 'integer' || @resp_type == 'calculation' ) ? value.to_i : nil }
 
 		end
 
@@ -146,10 +130,7 @@ module SurveysHelper
 		#get line item external ids for query
 		@li_eid_list = ''
 		params.each do |key, value|
-			#puts "----------- params key = #{key} "
-			#puts "----------- params key = #{key} "
 			@matchqs = (key.match(/^(qq)/) ) ? true : false
-			#puts "----------- params key match = #{key.match(/^(qq)/)} , value = #{@matchqs}"
 
 			if @matchqs
 			#if key.index('qq') != nil

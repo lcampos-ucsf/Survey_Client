@@ -4,20 +4,21 @@
 	<thead>
 		<tr>
 			<th></th>
-			<th>Action</th>
+			<th style="width:8%;">Action</th>
+			<th style="width:8%;">ID</th>
 			<th>Title</th>
-			<th>Status</th>
+			<!-- th>Status</th-->
 			<th>Subject/Concept</th>
-			<th>Start Date</th>
-			<th>End Date</th>
-			<th>Last Mod. Date</th>
+			<th style="width:9%;">Start Date</th>
+			<th style="width:9%;">End Date</th>
+			<th style="width:14%;">Last Mod. Date</th>
 		</tr>
 	</thead>
 <tbody>
 	<% for invite in @invites do %>
 			<tr>
 				<td>
-					<%= link_to 'Edit', edit_invite_path(invite.Id) %>
+					<%= link_to 'Edit', edit_invite_path(invite.Id) %> 
 				</td>
 				<td>
 					<% if invite.Progress_Save__c != nil %>
@@ -26,8 +27,9 @@
 						<%= link_to( 'Start', survey_show_path(invite.Id)+'?page=1', :class => 'btn success small btnfixedsize' ) %>
 					<% end %>
 				</td>
+				<td> <%= invite.Name %> </td>
 				<td> <%= invite.Survey_Name__c %> </td>
-				<td> <%= invite.Status__c unless invite.Status__c.nil?%> </td>
+				<!--td> < %= invite.Status__c unless invite.Status__c.nil?% > </td -->
 				<td> <%= invite.Invitation_Subject__c unless invite.Invitation_Subject__c.nil? %> </td>
 				<td> <%= invite.Start_Date__c.strftime('%m/%d/%Y') unless invite.Start_Date__c.nil? %> </td>
 				<td> <%= invite.End_Date__c.strftime('%m/%d/%Y') unless invite.End_Date__c.nil?%> </td>
@@ -35,7 +37,8 @@
 					 <% if invite.Progress_Save__c != nil 
 							time = Time.parse(invite.LastModifiedDate.strftime('%d/%m/%Y %I:%M%P %Z')) 
 					 %> 
-					 	<%= time.in_time_zone("Pacific Time (US & Canada)").strftime('%m/%d/%Y %I:%M%P %Z') %>
+					 	<!-- %= time.in_time_zone("Pacific Time (US & Canada)").strftime('%m/%d/%Y %I:%M%P %Z') % -->
+					 	<%= time.in_time_zone("Pacific Time (US & Canada)").strftime('%m/%d/%Y %I:%M%P ') %>
 					 <% end %>
 				</td>
 			</tr>
