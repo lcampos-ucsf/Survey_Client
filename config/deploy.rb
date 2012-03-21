@@ -12,11 +12,11 @@ default_run_options[:pty] = true
 
 set :application, "RailsForce_AppTemplate"
 set :repository,  "git@github.com:lcampos/RailsForce_AppTemplate.git"
-set :deploy_to, "/var/www/webapps/RailsForce_AppTemplate"
-set :user, "luis"
+set :deploy_to, "/var/www/webapps/#{application}"
+set :user, 'luis'
+set :pg_user, 'app_npi_client'
 #set :scm_passphrase, "9x2cKL&re4"
-#set :scm_passphrase, "mh8JU9$R"
-set :branch, "master"
+set :branch, 'master'
 set :git_enable_submodules, 1
 
 #uses github local keys instead of keys on the server
@@ -63,15 +63,12 @@ namespace :deploy do
 
 	desc "Create the gemset"
 	task :create_gemset do
-	 #run "rvm use #{rvm_ruby_string} --create "
 	 run "rvm gemset create #{rvm_gemsetname}"
-	 #run "rvm gemset use #{rvm_ruby_string}"
 	end
 
 	desc "Use the gemset"
 	task :use_gemset do
 	 run "rvm #{rvm_ruby_string}"
-	 #run "rvm gemset use #{rvm_ruby_string}"
 	end
 
 	desc "Install the bundle"
@@ -82,14 +79,8 @@ namespace :deploy do
 	#this puts a maintenance page on the app while deployment takes place
 	#before "deploy", "deploy:web:disable"  
 	#after "deploy", "deploy:web:enable"  
-
 end
 
-#when deploying, the first thing capistrano will do is create the gemset 
-#then bundle will install all required gems into the application's gemset
-before "deploy", "deploy:create_gemset"
-before "deploy", "deploy:use_gemset"
-after "deploy:finalize_update", "deploy:bundle"
 
 #this method should resolve the trust issues
 namespace :rvm do
@@ -103,19 +94,17 @@ end
 namespace :appowner do
   desc 'change owner of app files'
   task :chown do
-    surun "chown -R app_npi_client #{deploy_to} "
-    #run "sudo chown -R app_npi_client #{deploy_to} "
+    run "#{try_sudo} chown -R #{pg_user} #{deploy_to} "
   end
 end
 
-def surun(command)
-  password = fetch(:root_password, Capistrano::CLI.password_prompt("user password: "))
-  run("sudo #{command}") do |channel, stream, output|
-    channel.send_data("#{password}n") if output
-  end
-end
-
-after "deploy:update_code", "appowner:chown"
+#when deploying, the first thing capistrano will do is create the gemset 
+#then bundle will install all required gems into the application's gemset
+#last step, it will change the owner back to the one being used by passenger
+before "deploy", "deploy:create_gemset"
+before "deploy", "deploy:use_gemset"
+after "deploy:finalize_update", "deploy:bundle"
+after "deploy", "appowner:chown"
 after "deploy", "rvm:trust_rvmrc"
 
 
