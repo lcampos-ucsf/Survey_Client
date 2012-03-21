@@ -14,7 +14,7 @@ set :application, "RailsForce_AppTemplate"
 set :repository,  "git@github.com:lcampos/RailsForce_AppTemplate.git"
 set :deploy_to, "/var/www/webapps/RailsForce_AppTemplate"
 set :user, "luis"
-#set :scm_passphrase, "9x2cKL&re4"
+set :scm_passphrase, "9x2cKL&re4"
 #set :scm_passphrase, "mh8JU9$R"
 set :branch, "master"
 set :git_enable_submodules, 1
@@ -103,11 +103,17 @@ end
 namespace :appowner do
   desc 'change owner of app files'
   task :chown do
-    #surun "god restart GROUP_NAME"
-    run "sudo chown -R app_npi_client #{deploy_to} "
+    surun "chown -R app_npi_client #{deploy_to} "
+    #run "sudo chown -R app_npi_client #{deploy_to} "
   end
 end
 
+def surun(command)
+  password = fetch(:scm_passphrase, Capistrano::CLI.password_prompt("root password: "))
+  run("su - -c '#{command}'") do |channel, stream, output|
+    channel.send_data("#{password}n") if output
+  end
+end
 
 after "deploy:update_code", "appowner:chown"
 after "deploy", "rvm:trust_rvmrc"
