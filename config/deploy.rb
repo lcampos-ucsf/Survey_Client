@@ -104,7 +104,7 @@ namespace :appowner do
   desc 'change owner of app files'
   task :chown do
     #surun "god restart GROUP_NAME"
-    run "chown -R app_npi_client #{deploy_to} "
+    run "sudo chown -R app_npi_client #{deploy_to} "
   end
 end
 
