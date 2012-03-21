@@ -14,21 +14,23 @@
 	<thead>
 		<tr>
 			<th></th>
-			<th>Action</th>
+			<th style="width:8%;">Action</th>
+			<th style="width:8%;">ID</th>
 			<th>Title</th>
 			<th>Survey Taker</th>
 			<th>Subject/Concept</th>
-			<th>Start Date</th>
-			<th>End Date</th>
+			<th style="width:9%;">Start Date</th>
+			<th style="width:9%;">End Date</th>
 		</tr>
 	</thead>
 	<tbody>
-	<% for invite in @invites_complete do %>
+	<% for invite in @invites do %>
 			<tr>
 				<td> <%= link_to 'Edit', edit_invite_path(invite.Id) %> </td>
 				<td>
 					<%= link_to('Modify', survey_show_path(invite.Id)+'?page=1', :class => 'btn danger small btnfixedsize') %>
 				</td>
+				<td> <%= invite.Name %> </td>
 				<td> <%= invite.Survey_Name__c %> </td>
 				<td> <%= invite.User__r.Name unless invite.User__r.Name.nil? %> </td>
 				<td> <%= invite.Invitation_Subject__c unless invite.Invitation_Subject__c.nil? %> </td>
@@ -39,4 +41,6 @@
 	</tbody>
 </table>
 
-<%= paginate @invites_complete %>
+<%= render 'nav_progress' %>
+
+<%= paginate @invites %>

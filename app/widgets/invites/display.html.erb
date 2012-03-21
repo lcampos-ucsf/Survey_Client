@@ -47,18 +47,7 @@
 	
 </table>
 
-
-	<%
-		@pg = (params[:page] == nil || params[:page] == '') ? 1 : params[:page]
-		if @pg == 1
-			@sf = (@invites_query.count > 0) ? @pg : 0
-		else
-			@sf = ( @invites.count.to_i < 2 ) ? @invites_query.count : (((@pg.to_i - 1) * @paginate) + 1)
-		end
-    	@ff = ( @invites.count.to_i < @paginate ) ? @invites_query.count : ( @pg.to_i * @invites.count.to_i )
-	%>
-
-<p> <%= @sf %>-<%= @ff %> of <%= @invites_query.count %> </p>
+<%= render 'invite/nav_progress' %>
 
 <%= paginate @invites %>
 

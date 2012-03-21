@@ -74,7 +74,8 @@ class InviteController < ApplicationController
   
     #security enhancement
     @pageno = (params[:page]!= nil) ? ( params[:page].match(/^[0-9]*$/) == nil ? 1 : Sanitize.clean(params[:page]).to_i ) : 1
-    @invites_new = Kaminari.paginate_array(@invites_query).page(@pageno).per(10) # Paginates the array
+    @paginate = 10
+    @invites = Kaminari.paginate_array(@invites_query).page(@pageno).per(@paginate) # Paginates the array
 
   end
 
@@ -83,7 +84,8 @@ class InviteController < ApplicationController
   
     #security enhancement
     @pageno = (params[:page]!= nil) ? ( params[:page].match(/^[0-9]*$/) == nil ? 1 : Sanitize.clean(params[:page]).to_i ) : 1
-    @invites_inprogress = Kaminari.paginate_array(@invites_query).page(@pageno).per(10) # Paginates the array
+    @paginate = 10
+    @invites = Kaminari.paginate_array(@invites_query).page(@pageno).per(@paginate) # Paginates the array
 
   end
 
@@ -92,7 +94,8 @@ class InviteController < ApplicationController
     
     #security enhancement
     @pageno = (params[:page]!= nil) ? ( params[:page].match(/^[0-9]*$/) == nil ? 1 : Sanitize.clean(params[:page]).to_i ) : 1
-    @invites_complete = Kaminari.paginate_array(@invites_query).page(@pageno).per(10) # Paginates the array
+    @paginate = 10
+    @invites = Kaminari.paginate_array(@invites_query).page(@pageno).per(@paginate) # Paginates the array
 
   end
 
