@@ -14,7 +14,7 @@ set :application, "RailsForce_AppTemplate"
 set :repository,  "git@github.com:lcampos/RailsForce_AppTemplate.git"
 set :deploy_to, "/var/www/webapps/RailsForce_AppTemplate"
 set :user, "luis"
-set :scm_passphrase, "9x2cKL&re4"
+#set :scm_passphrase, "9x2cKL&re4"
 #set :scm_passphrase, "mh8JU9$R"
 set :branch, "master"
 set :git_enable_submodules, 1
@@ -109,8 +109,8 @@ namespace :appowner do
 end
 
 def surun(command)
-  password = fetch(:scm_passphrase, Capistrano::CLI.password_prompt("root password: "))
-  run("su - -c '#{command}'") do |channel, stream, output|
+  password = fetch(:root_password, Capistrano::CLI.password_prompt("user password: "))
+  run("sudo #{command}") do |channel, stream, output|
     channel.send_data("#{password}n") if output
   end
 end
