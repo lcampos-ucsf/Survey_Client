@@ -4,7 +4,9 @@
   <head>
 
     <title><%= title %></title>
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <!-- link rel="shortcut icon" href="/favicon.ico" / -->
+    <%= favicon_link_tag %>
+
     <%= csrf_meta_tag %>
     <%= render 'layouts/stylesheets' %>
     <%= javascript_include_tag 'jquery.js' %>
@@ -18,22 +20,24 @@
     <%= javascript_include_tag 'bootstrap-alerts.js' %>
     <%= javascript_include_tag 'bootstrap-modal.js' %>
 
-    <!-- script type="text/javascript">
-      // load the my-script-file.js and display an alert dialog once the script has been loaded
-      loadScript('/javascripts/bootstrap-dropdown.js');
-      loadScript('/javascripts/bootstrap-alerts.js');
-      loadScript('/javascripts/bootstrap-modal.js');
-      
-    </script -->
     <!-- Security Update-->
     <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-    <link rel="apple-touch-icon" href="/client/images/ucsf_ipad_logo.png"/>
-    <link rel="apple-touch-startup-image" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" href="/client/images/ucsf_startup_logo_landscape.png">
-    <link rel="apple-touch-startup-image" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" href="/client/images/ucsf_startup_logo_portrait.png">
+    <!--link rel="apple-touch-icon" href="/client/images/ucsf_ipad_logo.png"/ -->
+    <%= favicon_link_tag 'ucsf_ipad_logo.png', :rel => 'apple-touch-icon', :type => 'image/png' %>
+
+
+    <!--link rel="apple-touch-startup-image" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" href="/client/images/ucsf_startup_logo_landscape.png" -->
+    <%= favicon_link_tag 'ucsf_startup_logo_landscape.png', :rel => 'apple-touch-startup-image', :type => 'image/png', :media => "screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" %>
+
+    <!--link rel="apple-touch-startup-image" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" href="/client/images/ucsf_startup_logo_portrait.png"-->
+
+    <%= favicon_link_tag 'ucsf_startup_logo_portrait.png', :rel => 'apple-touch-startup-image', :type => 'image/png', :media => "screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" %>
+
+
 
     <!-- Security Update, no cache-->
     <meta http-equiv="pragma" content="no-cache" />

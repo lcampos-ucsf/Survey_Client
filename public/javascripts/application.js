@@ -561,7 +561,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	}
 
 	// JavaScript
-	//function loadScript(src, callback) {
+	/*
 	function loadScript(src) {
 	    var head = document.getElementsByTagName('head')[0],
 	        script = document.createElement('script');
@@ -578,7 +578,7 @@ var isiPad = /iPad/i.test(ua) || /iPhone OS 3_1_2/i.test(ua) || /iPhone OS 3_2_2
 	    //head.insertBefore(script, head.firstChild);
 	    head.insertBefore(script, head.lastChild);
 	}
-
+	*/
 	function showmodaltransition(){
 		j$('#my-modal-loading').modal({
 				show: true,
