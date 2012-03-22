@@ -75,7 +75,7 @@ SampleApp::Application.configure do
 =end
 
   ENV['DEFAULT_PROVIDER'] = "customurl"
-  ENV['URL_Prefix'] = ''
+  ENV['URL_Prefix'] = '/client'
   ENV['sfdc_api_version'] = '23.0'
   ENV['app_timeout'] = '900' #(15 mins) time in seconds
   ENV['app_idleafter'] = '800' #javascript that validates session, should always be less than app_timeout
@@ -83,9 +83,9 @@ SampleApp::Application.configure do
   ENV['app_pollinginterval'] = '80'
 
   #new relic config
-  ENV["NEW_RELIC_APP_NAME"] = 'Survey Client'
-  ENV["NEW_RELIC_LICENSE_KEY"] = '9ed0a09e45c9eb252960c0210a85cffc979afea3'
-  ENV["RACK_ENV"] = 'Production'
+  #ENV["NEW_RELIC_APP_NAME"] = 'Survey Client'
+  #ENV["NEW_RELIC_LICENSE_KEY"] = '9ed0a09e45c9eb252960c0210a85cffc979afea3'
+  #ENV["RACK_ENV"] = 'Production'
  
    
 
