@@ -17,18 +17,6 @@
 		<div class="text" ><%= @progressbar.to_i %> %</div>
 	</div>
 
-	<div id="my-modal-loading" class="savingmodal hide fade" style="display: none;" data-keyboard="true" data-backdrop="true" data-controls-modal="modal-from-dom">
-		
-        <div class="modal-body ">
-			<!-- img src="/images/loading.gif" class="loading_gif" / -->
-			<%= image_tag('loading.gif', :class => 'loading_gif') %>
-			<p class="loading_txt" >Saving ...</p>
-		</div>
-
-	</div>
-
-	<!-- a class="btn" data-controls-modal="my-modal-loading" data-backdrop="static" >Load</a -->
-
 	<div id="autosaved" > </div>
 	
 	<%= form_for(@lines, :url => {:controller => "surveys",:action => "update_multiple"}) do %>

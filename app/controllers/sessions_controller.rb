@@ -30,9 +30,14 @@ class SessionsController < ApplicationController
             puts "signout_revoke 1 --------------- signed_in? = '#{signed_in?}' "
             #Revoke refresh token
             if signed_in?
-              puts "signout_revoke 2 --------------- signed_in? = '#{signed_in?}' "
-                result = HTTParty.post("#{params[:orgurl]}/services/oauth2/revoke",:body => "token= #{session[:auth_hash][:refresh_token]}")
-                puts "Revoke post response = "+result.inspect
+              puts "signout_revoke 2 --------------- signed_in? = '#{signed_in?}', token = #{session[:auth_hash][:token]}, refresh token = #{session[:auth_hash][:refresh_token]} "
+                result = HTTParty.post("#{params[:orgurl]}/services/oauth2/revoke",:body => "token= #{session[:auth_hash][:token]}")
+                puts "Revoke token post response = "+result.inspect
+
+                if(session[:auth_hash][:refresh_token])
+                  result = HTTParty.post("#{params[:orgurl]}/services/oauth2/revoke",:body => "token= #{session[:auth_hash][:refresh_token]}")
+                  puts "Revoke refresh token post response = "+result.inspect
+                end 
             end
         end
 
@@ -41,13 +46,9 @@ class SessionsController < ApplicationController
             store_location
         end
     session[:client] = nil
+    clear_session
     reset_session
   end
-
-  #def deny_access
-  #  store_location
-  #  redirect_to signin_path, :notice => "Please sign in to access this page."
-  #end
 
   def redirect_back_or(default)
     redirect_to(session[:return_to] || default)
@@ -76,13 +77,6 @@ class SessionsController < ApplicationController
     #puts 'image : '+env['omniauth.auth']['info']['image'].to_s
     session[:name] = env['omniauth.auth']['info']['name']
     #puts 'name : '+env['omniauth.auth']['info']['name'].to_s
-
-    #add user ip
-    #session[:user_ip] = request.remote_ip
-
-    puts "///////////////////// user ip is = '#{session[:user_ip]}' " 
-    puts "///////////////////// user ip is = '#{session[:user_ip]}' " 
-    puts "///////////////////// user ip is = '#{session[:user_ip]}' " 
 
     #obtain name of the service
     params[:provider] ? service_route = params[:provider] : service_route = 'No service recognized (invalid callback)'

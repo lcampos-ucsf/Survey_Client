@@ -7,7 +7,7 @@ require 'omniauth-oauth2'
   end
 
   def sign_out(sm = 0)
-      puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb sign_out ^^^^^^^^^^^^^^^^^^^^"
+      puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb sign_out , refresh_token = #{session[:auth_hash][:token]}^^^^^^^^^^^^^^^^^^^^"
       instURL = ''
       if signed_in?
         instURL = session[:auth_hash][:instance_url]
@@ -31,12 +31,7 @@ require 'omniauth-oauth2'
 
   def authenticate
     puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb authenticate, signed_in ? = '#{signed_in?}' ^^^^^^^^^^^^^^^^^^^^"
-    #check ip
-   # if session[:user_ip] != request.remote_ip
-   #   deny_access
-   #   return false
-   # end
-
+    
     #check session
     if signed_in?
       ve_to = ENV['app_timeout'].to_i / 60
@@ -85,7 +80,7 @@ require 'omniauth-oauth2'
     session[:user_id] = nil
     session[:name] = nil
     session[:auth_hash][:token] = nil
-    session[:auth_hash][:refresh_token] = nil
+    #session[:auth_hash][:refresh_token] = nil
   end
 
   def authenticateSF
