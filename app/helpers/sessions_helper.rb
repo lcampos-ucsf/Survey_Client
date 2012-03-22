@@ -20,6 +20,7 @@ require 'omniauth-oauth2'
 
   def signout_exp
     puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb signout_exp ^^^^^^^^^^^^^^^^^^^^"
+    #clear_session
     sign_out(1)
   end
 
@@ -30,12 +31,11 @@ require 'omniauth-oauth2'
 
   def authenticate
     puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb authenticate, signed_in ? = '#{signed_in?}' ^^^^^^^^^^^^^^^^^^^^"
-
     #check ip
-    if session[:user_ip] != request.remote_ip
-      deny_access
-      return false
-    end
+   # if session[:user_ip] != request.remote_ip
+   #   deny_access
+   #   return false
+   # end
 
     #check session
     if signed_in?
@@ -46,24 +46,28 @@ require 'omniauth-oauth2'
         puts "if session[:expires_at].blank? = '#{session[:expires_at]}' "
       else
         @time_left = (session[:expires_at].utc - Time.now.utc).to_i
-        puts "else, timeleft = '#{@time_left}' " 
         unless @time_left > 0
           puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb authenticate unless ^^^^^^^^^^^^^^^^^^^^"
-          #session[:expires_at] = expire_time
-          @orgurl = session[:auth_hash][:instance_url]
-          reset_session
+          @orgurl = session[:auth_hash][:instance_url] ? session[:auth_hash][:instance_url] : @orgurl
+          #reset_session
+          clear_session
           store_location
           session[:orgurl] = @orgurl 
           signout_exp
           return
         end
         #renew session timeout
-        puts "-----------renew session timeout, session = '#{session[:expires_at]}' "
-        puts "-----------renew session timeout, now = '#{expire_time}' "
         session[:expires_at] = expire_time
+        puts "-------- session_helper.rb authenticate, session time left = #{session[:expires_at].utc - Time.now.utc}"
+        
       end
-    else
-      deny_access
+    else 
+      if session[:orgurl]
+        signout_exp
+      else
+        deny_access
+      end
+
     end
   end
 
@@ -72,6 +76,16 @@ require 'omniauth-oauth2'
     if session[:user_profile] != 'Admin'
       raise Exceptions::InsufficientPriviledges.new('Insufficient Privileges to access this section.')
     end
+  end
+
+  def clear_session
+    puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb, clear_session ^^^^^^^^^^^^^^^^^^^^"
+    session[:client] = nil
+    session[:user_profile] = nil
+    session[:user_id] = nil
+    session[:name] = nil
+    session[:auth_hash][:token] = nil
+    session[:auth_hash][:refresh_token] = nil
   end
 
   def authenticateSF
@@ -111,10 +125,11 @@ require 'omniauth-oauth2'
     auth_params = URI.escape(auth_params.collect{|k,v| "#{k}=#{v}"}.join('&'))    
 
     #redirect_to "/auth/#{provider}?#{auth_params}"
-    redirect_to "/client/auth/#{provider}?#{auth_params}"
+    redirect_to "#{ ENV['URL_Prefix'] }/auth/#{provider}?#{auth_params}"
   end
 
   def deny_access
+    puts "----------------- session_helper.rb deny_access -------------------- "
     store_location
     redirect_to signin_path, :notice => "Please sign in to access this page."
   end

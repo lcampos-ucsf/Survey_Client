@@ -1,7 +1,7 @@
 SampleApp::Application.configure do
   
   # Settings specified here will take precedence over those in config/application.rb
-=begin
+
   #NPI-DEV Heroku
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -19,7 +19,7 @@ SampleApp::Application.configure do
   ENV['SURVEY_BUILDER_URL'] = "https://ucsf-builder-dev.heroku.com/index"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://npi-dev.heroku.com'
 
-
+=begin
   #NPI-QA
   ENV['SALESFORCE_KEY'] = ""
   ENV['SALESFORCE_SECRET'] = ""
@@ -54,7 +54,7 @@ SampleApp::Application.configure do
   ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
   ENV['SURVEY_BUILDER_URL'] = "https://surveytool.ucsfmedicalcenter.org/builder"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://surveytool.ucsfmedicalcenter.org/client'
-=end
+
 
   #NPI ISU Servers Development, NPI ISU Server Client
   ENV['SALESFORCE_KEY'] = ""
@@ -72,14 +72,21 @@ SampleApp::Application.configure do
   ENV['DEFAULT_SANDBOX_URL'] = "https://test.salesforce.com"
   ENV['SURVEY_BUILDER_URL'] = "https://devsurveytool.ucsfmedicalcenter.org/builder"  
   ENV['IDP_UCSF_LOGOUT'] = ' https://idp-stage.ucsf.edu/idp/shib_logout.jsp?url=https://devsurveytool.ucsfmedicalcenter.org/client'
-
+=end
 
   ENV['DEFAULT_PROVIDER'] = "customurl"
+  ENV['URL_Prefix'] = '/client'
   ENV['sfdc_api_version'] = '23.0'
-  ENV['app_timeout'] = '3600' #(15 mins) time in seconds
+  ENV['app_timeout'] = '900' #(15 mins) time in seconds
+  ENV['app_idleafter'] = '800' #javascript that validates session, should always be less than app_timeout
+  ENV['app_warninglength'] = '30'
+  ENV['app_pollinginterval'] = '80'
+
+  #new relic config
   ENV["NEW_RELIC_APP_NAME"] = 'Survey Client'
   ENV["NEW_RELIC_LICENSE_KEY"] = '9ed0a09e45c9eb252960c0210a85cffc979afea3'
   ENV["RACK_ENV"] = 'Production'
+ 
    
 
   # The production environment is meant for finished, "live" apps.

@@ -272,36 +272,6 @@ module SurveysHelper
 		end
 	end
 
-=begin
-	def save_response(respObj)
-		puts "---------------- save_response -------------------"
-		
-		@id = false
-		if respObj.rid == '' || respObj.rid == nil
-			@id = false
-		else
-			@id = true
-		end
-
-		if @id
-			#puts "---------- save response, respObj.resp_a = '#{respObj.resp_a}' "
-			session[:client].upsert('Response__c','Id', respObj.rid, respObj.resp_a)
-		else
-			q = session[:client].query("select Id, Name, Invitation__c, Line_Item__c from Response__c where Invitation__c = '#{respObj.inviteid}' and Line_Item__c = '#{respObj.qid}' ")
-			if q.empty?
-				o = session[:client].create('Response__c',respObj.resp_a)
-				return { :key => respObj.key, :id => o.Id }
-				
-			else
-				session[:client].upsert('Response__c', 'Id', q[0].Id, respObj.resp_a)
-				return { :key => respObj.key, :id => q[0].Id }
-			end
-		end
-
-		return
-	end
-=end
-
 	def validate_response(rObj)
 		puts "validate response = '#{rObj.type}', value = '#{rObj.value}' "
 

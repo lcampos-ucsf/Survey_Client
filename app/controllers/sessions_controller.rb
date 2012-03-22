@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
         @sfloguturl = nil
         @idplogouturl = nil
 
-        puts "---------------signout_revoke---------------------"
+        puts "---------------signout_revoke, params = #{params.inspect}---------------------"
         if params[:orgurl] != nil
             puts "signout_revoke --------------- orgurl = '#{params[:orgurl]}' "
 
@@ -44,10 +44,10 @@ class SessionsController < ApplicationController
     reset_session
   end
 
-  def deny_access
-    store_location
-    redirect_to signin_path, :notice => "Please sign in to access this page."
-  end
+  #def deny_access
+  #  store_location
+  #  redirect_to signin_path, :notice => "Please sign in to access this page."
+  #end
 
   def redirect_back_or(default)
     redirect_to(session[:return_to] || default)
@@ -78,7 +78,7 @@ class SessionsController < ApplicationController
     #puts 'name : '+env['omniauth.auth']['info']['name'].to_s
 
     #add user ip
-    session[:user_ip] = request.remote_ip
+    #session[:user_ip] = request.remote_ip
 
     puts "///////////////////// user ip is = '#{session[:user_ip]}' " 
     puts "///////////////////// user ip is = '#{session[:user_ip]}' " 
@@ -121,7 +121,7 @@ class SessionsController < ApplicationController
       #puts instUrl
       
       client.authenticate :token => session[:auth_hash][:token], :instance_url => instUrl, :refresh_token => session[:auth_hash][:refresh_token]
-      session[:client]= client
+      session[:client] = client
       flash[:success] = "Welcome #{env['omniauth.auth']['info']['name']}!"
 
       u_data = session[:client].query("select Id, Survey_Role__c from User where Id = '#{session[:user_id]}' ")

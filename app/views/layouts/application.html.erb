@@ -4,7 +4,6 @@
   <head>
 
     <title><%= title %></title>
-    <!-- link rel="shortcut icon" href="/favicon.ico" / -->
     <%= favicon_link_tag %>
 
     <%= csrf_meta_tag %>
@@ -26,17 +25,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-    <!--link rel="apple-touch-icon" href="/client/images/ucsf_ipad_logo.png"/ -->
     <%= favicon_link_tag 'ucsf_ipad_logo.png', :rel => 'apple-touch-icon', :type => 'image/png' %>
 
-
-    <!--link rel="apple-touch-startup-image" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" href="/client/images/ucsf_startup_logo_landscape.png" -->
     <%= favicon_link_tag 'ucsf_startup_logo_landscape.png', :rel => 'apple-touch-startup-image', :type => 'image/png', :media => "screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" %>
 
-    <!--link rel="apple-touch-startup-image" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" href="/client/images/ucsf_startup_logo_portrait.png"-->
-
     <%= favicon_link_tag 'ucsf_startup_logo_portrait.png', :rel => 'apple-touch-startup-image', :type => 'image/png', :media => "screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" %>
-
 
 
     <!-- Security Update, no cache-->
@@ -96,18 +89,21 @@
         var autosaveOn = false;
         var idleTime = new Date();
         var refreshIntervalId;
-        var timeout = <%= ENV['app_timeout'] %>;
+        //var timeout = < % = ENV['app_timeout'] %>;
+        var timeout = <%= ENV['app_idleafter'] %>;
+        var urlprefix = '<%= ENV['URL_Prefix'] %>';
+        
         
         if ( j$('#idletimeout')[0] || j$('#idletimeout a')[0] ) { 
         j$.idleTimeout('#idletimeout', '#idletimeout a', {
           idleAfter: timeout,
-          pollingInterval: 60,
-          //keepAliveURL: 'keepalive.php',
+          pollingInterval: <%= ENV['app_pollinginterval'] %>,
+          keepAliveURL: window.location,
           //serverResponseEquals: 'OK',
-          warningLength: 30,
+          warningLength: <%= ENV['app_warninglength'] %>,
           onTimeout: function(){
             j$(this).slideUp();
-            window.location = "/client/signoutexp";
+            window.location = urlprefix + "/signoutexp";
             //window.location = "/signoutexp";
             //location.reload();
           },
@@ -119,6 +115,7 @@
           },
           onResume: function(){
             j$(this).slideUp(); // hide the warning bar
+            location.reload();
           }
         });
 

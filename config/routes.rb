@@ -30,6 +30,7 @@ SampleApp::Application.routes.draw do
   match '/signout',  :to => 'sessions#destroy'
   match '/signoutsf',  :to => 'sessions#signout_revoke'
   match '/signoutexp',  :to => 'sessions#signout_exp'
+  match '/timedout',  :to => 'sessions#timedout'
 
   
   match '/auth/:provider/callback', :to => 'sessions#create'
