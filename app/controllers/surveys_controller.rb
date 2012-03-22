@@ -33,7 +33,7 @@ class SurveysController < ApplicationController
     @s = current_survey
     @surveyid = @s[0].Survey__c
     @inviteid = params[:id] || params[:survey_id]
-    @responses = session[:client].query("select Id, Name, Date_Response__c, DateTime_Response__c, Integer_Response__c, Invitation__c, Label_Long_Response__c, Label_Response__c, Line_Item__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Original_Question_Text__c, Response_Type__c, Survey__c, Survey_Subject__c, Text_Long_Response__c, Text_Response__c, Invitation__r.Progress_Save__c, Line_Item__r.Parent_Line_Item__c, Line_Item__r.Parent_Line_Item__r.Answer_Sequence__c, Line_Item__r.Parent_Line_Item__r.Question_Description__c from Response__c where Survey__c = '#{@surveyid}' and Invitation__c = '#{@inviteid }' order by Line_Sort_Order__c, Line_Item_Sort_Order__c " )
+    @responses = session[:client].query("select Id, Name, Date_Response__c, DateTime_Response__c, Integer_Response__c, Invitation__c, Label_Long_Response__c, Label_Response__c, Line_Item__c, Line_Item_Sort_Order__c, Line_Name__c, Line_Sort_Order__c, Original_Question_Text__c, Response_Type__c, Survey__c, Survey_Subject__c, Text_Long_Response__c, Text_Response__c, Invitation__r.Progress_Save__c, Line_Item__r.Line__c, Line_Item__r.Line__r.Name, Line_Item__r.Parent_Line_Item__c, Line_Item__r.Parent_Line_Item__r.Answer_Sequence__c, Line_Item__r.Parent_Line_Item__r.Question_Description__c from Response__c where Survey__c = '#{@surveyid}' and Invitation__c = '#{@inviteid }' order by Line_Sort_Order__c, Line_Item_Sort_Order__c " )
     
     @h_grid = {}
     @h_gridHeader = {}
@@ -43,8 +43,16 @@ class SurveysController < ApplicationController
     @GridAnsSeqIds = ''
     @answerlabels = nil
     @h_answers = {}
+
+    @List_Array = Array.new
+    @h_line_resp = {}
+
     
     @responses.each_with_index do |r, i|
+
+      if not @List_Array.include?(r.Line_Item__r.Line__c)
+        @List_Array << r.Line_Item__r.Line__c
+      end
 
       if r.Response_Type__c == 'GridSubQuestion'
         #logic to add child to parent grid on hash
@@ -76,6 +84,10 @@ class SurveysController < ApplicationController
     #cleans response array from subgrid questions
     @respN = @responses
     @respN.delete_if{|x| @gsq.has_key?(x.Id) }
+
+    @responses.each do |r|
+      @h_line_resp[r.Line_Item__r.Line__c] ? @h_line_resp[r.Line_Item__r.Line__c] << r : @h_line_resp[r.Line_Item__r.Line__c] = [r]
+    end
   end
 
   def print
