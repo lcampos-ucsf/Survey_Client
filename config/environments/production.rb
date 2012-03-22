@@ -75,7 +75,7 @@ SampleApp::Application.configure do
 =end
 
   ENV['DEFAULT_PROVIDER'] = "customurl"
-  ENV['URL_Prefix'] = '/client'
+  ENV['URL_Prefix'] = ''
   ENV['sfdc_api_version'] = '23.0'
   ENV['app_timeout'] = '900' #(15 mins) time in seconds
   ENV['app_idleafter'] = '800' #javascript that validates session, should always be less than app_timeout
