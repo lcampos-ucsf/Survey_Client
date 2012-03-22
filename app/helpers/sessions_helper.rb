@@ -31,7 +31,7 @@ require 'omniauth-oauth2'
 
   def authenticate
     puts "^^^^^^^^^^^^^^^^^^^^ session_helper.rb authenticate, signed_in ? = '#{signed_in?}' ^^^^^^^^^^^^^^^^^^^^"
-    
+
     #check session
     if signed_in?
       ve_to = ENV['app_timeout'].to_i / 60
@@ -79,7 +79,7 @@ require 'omniauth-oauth2'
     session[:user_profile] = nil
     session[:user_id] = nil
     session[:name] = nil
-    session[:auth_hash][:token] = nil
+    #session[:auth_hash][:token] = nil
     #session[:auth_hash][:refresh_token] = nil
   end
 
