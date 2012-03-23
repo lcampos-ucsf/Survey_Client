@@ -1,3 +1,11 @@
 *.sqlite3
 tmp
 .DS_Store
+
+# Lines starting with '#' are considered comments.
+# Ignore any file named foo.txt.
+config/environments/development.rb
+config/environments/production.rb
+config/environments/test.rb
+
+config/deploy.rb
