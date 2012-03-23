@@ -86,7 +86,10 @@ class SurveysController < ApplicationController
     @respN.delete_if{|x| @gsq.has_key?(x.Id) }
 
     @responses.each do |r|
-      @h_line_resp[r.Line_Item__r.Line__c] ? @h_line_resp[r.Line_Item__r.Line__c] << r : @h_line_resp[r.Line_Item__r.Line__c] = [r]
+      if ( ((r.Response_Type__c == 'Text' ||  r.Response_Type__c == 'Date' || r.Response_Type__c == 'Datetime' || r.Response_Type__c == 'Integer' || r.Response_Type__c == 'Calculation') && !r.Text_Long_Response__c.blank? ) || (!r.Label_Long_Response__c.blank?) )
+      puts " ------ text long response #{r.Text_Long_Response__c }, response type = #{r.Response_Type__c}" 
+        @h_line_resp[r.Line_Item__r.Line__c] ? @h_line_resp[r.Line_Item__r.Line__c] << r : @h_line_resp[r.Line_Item__r.Line__c] = [r]
+      end
     end
   end
 

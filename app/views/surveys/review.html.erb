@@ -1,4 +1,5 @@
-<h1> Review Survey </h1>
+
+<h1><%= @s[0].Name %> <%= @s[0].Survey_Name__c %> </h1>
 	
 	<div id="progressbar" >
 	   <div id="progress" >
@@ -9,11 +10,13 @@
 <div id="survey_review">
 
 	<% @List_Array.each do |la| %>
+
+		<% if @h_line_resp.has_key?(la) %>
 		<h2><%= @h_line_resp[la][0].Line_Item__r.Line__r.Name %></h2>
 		
 		<div class="line-wrap" >
 			
-			<% if @h_line_resp.has_key?(la) %>
+			
 			<% @h_line_resp[la].each do |r| %>
 				<div class="question_wrap" >
 					
@@ -90,10 +93,10 @@
 						<% end %>
 						
 					<% end %>
-				</div>
+				</div> <!-- question_wrap -->
 
 			<% end %>
-		</div>
+		</div> <!-- line-wrap -->
 	<% end %>
 	<% end %>
 
